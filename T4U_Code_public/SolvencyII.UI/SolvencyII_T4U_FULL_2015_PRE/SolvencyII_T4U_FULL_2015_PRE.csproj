@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9B7818D-8DB7-43CF-BCCC-4D0D3038248D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolvencyII_T4U_FULL_2015_PRE</RootNamespace>
+    <AssemblyName>SolvencyII_T4U_FULL_2015_PRE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>\\eivpr-svn01\wwwroot\XBRT\Deployment\2015/WindowsT4U_NCA_Version\PRE\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://dev.eiopa.europa.eu/XBRT/Deployment/2015/WindowsT4U_NCA_Version/PRE/</InstallUrl>
+    <SupportUrl>http://t4u.eurofiling.info/</SupportUrl>
+    <ProductName>EIOPA Windows T4U 2015 PRE</ProductName>
+    <PublisherName>EIOPA</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2015.08.28.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico-t4u.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6EEC4B6BFE666FDF2E1825A86818CD31EFDC1857</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\SolvencyII_T4U_FULL_2015_PRE.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>FOR_NCA</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|x86' ">
+    <OutputPath>bin\x86\T4UDeployment\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|AnyCPU' ">
+    <OutputPath>bin\PreparatoryRelease\</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86' ">
+    <OutputPath>bin\x86\T4UDebug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
+    <OutputPath>bin\PreparatoryDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x86'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x86'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|AnyCPU'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <OutputPath>bin\x86\Test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SolvencyII.Data.Shared\SolvencyII.Data.Shared.csproj">
+      <Project>{9BA580CE-8585-4CC5-A971-4D7B4AF3323A}</Project>
+      <Name>SolvencyII.Data.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Data\SolvencyII.Data.csproj">
+      <Project>{A2EB048A-561C-4A6B-B554-4834EFED35C1}</Project>
+      <Name>SolvencyII.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Domain\SolvencyII.Domain.csproj">
+      <Project>{801FA2EA-C4D8-496A-BC96-E1272CF6502A}</Project>
+      <Name>SolvencyII.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.GUI\SolvencyII.GUI.csproj">
+      <Project>{1AB0AE20-1DFA-43A2-AE97-713167CFA1A9}</Project>
+      <Name>SolvencyII.GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.UI.Shared\SolvencyII.UI.Shared.csproj">
+      <Project>{887EABCC-FC1F-4C9E-8991-ED1D86552931}</Project>
+      <Name>SolvencyII.UI.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\T4Udb_Sol2.zip">
+      <Link>T4Udb_Sol2.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\5. AT2DPMdb\Source code\DPMdb2AT\packages\System.Data.SQLite.1.0.91.3\lib\net40\System.Data.SQLite.Linq.dll">
+      <Link>System.Data.SQLite.Linq.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\Primary Interop Assemblies\stdole.dll">
+      <Link>stdole.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\Arelle-x64\arelle-cmd64-t4u.zip">
+      <Link>Arelle-x64\arelle-cmd64-t4u.zip</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\Arelle-x86\arelle-cmd32-t4u.zip">
+      <Link>Arelle-x86\arelle-cmd32-t4u.zip</Link>
+    </Content>
+    <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\T4Udb_Sol2_prep.zip">
+      <Link>T4Udb_Sol2_prep.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\T4U Database Documentation.pdf">
+      <Link>HelpFiles\T4U Database Documentation.pdf</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\T4Udb_master.zip">
+      <Link>T4Udb_master.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\Backup\T4Udb_Sol2_Prep.zip">
+      <Link>HelpFiles\T4Udb_Sol2_Prep.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\T4U User Manual Full.pdf">
+      <Link>HelpFiles\T4U User Manual Full.pdf</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\4. XBRL Taxonomy\Arelle Packages\Deployment_Copy\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip">
+      <Link>Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip</Link>
+    </Content>
+    <Content Include="..\..\..\2. DPMdict+AT\1.5.2.c\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\2. DPMdict+AT\1.5.2.c\EIOPA_SolvencyII_DPM_Dictionary.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\2. DPMdict+AT\1.5.2.c\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\RSSLinkInformation.xml">
+      <Link>RSSLinkInformation.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VersionDetails.xml" />
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx">
+      <Link>ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx">
+      <Link>ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx">
+      <Link>ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx">
+      <Link>ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\aeb_annual_ecb_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\Full\aeb_annual_ecb_reporting_third_country_branches.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\aes_annual_ecb_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\aes_annual_ecb_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\afg_annual_financial_stability_reporting_group.xlsx">
+      <Link>ExcelTemplates\Full\afg_annual_financial_stability_reporting_group.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\afs_annual_financial_stability_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\afs_annual_financial_stability_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\arb_annual_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\Full\arb_annual_solvency_ii_reporting_third_country_branches.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\arg_annual_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\Full\arg_annual_solvency_ii_reporting_group.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\ars_annual_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\ars_annual_solvency_ii_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\Full\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\d1g_day_1_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\Full\d1g_day_1_solvency_ii_reporting_group.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\d1s_day_1_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\d1s_day_1_solvency_ii_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qeb_quarterly_ecb_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\Full\qeb_quarterly_ecb_reporting_third_country_branches.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qes_quarterly_ecb_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\qes_quarterly_ecb_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qfg_quarterly_financial_stability_reporting_group.xlsx">
+      <Link>ExcelTemplates\Full\qfg_quarterly_financial_stability_reporting_group.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qfs_quarterly_financial_stability_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\qfs_quarterly_financial_stability_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\Full\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qrg_quarterly_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\Full\qrg_quarterly_solvency_ii_reporting_group.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\qrs_quarterly_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\Full\qrs_quarterly_solvency_ii_reporting_solo.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Full\spv_annual_reporting_special_purpose_vehicles.xlsx">
+      <Link>ExcelTemplates\Full\spv_annual_reporting_special_purpose_vehicles.xlsx</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\Enumerations\excel_template_enumerations_152c.xlsx">
+      <Link>Enumerations\excel_template_enumerations_152c.xlsx</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\Enumerations\excel_template_enumerations_17.xlsx">
+      <Link>Enumerations\excel_template_enumerations_17.xlsx</Link>
+    </Content>
+    <Content Include="..\..\..\13. XBRL Instance Documents\For deployment\Full S2 Test XBRL Instances.zip">
+      <Link>HelpFiles\Full S2 Test XBRL Instances.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\13. XBRL Instance Documents\For deployment\Preparatory S2 Test XBRL Instances.zip">
+      <Link>HelpFiles\Preparatory S2 Test XBRL Instances.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\4. XBRL Taxonomy\Arelle Packages\Deployment_Copy\EIOPA_SolvencyII_XBRL_Taxonomy_17.zip">
+      <Link>Arelle\Taxonomies\EIOPA_SolvencyII_XBRL_Taxonomy_17.zip</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\Exl-Business_Encrypted\Exl-Business_Encrypted.xlsx">
+      <Link>Exl-Business_Encrypted\Exl-Business_Encrypted.xlsx</Link>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\aeb_annual_ecb_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\aeb_annual_ecb_reporting_third_country_branches.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\aes_annual_ecb_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\aes_annual_ecb_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\afg_annual_financial_stability_reporting_group.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\afg_annual_financial_stability_reporting_group.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\afs_annual_financial_stability_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\afs_annual_financial_stability_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\arb_annual_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\arb_annual_solvency_ii_reporting_third_country_branches.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\arg_annual_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\arg_annual_solvency_ii_reporting_group.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\ars_annual_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\ars_annual_solvency_ii_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\ats_fs_3cb_individual_annual.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\ats_fs_3cb_individual_annual.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\d1g_day_1_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\d1g_day_1_solvency_ii_reporting_group.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\d1s_day_1_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\d1s_day_1_solvency_ii_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qeb_quarterly_ecb_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qeb_quarterly_ecb_reporting_third_country_branches.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qes_quarterly_ecb_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qes_quarterly_ecb_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qfg_quarterly_financial_stability_reporting_group.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qfg_quarterly_financial_stability_reporting_group.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qfs_quarterly_financial_stability_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qfs_quarterly_financial_stability_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qrg_quarterly_solvency_ii_reporting_group.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qrg_quarterly_solvency_ii_reporting_group.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qrs_quarterly_solvency_ii_reporting_solo.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qrs_quarterly_solvency_ii_reporting_solo.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\qts_fs_3cb_individual_quarterly.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\qts_fs_3cb_individual_quarterly.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\BusinessTemplates\spv_annual_reporting_special_purpose_vehicles.xlsx">
+      <Link>ExcelTemplates\BusinessTemplates\spv_annual_reporting_special_purpose_vehicles.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SolvencyII.GUI\ico-xbrt.ico">
+      <Link>ico-xbrt.ico</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\sqlite3.dll">
+      <Link>sqlite3.dll</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\WhatsNew.txt">
+      <Link>WhatsNew.txt</Link>
+    </Content>
+    <Content Include="..\solvencyii.gui\x64\SQLite.Interop.dll">
+      <Link>x64\SQLite.Interop.dll</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\x64\sqlite3.dll">
+      <Link>x64\sqlite3.dll</Link>
+    </Content>
+    <Content Include="..\solvencyii.gui\x86\SQLite.Interop.dll">
+      <Link>x86\SQLite.Interop.dll</Link>
+    </Content>
+    <Content Include="..\SolvencyII.GUI\x86\sqlite3.dll">
+      <Link>x86\sqlite3.dll</Link>
+    </Content>
+    <Content Include="ico-t4u.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="RSSLinkInformation.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="System.Data.SQLite">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="VersionDetails.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".XBRT">
+      <Visible>False</Visible>
+      <Description>Tool for Undertakings Container</Description>
+      <Progid>T4U</Progid>
+      <DefaultIcon>ico-t4u.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>REM "C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe" sign /t http://timestamp.digicert.com /n "European Insurance and Occupational Pensions Authority (EIOPA)" -v "$(ProjectDir)obj\x86\$(ConfigurationName)\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- 
+  INCLUDED BY AITOR TO SIGN EXEs
+  <Exec Condition=" '$(ConfigurationName)'=='Release'" Command="&quot;C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe&quot; sign /t http://timestamp.digicert.com /n &quot;European Insurance and Occupational Pensions Authority (EIOPA)&quot; -v &quot;$(ProjectDir)obj\x86\$(ConfigurationName)\$(TargetFileName)&quot;" />
+  
+  <Target Name="AfterCompile">
+    <Exec Condition=" '$(ConfigurationName)'=='Release'" Command="&quot;C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe&quot; sign /fd SHA256 /t http://timestamp.digicert.com /n &quot;European Insurance and Occupational Pensions Authority (EIOPA)&quot; -v &quot;$(ProjectDir)obj\x86\$(ConfigurationName)\$(TargetFileName)&quot;" />
+    <Exec Condition=" '$(ConfigurationName)'=='Release'" Command="&quot;C:\Program Files (x86)\Windows Kits\8.0\bin\x86\signtool.exe&quot; sign /fd SHA256 /t http://timestamp.digicert.com /n &quot;European Insurance and Occupational Pensions Authority (EIOPA)&quot; -v &quot;E:\SVN\XBRT\6. Windows T4U\SolvencyII.UI\SolvencyII.GUI\obj\x86\Release\SolvencyII.GUI.exe&quot;" />
+  </Target>-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

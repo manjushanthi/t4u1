@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1AB0AE20-1DFA-43A2-AE97-713167CFA1A9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolvencyII.GUI</RootNamespace>
+    <AssemblyName>SolvencyII.GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>c:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>EIOPA Windows T4U</ProductName>
+    <PublisherName>EIOPA</PublisherName>
+    <SuiteName>XBRT</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;FOR_NCA</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico-t4u.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4CD52E15C8EF6C8CE6F938AB02BC7D2BCCF3CBB5</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA EnableMergeTemplates</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\SolvencyII.GUI.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>FOR_NCA EnableMergeTemplates</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|x86' ">
+    <OutputPath>bin\x86\T4U_Deployment\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|AnyCPU' ">
+    <OutputPath>bin\PreparatoryRelease\</OutputPath>
+    <DefineConstants>FOR_UT EnableMergeTemplates</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86' ">
+    <OutputPath>bin\x86\T4U_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;FOR_UT</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PreparatoryDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_UT EnableMergeTemplates</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x86'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA EnableMergeTemplates</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x86'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_UT EnableMergeTemplates</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|AnyCPU'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <OutputPath>bin\x86\Test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>FOR_NCA</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SolvencyII.UI.Shared\Arelle\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>.\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\CheckUpdates.cs" />
+    <Compile Include="Classes\ExceptionHandler.cs" />
+    <Compile Include="Classes\PopupDialog.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInstanceNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInstanceNew.designer.cs">
+      <DependentUpon>frmInstanceNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPopup.Designer.cs">
+      <DependentUpon>frmPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\GUISpecific.cs" />
+    <Compile Include="frmGeneralInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGeneralInformation.Designer.cs">
+      <DependentUpon>frmGeneralInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTermsAndConditionsUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTermsAndConditionsUT.Designer.cs">
+      <DependentUpon>frmTermsAndConditionsUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmValidationError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmValidationError.Designer.cs">
+      <DependentUpon>frmValidationError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MEF\SolvencyIIExtensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmTermsAndConditionsNCA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTermsAndConditionsNCA.Designer.cs">
+      <DependentUpon>frmTermsAndConditionsNCA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RSS\RssFeed.cs" />
+    <Compile Include="RSS\RssNews.cs" />
+    <Compile Include="RSS\RSS_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RSS\RSS_UI.Designer.cs">
+      <DependentUpon>RSS_UI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ParentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ParentUserControl.designer.cs">
+      <DependentUpon>ParentUserControl.cs</DependentUpon>
+    </Compile>
+    <Content Include="folder-open.ico" />
+    <Content Include="HelpFiles\Licences.html" />
+    <Content Include="Images\EIOPA_Logo.png" />
+    <Content Include="Arelle-x64\arelle-cmd64-t4u.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Arelle-x86\arelle-cmd32-t4u.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RSSLinkInformation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\sqlite3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlite3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValidationError.resx">
+      <DependentUpon>frmValidationError.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Excel-Business-Templates-%281.5.2.c%29\Excel-Business-Templates-%281.5.2.c%29.xlsm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Enumerations\excel_template_enumerations_152c.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Enumerations\excel_template_enumerations_17.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Exl-Business_Encrypted\Exl-Business_Encrypted.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip" />
+    <None Include="Arelle\Taxonomies\EIOPA_SolvencyII_XBRL_Taxonomy_17.zip" />
+    <None Include="Arelle\Taxonomies\EIOPA_SolvencyII_XBRL_Taxonomy_2.0.0.zip" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx" />
+    <None Include="HelpFiles\Full\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx" />
+    <None Include="HelpFiles\Full\EIOPA_SolvencyII_DPM_Dictionary.xlsx" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_XBRL_Instance_documents_2.0.0.zip" />
+    <None Include="HelpFiles\EIOPA_SolvencyII_XBRL_Taxonomy_17.zip" />
+    <None Include="HelpFiles\Full S2 Test XBRL Instances.zip" />
+    <None Include="HelpFiles\Preparatory S2 Test XBRL Instances.zip" />
+    <None Include="HelpFiles\T4U Database Documentation.pdf" />
+    <None Include="HelpFiles\T4U User Manual Full.pdf" />
+    <None Include="HelpFiles\T4U User Manual Preparatory.pdf" />
+    <None Include="HelpFiles\T4U User Manual.pdf" />
+    <None Include="HelpFiles\T4Udb_Sol2_prep.zip" />
+    <None Include="HelpFiles\T4U_Sol2.zip" />
+    <None Include="Microsoft.Data.ConnectionUI.Dialog.dll" />
+    <Content Include="ReadmeOpenTables.txt" />
+    <Content Include="WhatsNew.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="frmGeneralInformation.resx">
+      <DependentUpon>frmGeneralInformation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInstanceNew.resx">
+      <DependentUpon>frmInstanceNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPopup.resx">
+      <DependentUpon>frmPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTermsAndConditionsUT.resx">
+      <DependentUpon>frmTermsAndConditionsUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="frmTermsAndConditionsNCA.resx">
+      <DependentUpon>frmTermsAndConditionsNCA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RSS\RSS_UI.resx">
+      <DependentUpon>RSS_UI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ParentUserControl.resx">
+      <DependentUpon>ParentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="ico-t4u.ico" />
+    <Content Include="ico-xbrt.ico" />
+    <Content Include="Images\edit-find-4.png" />
+    <Content Include="Images\ico-t4u.ico" />
+    <Content Include="Images\ico-xbrl.gif" />
+    <Content Include="Images\ico-xbrl.ico" />
+    <Content Include="Images\ico-xbrt.ico" />
+    <Content Include="Images\t4u.png" />
+    <Content Include="Images\xbrl_logo.jpg" />
+    <Content Include="Images\xbrt.png" />
+    <Content Include="sqlite3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="T4Udb_master.zip" />
+    <None Include="T4Udb_Sol2.zip" />
+    <None Include="T4Udb_Sol2_PoC.zip" />
+    <None Include="T4Udb_Sol2_prep.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+    <None Include="ReadmeINSTALLATION_PREP.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="ico-xbrt.ico">
+      <Visible>False</Visible>
+      <Group>Images</Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Images\edit-find-4.png">
+      <Visible>False</Visible>
+      <Group>Images</Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Images\ico-t4u.ico">
+      <Visible>False</Visible>
+      <Group>Images</Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Auto</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComponentModel\ComponentModel.csproj">
+      <Project>{1bba5101-d4f0-48b8-a5d6-7b23a099dce3}</Project>
+      <Name>ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjectListView\ObjectListView2010.csproj">
+      <Project>{18feda0c-d147-4286-b39a-01204808106a}</Project>
+      <Name>ObjectListView2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.CMD.Operations\SolvencyII.CMD.Operations.csproj">
+      <Project>{9b94a83d-4c8f-4112-b5e3-bd5dd623a519}</Project>
+      <Name>SolvencyII.CMD.Operations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Data.CRT.ETL\SolvencyII.Data.CRT.ETL.csproj">
+      <Project>{d8f2e253-ae45-41a6-95ca-41479846df7c}</Project>
+      <Name>SolvencyII.Data.CRT.ETL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.DataTypeValidation\SolvencyII.DataTypeValidation.csproj">
+      <Project>{bfdcdf68-e573-47b5-9e6f-5ca1d56e67d7}</Project>
+      <Name>SolvencyII.DataTypeValidation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\SolvencyII.ExcelImportExportLib.csproj">
+      <Project>{493c5e4f-5557-4643-b45a-26387399ec0f}</Project>
+      <Name>SolvencyII.ExcelImportExportLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Extensibility.SOL2\SolvencyII.Extensibility.SOL2.csproj">
+      <Project>{7bdddd31-42b7-4cfe-96a1-9daad268553d}</Project>
+      <Name>SolvencyII.Extensibility.SOL2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Validation\SolvencyII.Validation.csproj">
+      <Project>{3f8159af-ce45-411b-813d-6278b4f46c66}</Project>
+      <Name>SolvencyII.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Data.Shared\SolvencyII.Data.Shared.csproj">
+      <Project>{9ba580ce-8585-4cc5-a971-4d7b4af3323a}</Project>
+      <Name>SolvencyII.Data.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Domain\SolvencyII.Domain.csproj">
+      <Project>{801fa2ea-c4d8-496a-bc96-e1272cf6502a}</Project>
+      <Name>SolvencyII.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.Extensibility_1.0_SOL2_Preparatory\SolvencyII.Extensibility.SOL2_1.0_Preparatory.csproj">
+      <Project>{37d0dfba-582c-462e-b809-d46b43beb451}</Project>
+      <Name>SolvencyII.Extensibility.SOL2_1.0_Preparatory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.UI.Shared\SolvencyII.UI.Shared.csproj">
+      <Project>{887eabcc-fc1f-4c9e-8991-ed1d86552931}</Project>
+      <Name>SolvencyII.UI.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DialogUI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

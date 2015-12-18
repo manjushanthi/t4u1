@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolvencyII.Validation</name>
+    </assembly>
+    <members>
+        <member name="M:SolvencyII.Validation.Parser.ValidationErrorParser.GetPagesFromContext">
+             <summary>
+             Each ‘PAGE’ start new dimensional characteristic
+            First colon ‘:’ in dimensional characteristic splits it into two components (dimension and member)
+            First component is dimension. To query dimension name, underscore ‘_’ has to be replaced by ‘_dim:’
+            Second is member. If member contains colon ‘:’, it is to be queried in DB, if not, it is representing typed value
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="F:SolvencyII.Validation.UI.ArelleValidationDetailLog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Validation.UI.ArelleValidationDetailLog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.Validation.UI.ArelleValidationDetailLog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.Validation.UI.ArelleValidationStatus.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Validation.UI.ArelleValidationStatus.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.Validation.UI.ArelleValidationStatus.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

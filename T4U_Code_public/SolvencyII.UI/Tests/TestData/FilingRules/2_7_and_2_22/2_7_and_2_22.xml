@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>2.7 and 2.22</number>
+	<name>2.7 - Unused xbrli:xbrl/xbrli:context / 2.22 - Unused xbrli:xbrl/xbrli:unit</name>
+	<description>Unused xbrli:context or xbrli:unit elements MUST NOT be present in the instance.</description>
+	<variation id="tc1">
+		<description>XBRL instance without unused xbrli:context or xbrli:unit.</description>
+		<data>
+			<instance readMeFirst="true">2_7_and_2_22_tc1.xbrl</instance>
+		</data>
+		<result severity="warning" expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL instance with unused xbrli:context.</description>
+		<data>
+			<instance readMeFirst="true">2_7_and_2_22_tc2.xbrl</instance>
+		</data>
+		<result severity="warning" expected="invalid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL instance with unused xbrli:unit.</description>
+		<data>
+			<instance readMeFirst="true">2_7_and_2_22_tc3.xbrl</instance>
+		</data>
+		<result severity="warning" expected="invalid"/>
+	</variation>
+	<variation id="tc4">
+		<description>XBRL instance with unused xbrli:context and xbrli:unit.</description>
+		<data>
+			<instance readMeFirst="true">2_7_and_2_22_tc4.xbrl</instance>
+		</data>
+		<result severity="warning" expected="invalid"/>
+	</variation>
+</testcase>

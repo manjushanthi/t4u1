@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>S.1.5.a</number>
+	<name>S.1.5.(a) - Taxonomy entry point selection</name>
+	<description>An instance document MUST reference only one entry point schema file ("module"), with the full absolute URL, as specified in the relevant EIOPA Solvency II XBRL Taxonomy and be applicable  for the reference date of the instance document.</description>
+	<variation id="tc1">
+		<description>XBRL instance with correct full URL of module referenced by schemaRef.</description>
+		<data>
+			<instance readMeFirst="true">s_1_5_a_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL instance with correct full URLs of modules referenced by two schemaRefs.</description>
+		<data>
+			<instance readMeFirst="true">s_1_5_a_tc2.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL instance with correct full URL of module referenced by schemaRef and a linkbaseRef to some linkbase file.</description>
+		<data>
+			<instance readMeFirst="true">s_1_5_a_tc3.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc4">
+		<description>XBRL instance with schemaRef pointing to a schema file that is not any of the allowed modules.</description>
+		<data>
+			<instance readMeFirst="true">s_1_5_a_tc4.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc5">
+		<description>XBRL instance with relative path to module referenced by schemaRef.</description>
+		<data>
+			<instance readMeFirst="true">s_1_5_a_tc5.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+</testcase>

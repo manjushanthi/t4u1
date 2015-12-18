@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolvencyII.DataTypeValidation</name>
+    </assembly>
+    <members>
+        <member name="P:SolvencyII.DataTypeValidation.DataTypeValidationException.ExcelAddress">
+            <summary>
+            Excel range address where error occured
+            </summary>
+        </member>
+        <member name="F:SolvencyII.DataTypeValidation.DialogUI.DataValidationProgress.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.DialogUI.DataValidationProgress.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.DialogUI.DataValidationProgress.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.DataTypeValidation.ProgressReporter">
+            <summary> 
+            A class used by Tasks to report progress or completion updates back to the UI. 
+            </summary> 
+        </member>
+        <member name="F:SolvencyII.DataTypeValidation.ProgressReporter.scheduler">
+            <summary> 
+            The underlying scheduler for the UI's synchronization context. 
+            </summary> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.#ctor">
+            <summary> 
+            Initializes a new instance of the <see cref="T:SolvencyII.DataTypeValidation.ProgressReporter"/> class.
+            This should be run on a UI thread. 
+            </summary> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.ReportProgressAsync(System.Action)">
+            <summary> 
+            Reports the progress to the UI thread. This method should be called from the task.
+            Note that the progress update is asynchronous with respect to the reporting Task.
+            For a synchronous progress update, wait on the returned <see cref="T:System.Threading.Tasks.Task"/>. 
+            </summary> 
+            <param name="action">The action to perform in the context of the UI thread.
+            Note that this action is run asynchronously on the UI thread.</param> 
+            <returns>The task queued to the UI thread.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.ReportProgress(System.Action)">
+            <summary> 
+            Reports the progress to the UI thread, and waits for the UI thread to process
+            the update before returning. This method should be called from the task. 
+            </summary> 
+            <param name="action">The action to perform in the context of the UI thread.</param> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterContinuation(System.Threading.Tasks.Task,System.Action)">
+            <summary> 
+            Registers a UI thread handler for when the specified task finishes execution,
+            whether it finishes with success, failiure, or cancellation. 
+            </summary> 
+            <param name="task">The task to monitor for completion.</param> 
+            <param name="action">The action to take when the task has completed, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle completion. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterContinuation``1(System.Threading.Tasks.Task{``0},System.Action)">
+            <summary> 
+            Registers a UI thread handler for when the specified task finishes execution,
+            whether it finishes with success, failiure, or cancellation. 
+            </summary> 
+            <typeparam name="TResult">The type of the task result.</typeparam> 
+            <param name="task">The task to monitor for completion.</param> 
+            <param name="action">The action to take when the task has completed, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle completion. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterSucceededHandler(System.Threading.Tasks.Task,System.Action)">
+            <summary> 
+            Registers a UI thread handler for when the specified task successfully finishes execution. 
+            </summary> 
+            <param name="task">The task to monitor for successful completion.</param> 
+            <param name="action">The action to take when the task has successfully completed, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle successful completion. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterSucceededHandler``1(System.Threading.Tasks.Task{``0},System.Action{``0})">
+            <summary> 
+            Registers a UI thread handler for when the specified task successfully finishes execution
+            and returns a result. 
+            </summary> 
+            <typeparam name="TResult">The type of the task result.</typeparam> 
+            <param name="task">The task to monitor for successful completion.</param> 
+            <param name="action">The action to take when the task has successfully completed, in the context of the UI thread.
+            The argument to the action is the return value of the task.</param> 
+            <returns>The continuation created to handle successful completion. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterFaultedHandler(System.Threading.Tasks.Task,System.Action{System.Exception})">
+            <summary> 
+            Registers a UI thread handler for when the specified task becomes faulted. 
+            </summary> 
+            <param name="task">The task to monitor for faulting.</param> 
+            <param name="action">The action to take when the task has faulted, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle faulting. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterFaultedHandler``1(System.Threading.Tasks.Task{``0},System.Action{System.Exception})">
+            <summary> 
+            Registers a UI thread handler for when the specified task becomes faulted. 
+            </summary> 
+            <typeparam name="TResult">The type of the task result.</typeparam> 
+            <param name="task">The task to monitor for faulting.</param> 
+            <param name="action">The action to take when the task has faulted, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle faulting. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterCancelledHandler(System.Threading.Tasks.Task,System.Action)">
+            <summary> 
+            Registers a UI thread handler for when the specified task is cancelled. 
+            </summary> 
+            <param name="task">The task to monitor for cancellation.</param> 
+            <param name="action">The action to take when the task is cancelled, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle cancellation. This is normally ignored.</returns> 
+        </member>
+        <member name="M:SolvencyII.DataTypeValidation.ProgressReporter.RegisterCancelledHandler``1(System.Threading.Tasks.Task{``0},System.Action)">
+            <summary> 
+            Registers a UI thread handler for when the specified task is cancelled. 
+            </summary> 
+            <typeparam name="TResult">The type of the task result.</typeparam> 
+            <param name="task">The task to monitor for cancellation.</param> 
+            <param name="action">The action to take when the task is cancelled, in the context of the UI thread.</param> 
+            <returns>The continuation created to handle cancellation. This is normally ignored.</returns> 
+        </member>
+        <member name="P:SolvencyII.DataTypeValidation.ProgressReporter.Scheduler">
+            <summary> 
+            Gets the task scheduler which executes tasks on the UI thread. 
+            </summary> 
+        </member>
+    </members>
+</doc>

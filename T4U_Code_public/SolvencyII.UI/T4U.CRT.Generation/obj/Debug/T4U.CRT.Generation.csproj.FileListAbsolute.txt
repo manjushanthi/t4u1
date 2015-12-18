@@ -1,0 +1,54 @@
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\ClessicRelationalModelGenerator.dll.config
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\ClessicRelationalModelGenerator.XML
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\ClessicRelationalModelGenerator.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\ClessicRelationalModelGenerator.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\AT2DPM.DAL.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\DpmDbHelper.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\obj\Debug\T4U.CRT.Generation.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\obj\Debug\ClessicRelationalModelGenerator.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClessicRelationalModelGenerator\obj\Debug\ClessicRelationalModelGenerator.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.dll.config
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.XML
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\AT2DPM.DAL.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\T4U.CRT.Generation.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\ClessicRelationalModelGenerator.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\ClessicRelationalModelGenerator.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.dll.config
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.XML
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\ClessicRelationalModelGenerator.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\AT2DPM.DAL.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\EntityFramework.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\AT2DPM.DAL.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\DpmDbHelper.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\bin\Debug\EntityFramework.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\T4U.CRT.Generation.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\ClessicRelationalModelGenerator.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\T4U.CRT.Generation\obj\Debug\ClessicRelationalModelGenerator.pdb

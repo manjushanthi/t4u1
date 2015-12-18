@@ -1,0 +1,4 @@
+﻿<ManualUpdateDetails>
+  <DeploymentPath>http://dev.eiopa.europa.eu/XBRT/Deployment/2015/WindowsT4U_NCA_Version/DEV/SolvencyII_T4U_FULL_2015_DEV.application</DeploymentPath>
+  <ClickOnceVersionNumber>2015.08.28.01</ClickOnceVersionNumber>
+</ManualUpdateDetails>

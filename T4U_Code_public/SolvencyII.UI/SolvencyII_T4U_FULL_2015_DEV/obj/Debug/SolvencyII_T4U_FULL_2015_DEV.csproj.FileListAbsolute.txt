@@ -1,0 +1,5 @@
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII_T4U_FULL_2015_DEV\bin\Debug\SolvencyII_T4U_FULL_2015_DEV.XML
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII_T4U_FULL_2015_DEV\obj\Debug\SolvencyII_T4U_FULL_2015_DEV.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII_T4U_FULL_2015_DEV\obj\Debug\SolvencyII_T4U_FULL_2015_DEV.TrustInfo.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII_T4U_FULL_2015_DEV\obj\Debug\SolvencyII_T4U_FULL_2015_DEV.exe
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII_T4U_FULL_2015_DEV\obj\Debug\SolvencyII_T4U_FULL_2015_DEV.pdb
