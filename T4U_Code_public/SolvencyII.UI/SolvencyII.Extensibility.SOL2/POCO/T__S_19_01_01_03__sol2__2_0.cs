@@ -1,0 +1,140 @@
+using System;
+using SolvencyII.Domain.Attributes;
+
+namespace SolvencyII.Domain 
+{ 
+    public partial class T__S_19_01_01_03__sol2__2_0
+    { 
+
+        [PrimaryKey , AutoIncrement]
+        public long? PK_ID { get; set; } 
+        public long? INSTANCE { get; set; } 
+        public decimal? R0110C0200 { get; set; } 
+        public decimal? R0120C0200 { get; set; } 
+        public decimal? R0130C0200 { get; set; } 
+        public decimal? R0140C0200 { get; set; } 
+        public decimal? R0150C0200 { get; set; } 
+        public decimal? R0160C0200 { get; set; } 
+        public decimal? R0170C0200 { get; set; } 
+        public decimal? R0180C0200 { get; set; } 
+        public decimal? R0190C0200 { get; set; } 
+        public decimal? R0200C0200 { get; set; } 
+        public decimal? R0210C0200 { get; set; } 
+        public decimal? R0220C0200 { get; set; } 
+        public decimal? R0230C0200 { get; set; } 
+        public decimal? R0240C0200 { get; set; } 
+        public decimal? R0250C0200 { get; set; } 
+        public decimal? R0110C0210 { get; set; } 
+        public decimal? R0120C0210 { get; set; } 
+        public decimal? R0130C0210 { get; set; } 
+        public decimal? R0140C0210 { get; set; } 
+        public decimal? R0150C0210 { get; set; } 
+        public decimal? R0160C0210 { get; set; } 
+        public decimal? R0170C0210 { get; set; } 
+        public decimal? R0180C0210 { get; set; } 
+        public decimal? R0190C0210 { get; set; } 
+        public decimal? R0200C0210 { get; set; } 
+        public decimal? R0210C0210 { get; set; } 
+        public decimal? R0220C0210 { get; set; } 
+        public decimal? R0230C0210 { get; set; } 
+        public decimal? R0240C0210 { get; set; } 
+        public decimal? R0110C0220 { get; set; } 
+        public decimal? R0120C0220 { get; set; } 
+        public decimal? R0130C0220 { get; set; } 
+        public decimal? R0140C0220 { get; set; } 
+        public decimal? R0150C0220 { get; set; } 
+        public decimal? R0160C0220 { get; set; } 
+        public decimal? R0170C0220 { get; set; } 
+        public decimal? R0180C0220 { get; set; } 
+        public decimal? R0190C0220 { get; set; } 
+        public decimal? R0200C0220 { get; set; } 
+        public decimal? R0210C0220 { get; set; } 
+        public decimal? R0220C0220 { get; set; } 
+        public decimal? R0230C0220 { get; set; } 
+        public decimal? R0110C0230 { get; set; } 
+        public decimal? R0120C0230 { get; set; } 
+        public decimal? R0130C0230 { get; set; } 
+        public decimal? R0140C0230 { get; set; } 
+        public decimal? R0150C0230 { get; set; } 
+        public decimal? R0160C0230 { get; set; } 
+        public decimal? R0170C0230 { get; set; } 
+        public decimal? R0180C0230 { get; set; } 
+        public decimal? R0190C0230 { get; set; } 
+        public decimal? R0200C0230 { get; set; } 
+        public decimal? R0210C0230 { get; set; } 
+        public decimal? R0220C0230 { get; set; } 
+        public decimal? R0110C0240 { get; set; } 
+        public decimal? R0120C0240 { get; set; } 
+        public decimal? R0130C0240 { get; set; } 
+        public decimal? R0140C0240 { get; set; } 
+        public decimal? R0150C0240 { get; set; } 
+        public decimal? R0160C0240 { get; set; } 
+        public decimal? R0170C0240 { get; set; } 
+        public decimal? R0180C0240 { get; set; } 
+        public decimal? R0190C0240 { get; set; } 
+        public decimal? R0200C0240 { get; set; } 
+        public decimal? R0210C0240 { get; set; } 
+        public decimal? R0110C0250 { get; set; } 
+        public decimal? R0120C0250 { get; set; } 
+        public decimal? R0130C0250 { get; set; } 
+        public decimal? R0140C0250 { get; set; } 
+        public decimal? R0150C0250 { get; set; } 
+        public decimal? R0160C0250 { get; set; } 
+        public decimal? R0170C0250 { get; set; } 
+        public decimal? R0180C0250 { get; set; } 
+        public decimal? R0190C0250 { get; set; } 
+        public decimal? R0200C0250 { get; set; } 
+        public decimal? R0110C0260 { get; set; } 
+        public decimal? R0120C0260 { get; set; } 
+        public decimal? R0130C0260 { get; set; } 
+        public decimal? R0140C0260 { get; set; } 
+        public decimal? R0150C0260 { get; set; } 
+        public decimal? R0160C0260 { get; set; } 
+        public decimal? R0170C0260 { get; set; } 
+        public decimal? R0180C0260 { get; set; } 
+        public decimal? R0190C0260 { get; set; } 
+        public decimal? R0110C0270 { get; set; } 
+        public decimal? R0120C0270 { get; set; } 
+        public decimal? R0130C0270 { get; set; } 
+        public decimal? R0140C0270 { get; set; } 
+        public decimal? R0150C0270 { get; set; } 
+        public decimal? R0160C0270 { get; set; } 
+        public decimal? R0170C0270 { get; set; } 
+        public decimal? R0180C0270 { get; set; } 
+        public decimal? R0110C0280 { get; set; } 
+        public decimal? R0120C0280 { get; set; } 
+        public decimal? R0130C0280 { get; set; } 
+        public decimal? R0140C0280 { get; set; } 
+        public decimal? R0150C0280 { get; set; } 
+        public decimal? R0160C0280 { get; set; } 
+        public decimal? R0170C0280 { get; set; } 
+        public decimal? R0110C0290 { get; set; } 
+        public decimal? R0120C0290 { get; set; } 
+        public decimal? R0130C0290 { get; set; } 
+        public decimal? R0140C0290 { get; set; } 
+        public decimal? R0150C0290 { get; set; } 
+        public decimal? R0160C0290 { get; set; } 
+        public decimal? R0110C0300 { get; set; } 
+        public decimal? R0120C0300 { get; set; } 
+        public decimal? R0130C0300 { get; set; } 
+        public decimal? R0140C0300 { get; set; } 
+        public decimal? R0150C0300 { get; set; } 
+        public decimal? R0110C0310 { get; set; } 
+        public decimal? R0120C0310 { get; set; } 
+        public decimal? R0130C0310 { get; set; } 
+        public decimal? R0140C0310 { get; set; } 
+        public decimal? R0110C0320 { get; set; } 
+        public decimal? R0120C0320 { get; set; } 
+        public decimal? R0130C0320 { get; set; } 
+        public decimal? R0110C0330 { get; set; } 
+        public decimal? R0120C0330 { get; set; } 
+        public decimal? R0110C0340 { get; set; } 
+        public decimal? R0100C0350 { get; set; } 
+        public string PAGES2C_BL { get; set; } 
+        public string PAGES2C_AX { get; set; } 
+        public string PAGES2C_OC { get; set; } 
+        public string PAGES2C_AF { get; set; } 
+
+    } 
+} 
+

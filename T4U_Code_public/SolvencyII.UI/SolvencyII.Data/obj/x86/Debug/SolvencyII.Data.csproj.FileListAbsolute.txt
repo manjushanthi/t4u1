@@ -1,0 +1,7 @@
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\bin\Debug\sqlite3.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\bin\Debug\SolvencyII.Data.dll.config
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\bin\Debug\SolvencyII.Data.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\bin\Debug\SolvencyII.Data.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data\obj\x86\Debug\SolvencyII.Data.csprojResolveAssemblyReference.cache
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data\obj\x86\Debug\SolvencyII.Data.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data\obj\x86\Debug\SolvencyII.Data.pdb

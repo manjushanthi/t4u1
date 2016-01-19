@@ -1,0 +1,125 @@
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\sqlite3.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\T4Udb_Sol2_prep.zip
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.XML
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Ionic.Zip.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility.SOL2.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\sqlite3.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\T4Udb_Sol2_prep.zip
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.XML
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Ionic.Zip.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility.SOL2.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\sqlite3.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\T4Udb_Sol2_prep.zip
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.XML
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Ionic.Zip.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility.SOL2.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\sqlite3.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.Dialog.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Microsoft.Data.ConnectionUI.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.XML
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Extensibility_SOL2.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\Ionic.Zip.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\System.ComponentModel.Composition.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.Shared.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Domain.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.UI.Shared.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\SolvencyII.Data.DBMS.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\bin\Debug\ObjectListView.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility.SOL2.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Extensibility.SOL2\obj\Debug\SolvencyII.Extensibility_SOL2.pdb

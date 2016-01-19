@@ -1,0 +1,47 @@
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\System.Data.SQLite.Linq.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\packages.config
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll.config
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\System.Data.SQLite.Linq.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\packages.config
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll.config
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\Debug\SolvencyII.Data.CRT.ETL.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\System.Data.SQLite.Linq.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\packages.config
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll.config
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\System.Data.SQLite.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\packages.config
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll.config
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\bin\Debug\SolvencyII.Data.CRT.ETL.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.CRT.ETL\obj\Debug\SolvencyII.Data.CRT.ETL.pdb

@@ -1,0 +1,2272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AT2DPM.DAL.Model.Store" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="aApplication">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="ApplicationID" Type="integer" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ApplicationVersion" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DatabaseType" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="aInterfaceComponent">
+    <Key>
+      <PropertyRef Name="InterfaceComponentID" />
+    </Key>
+    <Property Name="InterfaceComponentID" Type="integer" Nullable="false" />
+    <Property Name="InBulgarian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InCroatian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InCzech" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InDanish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InDutch" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InEnglish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InEstonian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InFinnish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InFrench" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InGerman" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InGreek" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InHungarian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InIrish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InItalian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InLatvian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InLithuanian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InMaltese" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InPolish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InPortuguese" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InRomanian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSlovak" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSlovenian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSpanish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSwedish" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="aInterfaceComponentApplication">
+    <Key>
+      <PropertyRef Name="InterfaceComponentID" />
+      <PropertyRef Name="ApplicationID" />
+    </Key>
+    <Property Name="InterfaceComponentID" Type="integer" Nullable="false" />
+    <Property Name="ApplicationID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dAvailableTable">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="ZDimVal" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="ZDimVal" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="NumberOfRows" Type="integer" />
+  </EntityType>
+  <EntityType Name="dFact">
+    <Key>
+      <PropertyRef Name="FactID" />
+    </Key>
+    <Property Name="FactID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="DataPointSignature" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Decimals" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="NumericValue" Type="real" />
+    <Property Name="DateTimeValue" Type="datetime" />
+    <Property Name="BooleanValue" Type="bit" />
+    <Property Name="TextValue" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="dFilingIndicator">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+      <PropertyRef Name="BusinessTemplateID" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="BusinessTemplateID" Type="integer" Nullable="false" />
+    <Property Name="Filed" Type="bit" />
+  </EntityType>
+  <EntityType Name="dInstance">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="CompressedFileBlob" Type="blob" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="EntityScheme" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="EntityIdentifier" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="EntityName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="PeriodEndDateOrInstant" Type="datetime" />
+    <Property Name="EntityCurrency" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="dMessage">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstanceID" Type="integer" />
+    <Property Name="SequenceInReport" Type="int" />
+    <Property Name="MessageCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="MessageLevel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Value" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.dMessageReference' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="dMessageReference">
+    <Key>
+      <PropertyRef Name="MessageID" />
+      <PropertyRef Name="DataPointSignature" />
+    </Key>
+    <Property Name="MessageID" Type="integer" Nullable="false" />
+    <Property Name="DataPointSignature" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dProcessingContext">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+      <PropertyRef Name="ContextID" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="ContextID" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="SortedDimensions" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="NotValid" Type="integer" />
+  </EntityType>
+  <EntityType Name="dProcessingFact">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+      <PropertyRef Name="Metric" />
+      <PropertyRef Name="ContextID" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+    <Property Name="Metric" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="ContextID" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="ValueTxt" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ValueDecimal" Type="real" />
+    <Property Name="ValueDate" Type="real" />
+    <Property Name="Error" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mAxis">
+    <Key>
+      <PropertyRef Name="AxisID" />
+    </Key>
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="AxisOrientation" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AxisLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="IsOpenAxis" Type="bit" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mAxisOrdinate">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+    </Key>
+    <Property Name="AxisID" Type="integer" />
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="OrdinateLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OrdinateCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="IsDisplayBeforeChildren" Type="bit" />
+    <Property Name="IsAbstractHeader" Type="bit" />
+    <Property Name="IsRowKey" Type="bit" />
+    <Property Name="Level" Type="integer" />
+    <Property Name="Order" Type="integer" />
+    <Property Name="ParentOrdinateID" Type="integer" />
+    <Property Name="ConceptID" Type="integer" />
+    <Property Name="TypeOfKey" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mCellPosition">
+    <Key>
+      <PropertyRef Name="CellID" />
+      <PropertyRef Name="OrdinateID" />
+    </Key>
+    <Property Name="CellID" Type="integer" Nullable="false" />
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mCellReference">
+    <Key>
+      <PropertyRef Name="CellID" />
+      <PropertyRef Name="ReferenceID" />
+    </Key>
+    <Property Name="CellID" Type="integer" Nullable="false" />
+    <Property Name="ReferenceID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mConcept">
+    <Key>
+      <PropertyRef Name="ConceptID" />
+    </Key>
+    <Property Name="ConceptID" Type="integer" Nullable="false" />
+    <Property Name="ConceptType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OwnerID" Type="integer" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="ModificationDate" Type="datetime" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="mConceptReference">
+    <Key>
+      <PropertyRef Name="ConceptID" />
+      <PropertyRef Name="ReferenceID" />
+    </Key>
+    <Property Name="ConceptID" Type="integer" Nullable="false" />
+    <Property Name="ReferenceID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mConceptTranslation">
+    <Key>
+      <PropertyRef Name="ConceptID" />
+      <PropertyRef Name="LanguageID" />
+    </Key>
+    <Property Name="ConceptID" Type="integer" Nullable="false" />
+    <Property Name="LanguageID" Type="integer" Nullable="false" />
+    <Property Name="OwnerID" Type="integer" />
+    <Property Name="Text" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mConceptualModule">
+    <Key>
+      <PropertyRef Name="ConceptualModuleID" />
+    </Key>
+    <Property Name="ConceptualModuleID" Type="integer" Nullable="false" />
+    <Property Name="ConceptualModuleCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptualModuleLabel" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mDimension">
+    <Key>
+      <PropertyRef Name="DimensionID" />
+    </Key>
+    <Property Name="DimensionID" Type="integer" Nullable="false" />
+    <Property Name="DimensionLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DimensionCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DimensionDescription" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DimensionXBRLCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainID" Type="integer" />
+    <Property Name="IsTypedDimension" Type="bit" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mDomain">
+    <Key>
+      <PropertyRef Name="DomainID" />
+    </Key>
+    <Property Name="DomainID" Type="integer" Nullable="false" />
+    <Property Name="DomainCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainDescription" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainXBRLCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DataType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="IsTypedDomain" Type="bit" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mHierarchy">
+    <Key>
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="HierarchyLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainID" Type="integer" />
+    <Property Name="HierarchyDescription" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mHierarchyNode">
+    <Key>
+      <PropertyRef Name="HierarchyID" />
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="MemberID" Type="integer" Nullable="false" />
+    <Property Name="IsAbstract" Type="bit" />
+    <Property Name="ComparisonOperator" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="UnaryOperator" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Order" Type="integer" />
+    <Property Name="Level" Type="integer" />
+    <Property Name="ParentMemberID" Type="integer" />
+    <Property Name="HierarchyNodeLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mLanguage">
+    <Key>
+      <PropertyRef Name="LanguageID" />
+    </Key>
+    <Property Name="LanguageID" Type="integer" Nullable="false" />
+    <Property Name="LanguageName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="IsoCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mMember">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="integer" Nullable="false" />
+    <Property Name="DomainID" Type="integer" />
+    <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="MemberLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="MemberXBRLCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="IsDefaultMember" Type="bit" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mMetric">
+    <Key>
+      <PropertyRef Name="MetricID" />
+    </Key>
+    <Property Name="MetricID" Type="integer" Nullable="false" />
+    <Property Name="CorrespondingMemberID" Type="integer" />
+    <Property Name="DataType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="FlowType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BalanceType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ReferencedDomainID" Type="integer" />
+    <Property Name="ReferencedHierarchyID" Type="integer" />
+    <Property Name="HierarchyStartingMemberID" Type="integer" />
+    <Property Name="IsStartingMemberIncluded" Type="bit" />
+  </EntityType>
+  <EntityType Name="mModule">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="TaxonomyID" Type="integer" />
+    <Property Name="ModuleCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ModuleLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptualModuleID" Type="integer" />
+    <Property Name="DefaultFrequency" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+    <Property Name="XBRLSchemaRef" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mModuleBusinessTemplate">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="Order" />
+    </Key>
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="Order" Type="integer" Nullable="false" />
+    <Property Name="BusinessTemplateID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mOpenAxisValueRestriction">
+    <Key>
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyStartingMemberID" Type="integer" />
+    <Property Name="IsStartingMemberIncluded" Type="bit" />
+  </EntityType>
+  <EntityType Name="mOrdinateCategorisation">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+      <PropertyRef Name="DimensionID" />
+    </Key>
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="DimensionID" Type="integer" Nullable="false" />
+    <Property Name="MemberID" Type="integer" />
+    <Property Name="DimensionMemberSignature" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Source" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mOwner">
+    <Key>
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="OwnerID" Type="integer" Nullable="false" />
+    <Property Name="OwnerName" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OwnerNamespace" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OwnerLocation" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OwnerCopyright" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ParentOwnerID" Type="integer" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mReference">
+    <Key>
+      <PropertyRef Name="ReferenceID" />
+    </Key>
+    <Property Name="ReferenceID" Type="integer" Nullable="false" />
+    <Property Name="SourceCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Article" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Paragraph" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Point" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Romans" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ReferenceText" Type="integer" />
+  </EntityType>
+  <EntityType Name="mReferenceCategorisation">
+    <Key>
+      <PropertyRef Name="ReferenceID" />
+      <PropertyRef Name="DimensionID" />
+    </Key>
+    <Property Name="ReferenceID" Type="integer" Nullable="false" />
+    <Property Name="DimensionID" Type="integer" Nullable="false" />
+    <Property Name="MemberID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mReportingFramework">
+    <Key>
+      <PropertyRef Name="FrameworkID" />
+    </Key>
+    <Property Name="FrameworkID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="FrameworkLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="mTable">
+    <Key>
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="TableCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="XbrlFilingIndicatorCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="XbrlTableCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+    <Property Name="YDimVal" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ZDimVal" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mTableAxis">
+    <Key>
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="Order" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mTableCell">
+    <Key>
+      <PropertyRef Name="CellID" />
+    </Key>
+    <Property Name="CellID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" />
+    <Property Name="IsRowKey" Type="bit" />
+    <Property Name="IsShaded" Type="bit" />
+    <Property Name="BusinessCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DatapointSignature" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="mTableDimensionSet">
+    <Key>
+      <PropertyRef Name="MetricAndDimensions" />
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="MetricAndDimensions" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mTaxonomy">
+    <Key>
+      <PropertyRef Name="TaxonomyID" />
+    </Key>
+    <Property Name="TaxonomyID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkID" Type="integer" />
+    <Property Name="TaxonomyCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TaxonomyLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Version" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="PublicationDate" Type="datetime" />
+    <Property Name="TechnicalStandard" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ConceptID" Type="integer" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="mTaxonomyTable">
+    <Key>
+      <PropertyRef Name="TaxonomyID" />
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="AnnotatedTableID" />
+    </Key>
+    <Property Name="TaxonomyID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="AnnotatedTableID" Type="integer" Nullable="false" />
+    <Property Name="IsSimplyReuse" Type="bit" />
+  </EntityType>
+  <EntityType Name="mTemplateOrTable">
+    <Key>
+      <PropertyRef Name="TemplateOrTableID" />
+    </Key>
+    <Property Name="TemplateOrTableID" Type="integer" Nullable="false" />
+    <Property Name="TaxonomyID" Type="integer" />
+    <Property Name="TemplateOrTableCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateOrTableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateOrTableType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Order" Type="integer" />
+    <Property Name="Level" Type="integer" />
+    <Property Name="ParentTemplateOrTableID" Type="integer" />
+    <Property Name="ConceptID" Type="integer" />
+    <Property Name="TC" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TT" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TL" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TD" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="YC" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="XC" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="SQLITEADMIN_QUERIES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="integer" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="SQL" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="vExpression">
+    <Key>
+      <PropertyRef Name="ExpressionID" />
+    </Key>
+    <Property Name="ExpressionID" Type="integer" Nullable="false" />
+    <Property Name="ExpressionType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableBasedFormula" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="LogicalExpression" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ErrorMessage" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="vPreCondition">
+    <Key>
+      <PropertyRef Name="ValidationRuleId" />
+      <PropertyRef Name="PreconditionExpressionID" />
+    </Key>
+    <Property Name="ValidationRuleId" Type="integer" Nullable="false" />
+    <Property Name="PreconditionExpressionID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vValidationRule">
+    <Key>
+      <PropertyRef Name="ValidationRuleID" />
+    </Key>
+    <Property Name="ValidationRuleID" Type="integer" Nullable="false" />
+    <Property Name="ValidationCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Severity" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Scope" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ValidationType" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ExpressionID" Type="integer" />
+    <Property Name="ConceptID" Type="integer" />
+  </EntityType>
+  <EntityType Name="vValidationRuleSet">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="ValidationRuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="ValidationRuleID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vValidationScope">
+    <Key>
+      <PropertyRef Name="ValidationRuleID" />
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="ValidationRuleID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vVariableOfExpression">
+    <Key>
+      <PropertyRef Name="ExpressionID" />
+      <PropertyRef Name="VariableCode" />
+    </Key>
+    <Property Name="ExpressionID" Type="integer" Nullable="false" />
+    <Property Name="VariableCode" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="ifMissing" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetAllHierarchies' in the table 'Inner' was excluded.
+warning 6002: The table/view 'main.vwGetAllHierarchies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetAllHierarchies">
+    <Key>
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="HierarchyOrder" Type="integer" />
+    <Property Name="IsAbstract" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetControlInformation' in the table 'SpecialCase' was excluded.
+warning 6002: The table/view 'main.vwGetControlInformation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetControlInformation">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="OrdinateLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AxisOrientation" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="Order" Type="integer" />
+    <Property Name="Level" Type="integer" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="IsAbstractHeader" Type="bit" />
+    <Property Name="ParentOrdinateID" Type="integer" />
+    <Property Name="IsDisplayBeforeChildren" Type="bit" />
+    <Property Name="OrdinateCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ParentOrder" Type="integer" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'main.vwGetDimensionLabel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwGetDimensionLabel">
+          <Property Name="MemberLabel" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="DomainCode" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetInstanceDropDownData' in the table 'Text' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetInstanceDropDownData' in the table 'Value' was excluded.
+warning 6002: The table/view 'main.vwGetInstanceDropDownData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetInstanceDropDownData">
+    <Key>
+      <PropertyRef Name="InstanceID" />
+    </Key>
+    <Property Name="InstanceID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetLanguageInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetLanguageInfo">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+      <PropertyRef Name="InterfaceComponentID" />
+    </Key>
+    <Property Name="ApplicationID" Type="integer" Nullable="false" />
+    <Property Name="InterfaceComponentID" Type="integer" Nullable="false" />
+    <Property Name="InBulgarian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InCroatian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InCzech" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InDanish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InDutch" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InEnglish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InEstonian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InFinnish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InFrench" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InGerman" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InGreek" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InHungarian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InIrish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InItalian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InLatvian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InLithuanian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InMaltese" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InPolish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InPortuguese" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InRomanian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSlovak" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSlovenian" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSpanish" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="InSwedish" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Owner' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Prefix' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Namespace' was excluded.
+warning 6013: The table/view 'main.vwGetNamespacesPrefixes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwGetNamespacesPrefixes" />-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetOrdinateDimensions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetOrdinateDimensions">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+    </Key>
+    <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DimensionCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetOrdinateHierarchyID_HD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetOrdinateHierarchyID_HD">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyStartingMemberID" Type="integer" />
+    <Property Name="IsStartingMemberIncluded" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetOrdinateHierarchyID_MD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetOrdinateHierarchyID_MD">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+    </Key>
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="ReferencedDomainID" Type="integer" />
+    <Property Name="HierarchyID" Type="integer" />
+    <Property Name="HierarchyStartingMemberID" Type="integer" />
+    <Property Name="IsStartingMemberIncluded" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetOrdinateType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetOrdinateType">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+    </Key>
+    <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableAxisOrdinateColumns' in the table 'OrdinateLabel' was excluded.
+warning 6002: The table/view 'main.vwGetTableAxisOrdinateColumns' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTableAxisOrdinateColumns">
+    <Key>
+      <PropertyRef Name="OrdinateID" />
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="TableAxisOrder" />
+    </Key>
+    <Property Name="AxisID" Type="integer" />
+    <Property Name="OrdinateID" Type="integer" Nullable="false" />
+    <Property Name="IsRowKey" Type="bit" />
+    <Property Name="Order" Type="integer" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="OrdinateCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableAxisOrder" Type="integer" Nullable="false" />
+    <Property Name="OrdinateOrder" Type="integer" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'Unit' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'NumericValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'DateTimeValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'BoolValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'TextValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'InstanceID' was excluded.
+warning 6002: The table/view 'main.vwGetTableControlDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTableControlDetails">
+    <Key>
+      <PropertyRef Name="CellID" />
+      <PropertyRef Name="XordinateID" />
+      <PropertyRef Name="YordinateID" />
+    </Key>
+    <Property Name="CellID" Type="integer" Nullable="false" />
+    <Property Name="IsShaded" Type="bit" />
+    <Property Name="XordinateID" Type="integer" Nullable="false" />
+    <Property Name="YordinateID" Type="integer" Nullable="false" />
+    <Property Name="TableCellSignature" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableID" Type="integer" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'Unit' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'NumericValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'DateTimeValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'BoolValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'TextValue' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'InstanceID' was excluded.
+warning 6002: The table/view 'main.vwGetTableControlDetailsZDim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTableControlDetailsZDim">
+    <Key>
+      <PropertyRef Name="CellID" />
+      <PropertyRef Name="XordinateID" />
+      <PropertyRef Name="YordinateID" />
+      <PropertyRef Name="ZordinateID" />
+    </Key>
+    <Property Name="CellID" Type="integer" Nullable="false" />
+    <Property Name="IsShaded" Type="bit" />
+    <Property Name="XordinateID" Type="integer" Nullable="false" />
+    <Property Name="YordinateID" Type="integer" Nullable="false" />
+    <Property Name="TableCellSignature" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableID" Type="integer" />
+    <Property Name="ZordinateID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableName' in the table 'TableName' was excluded.
+warning 6002: The table/view 'main.vwGetTableName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTableName">
+    <Key>
+      <PropertyRef Name="TableID" />
+    </Key>
+    <Property Name="TableID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'CalcTemplateOrTableID' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'WhatToShow' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'CalcTableLabel' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'IsTyped' was excluded.
+warning 6002: The table/view 'main.vwGetTreeData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTreeData">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="FrameworkID" />
+      <PropertyRef Name="TemplateOrTableID" />
+      <PropertyRef Name="FilingTemplateOrTableID" />
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="BusinessOrder" />
+    </Key>
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkID" Type="integer" Nullable="false" />
+    <Property Name="TemplateOrTableID" Type="integer" Nullable="false" />
+    <Property Name="FilingTemplateOrTableID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TaxonomyCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ModuleCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ModuleLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateVariant" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateVariantLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTable" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTableLocationRange" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTable" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTableLocationRange" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessOrder" Type="integer" Nullable="false" />
+    <Property Name="TemplateOrder" Type="integer" />
+    <Property Name="TemplateOrder2" Type="integer" />
+    <Property Name="Version" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'CalcTemplateOrTableID' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'WhatToShow' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'CalcTableLabel' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'IsTyped' was excluded.
+warning 6002: The table/view 'main.vwGetTreeDataZDimChildren' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetTreeDataZDimChildren">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+      <PropertyRef Name="FrameworkID" />
+      <PropertyRef Name="TemplateOrTableID" />
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="SingleZOrdinateID" />
+      <PropertyRef Name="BusinessOrder" />
+    </Key>
+    <Property Name="ModuleID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkID" Type="integer" Nullable="false" />
+    <Property Name="TemplateOrTableID" Type="integer" Nullable="false" />
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="FrameworkCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TaxonomyCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ModuleCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ModuleLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateVariant" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TemplateVariantLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTable" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTableLocationRange" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessTableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTable" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTableLocationRange" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AnnotatedTableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="TableCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="SingleZOrdinateID" Type="integer" Nullable="false" />
+    <Property Name="TableLabel" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="BusinessOrder" Type="integer" Nullable="false" />
+    <Property Name="TemplateOrder" Type="integer" />
+    <Property Name="TemplateOrder2" Type="integer" />
+    <Property Name="AxisOrdinateOrder" Type="integer" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'main.vwGetzAxisMemberOwnerPrefix' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwGetzAxisMemberOwnerPrefix">
+          <Property Name="AxisID" Type="integer" />
+          <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetzAxisMembers' in the table 'MemberLabel' was excluded.
+warning 6002: The table/view 'main.vwGetzAxisMembers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetzAxisMembers">
+    <Key>
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyOrder" Type="integer" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'main.vwGetZDimTreeTables' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwGetZDimTreeTables">
+    <Key>
+      <PropertyRef Name="TableID" />
+      <PropertyRef Name="AxisID" />
+    </Key>
+    <Property Name="TableID" Type="integer" Nullable="false" />
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwHierarchyLookupAxis' in the table 'Inner' was excluded.
+warning 6002: The table/view 'main.vwHierarchyLookupAxis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwHierarchyLookupAxis">
+    <Key>
+      <PropertyRef Name="AxisID" />
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="AxisID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="DomainCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwHierarchyLookupMetrics' in the table 'Inner' was excluded.
+warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwHierarchyLookupMetrics">
+    <Key>
+      <PropertyRef Name="MetricID" />
+      <PropertyRef Name="HierarchyID" />
+    </Key>
+    <Property Name="MetricID" Type="integer" Nullable="false" />
+    <Property Name="HierarchyID" Type="integer" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="HierarchyOrder" Type="integer" />
+    <Property Name="IsAbstract" Type="bit" />
+  </EntityType>
+  <Association Name="FK_aInterfaceComponentApplication_0_0">
+    <End Role="aInterfaceComponent" Type="Self.aInterfaceComponent" Multiplicity="1" />
+    <End Role="aInterfaceComponentApplication" Type="Self.aInterfaceComponentApplication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aInterfaceComponent">
+        <PropertyRef Name="InterfaceComponentID" />
+      </Principal>
+      <Dependent Role="aInterfaceComponentApplication">
+        <PropertyRef Name="InterfaceComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aInterfaceComponentApplication_1_0">
+    <End Role="aApplication" Type="Self.aApplication" Multiplicity="1" />
+    <End Role="aInterfaceComponentApplication" Type="Self.aInterfaceComponentApplication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aApplication">
+        <PropertyRef Name="ApplicationID" />
+      </Principal>
+      <Dependent Role="aInterfaceComponentApplication">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dAvailableTable_0_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
+    <End Role="dAvailableTable" Type="Self.dAvailableTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="dAvailableTable">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mAxisOrdinate_0_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mAxisOrdinate" Type="Self.mAxisOrdinate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mAxisOrdinate">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mAxisOrdinate_1_0">
+    <End Role="mAxisOrdinate" Type="Self.mAxisOrdinate" Multiplicity="0..1" />
+    <End Role="mAxisOrdinate1" Type="Self.mAxisOrdinate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxisOrdinate">
+        <PropertyRef Name="OrdinateID" />
+      </Principal>
+      <Dependent Role="mAxisOrdinate1">
+        <PropertyRef Name="ParentOrdinateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mAxisOrdinate_2_0">
+    <End Role="mAxis" Type="Self.mAxis" Multiplicity="0..1" />
+    <End Role="mAxisOrdinate" Type="Self.mAxisOrdinate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxis">
+        <PropertyRef Name="AxisID" />
+      </Principal>
+      <Dependent Role="mAxisOrdinate">
+        <PropertyRef Name="AxisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mCellPosition_0_0">
+    <End Role="mTableCell" Type="Self.mTableCell" Multiplicity="1" />
+    <End Role="mCellPosition" Type="Self.mCellPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTableCell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="mCellPosition">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mCellPosition_1_0">
+    <End Role="mAxisOrdinate" Type="Self.mAxisOrdinate" Multiplicity="1" />
+    <End Role="mCellPosition" Type="Self.mCellPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxisOrdinate">
+        <PropertyRef Name="OrdinateID" />
+      </Principal>
+      <Dependent Role="mCellPosition">
+        <PropertyRef Name="OrdinateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mCellReference_0_0">
+    <End Role="mTableCell" Type="Self.mTableCell" Multiplicity="1" />
+    <End Role="mCellReference" Type="Self.mCellReference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTableCell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="mCellReference">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mCellReference_1_0">
+    <End Role="mReference" Type="Self.mReference" Multiplicity="1" />
+    <End Role="mCellReference" Type="Self.mCellReference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mReference">
+        <PropertyRef Name="ReferenceID" />
+      </Principal>
+      <Dependent Role="mCellReference">
+        <PropertyRef Name="ReferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConcept_0_0">
+    <End Role="mOwner" Type="Self.mOwner" Multiplicity="0..1" />
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mOwner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="mConcept">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConceptReference_0_0">
+    <End Role="mReference" Type="Self.mReference" Multiplicity="1" />
+    <End Role="mConceptReference" Type="Self.mConceptReference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mReference">
+        <PropertyRef Name="ReferenceID" />
+      </Principal>
+      <Dependent Role="mConceptReference">
+        <PropertyRef Name="ReferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConceptReference_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="1" />
+    <End Role="mConceptReference" Type="Self.mConceptReference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mConceptReference">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConceptTranslation_0_0">
+    <End Role="mOwner" Type="Self.mOwner" Multiplicity="0..1" />
+    <End Role="mConceptTranslation" Type="Self.mConceptTranslation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mOwner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="mConceptTranslation">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConceptTranslation_1_0">
+    <End Role="mLanguage" Type="Self.mLanguage" Multiplicity="1" />
+    <End Role="mConceptTranslation" Type="Self.mConceptTranslation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mLanguage">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="mConceptTranslation">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mConceptTranslation_2_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="1" />
+    <End Role="mConceptTranslation" Type="Self.mConceptTranslation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mConceptTranslation">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mDimension_0_0">
+    <End Role="mDomain" Type="Self.mDomain" Multiplicity="0..1" />
+    <End Role="mDimension" Type="Self.mDimension" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDomain">
+        <PropertyRef Name="DomainID" />
+      </Principal>
+      <Dependent Role="mDimension">
+        <PropertyRef Name="DomainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mDimension_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mDimension" Type="Self.mDimension" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mDimension">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mDomain_0_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mDomain" Type="Self.mDomain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mDomain">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mHierarchy_0_0">
+    <End Role="mDomain" Type="Self.mDomain" Multiplicity="0..1" />
+    <End Role="mHierarchy" Type="Self.mHierarchy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDomain">
+        <PropertyRef Name="DomainID" />
+      </Principal>
+      <Dependent Role="mHierarchy">
+        <PropertyRef Name="DomainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mHierarchy_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mHierarchy" Type="Self.mHierarchy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mHierarchy">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mHierarchyNode_0_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="1" />
+    <End Role="mHierarchyNode" Type="Self.mHierarchyNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mHierarchyNode">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mHierarchyNode_1_0">
+    <End Role="mHierarchy" Type="Self.mHierarchy" Multiplicity="1" />
+    <End Role="mHierarchyNode" Type="Self.mHierarchyNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mHierarchy">
+        <PropertyRef Name="HierarchyID" />
+      </Principal>
+      <Dependent Role="mHierarchyNode">
+        <PropertyRef Name="HierarchyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mHierarchyNode_2_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mHierarchyNode" Type="Self.mHierarchyNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mHierarchyNode">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mLanguage_0_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mLanguage" Type="Self.mLanguage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mLanguage">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMember_0_0">
+    <End Role="mDomain" Type="Self.mDomain" Multiplicity="0..1" />
+    <End Role="mMember" Type="Self.mMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDomain">
+        <PropertyRef Name="DomainID" />
+      </Principal>
+      <Dependent Role="mMember">
+        <PropertyRef Name="DomainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMember_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mMember" Type="Self.mMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mMember">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMetric_0_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
+    <End Role="mMetric" Type="Self.mMetric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mMetric">
+        <PropertyRef Name="CorrespondingMemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMetric_1_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
+    <End Role="mMetric" Type="Self.mMetric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mMetric">
+        <PropertyRef Name="HierarchyStartingMemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMetric_2_0">
+    <End Role="mHierarchy" Type="Self.mHierarchy" Multiplicity="0..1" />
+    <End Role="mMetric" Type="Self.mMetric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mHierarchy">
+        <PropertyRef Name="HierarchyID" />
+      </Principal>
+      <Dependent Role="mMetric">
+        <PropertyRef Name="ReferencedHierarchyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mMetric_3_0">
+    <End Role="mDomain" Type="Self.mDomain" Multiplicity="0..1" />
+    <End Role="mMetric" Type="Self.mMetric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDomain">
+        <PropertyRef Name="DomainID" />
+      </Principal>
+      <Dependent Role="mMetric">
+        <PropertyRef Name="ReferencedDomainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mModule_0_0">
+    <End Role="mConceptualModule" Type="Self.mConceptualModule" Multiplicity="0..1" />
+    <End Role="mModule" Type="Self.mModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConceptualModule">
+        <PropertyRef Name="ConceptualModuleID" />
+      </Principal>
+      <Dependent Role="mModule">
+        <PropertyRef Name="ConceptualModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mModule_1_0">
+    <End Role="mTaxonomy" Type="Self.mTaxonomy" Multiplicity="0..1" />
+    <End Role="mModule" Type="Self.mModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTaxonomy">
+        <PropertyRef Name="TaxonomyID" />
+      </Principal>
+      <Dependent Role="mModule">
+        <PropertyRef Name="TaxonomyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mModuleBusinessTemplate_0_0">
+    <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
+    <End Role="mModuleBusinessTemplate" Type="Self.mModuleBusinessTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mModule">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="mModuleBusinessTemplate">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOpenAxisValueRestriction_0_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
+    <End Role="mOpenAxisValueRestriction" Type="Self.mOpenAxisValueRestriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mOpenAxisValueRestriction">
+        <PropertyRef Name="HierarchyStartingMemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOpenAxisValueRestriction_1_0">
+    <End Role="mHierarchy" Type="Self.mHierarchy" Multiplicity="1" />
+    <End Role="mOpenAxisValueRestriction" Type="Self.mOpenAxisValueRestriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mHierarchy">
+        <PropertyRef Name="HierarchyID" />
+      </Principal>
+      <Dependent Role="mOpenAxisValueRestriction">
+        <PropertyRef Name="HierarchyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOpenAxisValueRestriction_2_0">
+    <End Role="mAxis" Type="Self.mAxis" Multiplicity="1" />
+    <End Role="mOpenAxisValueRestriction" Type="Self.mOpenAxisValueRestriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxis">
+        <PropertyRef Name="AxisID" />
+      </Principal>
+      <Dependent Role="mOpenAxisValueRestriction">
+        <PropertyRef Name="AxisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOrdinateCategorisation_0_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
+    <End Role="mOrdinateCategorisation" Type="Self.mOrdinateCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mOrdinateCategorisation">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOrdinateCategorisation_1_0">
+    <End Role="mDimension" Type="Self.mDimension" Multiplicity="1" />
+    <End Role="mOrdinateCategorisation" Type="Self.mOrdinateCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDimension">
+        <PropertyRef Name="DimensionID" />
+      </Principal>
+      <Dependent Role="mOrdinateCategorisation">
+        <PropertyRef Name="DimensionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOrdinateCategorisation_2_0">
+    <End Role="mAxisOrdinate" Type="Self.mAxisOrdinate" Multiplicity="1" />
+    <End Role="mOrdinateCategorisation" Type="Self.mOrdinateCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxisOrdinate">
+        <PropertyRef Name="OrdinateID" />
+      </Principal>
+      <Dependent Role="mOrdinateCategorisation">
+        <PropertyRef Name="OrdinateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOwner_0_0">
+    <End Role="mOwner" Type="Self.mOwner" Multiplicity="0..1" />
+    <End Role="mOwner1" Type="Self.mOwner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mOwner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="mOwner1">
+        <PropertyRef Name="ParentOwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mOwner_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mOwner" Type="Self.mOwner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mOwner">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mReferenceCategorisation_0_0">
+    <End Role="mReference" Type="Self.mReference" Multiplicity="1" />
+    <End Role="mReferenceCategorisation" Type="Self.mReferenceCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mReference">
+        <PropertyRef Name="ReferenceID" />
+      </Principal>
+      <Dependent Role="mReferenceCategorisation">
+        <PropertyRef Name="ReferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mReferenceCategorisation_1_0">
+    <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
+    <End Role="mReferenceCategorisation" Type="Self.mReferenceCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="mReferenceCategorisation">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mReferenceCategorisation_2_0">
+    <End Role="mDimension" Type="Self.mDimension" Multiplicity="1" />
+    <End Role="mReferenceCategorisation" Type="Self.mReferenceCategorisation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mDimension">
+        <PropertyRef Name="DimensionID" />
+      </Principal>
+      <Dependent Role="mReferenceCategorisation">
+        <PropertyRef Name="DimensionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mReportingFramework_0_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mReportingFramework" Type="Self.mReportingFramework" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mReportingFramework">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTable_0_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mTable" Type="Self.mTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mTable">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTableAxis_0_0">
+    <End Role="mAxis" Type="Self.mAxis" Multiplicity="1" />
+    <End Role="mTableAxis" Type="Self.mTableAxis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mAxis">
+        <PropertyRef Name="AxisID" />
+      </Principal>
+      <Dependent Role="mTableAxis">
+        <PropertyRef Name="AxisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTableAxis_1_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
+    <End Role="mTableAxis" Type="Self.mTableAxis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="mTableAxis">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTableCell_0_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="0..1" />
+    <End Role="mTableCell" Type="Self.mTableCell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="mTableCell">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTableDimensionSet_0_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
+    <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="mTableDimensionSet">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTableDimensionSet_1_0">
+    <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
+    <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mModule">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="mTableDimensionSet">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTaxonomy_0_0">
+    <End Role="mReportingFramework" Type="Self.mReportingFramework" Multiplicity="0..1" />
+    <End Role="mTaxonomy" Type="Self.mTaxonomy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mReportingFramework">
+        <PropertyRef Name="FrameworkID" />
+      </Principal>
+      <Dependent Role="mTaxonomy">
+        <PropertyRef Name="FrameworkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTaxonomy_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mTaxonomy" Type="Self.mTaxonomy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mTaxonomy">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTaxonomyTable_0_0">
+    <End Role="mTemplateOrTable" Type="Self.mTemplateOrTable" Multiplicity="1" />
+    <End Role="mTaxonomyTable" Type="Self.mTaxonomyTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTemplateOrTable">
+        <PropertyRef Name="TemplateOrTableID" />
+      </Principal>
+      <Dependent Role="mTaxonomyTable">
+        <PropertyRef Name="AnnotatedTableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTaxonomyTable_1_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
+    <End Role="mTaxonomyTable" Type="Self.mTaxonomyTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="mTaxonomyTable">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTaxonomyTable_2_0">
+    <End Role="mTaxonomy" Type="Self.mTaxonomy" Multiplicity="1" />
+    <End Role="mTaxonomyTable" Type="Self.mTaxonomyTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTaxonomy">
+        <PropertyRef Name="TaxonomyID" />
+      </Principal>
+      <Dependent Role="mTaxonomyTable">
+        <PropertyRef Name="TaxonomyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTemplateOrTable_0_0">
+    <End Role="mTaxonomy" Type="Self.mTaxonomy" Multiplicity="0..1" />
+    <End Role="mTemplateOrTable" Type="Self.mTemplateOrTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTaxonomy">
+        <PropertyRef Name="TaxonomyID" />
+      </Principal>
+      <Dependent Role="mTemplateOrTable">
+        <PropertyRef Name="TaxonomyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTemplateOrTable_1_0">
+    <End Role="mTemplateOrTable" Type="Self.mTemplateOrTable" Multiplicity="0..1" />
+    <End Role="mTemplateOrTable1" Type="Self.mTemplateOrTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTemplateOrTable">
+        <PropertyRef Name="TemplateOrTableID" />
+      </Principal>
+      <Dependent Role="mTemplateOrTable1">
+        <PropertyRef Name="ParentTemplateOrTableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mTemplateOrTable_2_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="mTemplateOrTable" Type="Self.mTemplateOrTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="mTemplateOrTable">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vPreCondition_0_0">
+    <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="1" />
+    <End Role="vPreCondition" Type="Self.vPreCondition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vValidationRule">
+        <PropertyRef Name="ValidationRuleID" />
+      </Principal>
+      <Dependent Role="vPreCondition">
+        <PropertyRef Name="ValidationRuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vPreCondition_1_0">
+    <End Role="vExpression" Type="Self.vExpression" Multiplicity="1" />
+    <End Role="vPreCondition" Type="Self.vPreCondition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vExpression">
+        <PropertyRef Name="ExpressionID" />
+      </Principal>
+      <Dependent Role="vPreCondition">
+        <PropertyRef Name="PreconditionExpressionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationRule_0_0">
+    <End Role="vExpression" Type="Self.vExpression" Multiplicity="0..1" />
+    <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vExpression">
+        <PropertyRef Name="ExpressionID" />
+      </Principal>
+      <Dependent Role="vValidationRule">
+        <PropertyRef Name="ExpressionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationRule_1_0">
+    <End Role="mConcept" Type="Self.mConcept" Multiplicity="0..1" />
+    <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mConcept">
+        <PropertyRef Name="ConceptID" />
+      </Principal>
+      <Dependent Role="vValidationRule">
+        <PropertyRef Name="ConceptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationRuleSet_0_0">
+    <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="1" />
+    <End Role="vValidationRuleSet" Type="Self.vValidationRuleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vValidationRule">
+        <PropertyRef Name="ValidationRuleID" />
+      </Principal>
+      <Dependent Role="vValidationRuleSet">
+        <PropertyRef Name="ValidationRuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationRuleSet_1_0">
+    <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
+    <End Role="vValidationRuleSet" Type="Self.vValidationRuleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mModule">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="vValidationRuleSet">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationScope_0_0">
+    <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="1" />
+    <End Role="vValidationScope" Type="Self.vValidationScope" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vValidationRule">
+        <PropertyRef Name="ValidationRuleID" />
+      </Principal>
+      <Dependent Role="vValidationScope">
+        <PropertyRef Name="ValidationRuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vValidationScope_1_0">
+    <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
+    <End Role="vValidationScope" Type="Self.vValidationScope" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mTable">
+        <PropertyRef Name="TableID" />
+      </Principal>
+      <Dependent Role="vValidationScope">
+        <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vVariableOfExpression_0_0">
+    <End Role="vExpression" Type="Self.vExpression" Multiplicity="1" />
+    <End Role="vVariableOfExpression" Type="Self.vVariableOfExpression" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vExpression">
+        <PropertyRef Name="ExpressionID" />
+      </Principal>
+      <Dependent Role="vVariableOfExpression">
+        <PropertyRef Name="ExpressionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AT2DPMDALModelStoreContainer">
+    <EntitySet Name="aApplication" EntityType="Self.aApplication" store:Type="Tables" />
+    <EntitySet Name="aInterfaceComponent" EntityType="Self.aInterfaceComponent" store:Type="Tables" />
+    <EntitySet Name="aInterfaceComponentApplication" EntityType="Self.aInterfaceComponentApplication" store:Type="Tables" />
+    <EntitySet Name="dAvailableTable" EntityType="Self.dAvailableTable" store:Type="Tables" />
+    <EntitySet Name="dFact" EntityType="Self.dFact" store:Type="Tables" />
+    <EntitySet Name="dFilingIndicator" EntityType="Self.dFilingIndicator" store:Type="Tables" />
+    <EntitySet Name="dInstance" EntityType="Self.dInstance" store:Type="Tables" />
+    <EntitySet Name="dMessage" EntityType="Self.dMessage" store:Type="Tables" />
+    <EntitySet Name="dProcessingContext" EntityType="Self.dProcessingContext" store:Type="Tables" />
+    <EntitySet Name="dProcessingFact" EntityType="Self.dProcessingFact" store:Type="Tables" />
+    <EntitySet Name="mAxis" EntityType="Self.mAxis" store:Type="Tables" />
+    <EntitySet Name="mAxisOrdinate" EntityType="Self.mAxisOrdinate" store:Type="Tables" />
+    <EntitySet Name="mCellPosition" EntityType="Self.mCellPosition" store:Type="Tables" />
+    <EntitySet Name="mCellReference" EntityType="Self.mCellReference" store:Type="Tables" />
+    <EntitySet Name="mConcept" EntityType="Self.mConcept" store:Type="Tables" />
+    <EntitySet Name="mConceptReference" EntityType="Self.mConceptReference" store:Type="Tables" />
+    <EntitySet Name="mConceptTranslation" EntityType="Self.mConceptTranslation" store:Type="Tables" />
+    <EntitySet Name="mConceptualModule" EntityType="Self.mConceptualModule" store:Type="Tables" />
+    <EntitySet Name="mDimension" EntityType="Self.mDimension" store:Type="Tables" />
+    <EntitySet Name="mDomain" EntityType="Self.mDomain" store:Type="Tables" />
+    <EntitySet Name="mHierarchy" EntityType="Self.mHierarchy" store:Type="Tables" />
+    <EntitySet Name="mHierarchyNode" EntityType="Self.mHierarchyNode" store:Type="Tables" />
+    <EntitySet Name="mLanguage" EntityType="Self.mLanguage" store:Type="Tables" />
+    <EntitySet Name="mMember" EntityType="Self.mMember" store:Type="Tables" />
+    <EntitySet Name="mMetric" EntityType="Self.mMetric" store:Type="Tables" />
+    <EntitySet Name="mModule" EntityType="Self.mModule" store:Type="Tables" />
+    <EntitySet Name="mModuleBusinessTemplate" EntityType="Self.mModuleBusinessTemplate" store:Type="Tables" />
+    <EntitySet Name="mOpenAxisValueRestriction" EntityType="Self.mOpenAxisValueRestriction" store:Type="Tables" />
+    <EntitySet Name="mOrdinateCategorisation" EntityType="Self.mOrdinateCategorisation" store:Type="Tables" />
+    <EntitySet Name="mOwner" EntityType="Self.mOwner" store:Type="Tables" />
+    <EntitySet Name="mReference" EntityType="Self.mReference" store:Type="Tables" />
+    <EntitySet Name="mReferenceCategorisation" EntityType="Self.mReferenceCategorisation" store:Type="Tables" />
+    <EntitySet Name="mReportingFramework" EntityType="Self.mReportingFramework" store:Type="Tables" />
+    <EntitySet Name="mTable" EntityType="Self.mTable" store:Type="Tables" />
+    <EntitySet Name="mTableAxis" EntityType="Self.mTableAxis" store:Type="Tables" />
+    <EntitySet Name="mTableCell" EntityType="Self.mTableCell" store:Type="Tables" />
+    <EntitySet Name="mTableDimensionSet" EntityType="Self.mTableDimensionSet" store:Type="Tables" />
+    <EntitySet Name="mTaxonomy" EntityType="Self.mTaxonomy" store:Type="Tables" />
+    <EntitySet Name="mTaxonomyTable" EntityType="Self.mTaxonomyTable" store:Type="Tables" />
+    <EntitySet Name="mTemplateOrTable" EntityType="Self.mTemplateOrTable" store:Type="Tables" />
+    <EntitySet Name="SQLITEADMIN_QUERIES" EntityType="Self.SQLITEADMIN_QUERIES" store:Type="Tables" />
+    <EntitySet Name="vExpression" EntityType="Self.vExpression" store:Type="Tables" />
+    <EntitySet Name="vPreCondition" EntityType="Self.vPreCondition" store:Type="Tables" />
+    <EntitySet Name="vValidationRule" EntityType="Self.vValidationRule" store:Type="Tables" />
+    <EntitySet Name="vValidationRuleSet" EntityType="Self.vValidationRuleSet" store:Type="Tables" />
+    <EntitySet Name="vValidationScope" EntityType="Self.vValidationScope" store:Type="Tables" />
+    <EntitySet Name="vVariableOfExpression" EntityType="Self.vVariableOfExpression" store:Type="Tables" />
+    <EntitySet Name="dMessageReference" EntityType="Self.dMessageReference" store:Type="Tables">
+      <DefiningQuery>SELECT 
+[dMessageReference].[MessageID] AS [MessageID], 
+[dMessageReference].[DataPointSignature] AS [DataPointSignature]
+FROM [dMessageReference] AS [dMessageReference]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetAllHierarchies" EntityType="Self.vwGetAllHierarchies" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetAllHierarchies].[HierarchyID] AS [HierarchyID], 
+[vwGetAllHierarchies].[Name] AS [Name], 
+[vwGetAllHierarchies].[HierarchyOrder] AS [HierarchyOrder], 
+[vwGetAllHierarchies].[IsAbstract] AS [IsAbstract]
+FROM [vwGetAllHierarchies] AS [vwGetAllHierarchies]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetControlInformation" EntityType="Self.vwGetControlInformation" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetControlInformation].[OrdinateID] AS [OrdinateID], 
+[vwGetControlInformation].[OrdinateLabel] AS [OrdinateLabel], 
+[vwGetControlInformation].[AxisOrientation] AS [AxisOrientation], 
+[vwGetControlInformation].[AxisID] AS [AxisID], 
+[vwGetControlInformation].[Order] AS [Order], 
+[vwGetControlInformation].[Level] AS [Level], 
+[vwGetControlInformation].[TableID] AS [TableID], 
+[vwGetControlInformation].[IsAbstractHeader] AS [IsAbstractHeader], 
+[vwGetControlInformation].[ParentOrdinateID] AS [ParentOrdinateID], 
+[vwGetControlInformation].[IsDisplayBeforeChildren] AS [IsDisplayBeforeChildren], 
+[vwGetControlInformation].[OrdinateCode] AS [OrdinateCode], 
+[vwGetControlInformation].[ParentOrder] AS [ParentOrder]
+FROM [vwGetControlInformation] AS [vwGetControlInformation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetInstanceDropDownData" EntityType="Self.vwGetInstanceDropDownData" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetInstanceDropDownData].[InstanceID] AS [InstanceID]
+FROM [vwGetInstanceDropDownData] AS [vwGetInstanceDropDownData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetLanguageInfo" EntityType="Self.vwGetLanguageInfo" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetLanguageInfo].[ApplicationID] AS [ApplicationID], 
+[vwGetLanguageInfo].[InterfaceComponentID] AS [InterfaceComponentID], 
+[vwGetLanguageInfo].[InBulgarian] AS [InBulgarian], 
+[vwGetLanguageInfo].[InCroatian] AS [InCroatian], 
+[vwGetLanguageInfo].[InCzech] AS [InCzech], 
+[vwGetLanguageInfo].[InDanish] AS [InDanish], 
+[vwGetLanguageInfo].[InDutch] AS [InDutch], 
+[vwGetLanguageInfo].[InEnglish] AS [InEnglish], 
+[vwGetLanguageInfo].[InEstonian] AS [InEstonian], 
+[vwGetLanguageInfo].[InFinnish] AS [InFinnish], 
+[vwGetLanguageInfo].[InFrench] AS [InFrench], 
+[vwGetLanguageInfo].[InGerman] AS [InGerman], 
+[vwGetLanguageInfo].[InGreek] AS [InGreek], 
+[vwGetLanguageInfo].[InHungarian] AS [InHungarian], 
+[vwGetLanguageInfo].[InIrish] AS [InIrish], 
+[vwGetLanguageInfo].[InItalian] AS [InItalian], 
+[vwGetLanguageInfo].[InLatvian] AS [InLatvian], 
+[vwGetLanguageInfo].[InLithuanian] AS [InLithuanian], 
+[vwGetLanguageInfo].[InMaltese] AS [InMaltese], 
+[vwGetLanguageInfo].[InPolish] AS [InPolish], 
+[vwGetLanguageInfo].[InPortuguese] AS [InPortuguese], 
+[vwGetLanguageInfo].[InRomanian] AS [InRomanian], 
+[vwGetLanguageInfo].[InSlovak] AS [InSlovak], 
+[vwGetLanguageInfo].[InSlovenian] AS [InSlovenian], 
+[vwGetLanguageInfo].[InSpanish] AS [InSpanish], 
+[vwGetLanguageInfo].[InSwedish] AS [InSwedish]
+FROM [vwGetLanguageInfo] AS [vwGetLanguageInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetOrdinateDimensions" EntityType="Self.vwGetOrdinateDimensions" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetOrdinateDimensions].[OwnerPrefix] AS [OwnerPrefix], 
+[vwGetOrdinateDimensions].[DomainCode] AS [DomainCode], 
+[vwGetOrdinateDimensions].[DimensionCode] AS [DimensionCode], 
+[vwGetOrdinateDimensions].[MemberCode] AS [MemberCode], 
+[vwGetOrdinateDimensions].[OrdinateID] AS [OrdinateID]
+FROM [vwGetOrdinateDimensions] AS [vwGetOrdinateDimensions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetOrdinateHierarchyID_HD" EntityType="Self.vwGetOrdinateHierarchyID_HD" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetOrdinateHierarchyID_HD].[OrdinateID] AS [OrdinateID], 
+[vwGetOrdinateHierarchyID_HD].[HierarchyID] AS [HierarchyID], 
+[vwGetOrdinateHierarchyID_HD].[HierarchyStartingMemberID] AS [HierarchyStartingMemberID], 
+[vwGetOrdinateHierarchyID_HD].[IsStartingMemberIncluded] AS [IsStartingMemberIncluded]
+FROM [vwGetOrdinateHierarchyID_HD] AS [vwGetOrdinateHierarchyID_HD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetOrdinateHierarchyID_MD" EntityType="Self.vwGetOrdinateHierarchyID_MD" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetOrdinateHierarchyID_MD].[OrdinateID] AS [OrdinateID], 
+[vwGetOrdinateHierarchyID_MD].[ReferencedDomainID] AS [ReferencedDomainID], 
+[vwGetOrdinateHierarchyID_MD].[HierarchyID] AS [HierarchyID], 
+[vwGetOrdinateHierarchyID_MD].[HierarchyStartingMemberID] AS [HierarchyStartingMemberID], 
+[vwGetOrdinateHierarchyID_MD].[IsStartingMemberIncluded] AS [IsStartingMemberIncluded]
+FROM [vwGetOrdinateHierarchyID_MD] AS [vwGetOrdinateHierarchyID_MD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetOrdinateType" EntityType="Self.vwGetOrdinateType" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetOrdinateType].[MemberCode] AS [MemberCode], 
+[vwGetOrdinateType].[OrdinateID] AS [OrdinateID]
+FROM [vwGetOrdinateType] AS [vwGetOrdinateType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTableAxisOrdinateColumns" EntityType="Self.vwGetTableAxisOrdinateColumns" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTableAxisOrdinateColumns].[AxisID] AS [AxisID], 
+[vwGetTableAxisOrdinateColumns].[OrdinateID] AS [OrdinateID], 
+[vwGetTableAxisOrdinateColumns].[IsRowKey] AS [IsRowKey], 
+[vwGetTableAxisOrdinateColumns].[Order] AS [Order], 
+[vwGetTableAxisOrdinateColumns].[TableID] AS [TableID], 
+[vwGetTableAxisOrdinateColumns].[OrdinateCode] AS [OrdinateCode], 
+[vwGetTableAxisOrdinateColumns].[TableAxisOrder] AS [TableAxisOrder], 
+[vwGetTableAxisOrdinateColumns].[OrdinateOrder] AS [OrdinateOrder]
+FROM [vwGetTableAxisOrdinateColumns] AS [vwGetTableAxisOrdinateColumns]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTableControlDetails" EntityType="Self.vwGetTableControlDetails" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTableControlDetails].[CellID] AS [CellID], 
+[vwGetTableControlDetails].[IsShaded] AS [IsShaded], 
+[vwGetTableControlDetails].[XordinateID] AS [XordinateID], 
+[vwGetTableControlDetails].[YordinateID] AS [YordinateID], 
+[vwGetTableControlDetails].[TableCellSignature] AS [TableCellSignature], 
+[vwGetTableControlDetails].[TableID] AS [TableID]
+FROM [vwGetTableControlDetails] AS [vwGetTableControlDetails]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTableControlDetailsZDim" EntityType="Self.vwGetTableControlDetailsZDim" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTableControlDetailsZDim].[CellID] AS [CellID], 
+[vwGetTableControlDetailsZDim].[IsShaded] AS [IsShaded], 
+[vwGetTableControlDetailsZDim].[XordinateID] AS [XordinateID], 
+[vwGetTableControlDetailsZDim].[YordinateID] AS [YordinateID], 
+[vwGetTableControlDetailsZDim].[TableCellSignature] AS [TableCellSignature], 
+[vwGetTableControlDetailsZDim].[TableID] AS [TableID], 
+[vwGetTableControlDetailsZDim].[ZordinateID] AS [ZordinateID]
+FROM [vwGetTableControlDetailsZDim] AS [vwGetTableControlDetailsZDim]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTableName" EntityType="Self.vwGetTableName" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTableName].[TableID] AS [TableID]
+FROM [vwGetTableName] AS [vwGetTableName]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTreeData" EntityType="Self.vwGetTreeData" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTreeData].[ModuleID] AS [ModuleID], 
+[vwGetTreeData].[FrameworkID] AS [FrameworkID], 
+[vwGetTreeData].[TemplateOrTableID] AS [TemplateOrTableID], 
+[vwGetTreeData].[FilingTemplateOrTableID] AS [FilingTemplateOrTableID], 
+[vwGetTreeData].[TableID] AS [TableID], 
+[vwGetTreeData].[FrameworkCode] AS [FrameworkCode], 
+[vwGetTreeData].[TaxonomyCode] AS [TaxonomyCode], 
+[vwGetTreeData].[ModuleCode] AS [ModuleCode], 
+[vwGetTreeData].[ModuleLabel] AS [ModuleLabel], 
+[vwGetTreeData].[TemplateVariant] AS [TemplateVariant], 
+[vwGetTreeData].[TemplateVariantLabel] AS [TemplateVariantLabel], 
+[vwGetTreeData].[BusinessTable] AS [BusinessTable], 
+[vwGetTreeData].[BusinessTableLocationRange] AS [BusinessTableLocationRange], 
+[vwGetTreeData].[BusinessTableLabel] AS [BusinessTableLabel], 
+[vwGetTreeData].[AnnotatedTable] AS [AnnotatedTable], 
+[vwGetTreeData].[AnnotatedTableLocationRange] AS [AnnotatedTableLocationRange], 
+[vwGetTreeData].[AnnotatedTableLabel] AS [AnnotatedTableLabel], 
+[vwGetTreeData].[TableCode] AS [TableCode], 
+[vwGetTreeData].[BusinessOrder] AS [BusinessOrder], 
+[vwGetTreeData].[TemplateOrder] AS [TemplateOrder], 
+[vwGetTreeData].[TemplateOrder2] AS [TemplateOrder2], 
+[vwGetTreeData].[Version] AS [Version]
+FROM [vwGetTreeData] AS [vwGetTreeData]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetTreeDataZDimChildren" EntityType="Self.vwGetTreeDataZDimChildren" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetTreeDataZDimChildren].[ModuleID] AS [ModuleID], 
+[vwGetTreeDataZDimChildren].[FrameworkID] AS [FrameworkID], 
+[vwGetTreeDataZDimChildren].[TemplateOrTableID] AS [TemplateOrTableID], 
+[vwGetTreeDataZDimChildren].[TableID] AS [TableID], 
+[vwGetTreeDataZDimChildren].[FrameworkCode] AS [FrameworkCode], 
+[vwGetTreeDataZDimChildren].[TaxonomyCode] AS [TaxonomyCode], 
+[vwGetTreeDataZDimChildren].[ModuleCode] AS [ModuleCode], 
+[vwGetTreeDataZDimChildren].[ModuleLabel] AS [ModuleLabel], 
+[vwGetTreeDataZDimChildren].[TemplateVariant] AS [TemplateVariant], 
+[vwGetTreeDataZDimChildren].[TemplateVariantLabel] AS [TemplateVariantLabel], 
+[vwGetTreeDataZDimChildren].[BusinessTable] AS [BusinessTable], 
+[vwGetTreeDataZDimChildren].[BusinessTableLocationRange] AS [BusinessTableLocationRange], 
+[vwGetTreeDataZDimChildren].[BusinessTableLabel] AS [BusinessTableLabel], 
+[vwGetTreeDataZDimChildren].[AnnotatedTable] AS [AnnotatedTable], 
+[vwGetTreeDataZDimChildren].[AnnotatedTableLocationRange] AS [AnnotatedTableLocationRange], 
+[vwGetTreeDataZDimChildren].[AnnotatedTableLabel] AS [AnnotatedTableLabel], 
+[vwGetTreeDataZDimChildren].[TableCode] AS [TableCode], 
+[vwGetTreeDataZDimChildren].[AxisID] AS [AxisID], 
+[vwGetTreeDataZDimChildren].[SingleZOrdinateID] AS [SingleZOrdinateID], 
+[vwGetTreeDataZDimChildren].[TableLabel] AS [TableLabel], 
+[vwGetTreeDataZDimChildren].[BusinessOrder] AS [BusinessOrder], 
+[vwGetTreeDataZDimChildren].[TemplateOrder] AS [TemplateOrder], 
+[vwGetTreeDataZDimChildren].[TemplateOrder2] AS [TemplateOrder2], 
+[vwGetTreeDataZDimChildren].[AxisOrdinateOrder] AS [AxisOrdinateOrder]
+FROM [vwGetTreeDataZDimChildren] AS [vwGetTreeDataZDimChildren]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetzAxisMembers" EntityType="Self.vwGetzAxisMembers" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetzAxisMembers].[MemberCode] AS [MemberCode], 
+[vwGetzAxisMembers].[AxisID] AS [AxisID], 
+[vwGetzAxisMembers].[HierarchyID] AS [HierarchyID], 
+[vwGetzAxisMembers].[HierarchyOrder] AS [HierarchyOrder]
+FROM [vwGetzAxisMembers] AS [vwGetzAxisMembers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwGetZDimTreeTables" EntityType="Self.vwGetZDimTreeTables" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwGetZDimTreeTables].[TableID] AS [TableID], 
+[vwGetZDimTreeTables].[AxisID] AS [AxisID]
+FROM [vwGetZDimTreeTables] AS [vwGetZDimTreeTables]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwHierarchyLookupAxis" EntityType="Self.vwHierarchyLookupAxis" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwHierarchyLookupAxis].[AxisID] AS [AxisID], 
+[vwHierarchyLookupAxis].[HierarchyID] AS [HierarchyID], 
+[vwHierarchyLookupAxis].[OwnerPrefix] AS [OwnerPrefix], 
+[vwHierarchyLookupAxis].[DomainCode] AS [DomainCode], 
+[vwHierarchyLookupAxis].[MemberCode] AS [MemberCode]
+FROM [vwHierarchyLookupAxis] AS [vwHierarchyLookupAxis]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwHierarchyLookupMetrics" EntityType="Self.vwHierarchyLookupMetrics" store:Type="Views">
+      <DefiningQuery>SELECT 
+[vwHierarchyLookupMetrics].[MetricID] AS [MetricID], 
+[vwHierarchyLookupMetrics].[HierarchyID] AS [HierarchyID], 
+[vwHierarchyLookupMetrics].[Name] AS [Name], 
+[vwHierarchyLookupMetrics].[HierarchyOrder] AS [HierarchyOrder], 
+[vwHierarchyLookupMetrics].[IsAbstract] AS [IsAbstract]
+FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_aInterfaceComponentApplication_0_0" Association="Self.FK_aInterfaceComponentApplication_0_0">
+      <End Role="aInterfaceComponent" EntitySet="aInterfaceComponent" />
+      <End Role="aInterfaceComponentApplication" EntitySet="aInterfaceComponentApplication" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aInterfaceComponentApplication_1_0" Association="Self.FK_aInterfaceComponentApplication_1_0">
+      <End Role="aApplication" EntitySet="aApplication" />
+      <End Role="aInterfaceComponentApplication" EntitySet="aInterfaceComponentApplication" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dAvailableTable_0_0" Association="Self.FK_dAvailableTable_0_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="dAvailableTable" EntitySet="dAvailableTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mAxisOrdinate_0_0" Association="Self.FK_mAxisOrdinate_0_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mAxisOrdinate" EntitySet="mAxisOrdinate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mAxisOrdinate_1_0" Association="Self.FK_mAxisOrdinate_1_0">
+      <End Role="mAxisOrdinate" EntitySet="mAxisOrdinate" />
+      <End Role="mAxisOrdinate1" EntitySet="mAxisOrdinate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mAxisOrdinate_2_0" Association="Self.FK_mAxisOrdinate_2_0">
+      <End Role="mAxis" EntitySet="mAxis" />
+      <End Role="mAxisOrdinate" EntitySet="mAxisOrdinate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mCellPosition_0_0" Association="Self.FK_mCellPosition_0_0">
+      <End Role="mTableCell" EntitySet="mTableCell" />
+      <End Role="mCellPosition" EntitySet="mCellPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mCellPosition_1_0" Association="Self.FK_mCellPosition_1_0">
+      <End Role="mAxisOrdinate" EntitySet="mAxisOrdinate" />
+      <End Role="mCellPosition" EntitySet="mCellPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mCellReference_0_0" Association="Self.FK_mCellReference_0_0">
+      <End Role="mTableCell" EntitySet="mTableCell" />
+      <End Role="mCellReference" EntitySet="mCellReference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mCellReference_1_0" Association="Self.FK_mCellReference_1_0">
+      <End Role="mReference" EntitySet="mReference" />
+      <End Role="mCellReference" EntitySet="mCellReference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConcept_0_0" Association="Self.FK_mConcept_0_0">
+      <End Role="mOwner" EntitySet="mOwner" />
+      <End Role="mConcept" EntitySet="mConcept" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConceptReference_0_0" Association="Self.FK_mConceptReference_0_0">
+      <End Role="mReference" EntitySet="mReference" />
+      <End Role="mConceptReference" EntitySet="mConceptReference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConceptReference_1_0" Association="Self.FK_mConceptReference_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mConceptReference" EntitySet="mConceptReference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConceptTranslation_0_0" Association="Self.FK_mConceptTranslation_0_0">
+      <End Role="mOwner" EntitySet="mOwner" />
+      <End Role="mConceptTranslation" EntitySet="mConceptTranslation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConceptTranslation_1_0" Association="Self.FK_mConceptTranslation_1_0">
+      <End Role="mLanguage" EntitySet="mLanguage" />
+      <End Role="mConceptTranslation" EntitySet="mConceptTranslation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mConceptTranslation_2_0" Association="Self.FK_mConceptTranslation_2_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mConceptTranslation" EntitySet="mConceptTranslation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mDimension_0_0" Association="Self.FK_mDimension_0_0">
+      <End Role="mDomain" EntitySet="mDomain" />
+      <End Role="mDimension" EntitySet="mDimension" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mDimension_1_0" Association="Self.FK_mDimension_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mDimension" EntitySet="mDimension" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mDomain_0_0" Association="Self.FK_mDomain_0_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mDomain" EntitySet="mDomain" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mHierarchy_0_0" Association="Self.FK_mHierarchy_0_0">
+      <End Role="mDomain" EntitySet="mDomain" />
+      <End Role="mHierarchy" EntitySet="mHierarchy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mHierarchy_1_0" Association="Self.FK_mHierarchy_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mHierarchy" EntitySet="mHierarchy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mHierarchyNode_0_0" Association="Self.FK_mHierarchyNode_0_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mHierarchyNode" EntitySet="mHierarchyNode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mHierarchyNode_1_0" Association="Self.FK_mHierarchyNode_1_0">
+      <End Role="mHierarchy" EntitySet="mHierarchy" />
+      <End Role="mHierarchyNode" EntitySet="mHierarchyNode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mHierarchyNode_2_0" Association="Self.FK_mHierarchyNode_2_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mHierarchyNode" EntitySet="mHierarchyNode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mLanguage_0_0" Association="Self.FK_mLanguage_0_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mLanguage" EntitySet="mLanguage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMember_0_0" Association="Self.FK_mMember_0_0">
+      <End Role="mDomain" EntitySet="mDomain" />
+      <End Role="mMember" EntitySet="mMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMember_1_0" Association="Self.FK_mMember_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mMember" EntitySet="mMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMetric_0_0" Association="Self.FK_mMetric_0_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mMetric" EntitySet="mMetric" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMetric_1_0" Association="Self.FK_mMetric_1_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mMetric" EntitySet="mMetric" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMetric_2_0" Association="Self.FK_mMetric_2_0">
+      <End Role="mHierarchy" EntitySet="mHierarchy" />
+      <End Role="mMetric" EntitySet="mMetric" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mMetric_3_0" Association="Self.FK_mMetric_3_0">
+      <End Role="mDomain" EntitySet="mDomain" />
+      <End Role="mMetric" EntitySet="mMetric" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mModule_0_0" Association="Self.FK_mModule_0_0">
+      <End Role="mConceptualModule" EntitySet="mConceptualModule" />
+      <End Role="mModule" EntitySet="mModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mModule_1_0" Association="Self.FK_mModule_1_0">
+      <End Role="mTaxonomy" EntitySet="mTaxonomy" />
+      <End Role="mModule" EntitySet="mModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mModuleBusinessTemplate_0_0" Association="Self.FK_mModuleBusinessTemplate_0_0">
+      <End Role="mModule" EntitySet="mModule" />
+      <End Role="mModuleBusinessTemplate" EntitySet="mModuleBusinessTemplate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOpenAxisValueRestriction_0_0" Association="Self.FK_mOpenAxisValueRestriction_0_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mOpenAxisValueRestriction" EntitySet="mOpenAxisValueRestriction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOpenAxisValueRestriction_1_0" Association="Self.FK_mOpenAxisValueRestriction_1_0">
+      <End Role="mHierarchy" EntitySet="mHierarchy" />
+      <End Role="mOpenAxisValueRestriction" EntitySet="mOpenAxisValueRestriction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOpenAxisValueRestriction_2_0" Association="Self.FK_mOpenAxisValueRestriction_2_0">
+      <End Role="mAxis" EntitySet="mAxis" />
+      <End Role="mOpenAxisValueRestriction" EntitySet="mOpenAxisValueRestriction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOrdinateCategorisation_0_0" Association="Self.FK_mOrdinateCategorisation_0_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mOrdinateCategorisation" EntitySet="mOrdinateCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOrdinateCategorisation_1_0" Association="Self.FK_mOrdinateCategorisation_1_0">
+      <End Role="mDimension" EntitySet="mDimension" />
+      <End Role="mOrdinateCategorisation" EntitySet="mOrdinateCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOrdinateCategorisation_2_0" Association="Self.FK_mOrdinateCategorisation_2_0">
+      <End Role="mAxisOrdinate" EntitySet="mAxisOrdinate" />
+      <End Role="mOrdinateCategorisation" EntitySet="mOrdinateCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOwner_0_0" Association="Self.FK_mOwner_0_0">
+      <End Role="mOwner" EntitySet="mOwner" />
+      <End Role="mOwner1" EntitySet="mOwner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mOwner_1_0" Association="Self.FK_mOwner_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mOwner" EntitySet="mOwner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mReferenceCategorisation_0_0" Association="Self.FK_mReferenceCategorisation_0_0">
+      <End Role="mReference" EntitySet="mReference" />
+      <End Role="mReferenceCategorisation" EntitySet="mReferenceCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mReferenceCategorisation_1_0" Association="Self.FK_mReferenceCategorisation_1_0">
+      <End Role="mMember" EntitySet="mMember" />
+      <End Role="mReferenceCategorisation" EntitySet="mReferenceCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mReferenceCategorisation_2_0" Association="Self.FK_mReferenceCategorisation_2_0">
+      <End Role="mDimension" EntitySet="mDimension" />
+      <End Role="mReferenceCategorisation" EntitySet="mReferenceCategorisation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mReportingFramework_0_0" Association="Self.FK_mReportingFramework_0_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mReportingFramework" EntitySet="mReportingFramework" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTable_0_0" Association="Self.FK_mTable_0_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mTable" EntitySet="mTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTableAxis_0_0" Association="Self.FK_mTableAxis_0_0">
+      <End Role="mAxis" EntitySet="mAxis" />
+      <End Role="mTableAxis" EntitySet="mTableAxis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTableAxis_1_0" Association="Self.FK_mTableAxis_1_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="mTableAxis" EntitySet="mTableAxis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTableCell_0_0" Association="Self.FK_mTableCell_0_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="mTableCell" EntitySet="mTableCell" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTableDimensionSet_0_0" Association="Self.FK_mTableDimensionSet_0_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="mTableDimensionSet" EntitySet="mTableDimensionSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTableDimensionSet_1_0" Association="Self.FK_mTableDimensionSet_1_0">
+      <End Role="mModule" EntitySet="mModule" />
+      <End Role="mTableDimensionSet" EntitySet="mTableDimensionSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTaxonomy_0_0" Association="Self.FK_mTaxonomy_0_0">
+      <End Role="mReportingFramework" EntitySet="mReportingFramework" />
+      <End Role="mTaxonomy" EntitySet="mTaxonomy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTaxonomy_1_0" Association="Self.FK_mTaxonomy_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mTaxonomy" EntitySet="mTaxonomy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTaxonomyTable_0_0" Association="Self.FK_mTaxonomyTable_0_0">
+      <End Role="mTemplateOrTable" EntitySet="mTemplateOrTable" />
+      <End Role="mTaxonomyTable" EntitySet="mTaxonomyTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTaxonomyTable_1_0" Association="Self.FK_mTaxonomyTable_1_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="mTaxonomyTable" EntitySet="mTaxonomyTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTaxonomyTable_2_0" Association="Self.FK_mTaxonomyTable_2_0">
+      <End Role="mTaxonomy" EntitySet="mTaxonomy" />
+      <End Role="mTaxonomyTable" EntitySet="mTaxonomyTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTemplateOrTable_0_0" Association="Self.FK_mTemplateOrTable_0_0">
+      <End Role="mTaxonomy" EntitySet="mTaxonomy" />
+      <End Role="mTemplateOrTable" EntitySet="mTemplateOrTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTemplateOrTable_1_0" Association="Self.FK_mTemplateOrTable_1_0">
+      <End Role="mTemplateOrTable" EntitySet="mTemplateOrTable" />
+      <End Role="mTemplateOrTable1" EntitySet="mTemplateOrTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mTemplateOrTable_2_0" Association="Self.FK_mTemplateOrTable_2_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="mTemplateOrTable" EntitySet="mTemplateOrTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vPreCondition_0_0" Association="Self.FK_vPreCondition_0_0">
+      <End Role="vValidationRule" EntitySet="vValidationRule" />
+      <End Role="vPreCondition" EntitySet="vPreCondition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vPreCondition_1_0" Association="Self.FK_vPreCondition_1_0">
+      <End Role="vExpression" EntitySet="vExpression" />
+      <End Role="vPreCondition" EntitySet="vPreCondition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationRule_0_0" Association="Self.FK_vValidationRule_0_0">
+      <End Role="vExpression" EntitySet="vExpression" />
+      <End Role="vValidationRule" EntitySet="vValidationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationRule_1_0" Association="Self.FK_vValidationRule_1_0">
+      <End Role="mConcept" EntitySet="mConcept" />
+      <End Role="vValidationRule" EntitySet="vValidationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationRuleSet_0_0" Association="Self.FK_vValidationRuleSet_0_0">
+      <End Role="vValidationRule" EntitySet="vValidationRule" />
+      <End Role="vValidationRuleSet" EntitySet="vValidationRuleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationRuleSet_1_0" Association="Self.FK_vValidationRuleSet_1_0">
+      <End Role="mModule" EntitySet="mModule" />
+      <End Role="vValidationRuleSet" EntitySet="vValidationRuleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationScope_0_0" Association="Self.FK_vValidationScope_0_0">
+      <End Role="vValidationRule" EntitySet="vValidationRule" />
+      <End Role="vValidationScope" EntitySet="vValidationScope" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vValidationScope_1_0" Association="Self.FK_vValidationScope_1_0">
+      <End Role="mTable" EntitySet="mTable" />
+      <End Role="vValidationScope" EntitySet="vValidationScope" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vVariableOfExpression_0_0" Association="Self.FK_vVariableOfExpression_0_0">
+      <End Role="vExpression" EntitySet="vExpression" />
+      <End Role="vVariableOfExpression" EntitySet="vVariableOfExpression" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

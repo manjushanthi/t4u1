@@ -1,0 +1,88 @@
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\DpmDbHelper.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\DpmDbHelper.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\EntityFramework.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\System.Data.SQLite.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\AT2DPM.DAL.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\EntityFramework.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\PreparatoryDebugX86\System.Data.SQLite.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll.config
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.XML
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll.config
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.XML
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\AT2DPM.DAL.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.dll.config
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.XML
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\EntityFramework.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\System.Data.SQLite.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\AT2DPM.DAL.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\EntityFramework.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\System.Data.SQLite.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.dll.config
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.XML
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\DpmDbHelper.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\AT2DPM.DAL.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\EntityFramework.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\System.Data.SQLite.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\AT2DPM.DAL.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\EntityFramework.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\bin\Debug\System.Data.SQLite.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\DpmDbHelper\obj\Debug\DpmDbHelper.pdb

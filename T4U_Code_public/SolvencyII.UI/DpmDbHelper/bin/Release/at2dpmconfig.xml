@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<appconfig>
+  <workbook-processor-map>
+
+    <workflow name="Owners" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.OwnerFlow" >
+      <ranges>
+        <range key="OWNDATA" address="B2:G$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="Domains" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.DomainFlow" >
+      <ranges>
+        <range key="DOMDATA" address="B2:I$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="Dimensions" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.DimensionFlow">
+      <ranges>
+        <range key="DIMDATA" address="B2:I$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="$$" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.MembersAndHierarchyFlow">
+      <ranges>
+        <range key="HIEDATA" address="G2:O$"/>
+        <range key="MEMDATA" address="A2:F$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="met HD" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.MetricFlow">
+      <ranges>
+        <range key="METDATA" address="A2:H$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="met MD" type="AT2DPM.Workflow.Dictionary.ProcessorFlow.MetricFlow" >
+      <ranges>
+        <range key="METDATA" address="A2:H$"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="MULTI_VARIANT_CLOSED_TABLE_IND_Z_AXIS_FLOW" 
+              type="AT2DPM.Processor.ProcessorFlow.MultiVariantClosedTableIndZAxisFlow"
+              desc="Multi variant closed table, individual Z-Axis flow">
+      <ranges>
+        <!--Table common information format(Owner code, Concepty type, Language ID)-->
+        <range value="s2c, Table, 1" key="TABCOM"/>
+        <!--TABAXIS format (AxisOrientation, OwnerCode, ConceptType, Language ID)-->
+        <range value="X,s2c,Axis,1;Y,s2c,Axis,1" key="TABAXIS"/>
+        <range name="S.AA.BB.CC.DD" key="TABCODE"/>
+        <range name="S.AA.BB.CC.DD.TC" key="TABTITLE"/>        
+        <range value="Z" key="TABZAXIS"/>
+        <range name="S.AA.BB.CC.DD.TK" key="TABKEY"/>
+        <range name="S.AA.BB.CC.DD.TT" key="TABXAXIS"/>
+        <range name="S.AA.BB.CC.DD.TL" key="TABYAXIS"/>
+        <range name="S.AA.BB.CC.DD.TD" key="TABDATA"/>
+        <range name="S.AA.BB.CC.DD.X" key="TABXDIM"/>
+        <range name="S.AA.BB.CC.DD.Y" key="TABYDIM"/>
+        <range name="S.AA.BB.CC.DD.Z" key="TABZDIM"/>
+        <range name="S.AA.BB.CC.DD.ZHI" key="TABZHI"/>
+        <range name="S.AA.BB.CC.DD.YHI" key="TABYHI"/>
+        <range name="S.AA.BB.CC.DD.TTC" key="TTC"/>
+        <range name="S.AA.BB.CC.DD.TLC" key="TLC"/>
+        <range name="S.AA.BB.CC.DD.TKC" key="TKC"/>
+        <range name="S.AA.BB.CC.DD.XAX" key="XAX"/>
+        <range name="S.AA.BB.CC.DD.YAX" key="YAX"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="REPORTING_FRAMEWORK_FLOW" type ="AT2DPM.Workflow.Framework.ProcessorFlow.ReportingFrameworkFlow">
+      <ranges>
+        <range address="A2:G$" key="REPFRA"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="TEMPLATE_OR_TABLE_FLOW" type="AT2DPM.Workflow.Framework.ProcessorFlow.TemplateOrTableFlow">
+      <ranges>
+        <range address="A2:J$" key="TEMPTAB"/>
+      </ranges>
+    </workflow>
+
+    <workflow name="MODULE_FLOW" type="AT2DPM.Workflow.Framework.ProcessorFlow.ModuleFlow">
+      <ranges>
+        <range name="MODULE_HEADER" key="MODHEAD"/>
+        <range name="MODULE_DATA" key="MODDAT"/>
+      </ranges>
+      
+    </workflow>
+
+  </workbook-processor-map>
+
+  <presentation>
+    <forms>
+      <form key="OWNERS" name="Owners">
+        <columns>
+          <column order="1" name="#" />
+          <column order="2" name="Owner Code" />
+          <column order="3" name="Owner name" />
+          <column order="4" name="Prefix" />
+          <column order="5" name="Namespace" />
+          <column order="6" name="Root location" />
+          <column order="7" name="Comment" />
+        </columns>
+      </form>
+      <form key="DOMAINS" name="Domains">
+        <columns>
+          <column order="1" name="#" />
+          <column order="2" name="Domain code/name" />
+          <column order="3" name="Domain label" />
+          <column order="4" name="Domain type" />
+          <column order="5" name="Owner" />
+          <column order="6" name="Prefix" />
+          <column order="7" name="Namespace" />
+          <column order="8" name="Location" />
+          <column order="9" name="Comment" />
+        </columns>
+      </form>
+      <form key="DIMENSIONS" name="Dimensions">
+        <columns>
+          <column order="1" name="Dimension code/name" />
+          <column order="2" name="Dimension label" />
+          <column order="3" name="Applicable domain code" />
+          <column order="4" name="Owner" />
+          <column order="5" name="Dimension in MD Closed" />
+          <column order="6" name="Restriction on content" />
+          <column order="7" name="Prefix" />
+          <column order="8" name="Namespace" />
+        </columns>
+      </form>
+      <form key="METRICS" name="Metrics">
+        <columns>
+          <column order="1" name="#" />
+          <column order="2" name="Label" />
+          <column order="3" name="Name" />
+          <column order="4" name="Owner" />
+          <column order="5" name="Data type" />
+          <column order="6" name="Domain" />
+          <column order="7" name="Hierarchy" />
+          <column order="8" name="Period type" />
+          <column order="9" name="Count" />
+          <column order="10" name="Hierarchy" />
+          <column order="11" name="Name" />
+          <column order="12" name="Sign" />
+          <column order="13" name="Weight" />
+          <column order="14" name="Owner" />
+        </columns>
+      </form>
+      <form key="METRICSHD" name="met HD">
+        <columns>
+          <column order="1" name="#" />
+          <column order="2" name="Label" />
+          <column order="3" name="Name" />
+          <column order="4" name="Owner" />
+          <column order="5" name="Data type" />
+          <column order="6" name="Domain" />
+          <column order="7" name="Hierarchy" />
+          <column order="8" name="Period type" />
+          <column order="9" name="Count" />
+          <column order="10" name="Hierarchy" />
+          <column order="11" name="Name" />
+          <column order="12" name="Sign" />
+          <column order="13" name="Weight" />
+          <column order="14" name="Owner" />
+        </columns>
+      </form>
+      <form key="METRICSMD" name="met MD">
+        <columns>
+          <column order="1" name="#" />
+          <column order="2" name="Label" />
+          <column order="3" name="Name" />
+          <column order="4" name="Owner" />
+          <column order="5" name="Data type" />
+          <column order="6" name="Domain" />
+          <column order="7" name="Hierarchy" />
+          <column order="8" name="Period type" />
+          <column order="9" name="Count" />
+          <column order="10" name="Hierarchy" />
+          <column order="11" name="Name" />
+          <column order="12" name="Sign" />
+          <column order="13" name="Weight" />
+          <column order="14" name="Owner" />
+        </columns>
+      </form>
+      <form key="MEMBERS" name="Members">
+        <columns>
+          <column order="1" name="Label	Name" />
+          <column order="2" name="Default" />
+          <column order="3" name="Owner" />
+          <column order="4" name="Count" />
+          <column order="5" name="Comment" />
+          <column order="6" name="Hierarchy" />
+          <column order="7" name="Name" />
+          <column order="8" name="Sign" />
+          <column order="9" name="Weight" />
+          <column order="10" name="Owner" />
+          <column order="11" name="Usable" />
+          <column order="12" name="Applicable dim" />
+          <column order="13" name="Applicable sheets for dropdowns" />
+          <column order="14" name="Comment" />
+        </columns>
+      </form>
+    </forms>
+  </presentation>
+  <messages>
+    <message key="UNKNOWN_ERROR" group="GENERAL" type="ERROR">
+      <text>An unknown error has occured while executing the program.</text>
+    </message>
+    <message key="DPM_CONNECTIVITY_ERROR" group="DAL" type="ERROR">
+      <text>An error occured while connecting to DPM database.\nCould not connect to DPM database.</text>
+    </message>
+    <message key="FORM_GENERATION_ERROR" group="FORM" type="ERROR">
+      <text>An error occured while generating a form.</text>
+    </message>
+    <message key="PARSING_ERROR_DIMENSION_PARSER_MORE_ROWS_SELECTED" group="PARSER" type="ERROR">
+      <text>More than one row selected. Could not parse the data.</text>
+    </message>
+    <message key="PARSING_ERROR_DIMENSION_PARSER_NO_DOMAIN" group="PARSER" type="ERROR">
+      <text>No domain found in the database. Could not parse the data.</text>
+    </message>
+
+    <message key="PARSING_ERROR_MEMBER_PARSER_SINGLE_CELL_SELECTED" group="PARSER" type="ERROR">
+      <text>Could not parse the data, single cell selected.</text>
+    </message>
+
+    <message key="PARSING_ERROR_MEMBER_PARSER_WRONG_NO_OF_COL_SELECTED" group="PARSER" type="ERROR">
+      <text>Wrong number of column selected. Could not parse members data.</text>
+    </message>
+
+    <message key="PARSING_ERROR_HIERARCHY_PARSER_SINGLE_CELL_SELECTED" group="PARSER" type="ERROR">
+      <text>Could not parse the data, single cell selected.</text>
+    </message>
+
+    <message key="PARSING_ERROR_HIERARCHY_PARSER_WRONG_NO_OF_COL_SELECTED" group="PARSER" type="ERROR">
+      <text>Wrong number of column selected. Could not parse hierarchy data.</text>
+    </message>
+
+    <message key="INVALID_COLUMN_SELECTED" group="PARSER" type="ERROR">
+      <text>Invalid column selected. Could not parse the data.</text>
+    </message>
+    
+  </messages>
+</appconfig>

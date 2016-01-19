@@ -1,0 +1,14 @@
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\_tmpIntermediateAT\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\DpmDbHelper.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\_tmpIntermediateAT\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\_tmpIntermediateAT\DpmDbHelper.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\DpmDbHelper.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\EntityFramework.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\System.Data.SQLite.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\AT2DPM.DAL.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\EntityFramework.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\AutoTest.Net\System.Data.SQLite.xml

@@ -1,0 +1,16 @@
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\at2dpmconfig.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\DpmDbHelper.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\DpmDbHelper.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\EntityFramework.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\System.Data.SQLite.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\System.Data.SQLite.Linq.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\AT2DPM.Configuration.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\EntityFramework.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\bin\Release\System.Data.SQLite.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Release\DpmDbHelper.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Release\DpmDbHelper.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\DpmDbHelper\obj\Release\DpmDbHelper.pdb

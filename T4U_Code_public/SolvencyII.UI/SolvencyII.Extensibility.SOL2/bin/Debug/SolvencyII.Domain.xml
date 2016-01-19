@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolvencyII.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:SolvencyII.Domain.Attributes.AutoIncrementAttribute">
+            <summary>
+            Global attribute used on the poco classes to identify if the primary key is auto increase.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Attributes.PrimaryKeyAttribute">
+            <summary>
+            Global attribute used on the poco classes to identify the primary key.
+            </summary>
+        </member>
+        <member name="T:ucGenerator.CompareAxisOrdinateControls">
+            <summary>
+            Used to compare Ordinates for closed templates so headers can be build correctly
+            </summary>
+        </member>
+        <member name="T:ucGenerator.CompareOpenAxisOrdinateControls">
+            <summary>
+            Used to compare Ordinates for open templates so headers / columns can be build correctly
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Constants.ConstantsForDesigner">
+            <summary>
+            Constants used for creating the templates, used mainly within the user control generator.
+            iOS settings currently not needed.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Conversions.PercentageConvertor">
+            <summary>
+            Convertor to and from percentage strings in a culturally appropriate way.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.Shared.Entities.OpenTableDataRow2">
+            <summary>
+            Object used to create open table columns.
+            Implemented SolvencyII.UI.Shared.UserControls.OpenUserControlBase2.CreateColumn
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyCollectionMember">
+            <summary>
+            Generic interface to allow collections and item identification
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.aApplication">
+            <summary>
+            Application data object
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.Entities.FormDataPage">
+            <summary>
+            Used mainly in the management of PAGEn data; fields within a table that vary, requireing a separate row for each setting.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Configuration.StaticSettings">
+            <summary>
+            Domain wide static variable storage for regularly needed information.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Conversions.SolvencyIITableNameConversion">
+            <summary>
+            The concrete table names found in the db differ from the Mappings table - here is a single point of change to reflect that.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.DbType">
+            <summary>
+            Type of database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.eDataTier">
+            <summary>
+            Brand of data base 
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.eImportExportOperationType">
+            <summary>
+            The types of import and export mechanisms
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.eLanguageID">
+            <summary>
+            Form language enumerator 
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.eSeverity">
+            <summary>
+            Error severity level
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.ENumerators.SolvencyDataType">
+            <summary>
+            Enumerator for data types.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.AxisOrdinateControlsExp">
+            <summary>
+            Extension for AxisOrdinateControls
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Domain.Extensions.AxisOrdinateControlsExp.ChildWidth(System.Collections.Generic.List{SolvencyII.Domain.Entities.AxisOrdinateControls},System.Int32)">
+            <summary>
+            Works out the width of child ordinate controls to make sure the parents are the correct width.
+            </summary>
+            <param name="xDimensions"></param>
+            <param name="parentID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Domain.Extensions.AxisOrdinateControlsExp.SetupTopBranchOrder(System.Collections.Generic.List{SolvencyII.Domain.Entities.AxisOrdinateControls})">
+            <summary>
+            Manually setting up the correct order of ordinate controls.
+            </summary>
+            <param name="xDimensions"></param>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.ComboItemExt">
+            <summary>
+            Extension of ComboItem;
+            Conversion of ComboItems to OpenComboItems
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.mAxisOrdinateExp">
+            <summary>
+            Currently not used. Previous generation. (Prior to Mar 2015)
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.DateTimeExt">
+            <summary>
+            Extension of DateTime - centralised dates to text
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.FormDataPageExt">
+            <summary>
+            Extension for FormDataPage.
+            Used with a previouus generation of data access (there have been 5 major changes so far - Mar 2015)
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.ObjectExt">
+            <summary>
+            Object extensions to create formatted string.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.OpenColInfo2Ext">
+            <summary>
+            Extension for OpenColInfo2
+            Used with a previouus generation of data access (there have been 5 major changes so far - Mar 2015)
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.StringEx">
+            <summary>
+            Domain wide string Extensions
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.GenericDelegates">
+            <summary>
+            Generics Delegates used throughout T4U 
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.IClosedRowControl">
+            <summary>
+            Main interface for closed templates
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.IClosedRowRepository">
+            <summary>
+            Interface used with special cases and closed templates.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.IParentUserControl">
+            <summary>
+            Interface for the parent control which sits above the main template.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyDataComboBox">
+            <summary>
+            Interface for data combo box
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyDataControl">
+            <summary>
+            Interface interherited from ISolvencyControl defining a data related control
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyControl">
+            <summary>
+            Base interface for solvency controls
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyOpenUserControl">
+            <summary>
+            Interface for the open template
+            </summary>
+        </member>
+        <member name="P:SolvencyII.Domain.Interfaces.ISolvencyOpenUserControl.GridTop">
+            <summary>
+            The Grid needs to be created and positioned dynamically - dependant on the existance of combos.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyUserControl">
+            <summary>
+            Interface for the closed template parent class.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Domain.Interfaces.ISolvencyUserControl.UpdateData(System.String@,System.Collections.Generic.List{SolvencyII.Domain.Interfaces.ISolvencyPageControl})">
+            <summary>
+            The UpdateData event gets specifically created to use known data types 
+            which use the appropriate instances of the GenericRepository to save the information.
+            </summary>
+            <param name="errorText"></param>
+            <param name="nPageControls"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyComboBox">
+            <summary>
+            Interface for SolvencyComboBox
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyPageControl">
+            <summary>
+            Interface used on controls for the nPage fields from the concrete tables
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.Shared.Repository.IGenericRepository`1">
+            <summary>
+            Interface used for repositories
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ILogger">
+            <summary>
+            Interfaces for logging components
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyData">
+            <summary>
+            Interface to ensure consistant data access for T4U.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.ISolvencyDisplayControl">
+            <summary>
+            Interface for a SolvencyControl used only for displaying information
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Interfaces.IUserControlBase">
+            <summary>
+            Interface for the main base class used in closed templates
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Domain.Extensions.TreeItemExt">
+            <summary>
+            Extension for treeItem
+            Calculates the class name
+            </summary>
+        </member>
+    </members>
+</doc>

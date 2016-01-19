@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AT2DPMDALModelStoreContainer" CdmEntityContainer="DPMdb">
+    <EntitySetMapping Name="aApplications">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.aApplication">
+        <MappingFragment StoreEntitySet="aApplication">
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="ApplicationVersion" ColumnName="ApplicationVersion" />
+          <ScalarProperty Name="DatabaseType" ColumnName="DatabaseType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aInterfaceComponents">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.aInterfaceComponent">
+        <MappingFragment StoreEntitySet="aInterfaceComponent">
+          <ScalarProperty Name="InterfaceComponentID" ColumnName="InterfaceComponentID" />
+          <ScalarProperty Name="InBulgarian" ColumnName="InBulgarian" />
+          <ScalarProperty Name="InCroatian" ColumnName="InCroatian" />
+          <ScalarProperty Name="InCzech" ColumnName="InCzech" />
+          <ScalarProperty Name="InDanish" ColumnName="InDanish" />
+          <ScalarProperty Name="InDutch" ColumnName="InDutch" />
+          <ScalarProperty Name="InEnglish" ColumnName="InEnglish" />
+          <ScalarProperty Name="InEstonian" ColumnName="InEstonian" />
+          <ScalarProperty Name="InFinnish" ColumnName="InFinnish" />
+          <ScalarProperty Name="InFrench" ColumnName="InFrench" />
+          <ScalarProperty Name="InGerman" ColumnName="InGerman" />
+          <ScalarProperty Name="InGreek" ColumnName="InGreek" />
+          <ScalarProperty Name="InHungarian" ColumnName="InHungarian" />
+          <ScalarProperty Name="InIrish" ColumnName="InIrish" />
+          <ScalarProperty Name="InItalian" ColumnName="InItalian" />
+          <ScalarProperty Name="InLatvian" ColumnName="InLatvian" />
+          <ScalarProperty Name="InLithuanian" ColumnName="InLithuanian" />
+          <ScalarProperty Name="InMaltese" ColumnName="InMaltese" />
+          <ScalarProperty Name="InPolish" ColumnName="InPolish" />
+          <ScalarProperty Name="InPortuguese" ColumnName="InPortuguese" />
+          <ScalarProperty Name="InRomanian" ColumnName="InRomanian" />
+          <ScalarProperty Name="InSlovak" ColumnName="InSlovak" />
+          <ScalarProperty Name="InSlovenian" ColumnName="InSlovenian" />
+          <ScalarProperty Name="InSpanish" ColumnName="InSpanish" />
+          <ScalarProperty Name="InSwedish" ColumnName="InSwedish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dAvailableTables">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dAvailableTable">
+        <MappingFragment StoreEntitySet="dAvailableTable">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="ZDimVal" ColumnName="ZDimVal" />
+          <ScalarProperty Name="NumberOfRows" ColumnName="NumberOfRows" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dFacts">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dFact">
+        <MappingFragment StoreEntitySet="dFact">
+          <ScalarProperty Name="FactID" ColumnName="FactID" />
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="DataPointSignature" ColumnName="DataPointSignature" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Decimals" ColumnName="Decimals" />
+          <ScalarProperty Name="NumericValue" ColumnName="NumericValue" />
+          <ScalarProperty Name="DateTimeValue" ColumnName="DateTimeValue" />
+          <ScalarProperty Name="BooleanValue" ColumnName="BooleanValue" />
+          <ScalarProperty Name="TextValue" ColumnName="TextValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dFilingIndicators">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dFilingIndicator">
+        <MappingFragment StoreEntitySet="dFilingIndicator">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="BusinessTemplateID" ColumnName="BusinessTemplateID" />
+          <ScalarProperty Name="Filed" ColumnName="Filed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dInstances">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dInstance">
+        <MappingFragment StoreEntitySet="dInstance">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="CompressedFileBlob" ColumnName="CompressedFileBlob" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="EntityScheme" ColumnName="EntityScheme" />
+          <ScalarProperty Name="EntityIdentifier" ColumnName="EntityIdentifier" />
+          <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+          <ScalarProperty Name="PeriodEndDateOrInstant" ColumnName="PeriodEndDateOrInstant" />
+          <ScalarProperty Name="EntityCurrency" ColumnName="EntityCurrency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dMessages">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dMessage">
+        <MappingFragment StoreEntitySet="dMessage">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="SequenceInReport" ColumnName="SequenceInReport" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageLevel" ColumnName="MessageLevel" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dProcessingContexts">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dProcessingContext">
+        <MappingFragment StoreEntitySet="dProcessingContext">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+          <ScalarProperty Name="SortedDimensions" ColumnName="SortedDimensions" />
+          <ScalarProperty Name="NotValid" ColumnName="NotValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dProcessingFacts">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dProcessingFact">
+        <MappingFragment StoreEntitySet="dProcessingFact">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+          <ScalarProperty Name="Metric" ColumnName="Metric" />
+          <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+          <ScalarProperty Name="ValueTxt" ColumnName="ValueTxt" />
+          <ScalarProperty Name="ValueDecimal" ColumnName="ValueDecimal" />
+          <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mAxis">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mAxi">
+        <MappingFragment StoreEntitySet="mAxis">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="AxisOrientation" ColumnName="AxisOrientation" />
+          <ScalarProperty Name="AxisLabel" ColumnName="AxisLabel" />
+          <ScalarProperty Name="IsOpenAxis" ColumnName="IsOpenAxis" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mAxisOrdinates">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mAxisOrdinate">
+        <MappingFragment StoreEntitySet="mAxisOrdinate">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="OrdinateLabel" ColumnName="OrdinateLabel" />
+          <ScalarProperty Name="OrdinateCode" ColumnName="OrdinateCode" />
+          <ScalarProperty Name="IsDisplayBeforeChildren" ColumnName="IsDisplayBeforeChildren" />
+          <ScalarProperty Name="IsAbstractHeader" ColumnName="IsAbstractHeader" />
+          <ScalarProperty Name="IsRowKey" ColumnName="IsRowKey" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="ParentOrdinateID" ColumnName="ParentOrdinateID" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="TypeOfKey" ColumnName="TypeOfKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mConcepts">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mConcept">
+        <MappingFragment StoreEntitySet="mConcept">
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="ConceptType" ColumnName="ConceptType" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mConceptTranslations">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mConceptTranslation">
+        <MappingFragment StoreEntitySet="mConceptTranslation">
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mConceptualModules">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mConceptualModule">
+        <MappingFragment StoreEntitySet="mConceptualModule">
+          <ScalarProperty Name="ConceptualModuleID" ColumnName="ConceptualModuleID" />
+          <ScalarProperty Name="ConceptualModuleCode" ColumnName="ConceptualModuleCode" />
+          <ScalarProperty Name="ConceptualModuleLabel" ColumnName="ConceptualModuleLabel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mDimensions">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mDimension">
+        <MappingFragment StoreEntitySet="mDimension">
+          <ScalarProperty Name="DimensionID" ColumnName="DimensionID" />
+          <ScalarProperty Name="DimensionLabel" ColumnName="DimensionLabel" />
+          <ScalarProperty Name="DimensionCode" ColumnName="DimensionCode" />
+          <ScalarProperty Name="DimensionDescription" ColumnName="DimensionDescription" />
+          <ScalarProperty Name="DimensionXBRLCode" ColumnName="DimensionXBRLCode" />
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+          <ScalarProperty Name="IsTypedDimension" ColumnName="IsTypedDimension" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mDomains">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mDomain">
+        <MappingFragment StoreEntitySet="mDomain">
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+          <ScalarProperty Name="DomainCode" ColumnName="DomainCode" />
+          <ScalarProperty Name="DomainLabel" ColumnName="DomainLabel" />
+          <ScalarProperty Name="DomainDescription" ColumnName="DomainDescription" />
+          <ScalarProperty Name="DomainXBRLCode" ColumnName="DomainXBRLCode" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="IsTypedDomain" ColumnName="IsTypedDomain" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mHierarchies">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mHierarchy">
+        <MappingFragment StoreEntitySet="mHierarchy">
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="HierarchyCode" ColumnName="HierarchyCode" />
+          <ScalarProperty Name="HierarchyLabel" ColumnName="HierarchyLabel" />
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+          <ScalarProperty Name="HierarchyDescription" ColumnName="HierarchyDescription" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mHierarchyNodes">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mHierarchyNode">
+        <MappingFragment StoreEntitySet="mHierarchyNode">
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="IsAbstract" ColumnName="IsAbstract" />
+          <ScalarProperty Name="ComparisonOperator" ColumnName="ComparisonOperator" />
+          <ScalarProperty Name="UnaryOperator" ColumnName="UnaryOperator" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ParentMemberID" ColumnName="ParentMemberID" />
+          <ScalarProperty Name="HierarchyNodeLabel" ColumnName="HierarchyNodeLabel" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mLanguages">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mLanguage">
+        <MappingFragment StoreEntitySet="mLanguage">
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mMembers">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mMember">
+        <MappingFragment StoreEntitySet="mMember">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+          <ScalarProperty Name="MemberCode" ColumnName="MemberCode" />
+          <ScalarProperty Name="MemberLabel" ColumnName="MemberLabel" />
+          <ScalarProperty Name="MemberXBRLCode" ColumnName="MemberXBRLCode" />
+          <ScalarProperty Name="IsDefaultMember" ColumnName="IsDefaultMember" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mMetrics">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mMetric">
+        <MappingFragment StoreEntitySet="mMetric">
+          <ScalarProperty Name="MetricID" ColumnName="MetricID" />
+          <ScalarProperty Name="CorrespondingMemberID" ColumnName="CorrespondingMemberID" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="FlowType" ColumnName="FlowType" />
+          <ScalarProperty Name="BalanceType" ColumnName="BalanceType" />
+          <ScalarProperty Name="ReferencedDomainID" ColumnName="ReferencedDomainID" />
+          <ScalarProperty Name="ReferencedHierarchyID" ColumnName="ReferencedHierarchyID" />
+          <ScalarProperty Name="HierarchyStartingMemberID" ColumnName="HierarchyStartingMemberID" />
+          <ScalarProperty Name="IsStartingMemberIncluded" ColumnName="IsStartingMemberIncluded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mModules">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mModule">
+        <MappingFragment StoreEntitySet="mModule">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="TaxonomyID" ColumnName="TaxonomyID" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleLabel" ColumnName="ModuleLabel" />
+          <ScalarProperty Name="ConceptualModuleID" ColumnName="ConceptualModuleID" />
+          <ScalarProperty Name="DefaultFrequency" ColumnName="DefaultFrequency" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="XBRLSchemaRef" ColumnName="XBRLSchemaRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mModuleBusinessTemplates">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mModuleBusinessTemplate">
+        <MappingFragment StoreEntitySet="mModuleBusinessTemplate">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="BusinessTemplateID" ColumnName="BusinessTemplateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mOpenAxisValueRestrictions">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mOpenAxisValueRestriction">
+        <MappingFragment StoreEntitySet="mOpenAxisValueRestriction">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="HierarchyStartingMemberID" ColumnName="HierarchyStartingMemberID" />
+          <ScalarProperty Name="IsStartingMemberIncluded" ColumnName="IsStartingMemberIncluded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mOrdinateCategorisations">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mOrdinateCategorisation">
+        <MappingFragment StoreEntitySet="mOrdinateCategorisation">
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="DimensionID" ColumnName="DimensionID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="DimensionMemberSignature" ColumnName="DimensionMemberSignature" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mOwners">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mOwner">
+        <MappingFragment StoreEntitySet="mOwner">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="OwnerNamespace" ColumnName="OwnerNamespace" />
+          <ScalarProperty Name="OwnerLocation" ColumnName="OwnerLocation" />
+          <ScalarProperty Name="OwnerPrefix" ColumnName="OwnerPrefix" />
+          <ScalarProperty Name="OwnerCopyright" ColumnName="OwnerCopyright" />
+          <ScalarProperty Name="ParentOwnerID" ColumnName="ParentOwnerID" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mReferences">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mReference">
+        <MappingFragment StoreEntitySet="mReference">
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="SourceCode" ColumnName="SourceCode" />
+          <ScalarProperty Name="Article" ColumnName="Article" />
+          <ScalarProperty Name="Paragraph" ColumnName="Paragraph" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="Romans" ColumnName="Romans" />
+          <ScalarProperty Name="ReferenceText" ColumnName="ReferenceText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mReferenceCategorisations">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mReferenceCategorisation">
+        <MappingFragment StoreEntitySet="mReferenceCategorisation">
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="DimensionID" ColumnName="DimensionID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mReportingFrameworks">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mReportingFramework">
+        <MappingFragment StoreEntitySet="mReportingFramework">
+          <ScalarProperty Name="FrameworkID" ColumnName="FrameworkID" />
+          <ScalarProperty Name="FrameworkCode" ColumnName="FrameworkCode" />
+          <ScalarProperty Name="FrameworkLabel" ColumnName="FrameworkLabel" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTables">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTable">
+        <MappingFragment StoreEntitySet="mTable">
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="TableLabel" ColumnName="TableLabel" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="XbrlFilingIndicatorCode" ColumnName="XbrlFilingIndicatorCode" />
+          <ScalarProperty Name="XbrlTableCode" ColumnName="XbrlTableCode" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="YDimVal" ColumnName="YDimVal" />
+          <ScalarProperty Name="ZDimVal" ColumnName="ZDimVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTableAxis">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTableAxi">
+        <MappingFragment StoreEntitySet="mTableAxis">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTableCells">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTableCell">
+        <MappingFragment StoreEntitySet="mTableCell">
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="IsRowKey" ColumnName="IsRowKey" />
+          <ScalarProperty Name="IsShaded" ColumnName="IsShaded" />
+          <ScalarProperty Name="BusinessCode" ColumnName="BusinessCode" />
+          <ScalarProperty Name="DatapointSignature" ColumnName="DatapointSignature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTableDimensionSets">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTableDimensionSet">
+        <MappingFragment StoreEntitySet="mTableDimensionSet">
+          <ScalarProperty Name="MetricAndDimensions" ColumnName="MetricAndDimensions" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTaxonomies">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTaxonomy">
+        <MappingFragment StoreEntitySet="mTaxonomy">
+          <ScalarProperty Name="TaxonomyID" ColumnName="TaxonomyID" />
+          <ScalarProperty Name="FrameworkID" ColumnName="FrameworkID" />
+          <ScalarProperty Name="TaxonomyCode" ColumnName="TaxonomyCode" />
+          <ScalarProperty Name="TaxonomyLabel" ColumnName="TaxonomyLabel" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+          <ScalarProperty Name="TechnicalStandard" ColumnName="TechnicalStandard" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTaxonomyTables">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTaxonomyTable">
+        <MappingFragment StoreEntitySet="mTaxonomyTable">
+          <ScalarProperty Name="TaxonomyID" ColumnName="TaxonomyID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="AnnotatedTableID" ColumnName="AnnotatedTableID" />
+          <ScalarProperty Name="IsSimplyReuse" ColumnName="IsSimplyReuse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mTemplateOrTables">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTemplateOrTable">
+        <MappingFragment StoreEntitySet="mTemplateOrTable">
+          <ScalarProperty Name="TemplateOrTableID" ColumnName="TemplateOrTableID" />
+          <ScalarProperty Name="TaxonomyID" ColumnName="TaxonomyID" />
+          <ScalarProperty Name="TemplateOrTableCode" ColumnName="TemplateOrTableCode" />
+          <ScalarProperty Name="TemplateOrTableLabel" ColumnName="TemplateOrTableLabel" />
+          <ScalarProperty Name="TemplateOrTableType" ColumnName="TemplateOrTableType" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ParentTemplateOrTableID" ColumnName="ParentTemplateOrTableID" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="TT" ColumnName="TT" />
+          <ScalarProperty Name="TL" ColumnName="TL" />
+          <ScalarProperty Name="TD" ColumnName="TD" />
+          <ScalarProperty Name="YC" ColumnName="YC" />
+          <ScalarProperty Name="XC" ColumnName="XC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SQLITEADMIN_QUERIES">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.SQLITEADMIN_QUERIES">
+        <MappingFragment StoreEntitySet="SQLITEADMIN_QUERIES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SQL" ColumnName="SQL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vExpressions">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vExpression">
+        <MappingFragment StoreEntitySet="vExpression">
+          <ScalarProperty Name="ExpressionID" ColumnName="ExpressionID" />
+          <ScalarProperty Name="ExpressionType" ColumnName="ExpressionType" />
+          <ScalarProperty Name="TableBasedFormula" ColumnName="TableBasedFormula" />
+          <ScalarProperty Name="LogicalExpression" ColumnName="LogicalExpression" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vValidationRules">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vValidationRule">
+        <MappingFragment StoreEntitySet="vValidationRule">
+          <ScalarProperty Name="ValidationRuleID" ColumnName="ValidationRuleID" />
+          <ScalarProperty Name="ValidationCode" ColumnName="ValidationCode" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Scope" ColumnName="Scope" />
+          <ScalarProperty Name="ValidationType" ColumnName="ValidationType" />
+          <ScalarProperty Name="ExpressionID" ColumnName="ExpressionID" />
+          <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vVariableOfExpressions">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vVariableOfExpression">
+        <MappingFragment StoreEntitySet="vVariableOfExpression">
+          <ScalarProperty Name="ExpressionID" ColumnName="ExpressionID" />
+          <ScalarProperty Name="VariableCode" ColumnName="VariableCode" />
+          <ScalarProperty Name="ifMissing" ColumnName="ifMissing" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dMessageReferences">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dMessageReference">
+        <MappingFragment StoreEntitySet="dMessageReference">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="DataPointSignature" ColumnName="DataPointSignature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetAllHierarchies">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetAllHierarchy">
+        <MappingFragment StoreEntitySet="vwGetAllHierarchies">
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HierarchyOrder" ColumnName="HierarchyOrder" />
+          <ScalarProperty Name="IsAbstract" ColumnName="IsAbstract" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetControlInformations">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetControlInformation">
+        <MappingFragment StoreEntitySet="vwGetControlInformation">
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="OrdinateLabel" ColumnName="OrdinateLabel" />
+          <ScalarProperty Name="AxisOrientation" ColumnName="AxisOrientation" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="IsAbstractHeader" ColumnName="IsAbstractHeader" />
+          <ScalarProperty Name="ParentOrdinateID" ColumnName="ParentOrdinateID" />
+          <ScalarProperty Name="IsDisplayBeforeChildren" ColumnName="IsDisplayBeforeChildren" />
+          <ScalarProperty Name="OrdinateCode" ColumnName="OrdinateCode" />
+          <ScalarProperty Name="ParentOrder" ColumnName="ParentOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetInstanceDropDownDatas">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetInstanceDropDownData">
+        <MappingFragment StoreEntitySet="vwGetInstanceDropDownData">
+          <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetLanguageInfoes">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetLanguageInfo">
+        <MappingFragment StoreEntitySet="vwGetLanguageInfo">
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="InterfaceComponentID" ColumnName="InterfaceComponentID" />
+          <ScalarProperty Name="InBulgarian" ColumnName="InBulgarian" />
+          <ScalarProperty Name="InCroatian" ColumnName="InCroatian" />
+          <ScalarProperty Name="InCzech" ColumnName="InCzech" />
+          <ScalarProperty Name="InDanish" ColumnName="InDanish" />
+          <ScalarProperty Name="InDutch" ColumnName="InDutch" />
+          <ScalarProperty Name="InEnglish" ColumnName="InEnglish" />
+          <ScalarProperty Name="InEstonian" ColumnName="InEstonian" />
+          <ScalarProperty Name="InFinnish" ColumnName="InFinnish" />
+          <ScalarProperty Name="InFrench" ColumnName="InFrench" />
+          <ScalarProperty Name="InGerman" ColumnName="InGerman" />
+          <ScalarProperty Name="InGreek" ColumnName="InGreek" />
+          <ScalarProperty Name="InHungarian" ColumnName="InHungarian" />
+          <ScalarProperty Name="InIrish" ColumnName="InIrish" />
+          <ScalarProperty Name="InItalian" ColumnName="InItalian" />
+          <ScalarProperty Name="InLatvian" ColumnName="InLatvian" />
+          <ScalarProperty Name="InLithuanian" ColumnName="InLithuanian" />
+          <ScalarProperty Name="InMaltese" ColumnName="InMaltese" />
+          <ScalarProperty Name="InPolish" ColumnName="InPolish" />
+          <ScalarProperty Name="InPortuguese" ColumnName="InPortuguese" />
+          <ScalarProperty Name="InRomanian" ColumnName="InRomanian" />
+          <ScalarProperty Name="InSlovak" ColumnName="InSlovak" />
+          <ScalarProperty Name="InSlovenian" ColumnName="InSlovenian" />
+          <ScalarProperty Name="InSpanish" ColumnName="InSpanish" />
+          <ScalarProperty Name="InSwedish" ColumnName="InSwedish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetOrdinateDimensions">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetOrdinateDimension">
+        <MappingFragment StoreEntitySet="vwGetOrdinateDimensions">
+          <ScalarProperty Name="OwnerPrefix" ColumnName="OwnerPrefix" />
+          <ScalarProperty Name="DomainCode" ColumnName="DomainCode" />
+          <ScalarProperty Name="DimensionCode" ColumnName="DimensionCode" />
+          <ScalarProperty Name="MemberCode" ColumnName="MemberCode" />
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetOrdinateHierarchyID_HD">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetOrdinateHierarchyID_HD">
+        <MappingFragment StoreEntitySet="vwGetOrdinateHierarchyID_HD">
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="HierarchyStartingMemberID" ColumnName="HierarchyStartingMemberID" />
+          <ScalarProperty Name="IsStartingMemberIncluded" ColumnName="IsStartingMemberIncluded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetOrdinateHierarchyID_MD">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetOrdinateHierarchyID_MD">
+        <MappingFragment StoreEntitySet="vwGetOrdinateHierarchyID_MD">
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="ReferencedDomainID" ColumnName="ReferencedDomainID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="HierarchyStartingMemberID" ColumnName="HierarchyStartingMemberID" />
+          <ScalarProperty Name="IsStartingMemberIncluded" ColumnName="IsStartingMemberIncluded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetOrdinateTypes">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetOrdinateType">
+        <MappingFragment StoreEntitySet="vwGetOrdinateType">
+          <ScalarProperty Name="MemberCode" ColumnName="MemberCode" />
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTableAxisOrdinateColumns">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTableAxisOrdinateColumn">
+        <MappingFragment StoreEntitySet="vwGetTableAxisOrdinateColumns">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+          <ScalarProperty Name="IsRowKey" ColumnName="IsRowKey" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="OrdinateCode" ColumnName="OrdinateCode" />
+          <ScalarProperty Name="TableAxisOrder" ColumnName="TableAxisOrder" />
+          <ScalarProperty Name="OrdinateOrder" ColumnName="OrdinateOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTableControlDetails">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTableControlDetail">
+        <MappingFragment StoreEntitySet="vwGetTableControlDetails">
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="IsShaded" ColumnName="IsShaded" />
+          <ScalarProperty Name="XordinateID" ColumnName="XordinateID" />
+          <ScalarProperty Name="YordinateID" ColumnName="YordinateID" />
+          <ScalarProperty Name="TableCellSignature" ColumnName="TableCellSignature" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTableControlDetailsZDims">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTableControlDetailsZDim">
+        <MappingFragment StoreEntitySet="vwGetTableControlDetailsZDim">
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="IsShaded" ColumnName="IsShaded" />
+          <ScalarProperty Name="XordinateID" ColumnName="XordinateID" />
+          <ScalarProperty Name="YordinateID" ColumnName="YordinateID" />
+          <ScalarProperty Name="TableCellSignature" ColumnName="TableCellSignature" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="ZordinateID" ColumnName="ZordinateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTableNames">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTableName">
+        <MappingFragment StoreEntitySet="vwGetTableName">
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTreeDatas">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTreeData">
+        <MappingFragment StoreEntitySet="vwGetTreeData">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="FrameworkID" ColumnName="FrameworkID" />
+          <ScalarProperty Name="TemplateOrTableID" ColumnName="TemplateOrTableID" />
+          <ScalarProperty Name="FilingTemplateOrTableID" ColumnName="FilingTemplateOrTableID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="FrameworkCode" ColumnName="FrameworkCode" />
+          <ScalarProperty Name="TaxonomyCode" ColumnName="TaxonomyCode" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleLabel" ColumnName="ModuleLabel" />
+          <ScalarProperty Name="TemplateVariant" ColumnName="TemplateVariant" />
+          <ScalarProperty Name="TemplateVariantLabel" ColumnName="TemplateVariantLabel" />
+          <ScalarProperty Name="BusinessTable" ColumnName="BusinessTable" />
+          <ScalarProperty Name="BusinessTableLocationRange" ColumnName="BusinessTableLocationRange" />
+          <ScalarProperty Name="BusinessTableLabel" ColumnName="BusinessTableLabel" />
+          <ScalarProperty Name="AnnotatedTable" ColumnName="AnnotatedTable" />
+          <ScalarProperty Name="AnnotatedTableLocationRange" ColumnName="AnnotatedTableLocationRange" />
+          <ScalarProperty Name="AnnotatedTableLabel" ColumnName="AnnotatedTableLabel" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="BusinessOrder" ColumnName="BusinessOrder" />
+          <ScalarProperty Name="TemplateOrder" ColumnName="TemplateOrder" />
+          <ScalarProperty Name="TemplateOrder2" ColumnName="TemplateOrder2" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetTreeDataZDimChildrens">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetTreeDataZDimChildren">
+        <MappingFragment StoreEntitySet="vwGetTreeDataZDimChildren">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="FrameworkID" ColumnName="FrameworkID" />
+          <ScalarProperty Name="TemplateOrTableID" ColumnName="TemplateOrTableID" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="FrameworkCode" ColumnName="FrameworkCode" />
+          <ScalarProperty Name="TaxonomyCode" ColumnName="TaxonomyCode" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleLabel" ColumnName="ModuleLabel" />
+          <ScalarProperty Name="TemplateVariant" ColumnName="TemplateVariant" />
+          <ScalarProperty Name="TemplateVariantLabel" ColumnName="TemplateVariantLabel" />
+          <ScalarProperty Name="BusinessTable" ColumnName="BusinessTable" />
+          <ScalarProperty Name="BusinessTableLocationRange" ColumnName="BusinessTableLocationRange" />
+          <ScalarProperty Name="BusinessTableLabel" ColumnName="BusinessTableLabel" />
+          <ScalarProperty Name="AnnotatedTable" ColumnName="AnnotatedTable" />
+          <ScalarProperty Name="AnnotatedTableLocationRange" ColumnName="AnnotatedTableLocationRange" />
+          <ScalarProperty Name="AnnotatedTableLabel" ColumnName="AnnotatedTableLabel" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="SingleZOrdinateID" ColumnName="SingleZOrdinateID" />
+          <ScalarProperty Name="TableLabel" ColumnName="TableLabel" />
+          <ScalarProperty Name="BusinessOrder" ColumnName="BusinessOrder" />
+          <ScalarProperty Name="TemplateOrder" ColumnName="TemplateOrder" />
+          <ScalarProperty Name="TemplateOrder2" ColumnName="TemplateOrder2" />
+          <ScalarProperty Name="AxisOrdinateOrder" ColumnName="AxisOrdinateOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetzAxisMembers">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetzAxisMember">
+        <MappingFragment StoreEntitySet="vwGetzAxisMembers">
+          <ScalarProperty Name="MemberCode" ColumnName="MemberCode" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="HierarchyOrder" ColumnName="HierarchyOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetZDimTreeTables">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwGetZDimTreeTable">
+        <MappingFragment StoreEntitySet="vwGetZDimTreeTables">
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwHierarchyLookupAxis">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwHierarchyLookupAxi">
+        <MappingFragment StoreEntitySet="vwHierarchyLookupAxis">
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="OwnerPrefix" ColumnName="OwnerPrefix" />
+          <ScalarProperty Name="DomainCode" ColumnName="DomainCode" />
+          <ScalarProperty Name="MemberCode" ColumnName="MemberCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwHierarchyLookupMetrics">
+      <EntityTypeMapping TypeName="AT2DPM.DAL.Model.vwHierarchyLookupMetric">
+        <MappingFragment StoreEntitySet="vwHierarchyLookupMetrics">
+          <ScalarProperty Name="MetricID" ColumnName="MetricID" />
+          <ScalarProperty Name="HierarchyID" ColumnName="HierarchyID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HierarchyOrder" ColumnName="HierarchyOrder" />
+          <ScalarProperty Name="IsAbstract" ColumnName="IsAbstract" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="aInterfaceComponentApplication" TypeName="AT2DPM.DAL.Model.aInterfaceComponentApplication" StoreEntitySet="aInterfaceComponentApplication">
+      <EndProperty Name="aInterfaceComponent">
+        <ScalarProperty Name="InterfaceComponentID" ColumnName="InterfaceComponentID" />
+      </EndProperty>
+      <EndProperty Name="aApplication">
+        <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mCellPosition" TypeName="AT2DPM.DAL.Model.mCellPosition" StoreEntitySet="mCellPosition">
+      <EndProperty Name="mTableCell">
+        <ScalarProperty Name="CellID" ColumnName="CellID" />
+      </EndProperty>
+      <EndProperty Name="mAxisOrdinate">
+        <ScalarProperty Name="OrdinateID" ColumnName="OrdinateID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mCellReference" TypeName="AT2DPM.DAL.Model.mCellReference" StoreEntitySet="mCellReference">
+      <EndProperty Name="mTableCell">
+        <ScalarProperty Name="CellID" ColumnName="CellID" />
+      </EndProperty>
+      <EndProperty Name="mReference">
+        <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mConceptReference" TypeName="AT2DPM.DAL.Model.mConceptReference" StoreEntitySet="mConceptReference">
+      <EndProperty Name="mReference">
+        <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+      </EndProperty>
+      <EndProperty Name="mConcept">
+        <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="vPreCondition" TypeName="AT2DPM.DAL.Model.vPreCondition" StoreEntitySet="vPreCondition">
+      <EndProperty Name="vValidationRule">
+        <ScalarProperty Name="ValidationRuleID" ColumnName="ValidationRuleId" />
+      </EndProperty>
+      <EndProperty Name="vExpression">
+        <ScalarProperty Name="ExpressionID" ColumnName="PreconditionExpressionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="vValidationRuleSet" TypeName="AT2DPM.DAL.Model.vValidationRuleSet" StoreEntitySet="vValidationRuleSet">
+      <EndProperty Name="vValidationRule">
+        <ScalarProperty Name="ValidationRuleID" ColumnName="ValidationRuleID" />
+      </EndProperty>
+      <EndProperty Name="mModule">
+        <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="vValidationScope" TypeName="AT2DPM.DAL.Model.vValidationScope" StoreEntitySet="vValidationScope">
+      <EndProperty Name="vValidationRule">
+        <ScalarProperty Name="ValidationRuleID" ColumnName="ValidationRuleID" />
+      </EndProperty>
+      <EndProperty Name="mTable">
+        <ScalarProperty Name="TableID" ColumnName="TableID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,2570 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Credits</title>
+<link rel="stylesheet" href="chrome://resources/css/text_defaults.css">
+<style>
+body {
+  background-color: white;
+  font-size: 84%;
+  max-width: 1020px;
+  font-family: Verdana;
+}
+.page-title {
+  font-size: 164%;
+  font-weight: bold;
+}
+.product {
+  background-color: #8DCCC9;
+  border-radius: 5px;
+  margin-top: 16px;
+  overflow: auto;
+  padding: 2px;
+}
+.product .title {
+  float: left;
+  font-size: 110%;
+  font-weight: bold;
+  margin: 3px;
+}
+.product .homepage {
+  float: right;
+  margin: 3px;
+  text-align: right;
+}
+.product .homepage::after {
+  content: " - ";
+}
+.product .show {
+  float: right;
+  margin: 3px;
+  text-align: right;
+}
+.product .show2 {
+  float: right;
+  margin: 3px;
+  text-align: right;
+}
+.licence {
+  background-color: #CEE9ED;
+  border-radius: 3px;
+  clear: both;
+  display: none;
+  padding: 16px;
+}
+.licence h3 {
+  margin-top: 0;
+}
+.licence pre {
+  white-space: pre-wrap;
+}
+.code {
+  background-color: #CEE9ED;
+  border-radius: 3px;
+  clear: both;
+  display: none;
+  padding: 16px;
+}
+.code h3 {
+  margin-top: 0;
+}
+.code pre {
+  white-space: pre-wrap;
+}
+
+.dialog #print-link,
+.dialog .homepage {
+  display: none;
+}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</style>
+ <script>
+ // Copyright (c) 2012 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+/**
+ * The global object.
+ * @type {!Object}
+ * @const
+ */
+var global = this;
+
+/** Platform, package, object property, and Event support. **/
+var cr = function() {
+  'use strict';
+
+  /**
+   * Builds an object structure for the provided namespace path,
+   * ensuring that names that already exist are not overwritten. For
+   * example:
+   * "a.b.c" -> a = {};a.b={};a.b.c={};
+   * @param {string} name Name of the object that this file defines.
+   * @param {*=} opt_object The object to expose at the end of the path.
+   * @param {Object=} opt_objectToExportTo The object to add the path to;
+   *     default is {@code global}.
+   * @private
+   */
+  function exportPath(name, opt_object, opt_objectToExportTo) {
+    var parts = name.split('.');
+    var cur = opt_objectToExportTo || global;
+
+    for (var part; parts.length && (part = parts.shift());) {
+      if (!parts.length && opt_object !== undefined) {
+        // last part and we have an object; use it
+        cur[part] = opt_object;
+      } else if (part in cur) {
+        cur = cur[part];
+      } else {
+        cur = cur[part] = {};
+      }
+    }
+    return cur;
+  };
+
+  /**
+   * Fires a property change event on the target.
+   * @param {EventTarget} target The target to dispatch the event on.
+   * @param {string} propertyName The name of the property that changed.
+   * @param {*} newValue The new value for the property.
+   * @param {*} oldValue The old value for the property.
+   */
+  function dispatchPropertyChange(target, propertyName, newValue, oldValue) {
+    var e = new Event(propertyName + 'Change');
+    e.propertyName = propertyName;
+    e.newValue = newValue;
+    e.oldValue = oldValue;
+    target.dispatchEvent(e);
+  }
+
+  /**
+   * Converts a camelCase javascript property name to a hyphenated-lower-case
+   * attribute name.
+   * @param {string} jsName The javascript camelCase property name.
+   * @return {string} The equivalent hyphenated-lower-case attribute name.
+   */
+  function getAttributeName(jsName) {
+    return jsName.replace(/([A-Z])/g, '-$1').toLowerCase();
+  }
+
+  /**
+   * The kind of property to define in {@code defineProperty}.
+   * @enum {string}
+   * @const
+   */
+  var PropertyKind = {
+    /**
+     * Plain old JS property where the backing data is stored as a "private"
+     * field on the object.
+     * Use for properties of any type. Type will not be checked.
+     */
+    JS: 'js',
+
+    /**
+     * The property backing data is stored as an attribute on an element.
+     * Use only for properties of type {string}.
+     */
+    ATTR: 'attr',
+
+    /**
+     * The property backing data is stored as an attribute on an element. If the
+     * element has the attribute then the value is true.
+     * Use only for properties of type {boolean}.
+     */
+    BOOL_ATTR: 'boolAttr'
+  };
+
+  /**
+   * Helper function for defineProperty that returns the getter to use for the
+   * property.
+   * @param {string} name The name of the property.
+   * @param {PropertyKind} kind The kind of the property.
+   * @return {function():*} The getter for the property.
+   */
+  function getGetter(name, kind) {
+    switch (kind) {
+      case PropertyKind.JS:
+        var privateName = name + '_';
+        return function() {
+          return this[privateName];
+        };
+      case PropertyKind.ATTR:
+        var attributeName = getAttributeName(name);
+        return function() {
+          return this.getAttribute(attributeName);
+        };
+      case PropertyKind.BOOL_ATTR:
+        var attributeName = getAttributeName(name);
+        return function() {
+          return this.hasAttribute(attributeName);
+        };
+    }
+
+    // TODO(dbeam): replace with assertNotReached() in assert.js when I can coax
+    // the browser/unit tests to preprocess this file through grit.
+    throw 'not reached';
+  }
+
+  /**
+   * Helper function for defineProperty that returns the setter of the right
+   * kind.
+   * @param {string} name The name of the property we are defining the setter
+   *     for.
+   * @param {PropertyKind} kind The kind of property we are getting the
+   *     setter for.
+   * @param {function(*, *):void=} opt_setHook A function to run after the
+   *     property is set, but before the propertyChange event is fired.
+   * @return {function(*):void} The function to use as a setter.
+   */
+  function getSetter(name, kind, opt_setHook) {
+    switch (kind) {
+      case PropertyKind.JS:
+        var privateName = name + '_';
+        return function(value) {
+          var oldValue = this[name];
+          if (value !== oldValue) {
+            this[privateName] = value;
+            if (opt_setHook)
+              opt_setHook.call(this, value, oldValue);
+            dispatchPropertyChange(this, name, value, oldValue);
+          }
+        };
+
+      case PropertyKind.ATTR:
+        var attributeName = getAttributeName(name);
+        return function(value) {
+          var oldValue = this[name];
+          if (value !== oldValue) {
+            if (value == undefined)
+              this.removeAttribute(attributeName);
+            else
+              this.setAttribute(attributeName, value);
+            if (opt_setHook)
+              opt_setHook.call(this, value, oldValue);
+            dispatchPropertyChange(this, name, value, oldValue);
+          }
+        };
+
+      case PropertyKind.BOOL_ATTR:
+        var attributeName = getAttributeName(name);
+        return function(value) {
+          var oldValue = this[name];
+          if (value !== oldValue) {
+            if (value)
+              this.setAttribute(attributeName, name);
+            else
+              this.removeAttribute(attributeName);
+            if (opt_setHook)
+              opt_setHook.call(this, value, oldValue);
+            dispatchPropertyChange(this, name, value, oldValue);
+          }
+        };
+    }
+
+    // TODO(dbeam): replace with assertNotReached() in assert.js when I can coax
+    // the browser/unit tests to preprocess this file through grit.
+    throw 'not reached';
+  }
+
+  /**
+   * Defines a property on an object. When the setter changes the value a
+   * property change event with the type {@code name + 'Change'} is fired.
+   * @param {!Object} obj The object to define the property for.
+   * @param {string} name The name of the property.
+   * @param {PropertyKind=} opt_kind What kind of underlying storage to use.
+   * @param {function(*, *):void=} opt_setHook A function to run after the
+   *     property is set, but before the propertyChange event is fired.
+   */
+  function defineProperty(obj, name, opt_kind, opt_setHook) {
+    if (typeof obj == 'function')
+      obj = obj.prototype;
+
+    var kind = /** @type {PropertyKind} */ (opt_kind || PropertyKind.JS);
+
+    if (!obj.__lookupGetter__(name))
+      obj.__defineGetter__(name, getGetter(name, kind));
+
+    if (!obj.__lookupSetter__(name))
+      obj.__defineSetter__(name, getSetter(name, kind, opt_setHook));
+  }
+
+  /**
+   * Counter for use with createUid
+   */
+  var uidCounter = 1;
+
+  /**
+   * @return {number} A new unique ID.
+   */
+  function createUid() {
+    return uidCounter++;
+  }
+
+  /**
+   * Returns a unique ID for the item. This mutates the item so it needs to be
+   * an object
+   * @param {!Object} item The item to get the unique ID for.
+   * @return {number} The unique ID for the item.
+   */
+  function getUid(item) {
+    if (item.hasOwnProperty('uid'))
+      return item.uid;
+    return item.uid = createUid();
+  }
+
+  /**
+   * Dispatches a simple event on an event target.
+   * @param {!EventTarget} target The event target to dispatch the event on.
+   * @param {string} type The type of the event.
+   * @param {boolean=} opt_bubbles Whether the event bubbles or not.
+   * @param {boolean=} opt_cancelable Whether the default action of the event
+   *     can be prevented. Default is true.
+   * @return {boolean} If any of the listeners called {@code preventDefault}
+   *     during the dispatch this will return false.
+   */
+  function dispatchSimpleEvent(target, type, opt_bubbles, opt_cancelable) {
+    var e = new Event(type, {
+      bubbles: opt_bubbles,
+      cancelable: opt_cancelable === undefined || opt_cancelable
+    });
+    return target.dispatchEvent(e);
+  }
+
+  /**
+   * Calls |fun| and adds all the fields of the returned object to the object
+   * named by |name|. For example, cr.define('cr.ui', function() {
+   *   function List() {
+   *     ...
+   *   }
+   *   function ListItem() {
+   *     ...
+   *   }
+   *   return {
+   *     List: List,
+   *     ListItem: ListItem,
+   *   };
+   * });
+   * defines the functions cr.ui.List and cr.ui.ListItem.
+   * @param {string} name The name of the object that we are adding fields to.
+   * @param {!Function} fun The function that will return an object containing
+   *     the names and values of the new fields.
+   */
+  function define(name, fun) {
+    var obj = exportPath(name);
+    var exports = fun();
+    for (var propertyName in exports) {
+      // Maybe we should check the prototype chain here? The current usage
+      // pattern is always using an object literal so we only care about own
+      // properties.
+      var propertyDescriptor = Object.getOwnPropertyDescriptor(exports,
+                                                               propertyName);
+      if (propertyDescriptor)
+        Object.defineProperty(obj, propertyName, propertyDescriptor);
+    }
+  }
+
+  /**
+   * Adds a {@code getInstance} static method that always return the same
+   * instance object.
+   * @param {!Function} ctor The constructor for the class to add the static
+   *     method to.
+   */
+  function addSingletonGetter(ctor) {
+    ctor.getInstance = function() {
+      return ctor.instance_ || (ctor.instance_ = new ctor());
+    };
+  }
+
+  /**
+   * Forwards public APIs to private implementations.
+   * @param {Function} ctor Constructor that have private implementations in its
+   *     prototype.
+   * @param {Array.<string>} methods List of public method names that have their
+   *     underscored counterparts in constructor's prototype.
+   * @param {string=} opt_target Selector for target node.
+   */
+  function makePublic(ctor, methods, opt_target) {
+    methods.forEach(function(method) {
+      ctor[method] = function() {
+        var target = opt_target ? document.getElementById(opt_target) :
+                     ctor.getInstance();
+        return target[method + '_'].apply(target, arguments);
+      };
+    });
+  }
+
+  return {
+    addSingletonGetter: addSingletonGetter,
+    createUid: createUid,
+    define: define,
+    defineProperty: defineProperty,
+    dispatchPropertyChange: dispatchPropertyChange,
+    dispatchSimpleEvent: dispatchSimpleEvent,
+    exportPath: exportPath,
+    getUid: getUid,
+    makePublic: makePublic,
+    PropertyKind: PropertyKind,
+
+    get doc() {
+      return document;
+    },
+
+    /** Whether we are using a Mac or not. */
+    get isMac() {
+      return /Mac/.test(navigator.platform);
+    },
+
+    /** Whether this is on the Windows platform or not. */
+    get isWindows() {
+      return /Win/.test(navigator.platform);
+    },
+
+    /** Whether this is on chromeOS or not. */
+    get isChromeOS() {
+      return /CrOS/.test(navigator.userAgent);
+    },
+
+    /** Whether this is on vanilla Linux (not chromeOS). */
+    get isLinux() {
+      return /Linux/.test(navigator.userAgent);
+    },
+
+    /** Whether this uses the views toolkit or not. */
+    get isViews() {
+      return typeof chrome.getVariableValue == 'function' &&
+          /views/.test(chrome.getVariableValue('toolkit'));
+    },
+  };
+}();
+</script>
+<script>
+
+function $(id) { return document.getElementById(id); }
+
+function toggle(o) {
+  var licence = o.nextSibling;
+
+  while (licence.className != 'licence') {
+    if (!licence) return false;
+    licence = licence.nextSibling;
+  }
+
+  if (licence.style && licence.style.display == 'block') {
+    licence.style.display = 'none';
+    o.textContent = 'show location';
+  } else {
+    licence.style.display = 'block';
+    o.textContent = 'hide location';
+  }
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (cr.isChromeOS) {
+    var keyboardUtils = document.createElement('script');
+    keyboardUtils.src = 'chrome://credits/keyboard_utils.js';
+    document.body.appendChild(keyboardUtils);
+  }
+
+  var links = document.querySelectorAll('a.show');
+  for (var i = 0; i < links.length; ++i) {
+    links[i].onclick = function() { return toggle(this); };
+  }
+
+  $('print-link').onclick = function() {
+    window.print();
+    return false;
+  };
+});
+</script>
+<script>
+function $(id) { return document.getElementById(id); }
+function toggle2(num) {
+  var code = num.nextSibling;
+
+  while (code.className != 'code') {
+    if (!code) return false;
+    code = code.nextSibling;
+  }
+
+  if (code.style && code.style.display == 'block') {
+    code.style.display = 'none';
+    num.textContent = 'show license';
+  } else {
+    code.style.display = 'block';
+    num.textContent = 'hide license';
+  }
+  return false;
+}
+document.addEventListener('DOMContentLoaded', function() {
+  if (cr.isChromeOS) {
+    var keyboardUtils = document.createElement('script');
+    keyboardUtils.src = 'chrome://credits/keyboard_utils.js';
+    document.body.appendChild(keyboardUtils);
+  }
+
+  var links = document.querySelectorAll('a.show2');
+  for (var i = 0; i < links.length; ++i) {
+    links[i].onclick = function() { return toggle2(this); };
+  }
+
+});
+
+</script>
+<script>
+	</script>
+</head>
+
+
+<body>
+
+<span class="page-title" style="float:left;">Credits</span>
+<div style="clear:both; overflow:auto;">
+
+
+
+<a id="print-link" href="#" style="float:right;">Print</a>
+<br>
+
+<div class="product">
+<span class="title">// Copyright (c) Microsoft Corporation.  All rights reserved.
+</span>
+<a class="show2" href="#">show licence</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 2 - Assumes.cs
+Line 2 - Assumes.InternalErrorException.cs
+Line 2 - AttributeServices.cs
+Line 2 - GenerationServices.cs
+Line 2 - Lock.rs
+Line 2 - Lock.reader.cs
+Line 2 - Lock.writer.cs
+Line 2 - ReflectionServices.cs
+Line 2 - Requires.cs
+Line 2 - StringCompares.cs
+Line 2 - CollectionServices.CollectionOfObject.cs
+Line 2 - CollectionServices.cs
+Line 2 - ConditionalWeakTable.cs
+Line 2 - EnumerableCardinality.cs
+Line 2 - ReadOnlyDictionary.cs
+Line 2 - ReadOnlyDictionaryDebuggerProxy.cs
+Line 2 - WeakReferenceCollection.cs
+Line 2 - LazyOfTTMetadata.cs
+Line 2 - AssemblyInfo.cs
+Line 2 - SilverlightAdditions.cs
+Line 2 - SupressMessages.cs
+Line 2 - SupressMessagesBaselined.cs
+Line 2 - AttributedModelServices.cs
+Line 2 - ChangeRejectedException.cs
+Line 2 - CompositionContractMismatchException.cs
+Line 2 - CompositionError.cs
+Line 2 - CompositionErrorDebuggerProxy.cs
+Line 2 - CompositionErrorId.cs
+Line 2 - CompositionException.cs
+Line 2 - CompositionResult.cs
+Line 2 - CompositionResultOfT.cs
+Line 2 - ConstraintServices.cs
+Line 2 - ContractNameServices.cs
+Line 2 - CreationPolicy.cs
+Line 2 - ErrorBuilder.cs
+Line 2 - ExceptionBuilder.cs
+Line 2 - ExportAttribute.cs
+Line 2 - ExportCardinalityCheckResult.cs
+Line 2 - ExportMetadataAttribute.cs
+Line 2 - ExportServices.cs
+Line 2 - ExportServices.DisposableLazy.cs
+Line 2 - IAttributedImport.cs
+Line 2 - ICompositionError.cs
+Line 2-  ICompositionService.cs
+Line 2 - ImportAttribute.cs
+Line 2 - ImportCardinalityMismatchException.cs
+Line 2 - ImportingConstructorAttribute.cs
+Line 2 - ImportManyAttribute.cs
+Line 2 - InheritedExportAttribute.cs
+Line 2 - IPartImportsSatisfiedNotification.cs
+Line 2 - MetadataAttributeAttribute.cs
+Line 2 - MetadataService.cs
+Line 2 - MetadataViewGenerator.cs
+Line 2 - MetadataViewProvider.cs
+Line 2 - PartCreationPolicyAttribute.cs
+Line 2 - PartMetadataAttribute.cs
+Line 2 - PartNotDiscoverableAttribute.cs
+Line 2 - AttributedExportDefinition.cs
+Line 2 - AttributedModelDiscovery.cs
+Line 2 - AttributedPartCreationInfo.cs
+Line 2 - CompositionTrace.cs
+Line 2 - CompositionTraceId.cs
+Line 2 - CompositionTraceSource.cs
+Line 2 - SilverlightTraceWriter.cs
+Line 2 - TraceSourceTraceWriter.cs
+Line 2 - TraceWriter.cs
+Line 2 - AggregateCatalog.cs
+Line 2 - AssemblyCatalog.cs
+Line 2 - AssemblyCatalogDebuggerProxy.cs
+Line 2 - CatalogExportProvider.CatalogChangeProxy.cs
+Line 2 - CatalogExportProvider.CatalogExport.cs
+Line 2 - CatalogExportProvider.cs
+Line 2 - CatalogExportProvider.PartCreatorExport.cs
+Line 2 - ComposablePartCatalogChangeEventArgs.cs
+Line 2 - ComposablePartCatalogCollection.cs
+Line 2 - ComposablePartExportProvider.cs
+Line 2 - CompositionBatch.cs
+Line 2 - CompositionBatch.SingleExportComposablePart.cs
+Line 2 - CompositionConstants.cs
+Line 2 - CompositionContainer.cs
+Line 2 - CompositionLocks.cs
+Line 2 - CompositionServices.cs
+Line 2 - DirectoryCatalog.cs
+Line 2 - DirectoryCatalog.DirectoryCatalogDebuggerProxy.cs
+Line 2 - ExportProvider.cs
+Line 2 - ExportProvider.GetExportOverrides.cs
+Line 2 - ExportChangeEventsArgs.cs
+Line 2 - ImportEngine.cs
+Line 2 - ImportEngine.EngineContext.cs
+Line 2 - ImportEngine.PartManager.cs
+Line 2 - ImportEngine.RecompositionManager.cs
+Line 2 - INotifyComposablePartCatalogChanged.cs
+Line 2 - TypeCatalog.cs
+Line 2 - ComposablePart.cs
+Line 2 - ComposablePartCatalog.cs
+Line 2 - ComposablePartCatalogDebuggerProxy.cs
+Line 2 - ComposablePartDefinition.cs
+Line 2 - ComposablePartException.cs
+Line 2 - CompositionElement.cs
+Line 2 - CompositionElementDebuggerProxy.cs
+Line 2 - CompositionElementExtensions.cs
+Line 2 - ContractBasedImportDefinition.cs
+Line 2 - Export.cs
+Line 2 - ExportDefinition.cs
+Line 2 - ExportedDelegate.cs
+Line 2 - ICompositionElement.cs
+Line 2 - ImportCardinality.cs
+Line 2 - ImportDefinition.cs
+Line 2 - IPartCreatorImportDefinition.cs
+Line 2 - SerializableCompositionElements.cs
+Line 2 - DisposableReflectionComposableParts.cs
+Line 2 - ExportingMembers.cs
+Line 2 - ImportingItem.cs
+Line 2 - ImportingMembers.cs
+Line 2 - ImportingParameters.cs
+Line 2 - ImportType.cs
+Line 2 - IReflectionPartCreationInfo.cs
+Line 2 - LazyMemberInfo.cs
+Line 2 - PartCreatorExportDefinition.cs
+Line 2 - PartCreatorMemberImportDefinition.cs
+Line 2 - PartCreatorParameterMemberDefinition.cs
+Line 2 - ReflectionComposablePart.cs
+Line 2 - ReflectionComposablePartDefinition.cs
+Line 2 - ReflectionExtensions.cs
+Line 2 - ReflectionFields.cs
+Line 2 - ReflectionImportDefinition.cs
+Line 2 - ReflectionItem.cs
+Line 2 - ReflectionItemType.cs
+Line 2 - ReflectionMember.cs
+Line 2 - ReflectionMemberExporttDefinition.cs
+Line 2 - ReflectionMemberImportDefinition.cs
+Line 2 - ReflectionMethod.cs
+Line 2 - ReflectionModelServices.cs
+Line 2 -ReflectionParameter.cs
+Line 2 -ReflectionParameterImportDefinition.cs
+Line 2 -ReflectionProperty.cs
+Line 2 -ReflectionType.cs
+Line 2 -ReflectionWritableMember.cs
+</pre></div>
+<div class = "code">
+<pre>
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+</pre>
+</div></div>
+
+<div class="product">
+<span class="title"> CellEditKeyEngine - A engine that allows the behaviour of arbitrary keys to be configured</span>
+<a class="show2" href="#">show licence</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 30 - CellEditKeyEngine.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * CellEditKeyEngine - A engine that allows the behaviour of arbitrary keys to be configured
+ *
+ * Author: Phillip Piper
+ * Date: 3-March-2011 10:53 pm
+ *
+ * Change log:
+ * 2012-04-14  JPP  - Fixed bug where, on a OLV with only a single editable column, tabbing
+ *                    to change rows would edit the cell above rather than the cell below
+ *                    the cell being edited.
+ * 2.5
+ * 2011-03-03  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre>
+</div></div>
+
+
+<div class="product">
+<span class="title">EditorRegistry - A registry mapping types to cell editors.</span>
+<a class="show2" href="#">show licence</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 27 - EditorRegistry.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * EditorRegistry - A registry mapping types to cell editors.
+ *
+ * Author: Phillip Piper
+ * Date: 6-March-2011 7:53 am
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Use OLVColumn.DataType if the value to be edited is null
+ * 2011-03-06  JPP  - Separated from CellEditors.cs
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre>
+</div></div>
+
+
+<div class="product">
+<span class="title"> DragSource.cs - Add drag source functionality to an ObjectListView</span>
+<a class="show2" href="#">show licence</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 32 - DragSource.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * DragSource.cs - Add drag source functionality to an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 2009-03-17 5:15 PM
+ *
+ * Change log:
+ * 2011-03-29   JPP  - Separate OLVDataObject.cs
+ * v2.3
+ * 2009-07-06   JPP  - Make sure Link is acceptable as an drop effect by default
+ *                     (since MS didn't make it part of the 'All' value)
+ * v2.2
+ * 2009-04-15   JPP  - Separated DragSource.cs into DropSink.cs
+ * 2009-03-17   JPP  - Initial version
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre>
+</div></div>
+
+<div class="product">
+<span class="title">DropSink.cs - Add drop sink ability to an ObjectListView</span>
+<a class="show2" href="#">show licence</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 41 - DropSink.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * DropSink.cs - Add drop sink ability to an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 2009-03-17 5:15 PM
+ *
+ * Change log:
+ * 2011-04-20   JPP  - Rewrote how ModelDropEventArgs.RefreshObjects() works on TreeListViews
+ * v2.4.1
+ * 2010-08-24   JPP  - Moved AcceptExternal property up to SimpleDragSource.
+ * v2.3
+ * 2009-09-01   JPP  - Correctly handle case where RefreshObjects() is called for
+ *                     objects that were children but are now roots.
+ * 2009-08-27   JPP  - Added ModelDropEventArgs.RefreshObjects() to simplify updating after
+ *                     a drag-drop operation
+ * 2009-08-19   JPP  - Changed to use OlvHitTest()
+ * v2.2.1
+ * 2007-07-06   JPP  - Added StandardDropActionFromKeys property to OlvDropEventArgs
+ * v2.2
+ * 2009-05-17   JPP  - Added a Handled flag to OlvDropEventArgs
+ *                   - Tweaked the appearance of the drop-on-background feedback
+ * 2009-04-15   JPP  - Separated DragDrop.cs into DropSink.cs
+ * 2009-03-17   JPP  - Initial version
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+
+</pre>
+</div></div>
+
+<div class="product">
+<span class="title">OLVDataObject.cs - An OLE DataObject which converts rows of an OLV to text and HTML</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 30 - Cluster.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * OLVDataObject.cs - An OLE DataObject that knows how to convert rows of an OLV to text and HTML
+ *
+ * Author: Phillip Piper
+ * Date: 2011-03-29 3:34PM
+ *
+ * Change log:
+ * v2.6
+ * 2012-08-08   JPP  - Changed to use OLVExporter.
+ *                   - Added CSV to formats exported to Clipboard
+ * v2.4
+ * 2011-03-29   JPP  - Initial version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */
+"
+
+
+</pre>
+</div></div>
+
+
+<div class="product">
+<span class="title">  Cluster - Implements a simple cluster</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 26 - Cluster.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Cluster - Implements a simple cluster
+ *
+ * Author: Phillip Piper
+ * Date: 3-March-2011 10:53 pm
+ *
+ * Change log:
+ * 2011-03-03  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre>
+</div></div>
+
+
+<div class="product">
+<span class="title"> ClusteringStrategy - Implements a simple clustering strategy</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+
+<div class="licence">
+<pre>
+Line 1 -> 26 - ClusteringStrategy.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * ClusteringStrategy - Implements a simple clustering strategy
+ *
+ * Author: Phillip Piper
+ * Date: 3-March-2011 10:53 pm
+ *
+ * Change log:
+ * 2011-03-03  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title"> ClustersFromGroupStrategy.cs - Implements a simple clustering strategy</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - ClustersFromGroupStrategy.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * ClusteringStrategy - Implements a simple clustering strategy
+ *
+ * Author: Phillip Piper
+ * Date: 1-April-2011 8:12am
+ *
+ * Change log:
+ * 2011-04-01  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+ 
+
+<div class="product">
+<span class="title">DateTimeClusteringStrategy - A strategy to cluster objects by a date time</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - DateTimeClusteringStrategy.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * DateTimeClusteringStrategy - A strategy to cluster objects by a date time
+ *
+ * Author: Phillip Piper
+ * Date: 30-March-2011 9:40am
+ *
+ * Change log:
+ * 2011-03-30  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">FilterMenuBuilder - Responsible for creating a Filter menu</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 33 - FilterMenuBuilder.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * FilterMenuBuilder - Responsible for creating a Filter menu
+ *
+ * Author: Phillip Piper
+ * Date: 4-March-2011 11:59 pm
+ *
+ * Change log:
+ * 2012-05-20  JPP  - Allow the same model object to be in multiple clusters
+ *                    Useful for xor'ed flag fields, and multi-value strings
+ *                    (e.g. hobbies that are stored as comma separated values).
+ * v2.5.1
+ * 2012-04-14  JPP  - Fixed rare bug with clustering an empty list (SF #3445118)
+ * v2.5
+ * 2011-04-12  JPP  - Added some images to menu
+ * 2011-03-04  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">Filters - Filtering on ObjectListViews</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 32 - Filters.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Filters - Filtering on ObjectListViews
+ *
+ * Author: Phillip Piper
+ * Date: 03/03/2010 17:00 
+ *
+ * Change log:
+ * 2011-03-01  JPP  Added CompositeAllFilter, CompositeAnyFilter and OneOfFilter
+ * v2.4.1
+ * 2010-06-23  JPP  Extended TextMatchFilter to handle regular expressions and string prefix matching.
+ * v2.4
+ * 2010-03-03  JPP  Initial version
+ *
+ * TO DO:
+ *
+ * Copyright (C) 2010-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */
+"</pre></div></div>
+
+
+<div class="product">
+<span class="title">FlagClusteringStrategy - Implements a clustering strategy</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 27 - FlagClusteringStrategy.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * FlagClusteringStrategy - Implements a clustering strategy for a field which is a single integer 
+ *                          containing an XOR'ed collection of bit flags
+ *
+ * Author: Phillip Piper
+ * Date: 23-March-2012 8:33 am
+ *
+ * Change log:
+ * 2012-03-23  JPP  - First version
+ * 
+ * Copyright (C) 2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">ICluster - A cluster is a group of objects that can be included or excluded as a whole</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - ICluster.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * ICluster - A cluster is a group of objects that can be included or excluded as a whole
+ *
+ * Author: Phillip Piper
+ * Date: 4-March-2011 11:59 pm
+ *
+ * Change log:
+ * 2011-03-04  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+ 
+<div class="product">
+<span class="title">IClusterStrategy - Encapsulates the ability to create a list of clusters from an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 29 - IClusterStrategy.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * IClusterStrategy - Encapsulates the ability to create a list of clusters from an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 4-March-2011 11:59 pm
+ *
+ * Change log:
+ * 2012-05-23  JPP  - Added CreateFilter() method to interface to allow the strategy
+ *                    to control the actual model filter that is created.
+ * v2.5
+ * 2011-03-04  JPP  - First version
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+ 
+
+<div class="product">
+<span class="title">TextMatchFilter - Text based filtering on ObjectListViews</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 33 - TextMatchFilter.cs
+</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * TextMatchFilter - Text based filtering on ObjectListViews
+ *
+ * Author: Phillip Piper
+ * Date: 31/05/2011 7:45am 
+ *
+ * Change log:
+ * v2.6
+ * 2012-10-13  JPP  Allow filtering to consider additional columns
+ * v2.5.1
+ * 2011-06-22  JPP  Handle searching for empty strings
+ * v2.5.0
+ * 2011-05-31  JPP  Initial version
+ *
+ * TO DO:
+ *
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">Attributes - Attributes that can be attached to properties of models</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 36 - Attributes.cs</pre></div>
+<div class = "code">
+<pre>
+"*
+ * Attributes - Attributes that can be attached to properties of models to allow columns to be
+ *              built from them directly
+ *
+ * Author: Phillip Piper
+ * Date: 15/08/2009 22:01
+ *
+ * Change log:
+ * v2.6
+ * 2012-08-16  JPP  - Added [OLVChildren] and [OLVIgnore]
+ *                  - OLV attributes can now only be set on properties
+ * v2.4
+ * 2010-04-14  JPP  - Allow Name property to be set
+ * 
+ * v2.3
+ * 2009-08-15  JPP  - Initial version
+ *
+ * To do:
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+
+<div class="product">
+<span class="title">Comparers - Various Comparer classes used within ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 32 - Comparers.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Comparers - Various Comparer classes used within ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 25/11/2008 17:15 
+ *
+ * Change log:
+ * v2.3
+ * 2009-08-24  JPP  - Added OLVGroupComparer
+ * 2009-06-01  JPP  - ModelObjectComparer would crash if secondary sort column was null.
+ * 2008-12-20  JPP  - Fixed bug with group comparisons when a group key was null (SF#2445761)
+ * 2008-11-25  JPP  Initial version
+ *
+ * TO DO:
+ *
+ * Copyright (C) 2006-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">DataSourceAdapter - A helper class that translates DataSource events for an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 32 - DataSourceAdapter.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * DataSourceAdapter - A helper class that translates DataSource events for an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 20/09/2010 7:42 AM
+ *
+ * Change log:
+ * v2.6
+ * 2012-08-16  JPP  - Unify common column creation functionality with Generator when possible
+ * 
+ * 2010-09-20  JPP  - Initial version
+ * 
+ * Copyright (C) 2010-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+<div class="product">
+<span class="title">Delegates - All delegate definitions used in ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - Delegates.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Delegates - All delegate definitions used in ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 31-March-2011 5:53 pm
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Split into its own file
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */
+"</pre></div></div>
+
+<div class="product">
+<span class="title">GroupingParameters - All the data that is used to create groups in an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - GroupingParameters.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * GroupingParameters - All the data that is used to create groups in an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 31-March-2011 5:53 pm
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Split into its own file
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">Groups - Enhancements to the normal ListViewGroup</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 34 - Groups.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Groups - Enhancements to the normal ListViewGroup
+ *
+ * Author: Phillip Piper
+ * Date: 22/08/2009 6:03PM
+ *
+ * Change log:
+ * v2.3
+ * 2009-09-09   JPP  - Added Collapsed and Collapsible properties
+ * 2009-09-01   JPP  - Cleaned up code, added more docs
+ *                   - Works under VS2005 again
+ * 2009-08-22   JPP  - Initial version
+ *
+ * To do:
+ * - Implement subseting
+ * - Implement footer items
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+
+<div class="product">
+<span class="title">Munger - An Interface pattern on getting and setting values from object through Reflection</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 41 - Munger.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Munger - An Interface pattern on getting and setting values from object through Reflection
+ *
+ * Author: Phillip Piper
+ * Date: 28/11/2008 17:15 
+ *
+ * Change log:
+ * v2.5.1
+ * 2012-05-01  JPP  - Added IgnoreMissingAspects property
+ * v2.5
+ * 2011-05-20  JPP  - Accessing through an indexer when the target had both a integer and
+ *                    a string indexer didn't work reliably.
+ * v2.4.1
+ * 2010-08-10  JPP  - Refactored into Munger/SimpleMunger. 3x faster!
+ * v2.3
+ * 2009-02-15  JPP  - Made Munger a public class
+ * 2009-01-20  JPP  - Made the Munger capable of handling indexed access.
+ *                    Incidentally, this removed the ugliness that the last change introduced.
+ * 2009-01-18  JPP  - Handle target objects from a DataListView (normally DataRowViews)
+ * v2.0
+ * 2008-11-28  JPP  Initial version
+ *
+ * TO DO:
+ *
+ * Copyright (C) 2006-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">NativeMethods - All the Windows SDK structures and imports</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 29 - NativeMethods.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * NativeMethods - All the Windows SDK structures and imports
+ *
+ * Author: Phillip Piper
+ * Date: 10/10/2006
+ *
+ * Change log:
+ * v2.3
+ * 2006-10-10   JPP  - Initial version
+ *
+ * To do:
+ * 
+ * Copyright (C) 2006-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+
+<div class="product">
+<span class="title">NullableDictionary - A simple Dictionary that can handle null as a key</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - NullableDictionary.cs</pre></div>
+<div class = "code">
+<pre>
+/*
+ * NullableDictionary - A simple Dictionary that can handle null as a key
+ *
+ * Author: Phillip Piper
+ * Date: 31-March-2011 5:53 pm
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Split into its own file
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */
+</pre></div></div>
+ 
+
+<div class="product">
+<span class="title">OLVListItem - A row in an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - OLVListItem.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * OLVListItem - A row in an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 31-March-2011 5:53 pm
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Split into its own file
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"</pre></div></div>
+ 
+<div class="product">
+<span class="title">OLVListItem - A row in an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - OlvListViewHitTestInfo.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * OlvListViewHitTestInfo - All information gathered during a OlvHitTest() operation
+ *
+ * Author: Phillip Piper
+ * Date: 31-March-2011 5:53 pm
+ *
+ * Change log:
+ * 2011-03-31  JPP  - Split into its own file
+ * 
+ * Copyright (C) 2011-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+ 
+ <div class="product">
+<span class="title">Virtual groups - Classes and interfaces needed to implement virtual groups</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 30 - VirtualGroups.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Virtual groups - Classes and interfaces needed to implement virtual groups
+ *
+ * Author: Phillip Piper
+ * Date: 28/08/2009 11:10am
+ *
+ * Change log:
+ * 2011-02-21   JPP  - Correctly honor group comparer and collapsible groups settings
+ * v2.3
+ * 2009-08-28   JPP  - Initial version
+ *
+ * To do:
+ *
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+ 
+  <div class="product">
+<span class="title"> VirtualListDataSource - Encapsulate how data is provided to a virtual list</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 31 - VirtualListDataSource.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * VirtualListDataSource - Encapsulate how data is provided to a virtual list
+ *
+ * Author: Phillip Piper
+ * Date: 28/08/2009 11:10am
+ *
+ * Change log:
+ * v2.4
+ * 2010-04-01   JPP  - Added IFilterableDataSource
+ * v2.3
+ * 2009-08-28   JPP  - Initial version (Separated from VirtualObjectListView.cs)
+ *
+ * To do:
+ *
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+ 
+
+ <div class="product">
+<span class="title"> Adornments - Adornments are the basis for overlays and decorations</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - Adornments.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Adornments - Adornments are the basis for overlays and decorations -- things that can be rendered over the top of a ListView
+ *
+ * Author: Phillip Piper
+ * Date: 16/08/2009 1:02 AM
+ *
+ * Change log:
+ * v2.6
+ * 2012-08-18   JPP  - Correctly dispose of brush and pen resources
+ * v2.3
+ * 2009-09-22   JPP  - Added Wrap property to TextAdornment, to allow text wrapping to be disabled
+ *                   - Added ShrinkToWidth property to ImageAdornment
+ * 2009-08-17   JPP  - Initial version
+ *
+ * To do:
+ * - Use IPointLocator rather than Corners
+ * - Add RotationCenter property ratherr than always using middle center
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+ 
+ 
+<div class="product">
+<span class="title"> Decorations - Images, text or other things that can be rendered onto an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - Decorations.cs</pre></div>
+<div class = "code">
+<pre>
+"*
+ * Decorations - Images, text or other things that can be rendered onto an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 19/08/2009 10:56 PM
+ *
+ * Change log:
+ * 2011-04-04   JPP  - Added ability to have a gradient background on BorderDecoration
+ * v2.4
+ * 2010-04-15   JPP  - Tweaked LightBoxDecoration a little
+ * v2.3
+ * 2009-09-23   JPP  - Added LeftColumn and RightColumn to RowBorderDecoration
+ * 2009-08-23   JPP  - Added LightBoxDecoration
+ * 2009-08-19   JPP  - Initial version. Separated from Overlays.cs
+ *
+ * To do:
+ *
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */
+"
+</pre></div></div>
+
+ <div class="product">
+<span class="title"> Overlays - Images, text or other things that can be rendered over the top of a ListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - Overlays.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Overlays - Images, text or other things that can be rendered over the top of a ListView
+ *
+ * Author: Phillip Piper
+ * Date: 14/04/2009 4:36 PM
+ *
+ * Change log:
+ * v2.3
+ * 2009-08-17   JPP  - Overlays now use Adornments
+ *                   - Added ITransparentOverlay interface. Overlays can now have separate transparency levels
+ * 2009-08-10   JPP  - Moved decoration related code to new file
+ * v2.2.1
+ * 200-07-24    JPP  - TintedColumnDecoration now works when last item is a member of a collapsed
+ *                     group (well, it no longer crashes).
+ * v2.2
+ * 2009-06-01   JPP  - Make sure that TintedColumnDecoration reaches to the last item in group view
+ * 2009-05-05   JPP  - Unified BillboardOverlay text rendering with that of TextOverlay
+ * 2009-04-30   JPP  - Added TintedColumnDecoration
+ * 2009-04-14   JPP  - Initial version
+ *
+ * To do:
+ *
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+
+
+  <div class="product">
+<span class="title">ToolTipControl - A limited wrapper around a Windows tooltip control</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - ToolTipControl.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * ToolTipControl - A limited wrapper around a Windows tooltip control
+ *
+ * For some reason, the ToolTip class in the .NET framework is implemented in a significantly
+ * different manner to other controls. For our purposes, the worst of these problems
+ * is that we cannot get the Handle, so we cannot send Windows level messages to the control.
+ * 
+ * Author: Phillip Piper
+ * Date: 2009-05-17 7:22PM 
+ *
+ * Change log:
+ * v2.3
+ * 2009-06-13  JPP  - Moved ToolTipShowingEventArgs to Events.cs
+ * v2.2
+ * 2009-06-06  JPP  - Fixed some Vista specific problems
+ * 2009-05-17  JPP  - Initial version
+ *
+ * TO DO:
+ *
+ * Copyright (C) 2006-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+  <div class="product">
+<span class="title">Generator - Utility methods that generate columns or methods</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 40 - Generator.cs</pre></div>
+<div class = "code">
+<pre>
+"*
+ * Generator - Utility methods that generate columns or methods
+ *
+ * Author: Phillip Piper
+ * Date: 15/08/2009 22:37
+ *
+ * Change log:
+ * 2012-08-16  JPP  - Generator now considers [OLVChildren] and [OLVIgnore] attributes.
+ * 2012-06-14  JPP  - Allow columns to be generated even if they are not marked with [OLVColumn]
+ *                  - Converted class from static to instance to allow it to be subclassed.
+ *                    Also, added IGenerator to allow it to be completely reimplemented.
+ * v2.5.1
+ * 2010-11-01  JPP  - DisplayIndex is now set correctly for columns that lack that attribute
+ * v2.4.1
+ * 2010-08-25  JPP  - Generator now also resets sort columns
+ * v2.4
+ * 2010-04-14  JPP  - Allow Name property to be set
+ *                  - Don't double set the Text property
+ * v2.3
+ * 2009-08-15  JPP  - Initial version
+ *
+ * To do:
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+
+  <div class="product">
+<span class="title">OLVExporter - Export the contents of an ObjectListView into various text-based formats</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 26 - OLVExporter.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * OLVExporter - Export the contents of an ObjectListView into various text-based formats
+ *
+ * Author: Phillip Piper
+ * Date: 7 August 2012, 10:35pm
+ *
+ * Change log:
+ * 2012-08-07  JPP  Initial code
+ * 
+ * Copyright (C) 2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+
+<div class="product">
+<span class="title">TypedObjectListView - A wrapper around an ObjectListView that provides type-safe delegates.</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 34 - TypedObjectListView.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * TypedObjectListView - A wrapper around an ObjectListView that provides type-safe delegates.
+ *
+ * Author: Phillip Piper
+ * Date: 27/09/2008 9:15 AM
+ *
+ * Change log:
+ * v2.6
+ * 2012-10-26   JPP  - Handle rare case where a null model object was passed into aspect getters.
+ * v2.3
+ * 2009-03-31   JPP  - Added Objects property
+ * 2008-11-26   JPP  - Added tool tip getting methods
+ * 2008-11-05   JPP  - Added CheckState handling methods
+ * 2008-10-24   JPP  - Generate dynamic methods MkII. This one handles value types
+ * 2008-10-21   JPP  - Generate dynamic methods
+ * 2008-09-27   JPP  - Separated from ObjectListView.cs
+ * 
+ * Copyright (C) 2006-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+<div class="product">
+<span class="title">DesignSupport - Design time support for the various classes within ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - ObjectListView.DesignTime.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * DesignSupport - Design time support for the various classes within ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 12/08/2009 8:36 PM
+ *
+ * Change log:
+ * 2012-08-27   JPP  - Fall back to more specific type name for the ListViewDesigner if
+ *                     the first GetType() fails.
+ * v2.5.1
+ * 2012-04-26   JPP  - Filter group events from TreeListView since it can't have groups
+ * 2011-06-06   JPP  - Vastly improved ObjectListViewDesigner, based off information in
+ *                     ""'Inheriting' from an Internal WinForms Designer"" on CodeProject.
+ * v2.3
+ * 2009-08-12   JPP  - Initial version
+ *
+ * To do:
+ *
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+</pre></div></div>
+
+
+<div class="product">
+<span class="title">SQLite</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - SQLite.cs</pre></div>
+<div class = "code">
+<pre>
+"//
+// Copyright (c) 2009-2012 Krueger Systems, Inc.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the ""Software""), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
+
+
+
+</pre></div></div>
+
+
+<div class="product">
+<span class="title">DataConnection - Object Wrapper</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 42 - DataConnecton.cs</pre></div>
+<div class = "code">
+<pre>
+"//
+// Copyright (c) 2009-2012 Krueger Systems, Inc.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the ""Software""), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
+/*
+ * Object wrapper for SQL server - Written for EIOPA by Nicholas Jory Professional Web Services
+ * based upon SQLite interface by Krueger Systems (See notice above).
+ * This small foot print mapper has been chosed over other mappers to enable cross platform usage.
+ */"
+</pre></div></div>
+
+
+
+<div class="product">
+<span class="title">Arelle streaming loader in C# with no DTS validation</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 7 - ArelleCsParser.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Arelle streaming loader in C# with no DTS validation
+ * 
+ * author: Mark V Systems Limited
+ * (c) Copyright 2014 Mark V Systems Limited, All rights reserved.
+ * 
+ */"
+</pre></div></div>
+
+
+<div class="product">
+<span class="title"> Arelle streaming saver in C# with no DTS validation</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 7 - ArelleCsSaver.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Arelle streaming saver in C# with no DTS validation
+ * 
+ * author: Mark V Systems Limited
+ * (c) Copyright 2014 Mark V Systems Limited, All rights reserved.
+ * 
+ */"
+</pre></div></div>
+
+
+<div class="product">
+<span class="title"> Arelle Command Line interface for C#</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 7 - ArelleCmdInterface.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Arelle Command Line interface for C#
+ * 
+ * Copyright 2010-2014 Mark V Systems Limited (as Licensor).
+ * License information: http://www.apache.org/licenses/LICENSE-2.0.html
+ *
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title"> Arelle setup for C#</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 7 - ArielleSetup.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Arelle setup for C#
+ * 
+ * Copyright 2010-2014 Mark V Systems Limited (as Licensor).
+ * License information: http://www.apache.org/licenses/LICENSE-2.0.html
+ * 
+ */"
+</pre></div></div>
+
+<div class="product">
+<span class="title">Modify Registry - a very simple class to read, write, delete and count registry values with C#</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 13 - ModifyRegistry.cs</pre></div>
+<div class = "code">
+<pre>
+"/* *************************************** 
+ *    ModifyRegistry.cs
+ * ---------------------------------------
+ *         a very simple class 
+ *    to read, write, delete and count
+ *       registry values with C#
+ * ---------------------------------------
+ *      if you improve this code 
+ *   please email me your improvement!
+ * ---------------------------------------
+ *         by Francesco Natali
+ *        - fn.varie@libero.it -
+ * ***************************************/"
+
+</pre></div></div>
+
+<div class="product">
+<span class="title">Renderers - A collection of renderers that are used to owner draw a cell in an ObjectListView</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 89 - Renderers.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Renderers - A collection of useful renderers that are used to owner draw a cell in an ObjectListView
+ *
+ * Author: Phillip Piper
+ * Date: 27/09/2008 9:15 AM
+ *
+ * Change log: 
+ * 2013-04-29   JPP  - Fixed bug where Images were not vertically aligned
+ * v2.6
+ * 2012-10-26   JPP  - Hit detection will no longer report check box hits on columns without checkboxes.
+ * 2012-07-13   JPP  - [Breaking change] Added preferedSize parameter to IRenderer.GetEditRectangle().
+ * v2.5.1
+ * 2012-07-14   JPP  - Added CellPadding to various places. Replaced DescribedTaskRenderer.CellPadding.
+ * 2012-07-11   JPP  - Added CellVerticalAlignment to various places allow cell contents to be vertically
+ *                     aligned (rather than always being centered).
+ * v2.5
+ * 2010-08-24   JPP  - CheckBoxRenderer handles hot boxes and correctly vertically centers the box.
+ * 2010-06-23   JPP  - Major rework of HighlightTextRenderer. Now uses TextMatchFilter directly.
+ *                     Draw highlighting underneath text to improve legibility. Works with new
+ *                     TextMatchFilter capabilities.
+ * v2.4
+ * 2009-10-30   JPP  - Plugged possible resource leak by using using() with CreateGraphics()
+ * v2.3
+ * 2009-09-28   JPP  - Added DescribedTaskRenderer
+ * 2009-09-01   JPP  - Correctly handle an ImageRenderer's handling of an aspect that holds
+ *                     the image to be displayed at Byte[].
+ * 2009-08-29   JPP  - Fixed bug where some of a cell's background was not erased. 
+ * 2009-08-15   JPP  - Correctly MeasureText() using the appropriate graphic context
+ *                   - Handle translucent selection setting
+ * v2.2.1
+ * 2009-07-24   JPP  - Try to honour CanWrap setting when GDI rendering text.
+ * 2009-07-11   JPP  - Correctly calculate edit rectangle for subitems of a tree view
+ *                     (previously subitems were indented in the same way as the primary column)
+ * v2.2
+ * 2009-06-06   JPP  - Tweaked text rendering so that column 0 isn't ellipsed unnecessarily.
+ * 2009-05-05   JPP  - Added Unfocused foreground and background colors 
+ *                     (thanks to Christophe Hosten)
+ * 2009-04-21   JPP  - Fixed off-by-1 error when calculating text widths. This caused
+ *                     middle and right aligned columns to always wrap one character
+ *                     when printed using ListViewPrinter (SF#2776634).
+ * 2009-04-11   JPP  - Correctly renderer checkboxes when RowHeight is non-standard
+ * 2009-04-06   JPP  - Allow for item indent when calculating edit rectangle
+ * v2.1
+ * 2009-02-24   JPP  - Work properly with ListViewPrinter again
+ * 2009-01-26   JPP  - AUSTRALIA DAY (why aren't I on holidays!)
+ *                   - Major overhaul of renderers. Now uses IRenderer interface.
+ *                   - ImagesRenderer and FlagsRenderer<T> are now defunct.
+ *                     The names are retained for backward compatibility.
+ * 2009-01-23   JPP  - Align bitmap AND text according to column alignment (previously
+ *                     only text was aligned and bitmap was always to the left).
+ * 2009-01-21   JPP  - Changed to use TextRenderer rather than native GDI routines.
+ * 2009-01-20   JPP  - Draw images directly from image list if possible. 30% faster!
+ *                   - Tweaked some spacings to look more like native ListView
+ *                   - Text highlight for non FullRowSelect is now the right color
+ *                     when the control doesn't have focus.
+ *                   - Commented out experimental animations. Still needs work.
+ * 2009-01-19   JPP  - Changed to draw text using GDI routines. Looks more like
+ *                     native control this way. Set UseGdiTextRendering to false to 
+ *                     revert to previous behavior.
+ * 2009-01-15   JPP  - Draw background correctly when control is disabled
+ *                   - Render checkboxes using CheckBoxRenderer
+ * v2.0.1
+ * 2008-12-29   JPP  - Render text correctly when HideSelection is true.
+ * 2008-12-26   JPP  - BaseRenderer now works correctly in all Views
+ * 2008-12-23   JPP  - Fixed two small bugs in BarRenderer
+ * v2.0
+ * 2008-10-26   JPP  - Don't owner draw when in Design mode
+ * 2008-09-27   JPP  - Separated from ObjectListView.cs
+ * 
+ * Copyright (C) 2006-2012 Phillip Piper
+ * 
+ * TO DO:
+ * - Hit detection on renderers doesn't change the controls standard selection behavior
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+<div class="product">
+<span class="title">Styles - A style is a group of formatting attributes that can be applied to a row or a cell</span>
+<a class="show2" href="#">show license</a>
+<a class="show" href="#">show location</a>
+<div class="licence">
+<pre>
+Line 1 -> 35 - Renderers.cs</pre></div>
+<div class = "code">
+<pre>
+"/*
+ * Styles - A style is a group of formatting attributes that can be applied to a row or a cell
+ *
+ * Author: Phillip Piper
+ * Date: 29/07/2009 23:09
+ *
+ * Change log:
+ * v2.4
+ * 2010-03-23  JPP  - Added HeaderFormatStyle and support
+ * v2.3
+ * 2009-08-15  JPP  - Added Decoration and Overlay properties to HotItemStyle
+ * 2009-07-29  JPP  - Initial version
+ *
+ * To do:
+ * - These should be more generally available. It should be possible to do something like this:
+ *       this.olv.GetItem(i).Style = new ItemStyle();
+ *       this.olv.GetItem(i).GetSubItem(j).Style = new CellStyle();
+ * 
+ * Copyright (C) 2009-2012 Phillip Piper
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * If you wish to use this code in a closed source application, please contact phillip_piper@bigfoot.com.
+ */"
+
+</pre></div></div>
+
+
+</body>
+</html>

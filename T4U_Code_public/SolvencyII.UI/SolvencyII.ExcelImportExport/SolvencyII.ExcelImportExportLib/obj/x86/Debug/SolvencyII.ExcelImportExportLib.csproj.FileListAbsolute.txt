@@ -1,0 +1,137 @@
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\sqlite3.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\aeb_annual_ecb_reporting_third_country_branches.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\aes_annual_ecb_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\afg_annual_financial_stability_reporting_group.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\afs_annual_financial_stability_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\arb_annual_solvency_ii_reporting_third_country_branches.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\arg_annual_solvency_ii_reporting_group.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\ars_annual_solvency_ii_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1g_day_1_solvency_ii_reporting_group.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1s_day_1_solvency_ii_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qeb_quarterly_ecb_reporting_third_country_branches.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qes_quarterly_ecb_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qfg_quarterly_financial_stability_reporting_group.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qfs_quarterly_financial_stability_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrg_quarterly_solvency_ii_reporting_group.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrs_quarterly_solvency_ii_reporting_solo.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\spv_annual_reporting_special_purpose_vehicles.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.ExcelImportExportLib.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.ExcelImportExportLib.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\EntityFramework.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelApi.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\NetOffice.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\OfficeApi.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.Shared.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Metrics.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\VBIDEApi.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.Shared.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Metrics.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\EntityFramework.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelApi.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\NetOffice.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\OfficeApi.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\VBIDEApi.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.ExceptionDialog.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.StatusDlg.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg2.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg3.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.ValidationDialog.resources
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.csproj.GenerateResource.Cache
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\sqlite3.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\aeb_annual_ecb_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\aes_annual_ecb_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\afg_annual_financial_stability_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\afs_annual_financial_stability_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\arb_annual_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\arg_annual_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\ars_annual_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\d1g_day_1_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\d1s_day_1_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qeb_quarterly_ecb_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qes_quarterly_ecb_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qfg_quarterly_financial_stability_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qfs_quarterly_financial_stability_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qrg_quarterly_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\qrs_quarterly_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\BusinessTemplates\spv_annual_reporting_special_purpose_vehicles.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\aeb_annual_ecb_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\aes_annual_ecb_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\afg_annual_financial_stability_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\afs_annual_financial_stability_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\arb_annual_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\arg_annual_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\ars_annual_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1b_day_1_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1g_day_1_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\d1s_day_1_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qeb_quarterly_ecb_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qes_quarterly_ecb_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qfg_quarterly_financial_stability_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qfs_quarterly_financial_stability_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrb_quarterly_solvency_ii_reporting_third_country_branches.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrg_quarterly_solvency_ii_reporting_group.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\qrs_quarterly_solvency_ii_reporting_solo.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Full\spv_annual_reporting_special_purpose_vehicles.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.ExcelImportExportLib.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.ExcelImportExportLib.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelApi.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\NetOffice.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\OfficeApi.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.DBMS.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.Shared.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Domain.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\VBIDEApi.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ObjectListView.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.DBMS.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.DBMS.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.Shared.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.Shared.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Domain.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Domain.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\SolvencyII.Data.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\ExcelApi.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\NetOffice.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\OfficeApi.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\bin\x86\Debug\VBIDEApi.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.csprojResolveAssemblyReference.cache
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.ExceptionDialog.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.StatusDlg.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg2.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg3.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.UI.Dialog.ValidationDialog.resources
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.csproj.GenerateResource.Cache
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.ExcelImportExport\SolvencyII.ExcelImportExportLib\obj\x86\Debug\SolvencyII.ExcelImportExportLib.pdb

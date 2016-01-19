@@ -1,0 +1,20 @@
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.pdb
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\EntityFramework.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Debug\EntityFramework.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\obj\x86\Debug\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\obj\x86\Debug\AT2DPM.DAL.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\x64\SQLite.Interop.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\x86\SQLite.Interop.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.dll.config
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\AT2DPM.DAL.pdb
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\EntityFramework.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\System.Data.SQLite.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\EntityFramework.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\bin\x86\Debug\System.Data.SQLite.xml
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\obj\x86\Debug\AT2DPM.DAL.dll
+C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\obj\x86\Debug\AT2DPM.DAL.pdb

@@ -1,0 +1,2702 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolvencyII.Data.CRT.ETL</name>
+    </assembly>
+    <members>
+        <member name="T:SolvencyII.Data.CRT.ETL.FilteredSQLiteMappingProvider">
+            <summary>
+            SQL mapping rovider that filters them by large dimensions members of instance
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider">
+            <summary>
+            Mapping provder of SQLite database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.IMappingProvider">
+            <summary>
+            Interface of mapping providers
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.getAllMappingHashSet">
+            <summary>
+            Gets all mapping hash set.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.getMappings">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.getMappings(System.String[])">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <param name="tableNames">The table names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.queryMappings(System.String,System.Boolean)">
+            <summary>
+            Queries the mappings.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="withPageColumnKey">if set to <c>true</c> [with page column key].</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.getInstanceTables(System.Int32)">
+            <summary>
+            Gets the instance tables.
+            </summary>
+            <param name="p">The p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IMappingProvider.getAllMappingHashSet(System.Collections.Generic.List{System.String})">
+            <summary>
+            Gets all mapping hash set.
+            </summary>
+            <param name="tableList">The table list.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider"/> class.
+            </summary>
+            <param name="_dataConnector">The _data connector.</param>
+            <exception cref="T:System.ArgumentNullException">No data connector</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider"/> class.
+            </summary>
+            <param name="_dataConnector">The _data connector.</param>
+            <param name="mappingAnalyzer">The mapping analyzer.</param>
+            <exception cref="T:System.ArgumentNullException">No data connector</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getAllMappingHashSet(System.Collections.Generic.List{System.String})">
+            <summary>
+            Gets all mapping hash set.
+            </summary>
+            <param name="mTableIds">The m table ids.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getInstanceTables(System.Int32)">
+            <summary>
+            Gets the instance tables.
+            </summary>
+            <param name="instanceId">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getAllMappingHashSet">
+            <summary>
+            Gets all mapping hash set.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.queryMappings(System.String,System.Boolean)">
+            <summary>
+            Queries the mappings.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="withPageColumnKey">if set to <c>true</c> [with page column key].</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.FormatCodes(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Formats the codes.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getMappings(System.String[])">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <param name="tableNames">The table names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.getMappings">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteMappingProvider.Replicate">
+            <summary>
+            Replicates this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.FilteredSQLiteMappingProvider.#ctor(System.Int32,SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.FilteredSQLiteMappingProvider"/> class.
+            </summary>
+            <param name="InstanceId">The instance identifier.</param>
+            <param name="_dataConnector">The _data connector.</param>
+            <param name="mappingAnalyzer">The mapping analyzer.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.FilteredSQLiteMappingProvider.getAllMappingHashSet(System.Collections.Generic.List{System.String})">
+            <summary>
+            Gets all mapping hash set.
+            </summary>
+            <param name="mTableIds">The m table ids.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.FilteredSQLiteMappingProvider.populateDims">
+            <summary>
+            Populates the dims.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker">
+            <summary>
+            Marks facts that were not mapped in internal ETL
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker.MarkFacts(System.Collections.Generic.HashSet{System.Int32})">
+            <summary>
+            Marks the facts.
+            </summary>
+            <param name="factIDs">The fact i ds.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker.markAsNotMapped(System.Collections.Generic.HashSet{System.Int32})">
+            <summary>
+            Marks as not mapped.
+            </summary>
+            <param name="queryFactIds">The query fact ids.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker.checkWasNotMappedColumn">
+            <summary>
+            Checks the was not mapped column.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.NotMappedFactsMarker.InsertDmessage(System.Int32)">
+            <summary>
+            Inserts the dmessage.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.dMessageCleaner">
+            <summary>
+            Cleans error messages
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dMessageCleaner.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.dMessageCleaner"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dMessageCleaner.CleanDmessage(System.Int32)">
+            <summary>
+            Cleans the dmessage.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlOperations.etlSavingXBRLinstance(System.String,System.Int32)">
+            <summary>
+            Saving XBRl instance
+            </summary>
+            <param name="databasepath"></param>
+            <param name="instanceID"></param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlException">
+            <summary>
+            Exception throw by internal ETL
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.EtlException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.EtlException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DataPointDuplicationException">
+            <summary>
+            Exception indicating data point duplication
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataPointDuplicationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DataPointDuplicationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataPointDuplicationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DataPointDuplicationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector">
+            <summary>
+            Interface of the connection to the data
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.executeNonQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="command">The command.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.executeNonQuery(System.String)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="nonQuery">The non query.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.executeQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.executeQuery(System.String)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.getSchemaTable(System.String)">
+            <summary>
+            Gets the schema table.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.executeReader(System.String)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.createCommand">
+            <summary>
+            Creates the command.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.RollbackTransaction">
+            <summary>
+            Rollbacks the transaction.
+            </summary>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector.DbmsType">
+            <summary>
+            Gets the type of the DBMS.
+            </summary>
+            <value>
+            The type of the DBMS.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DataConnectors.DbmsType">
+            <summary>
+            Type of database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector">
+            <summary>
+            Connector to the SQL database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector"/> class.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.executeNonQuery(System.String)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="nonQuery">The non query.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.executeNonQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="command">The command.</param>
+            <exception cref="T:System.ArgumentException">Command has to be SQLiteCommand</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.executeQuery(System.String)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.executeQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Command has to be SQLiteCommand</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.getSchemaTable(System.Data.IDbCommand)">
+            <summary>
+            Gets the schema table.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Command has to be SqlCommand</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.getSchemaTable(System.String)">
+            <summary>
+            Gets the schema table.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.executeReader(System.String)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.getDbException(System.Exception,System.Data.SQLite.SQLiteCommand)">
+            <summary>
+            Gets the database exception.
+            </summary>
+            <param name="ex">The ex.</param>
+            <param name="comm">The comm.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.createCommand">
+            <summary>
+            Creates the command.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.RollbackTransaction">
+            <summary>
+            Rollbacks the transaction.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.CreateParameter(System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            Creates the parameter.
+            </summary>
+            <param name="comm">The comm.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="paramValue">The parameter value.</param>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.FilePath">
+            <summary>
+            Gets the file path.
+            </summary>
+            <value>
+            The file path.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector.DbmsType">
+            <summary>
+            Gets the type of the DBMS.
+            </summary>
+            <value>
+            The type of the DBMS.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector">
+            <summary>
+            Connector to the MSSQL database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector"/> class.
+            </summary>
+            <param name="connectionsString">The connections string.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.executeNonQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="command">The command.</param>
+            <exception cref="T:System.ArgumentException">Command has to be SqlCommand</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.executeNonQuery(System.String)">
+            <summary>
+            Executes the non query.
+            </summary>
+            <param name="nonQuery">The non query.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.executeQuery(System.Data.IDbCommand)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Command has to be SqlCommand</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.executeQuery(System.String)">
+            <summary>
+            Executes the query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.getSchemaTable(System.String)">
+            <summary>
+            Gets the schema table.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.executeReader(System.String)">
+            <summary>
+            Executes the reader.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.createCommand">
+            <summary>
+            Creates the command.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.RollbackTransaction">
+            <summary>
+            Rollbacks the transaction.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.CreateParameter(System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            Creates the parameter.
+            </summary>
+            <param name="comm">The comm.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="paramValue">The parameter value.</param>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.FilePath">
+            <summary>
+            Gets the file path.
+            </summary>
+            <value>
+            The file path.
+            </value>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.DataConnectors.MSSQLConnector.DbmsType">
+            <summary>
+            Gets the type of the DBMS.
+            </summary>
+            <value>
+            The type of the DBMS.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.IFilinglIndicatorsExtractor">
+            <summary>
+            Interface of fillind indicator extractors
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IFilinglIndicatorsExtractor.getTablesNamesFromFillingIndicators(System.Int32)">
+            <summary>
+            Gets the tables names from filling indicators.
+            </summary>
+            <param name="instnanceId">The instnance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IFilinglIndicatorsExtractor.getTablesNamesFromModule(System.Int32)">
+            <summary>
+            Gets the tables names from module.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IFilinglIndicatorsExtractor.getTablesIDsFromFillingIndicators(System.Int32)">
+            <summary>
+            Gets the tables i ds from filling indicators.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.IFilinglIndicatorsExtractor.getTablesIDsFromModule(System.Int32)">
+            <summary>
+            Gets the tables i ds from module.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.FirstTableNameExractor">
+            <summary>
+            Obsolete table names extractor
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.ITableNamesExtractor">
+            <summary>
+            Interface ogf 
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.ITableNamesExtractor.getTableNames(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Gets the table names.
+            </summary>
+            <param name="potentialTableIds">The potential table ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.ITableNamesExtractor.getTablesCodes(System.Int32[])">
+            <summary>
+            Gets the tables codes.
+            </summary>
+            <param name="tableIDs">The table i ds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.FirstTableNameExractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.FirstTableNameExractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.FirstTableNameExractor.getTableNames(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Gets the table names.
+            </summary>
+            <param name="potentialTableIds">The potential table ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.FirstTableNameExractor.getTablesCodes(System.Int32[])">
+            <summary>
+            Gets the tables codes. Not implemented
+            </summary>
+            <param name="tableIDs">The table i ds.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteFactsNumberReader">
+            <summary>
+            Analyzer of the facts number in dInstance table
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ETLControllers.IFactsNumberReader">
+            <summary>
+            Checks number of facts in instance file.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IFactsNumberReader.GetTablesNumbers">
+            <summary>
+            Gets the tables numbers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor">
+            <summary>
+            Extarctor of filling indicators from SQLite database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTablesNamesFromFillingIndicators(System.Int32)">
+            <summary>
+            Gets the tables names from filling indicators.
+            </summary>
+            <param name="instnanceId">The instnance identifier.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Exception during reading filling indicators for instance  + instnanceId</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getPotentialTableIDsFromFillingIndicators(System.Int32)">
+            <summary>
+            Gets the potential table i ds from filling indicators.
+            </summary>
+            <param name="instnanceId">The instnance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTableNames(System.Collections.Generic.HashSet{System.Int32})">
+            <summary>
+            Gets the table names.
+            </summary>
+            <param name="potentialTableIds">The potential table ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTableNames(System.String[])">
+            <summary>
+            Gets the table names.
+            </summary>
+            <param name="tableNames">The table names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTablesIds(System.Int32)">
+            <summary>
+            Gets the tables ids.
+            </summary>
+            <param name="parentTableOrTemplate">The parent table or template.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTablesNamesFromModule(System.Int32)">
+            <summary>
+            Gets the tables names from module.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Exception during reading modules for instance  + instanceID</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getPotentialTableIDsFromModule(System.Int32)">
+            <summary>
+            Gets the potential table i ds from module.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTablesIDsFromFillingIndicators(System.Int32)">
+            <summary>
+            Gets the tables i ds from filling indicators.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTablesIDsFromModule(System.Int32)">
+            <summary>
+            Gets the tables i ds from module.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteFillIndicatorsExtractor.getTableIDs(System.Collections.Generic.HashSet{System.Int32})">
+            <summary>
+            Gets the table i ds.
+            </summary>
+            <param name="potentialTableIds">The potential table ids.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor">
+            <summary>
+            Tabel names extractor
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor.getTableNames(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Gets the table names.
+            </summary>
+            <param name="potentialTableIds">The potential table ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor.getTablesCodes(System.Int32[])">
+            <summary>
+            Gets the tables codes.
+            </summary>
+            <param name="tableIDs">The table i ds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.TableNamesExtractor.getTablesCodesQuery(System.Int32[])">
+            <summary>
+            Gets the tables codes query.
+            </summary>
+            <param name="tableIDs">The table i ds.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor">
+            <summary>
+            Obsolete implementation of the SQLite query constructor
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor">
+            <summary>
+            Constructor of the queries for internsal ETL
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.constructUpdateQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the update query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.constructInsertQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the insert query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.getInsertCommand(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the insert command.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.constructQueryForDuplication(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Constructs the query for duplication.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.constructQueryForFact(System.Int32,System.String)">
+            <summary>
+            Constructs the query for fact.
+            </summary>
+            <param name="p1">The p1.</param>
+            <param name="p2">The p2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor.getdMessageInsertCommand(SolvencyII.Data.CRT.ETL.DataPointDuplicationException,System.Int32)">
+            <summary>
+            Getds the message insert command.
+            </summary>
+            <param name="ex">The ex.</param>
+            <param name="InstanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.constructUpdateQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the update query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.constructInsertQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the insert query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.getColumnNames(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Gets the column names.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.getColumnValues(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Gets the column values.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.getInsertCommand(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the insert command.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.constructQueryForDuplication(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Constructs the query for duplication.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.constructQueryForFact(System.Int32,System.String)">
+            <summary>
+            Constructs the query for fact.
+            </summary>
+            <param name="p1">The p1.</param>
+            <param name="p2">The p2.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.getdMessageInsertCommand(SolvencyII.Data.CRT.ETL.DataPointDuplicationException)">
+            <summary>
+            Getds the message insert command.
+            </summary>
+            <param name="ex">The ex.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.BasicSqliteQueryConstructor.getdMessageInsertCommand(SolvencyII.Data.CRT.ETL.DataPointDuplicationException,System.Int32)">
+            <summary>
+            Getds the message insert command.
+            </summary>
+            <param name="ex">The ex.</param>
+            <param name="InstanceID">The instance identifier.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor">
+            <summary>
+            Quick query constructor
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.constructUpdateQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the update query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.createUpdateCommandText(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Creates the update command text.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.constructInsertQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the insert query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.createInsertCommandText(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Creates the insert command text.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Unknown type of DB connection</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.createComplexQuery(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Creates the complex query.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Unknown type of DB connection</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.createCommand(System.String,SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Creates the command.
+            </summary>
+            <param name="cmdTxt">The command text.</param>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.getColumnParameters(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Gets the column parameters.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.getColumnNames(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Gets the column names.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.getInsertCommand(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the insert command.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.createParameter(System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            Creates the parameter.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="paraValue">The para value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.constructQueryForDuplication(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Constructs the query for duplication.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.constructQueryForDuplication2(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Constructs the query for duplication2.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.constructQueryForFact(System.Int32,System.String)">
+            <summary>
+            Constructs the query for fact.
+            </summary>
+            <param name="InstanceID">The instance identifier.</param>
+            <param name="dataPointSignature">The data point signature.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.QuickQueryConstructor.getdMessageInsertCommand(SolvencyII.Data.CRT.ETL.DataPointDuplicationException,System.Int32)">
+            <summary>
+            Getds the message insert command.
+            </summary>
+            <param name="ex">The ex.</param>
+            <param name="InstanceID">The instance identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteDataPointsReader">
+            <summary>
+            Reader of SQL database data points
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteDataPointsReader.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteDataPointsReader"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteDataPointsReader.SaveAllDataPoints(System.String)">
+            <summary>
+            Saves all data points.
+            </summary>
+            <param name="dbFilePath">The database file path.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver">
+            <summary>
+            Table mapping resolver from SQLite database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ITableMappingResolver">
+            <summary>
+            Interface of mapping resolver
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ITableMappingResolver.resolve(SolvencyII.Data.CRT.ETL.Model.CrtMapping)">
+            <summary>
+            Resolves the specified maping.
+            </summary>
+            <param name="maping">The maping.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <exception cref="T:System.ArgumentNullException">No connector specified</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver.resolve(SolvencyII.Data.CRT.ETL.Model.CrtMapping)">
+            <summary>
+            Resolves the specified maping.
+            </summary>
+            <param name="maping">The maping.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver.getTablesForDataPointAnalyzer">
+            <summary>
+            Gets the tables for data point analyzer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver.getTablesForDimByDimAnalyzer">
+            <summary>
+            Gets the tables for dim by dim analyzer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteTableMappingResolver.tableIDs(System.String)">
+            <summary>
+            Tables the i ds.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.ParallelFactsByTableEtlPerfomer">
+            <summary>
+            facts by table performer with parallel approach.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.IETLPerformer">
+            <summary>
+            Interface of the ETLPerformer, which provide functionality of management of processing of the ETL
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.IETLPerformer.PerformEtl(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <param name="cacheSize">Size of the cache.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.ParallelFactsByTableEtlPerfomer.PerformEtl(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <param name="cacheSize">Size of the cache.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ETLControllers.FactsNumber">
+            <summary>
+            Number of facts that appear in żarticular instance in single table
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.SteppingEtlPerformer">
+            <summary>
+            Reads facts and maps without any split
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.SteppingEtlPerformer.PerformEtl(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <param name="cacheSize">Size of the cache.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.SteppingEtlPerformer.performEtlInParts(System.Int32,System.Int32,System.Int32,System.Int32,SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader)">
+            <summary>
+            Performs the etl in parts.
+            </summary>
+            <param name="cacheSize">Size of the cache.</param>
+            <param name="totalFactsNumber">The total facts number.</param>
+            <param name="maxFactId">The maximum fact identifier.</param>
+            <param name="minfactId">The minfact identifier.</param>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.TableByFactEtlPerformer">
+            <summary>
+            ETl performer that performs regular stepping ETL but for each table seperately.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.TableByFactEtlPerformer.PerformEtl(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <param name="cacheSize">Size of the cache.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.FactsByTableEtlPerfomer">
+            <summary>
+            ETL performer that processe set of facts for table seperately. 
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.FactsByTableEtlPerfomer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.EtlPerfomers.FactsByTableEtlPerfomer"/> class.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.EtlPerfomers.FactsByTableEtlPerfomer.PerformEtl(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="_extractor">The _extractor.</param>
+            <param name="_transformer">The _transformer.</param>
+            <param name="_loader">The _loader.</param>
+            <param name="cacheSize">Size of the cache.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer">
+            <summary>
+            Mapping analyzer that stores data points in seperate database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer">
+            <summary>
+            Interrface of mapping analyzers
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="hashSet">The hash set.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.IMappingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="generateDataPoints">if set to <c>true</c> [generate data points].</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">No fact</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.getMappingsForColumnMapping(SolvencyII.Data.CRT.ETL.Model.ColumnMapping,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Gets the mappings for column mapping.
+            </summary>
+            <param name="colMap">The col map.</param>
+            <param name="dimCodes">The dim codes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.getDataPointFromDatabase(System.String,System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping}@)">
+            <summary>
+            Gets the data point from database.
+            </summary>
+            <param name="dataPointCode">The data point code.</param>
+            <param name="colMaps">The col maps.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.parseColMaps(System.String)">
+            <summary>
+            Parses the col maps.
+            </summary>
+            <param name="tabCols">The tab cols.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="mappings">The mappings.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointDbMappingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer">
+            <summary>
+            Analyzer of mapping with indexed data points
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">No fact</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="mappings">The mappings.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.getColumnMappings(System.String)">
+            <summary>
+            Gets the column mappings.
+            </summary>
+            <param name="DYN_TABLE_NAME">Name of the dy n_ tabl e_.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.mapColumnMapings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.Collections.Generic.List{System.String})">
+            <summary>
+            Maps the column mapings.
+            </summary>
+            <param name="tableMappings">The table mappings.</param>
+            <param name="columnsNames">The columns names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.combineColumnMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping},System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.ColumnMapping})">
+            <summary>
+            Combines the column mappings.
+            </summary>
+            <param name="factColMappings">The fact col mappings.</param>
+            <param name="contextColMappings">The context col mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.getColumnMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the column mappings.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">
+            All mappings should be for one column
+            or
+            All mappings should be for one column
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.createColumnMapping(SolvencyII.Data.CRT.ETL.Model.CrtMapping)">
+            <summary>
+            Creates the column mapping.
+            </summary>
+            <param name="map">The map.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.createColumnMapping(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Creates the column mapping.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DataPointMappingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader">
+            <summary>
+            Loads data points to sqldatabase
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader"/> class.
+            </summary>
+            <param name="connector">The connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader.LoadDataPoints(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping}})">
+            <summary>
+            Loads the data points.
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader.constructInsert(System.Int32,System.String,System.String)">
+            <summary>
+            Constructs the insert.
+            </summary>
+            <param name="hash">The hash.</param>
+            <param name="dpCode">The dp code.</param>
+            <param name="tabCols">The tab cols.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.SQLiteDataPointsLoader.getTabColsString(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping})">
+            <summary>
+            Gets the tab cols string.
+            </summary>
+            <param name="list">The list.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer">
+            <summary>
+            mapping analyzer based on dimension by dimension analysis
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.findMappingsByDimCodesHashSet(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Finds the mappings by dim codes hash set.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.findMappingsThatFallowRequiredMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping},SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Finds the mappings that fallow required mappings.
+            </summary>
+            <param name="fMapings">The f mapings.</param>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.getMapingsFortables(System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Gets the mapings fortables.
+            </summary>
+            <param name="sourceMappings">The source mappings.</param>
+            <param name="tablesNames">The tables names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="mappings">The mappings.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.DimByDimMapingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor">
+            <summary>
+            Extractor of the CRT data rows from SQL database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="instanceId">The instance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.extractInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.String[])">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <param name="tableNames">The table names.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Exception while reading data from table  + tableName</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getTableInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.Data.DataTable)">
+            <summary>
+            Gets the table inserts.
+            </summary>
+            <param name="tableMappings">The table mappings.</param>
+            <param name="dt">The dt.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getContextMappings(System.Data.DataRow,System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the context mappings.
+            </summary>
+            <param name="dr">The dr.</param>
+            <param name="allContextMapping">All context mapping.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getInsert(System.Data.DataRow,SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the insert.
+            </summary>
+            <param name="dr">The dr.</param>
+            <param name="rowId">The row identifier.</param>
+            <param name="factMapings">The fact mapings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getRowIdentification(System.Data.DataRow,System.Collections.Generic.Queue{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the row identification.
+            </summary>
+            <param name="dr">The dr.</param>
+            <param name="contextMapings">The context mapings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">No data row</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getTableMappings(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.String)">
+            <summary>
+            Gets the table mappings.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <param name="tableName">Name of the table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.constructQuery(System.String)">
+            <summary>
+            Constructs the query.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.constructQuery(System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Constructs the query.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <param name="rowIds">The row ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.constructColumnNames(System.Collections.Generic.Dictionary{System.String,System.Boolean})">
+            <summary>
+            Constructs the column names.
+            </summary>
+            <param name="colToCast">The col to cast.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.getTableColumns(System.String)">
+            <summary>
+            Gets the table columns.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction.SQLiteCrtRowExtractor.extractInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <param name="mapings">The mapings.</param>
+            <param name="tableName">Name of the table.</param>
+            <param name="rowIds">The row ids.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer">
+            <summary>
+            Transforms CRt rows into dFacts
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer"/> class.
+            </summary>
+            <param name="_dataConnector">The _data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.transformInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Transforms the inserts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.transformInsert(SolvencyII.Data.CRT.ETL.Model.CrtRow)">
+            <summary>
+            Transforms the insert.
+            </summary>
+            <param name="insert">The insert.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            No context mappings
+            or
+            No facts mappings
+            </exception>
+            <exception cref="T:System.NullReferenceException">Could not find metric code</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.getDataType(SolvencyII.Data.CRT.ETL.Model.CrtRow,System.String)">
+            <summary>
+            Gets the type of the data.
+            </summary>
+            <param name="insert">The insert.</param>
+            <param name="rcColumnName">Name of the rc column.</param>
+            <returns></returns>
+            <exception cref="T:System.NullReferenceException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.getInstanceUnit(SolvencyII.Data.CRT.ETL.Model.CrtRow)">
+            <summary>
+            Gets the instance unit.
+            </summary>
+            <param name="insert">The insert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.constructDpCode(System.String,SolvencyII.Data.CRT.ETL.Model.CrtRow,System.String)">
+            <summary>
+            Constructs the dp code.
+            </summary>
+            <param name="metCode">The met code.</param>
+            <param name="insert">The insert.</param>
+            <param name="dynColumnaName">Name of the dyn columna.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.constructDimCodeForMapping(SolvencyII.Data.CRT.ETL.Model.CrtMapping,SolvencyII.Data.CRT.ETL.Model.CrtRow)">
+            <summary>
+            Constructs the dim code for mapping.
+            </summary>
+            <param name="map">The map.</param>
+            <param name="insert">The insert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.DBcontrollers.SQLiteCrtRowsTransformer.getMetricCode(System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the metric code.
+            </summary>
+            <param name="mapings">The mapings.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.SQLiteTransformer">
+            <summary>
+            Transformer of SQL ite facts
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer">
+            <summary>
+            Transofmree of dFacts and CRT rows
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer.transformFacts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.dFact})">
+            <summary>
+            Transforms the facts.
+            </summary>
+            <param name="facts">The facts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer.transformInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Transforms the inserts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer.loadMappings">
+            <summary>
+            Loads the mappings.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer.getMapingProvider">
+            <summary>
+            Gets the maping provider.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteTransformer"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,SolvencyII.Data.CRT.ETL.SQLiteMappingProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteTransformer"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="mappingProvider">The mapping provider.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.transformFacts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.dFact})">
+            <summary>
+            Transforms the facts.
+            </summary>
+            <param name="facts">The facts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.createInserts(SolvencyII.Data.CRT.ETL.Model.dFact,System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Creates the inserts.
+            </summary>
+            <param name="fact">The fact.</param>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.createInsert(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,SolvencyII.Data.CRT.ETL.Model.dFact,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.String)">
+            <summary>
+            Creates the insert.
+            </summary>
+            <param name="rowIdentification">The row identification.</param>
+            <param name="fact">The fact.</param>
+            <param name="tableMappings">The table mappings.</param>
+            <param name="tableName">Name of the table.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.getRowIndetification(System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtMapping},SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the row indetification.
+            </summary>
+            <param name="tableMappings">The table mappings.</param>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.getValueOfDimension(SolvencyII.Data.CRT.ETL.Model.dFact,System.String)">
+            <summary>
+            Gets the value of dimension.
+            </summary>
+            <param name="fact">The fact.</param>
+            <param name="dimCode">The dim code.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.getDimension(System.String)">
+            <summary>
+            Gets the dimension.
+            </summary>
+            <param name="dimCode">The dim code.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">no dim code</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.countPageColumns(System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Counts the page columns.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.getMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.transformInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Transforms the inserts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.loadMappings">
+            <summary>
+            Loads the mappings.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteTransformer.getMapingProvider">
+            <summary>
+            Gets the maping provider.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.SQLiteTransformer.NotMappedFctIds">
+            <summary>
+            Gets the not mapped FCT ids.
+            </summary>
+            <value>
+            The not mapped FCT ids.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer">
+            <summary>
+            mapping analyzer that analyzes wth both (data point and dimension by dimension approach)
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer.#ctor(SolvencyII.Data.CRT.ETL.ITableMappingResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer"/> class.
+            </summary>
+            <param name="tableMappingResolver">The table mapping resolver.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <exception cref="T:System.NullReferenceException">No mappings</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer.setMappingsForAnalyzers">
+            <summary>
+            Sets the mappings for analyzers.
+            </summary>
+            <exception cref="T:System.ApplicationException">
+            Mapping not recognized
+            or
+            Mapping not recognized
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.HybridMappingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.HowHandleEnum">
+            <summary>
+            Enumenariotn of hadning of table
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ProgressHandler">
+            <summary>
+            Clas managing communitation of the ETL progress
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ProgressHandler.EtlProgress(System.Int32,System.Int32,System.String)">
+            <summary>
+            Etls the progress.
+            </summary>
+            <param name="current">The current.</param>
+            <param name="total">The total.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ProgressHandler.EtlError(System.Exception)">
+            <summary>
+            Etls the error.
+            </summary>
+            <param name="ex">The exception.</param>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.EtlGlobals">
+            <summary>
+            Global string variables of internal ETL
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer">
+            <summary>
+            Data point mapping analyzer with highest performance - in development
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer.getFactMappings(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the fact mappings.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="hashSet">The hash set.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer.populateDictionary">
+            <summary>
+            Populates the dictionary.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer.getColumnMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the column mappings.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">
+            All mappings should be for one column
+            or
+            All mappings should be for one column
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickestDataPointMappingAnalyzer.CleanMappings">
+            <summary>
+            Cleans the mappings.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer">
+            <summary>
+            Data point moint mapping analyzer woith enhanced performance
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.SetMappingsSet(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Sets the mappings set.
+            </summary>
+            <param name="mappings">The mappings.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.populateDictionary">
+            <summary>
+            Populates the dictionary.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.getColumnMappings(System.String)">
+            <summary>
+            Gets the column mappings.
+            </summary>
+            <param name="DYN_TABLE_NAME">Name of the dy n_ tabl e_.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.mapColumnMapings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping},System.Collections.Generic.List{System.String})">
+            <summary>
+            Maps the column mapings.
+            </summary>
+            <param name="tableMappings">The table mappings.</param>
+            <param name="columnsNames">The columns names.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.combineColumnMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping},System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.ColumnMapping})">
+            <summary>
+            Combines the column mappings.
+            </summary>
+            <param name="factColMappings">The fact col mappings.</param>
+            <param name="contextColMappings">The context col mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.getColumnMappings(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Gets the column mappings.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">
+            All mappings should be for one column
+            or
+            All mappings should be for one column
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.createColumnMapping(SolvencyII.Data.CRT.ETL.Model.CrtMapping)">
+            <summary>
+            Creates the column mapping.
+            </summary>
+            <param name="map">The map.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.MappingControllers.QuickDataPointMappingAnalyzer.createColumnMapping(System.Collections.Generic.List{SolvencyII.Data.CRT.ETL.Model.CrtMapping})">
+            <summary>
+            Creates the column mapping.
+            </summary>
+            <param name="mappings">The mappings.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.ColumnMapping">
+            <summary>
+            Mapping of the column with crt mapping
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.ColumnMapping.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.ColumnMapping"/> class.
+            </summary>
+            <param name="dynTableName">Name of the dyn table.</param>
+            <param name="dyntableColumnName">Name of the dyntable column.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.ColumnMapping.#ctor(SolvencyII.Data.CRT.ETL.Model.ColumnMapping)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.ColumnMapping"/> class.
+            </summary>
+            <param name="factColMaps">The fact col maps.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.ColumnMapping.getMetricMapping">
+            <summary>
+            Gets the metric mapping.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.ColumnMapping.Mappings">
+            <summary>
+            Gets or sets the mappings.
+            </summary>
+            <value>
+            The mappings.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.ColumnMapping.DataPointCode">
+            <summary>
+            Gets the data point code.
+            </summary>
+            <value>
+            The data point code.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.CrtRow">
+            <summary>
+            Represnets single ro of valus in single CRt table row
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtRow.#ctor(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.CrtRow"/> class.
+            </summary>
+            <param name="rowIdentification">The row identification.</param>
+            <param name="rcColumnsValues">The rc columns values.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtRow.getColStringValue(System.String)">
+            <summary>
+            Gets the col string value.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification">
+            <summary>
+            Identification of CRT row based on context column
+            </summary>
+        </member>
+        <member name="F:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification.PK_ID">
+            <summary>
+            The p k_ identifier
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification.#ctor(System.String,System.Int32,System.Collections.Specialized.OrderedDictionary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification"/> class.
+            </summary>
+            <param name="TABLE_NAME">Name of the tabl e_.</param>
+            <param name="INSTANCE">The instance.</param>
+            <param name="contextColumnsValues">The context columns values.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/>, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification.contextColumnsValues">
+            <summary>
+            Gets the context columns values.
+            </summary>
+            <value>
+            The context columns values.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.SQLiteLoader">
+            <summary>
+            Loads facts to the SQL database
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader">
+            <summary>
+            Loads dfacts and CRT rows into database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.loadInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Loads the inserts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.loadFacts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.dFact})">
+            <summary>
+            Loads the facts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.CleanDFacts(System.Int32)">
+            <summary>
+            Cleans the d facts.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.ILoader.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteLoader"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,SolvencyII.Data.CRT.ETL.DBcontrollers.Loading.IQueryConstructor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteLoader"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="queryConstructor">The query constructor.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.getConnString(System.String)">
+            <summary>
+            Gets the connection string.
+            </summary>
+            <param name="pfilePath">The pfile path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.loadInserts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Loads the inserts.
+            </summary>
+            <param name="inserts">The inserts.</param>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.constructUpdateCommand(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the update command.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.constructInsertCommand(SolvencyII.Data.CRT.ETL.Model.CrtRowIdentification,System.Collections.Generic.IEnumerable{SolvencyII.Data.CRT.ETL.Model.CrtRow})">
+            <summary>
+            Constructs the insert command.
+            </summary>
+            <param name="ri">The ri.</param>
+            <param name="inserts">The inserts.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.loadFacts(System.Collections.Generic.HashSet{SolvencyII.Data.CRT.ETL.Model.dFact})">
+            <summary>
+            Loads the facts.
+            </summary>
+            <param name="facts">The facts.</param>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.checkDuplication(SolvencyII.Data.CRT.ETL.Model.dFact,System.Exception)">
+            <summary>
+            Checks the duplication.
+            </summary>
+            <param name="fact">The fact.</param>
+            <param name="ex">The ex.</param>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.serilizeTodMessages(SolvencyII.Data.CRT.ETL.DataPointDuplicationException,SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Serilizes the tod messages.
+            </summary>
+            <param name="ex">The ex.</param>
+            <param name="fact">The fact.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.getValueColumn(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the value column.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.getInsertQuery(SolvencyII.Data.CRT.ETL.Model.dFact)">
+            <summary>
+            Gets the insert query.
+            </summary>
+            <param name="fact">The fact.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.openConnection">
+            <summary>
+            Opens the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.closeConnection">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.CleanDFacts(System.Int32)">
+            <summary>
+            Cleans the d facts.
+            </summary>
+            <param name="instanceID">The instance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteLoader.SetMaxColNumber">
+            <summary>
+            Sets the maximum col number.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.dFact2RelationalETL">
+            <summary>
+            Extracts data from dfact table, transforms and loads to CRT tables.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.IEtlEngine">
+            <summary>
+            Interface of internal ETL
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dFact2RelationalETL.#ctor(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.dFact2RelationalETL"/> class.
+            </summary>
+            <param name="extractor">The extractor.</param>
+            <param name="loader">The loader.</param>
+            <param name="transformer">The transformer.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Null extractor
+            or
+            Null loader
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dFact2RelationalETL.#ctor(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.EtlPerfomers.IETLPerformer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.dFact2RelationalETL"/> class.
+            </summary>
+            <param name="extractor">The extractor.</param>
+            <param name="loader">The loader.</param>
+            <param name="transformer">The transformer.</param>
+            <param name="etlPerfomer">The etl perfomer.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Null extractor
+            or
+            Null loader
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dFact2RelationalETL.PerformEtl(System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="cacheSize">Size of the cache.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.dFact2RelationalETL.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor">
+            <summary>
+            Extracts dfacts and CRT rows fomr database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.exctractFacts">
+            <summary>
+            Exctracts the facts.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.extractInserts">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.getFactsNumber">
+            <summary>
+            Gets the facts number.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.getTotalFactsNumber(System.Int32@,System.Int32@)">
+            <summary>
+            Gets the total facts number.
+            </summary>
+            <param name="maxFactId">The maximum fact identifier.</param>
+            <param name="minfactId">The minfact identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.getFactsNumber(System.Int32@,System.Int32@)">
+            <summary>
+            Gets the facts number.
+            </summary>
+            <param name="maxFactId">The maximum fact identifier.</param>
+            <param name="minfactId">The minfact identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.exctractFacts(System.Int32,System.Int32)">
+            <summary>
+            Exctracts the facts.
+            </summary>
+            <param name="minfactId">The minfact identifier.</param>
+            <param name="p">The p.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.checkAndAddFactIdColumn">
+            <summary>
+            Checks the and add fact identifier column.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.getInstnaceId">
+            <summary>
+            Gets the instnace identifier.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor.extractInserts(System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <param name="rowIds">The row ids.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.dFact">
+            <summary>
+            Represents single row in dFact table
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.#ctor(System.Int32,System.String,System.Nullable{System.DateTime},System.Nullable{System.Boolean},System.Nullable{System.Decimal},System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.dFact"/> class.
+            </summary>
+            <param name="FactId">The fact identifier.</param>
+            <param name="textValue">The text value.</param>
+            <param name="dateTimeValue">The date time value.</param>
+            <param name="boolValue">The bool value.</param>
+            <param name="numericValue">The numeric value.</param>
+            <param name="DataPointSignature">The data point signature.</param>
+            <param name="DataPointSignatureWithValuesForWildcards">The data point signature with values for wildcards.</param>
+            <param name="istanceId">The istance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.#ctor(System.Int32,System.String,System.Int32,System.Object,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.dFact"/> class.
+            </summary>
+            <param name="FactId">The fact identifier.</param>
+            <param name="DataPointSignature">The data point signature.</param>
+            <param name="istanceId">The istance identifier.</param>
+            <param name="value">The value.</param>
+            <param name="pUnit">The p unit.</param>
+            <param name="dataType">Type of the data.</param>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">No value was provided for fact  + dFactId == null ?  : dFactId.ToString()</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.#ctor(System.Int32,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.dFact"/> class.
+            </summary>
+            <param name="FactId">The fact identifier.</param>
+            <param name="DataPointSignature">The data point signature.</param>
+            <param name="istanceId">The istance identifier.</param>
+            <param name="value">The value.</param>
+            <param name="pUnit">The p unit.</param>
+            <param name="dataType">Type of the data.</param>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">No value was provided for fact  + dFactId == null ?  : dFactId.ToString()</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setUnit(System.String)">
+            <summary>
+            Sets the unit.
+            </summary>
+            <param name="pUnit">The p unit.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setValue(System.Object,System.String)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="dataType">Type of the data.</param>
+            <exception cref="T:System.ArgumentException">
+            Not monetary fact value
+            or
+            Not monetary fact value
+            or
+            Not string fact value
+            or
+            Not percentage fact value
+            or
+            Not boolean fact value
+            or
+            Not percentage fact value
+            or
+            Not string fact value
+            </exception>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">
+            Not date fact value
+            or
+            Not date fact value
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setNumericDecimal">
+            <summary>
+            Sets the numeric decimal.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setMonetaryDecimal">
+            <summary>
+            Sets the monetary decimal.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setValue(System.String,System.String)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="dataType">Type of the data.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.setValue(System.String)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.mapDimCodes(System.String,System.String)">
+            <summary>
+            Maps the dim codes.
+            </summary>
+            <param name="DataPointSignature">The data point signature.</param>
+            <param name="DataPointSignatureWithValuesForWildcards">The data point signature with values for wildcards.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.parseDimCodes(System.String)">
+            <summary>
+            Parses the dim codes.
+            </summary>
+            <param name="DataPointSignature">The data point signature.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.getStringValue">
+            <summary>
+            Gets the string value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.dFact.getValue">
+            <summary>
+            Gets the value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.unit">
+            <summary>
+            Gets or sets the unit.
+            </summary>
+            <value>
+            The unit.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.decimals">
+            <summary>
+            Gets or sets the decimals.
+            </summary>
+            <value>
+            The decimals.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.numberFormatInfo">
+            <summary>
+            Gets the number format information.
+            </summary>
+            <value>
+            The number format information.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.dateTimeFormat">
+            <summary>
+            Gets the date time format.
+            </summary>
+            <value>
+            The date time format.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.DimCodes">
+            <summary>
+            Gets the dim codes.
+            </summary>
+            <value>
+            The dim codes.
+            </value>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.dFact.DimCodesNumber">
+            <summary>
+            Gets the dim codes number.
+            </summary>
+            <value>
+            The dim codes number.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.CrtMapping">
+            <summary>
+            Represents single row in MAPPING table in T4U DB
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.CrtMapping.GetTabularLocation">
+            <summary>
+            Gets the tabular location.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Model.CrtMapping.isPageColumn">
+            <summary>
+            Gets a value indicating whether this instance is page column.
+            </summary>
+            <value>
+            <c>true</c> if this instance is page column; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Model.ColumnTableLocation">
+            <summary>
+            Table location of the colums
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Model.ColumnTableLocation.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Model.ColumnTableLocation"/> class.
+            </summary>
+            <param name="DYN_TABLE_NAME">Name of the dy n_ tabl e_.</param>
+            <param name="DYN_TAB_COLUMN_NAME">Name of the dy n_ ta b_ colum n_.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.Relational2dFactETL">
+            <summary>
+            Extracts from CRT tables, transforms and loads to the dFact table
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Relational2dFactETL.#ctor(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Relational2dFactETL"/> class.
+            </summary>
+            <param name="extractor">The extractor.</param>
+            <param name="loader">The loader.</param>
+            <param name="transformer">The transformer.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Null extractor
+            or
+            Null loader
+            or
+            Null transformer
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Relational2dFactETL.#ctor(SolvencyII.Data.CRT.ETL.ETLControllers.IExtractor,SolvencyII.Data.CRT.ETL.ETLControllers.ILoader,SolvencyII.Data.CRT.ETL.ETLControllers.ITransformer,SolvencyII.Data.CRT.ETL.ETLControllers.IFactsNumberReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.Relational2dFactETL"/> class.
+            </summary>
+            <param name="extractor">The extractor.</param>
+            <param name="loader">The loader.</param>
+            <param name="transformer">The transformer.</param>
+            <param name="fnumReader">The fnum reader.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Null extractor
+            or
+            Null loader
+            or
+            Null transformer
+            </exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Relational2dFactETL.PerformEtl(System.Int32)">
+            <summary>
+            Performs the etl.
+            </summary>
+            <param name="cacheSize">Size of the cache.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.Relational2dFactETL.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Relational2dFactETL.IExtractor">
+            <summary>
+            Gets the i extractor.
+            </summary>
+            <value>
+            The i extractor.
+            </value>
+            <exception cref="T:System.NullReferenceException">Null extractor</exception>
+        </member>
+        <member name="P:SolvencyII.Data.CRT.ETL.Relational2dFactETL.ILoader">
+            <summary>
+            Gets the i loader.
+            </summary>
+            <value>
+            The i loader.
+            </value>
+            <exception cref="T:System.NullReferenceException">Null loader</exception>
+        </member>
+        <member name="T:SolvencyII.Data.CRT.ETL.SQLiteExtractor">
+            <summary>
+            Extractor of facts and CRT rows from SQLite database
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="instanceId">The instance identifier.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,System.Int32,SolvencyII.Data.CRT.ETL.SQLiteMappingProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="instanceId">The instance identifier.</param>
+            <param name="mappingProvider">The mapping provider.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.IDataConnector,System.Int32,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="instanceId">The instance identifier.</param>
+            <param name="tableNames">The table names.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.SetTableNames(System.String[])">
+            <summary>
+            Sets the table names. Not implemneted for this extractor.
+            </summary>
+            <param name="tableNames">The table names.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.#ctor(SolvencyII.Data.CRT.ETL.DataConnectors.SQLiteConnector,System.Int32,System.String[],SolvencyII.Data.CRT.ETL.SQLiteMappingProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SolvencyII.Data.CRT.ETL.SQLiteExtractor"/> class.
+            </summary>
+            <param name="dataConnector">The data connector.</param>
+            <param name="instanceId">The instance identifier.</param>
+            <param name="tableNames">The table names.</param>
+            <param name="mappingProvider">The mapping provider.</param>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.exctractFacts">
+            <summary>
+            Exctracts the facts.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.extractFactsWithReader">
+            <summary>
+            Extracts the facts with reader.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.extractFactsWithReader(System.String)">
+            <summary>
+            Extracts the facts with reader.
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+            <exception cref="T:SolvencyII.Data.CRT.ETL.EtlException">Exception while mapping dFact</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.checkAndAddFactIdColumn">
+            <summary>
+            Checks the and add fact identifier column.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.MapFact(System.Int32,System.Data.IDataReader)">
+            <summary>
+            Maps the fact.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="rdr">The RDR.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.getFactsNumber">
+            <summary>
+            Gets the facts number.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.extractInserts">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">No SQLite inserts extractor</exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.loadTableNamesFromModule">
+            <summary>
+            Loads the table names from module.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.loadTableNamesFromFillingIndicators">
+            <summary>
+            Loads the table names from filling indicators.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.Cancel">
+            <summary>
+            Cancels this instance.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.getTotalFactsNumber(System.Int32@,System.Int32@)">
+            <summary>
+            Gets the total facts number.
+            </summary>
+            <param name="maxFactId">The maximum fact identifier.</param>
+            <param name="minfactId">The minfact identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.exctractFacts(System.Int32,System.Int32)">
+            <summary>
+            Exctracts the facts.
+            </summary>
+            <param name="minfactId">The minfact identifier.</param>
+            <param name="maxfactId">The maxfact identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.getInstnaceId">
+            <summary>
+            Gets the instnace identifier.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.getFactsNumber(System.Int32@,System.Int32@)">
+            <summary>
+            Gets the facts number.
+            </summary>
+            <param name="maxFactId">The maximum fact identifier.</param>
+            <param name="minfactId">The minfact identifier.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:SolvencyII.Data.CRT.ETL.SQLiteExtractor.extractInserts(System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Extracts the inserts.
+            </summary>
+            <param name="tableName">Name of the table.</param>
+            <param name="rowIds">The row ids.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">No SQLite inserts extractor</exception>
+        </member>
+    </members>
+</doc>

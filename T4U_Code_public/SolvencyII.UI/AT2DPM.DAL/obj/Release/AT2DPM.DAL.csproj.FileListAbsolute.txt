@@ -1,0 +1,7 @@
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\bin\Release\at2dpmconfig.xml
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\bin\Release\x64\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\bin\Release\x86\SQLite.Interop.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\bin\Release\AT2DPM.DAL.dll.config
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\bin\Release\AT2DPM.DAL.dll
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\obj\Release\AT2DPM.DAL.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\obj\Release\AT2DPM.DAL.dll

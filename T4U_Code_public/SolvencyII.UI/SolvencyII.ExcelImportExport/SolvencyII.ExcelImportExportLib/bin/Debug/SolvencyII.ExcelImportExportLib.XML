@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolvencyII.ExcelImportExportLib</name>
+    </assembly>
+    <members>
+        <member name="P:SolvencyII.ExcelImportExportLib.Exceptions.T4UExcelImportExportException.ExcelAddress">
+            <summary>
+            Excel range address where error occured
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.InvokeExcel.OpenMicrosoftExcel(System.String)">
+            <summary>
+            Open specified word document.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.InvokeExcel.DecryptFile(System.String,System.String,System.String)">
+            <summary>   
+            Decrypts the input file
+            </summary>   
+            <param name="inputFile">input file name</param>   
+            <param name="outputFile">output file name</param>  
+            <param name="skey">Key to decrypt</param> 
+            
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.ExceptionDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.ExceptionDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.ExceptionDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.StatusDlg.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.StatusDlg.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.StatusDlg.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg3.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg3.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.TablesListDlg3.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SolvencyII.ExcelImportExportLib.UI.Dialog.ValidationDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.ValidationDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SolvencyII.ExcelImportExportLib.UI.Dialog.ValidationDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

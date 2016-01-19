@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{801FA2EA-C4D8-496A-BC96-E1272CF6502A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolvencyII.Domain</RootNamespace>
+    <AssemblyName>SolvencyII.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\SolvencyII.Domain.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|AnyCPU' ">
+    <OutputPath>bin\PreparatoryRelease\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\PreparatoryDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|AnyCPU'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|x86'">
+    <OutputPath>bin\x86\PreparatoryRelease\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\PreparatoryDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x86'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x86'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|x64'">
+    <OutputPath>bin\x64\PreparatoryRelease\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\PreparatoryDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x64'">
+    <OutputPath>bin\x64\DebugX86\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x64'">
+    <OutputPath>bin\x64\PreparatoryDebugX86\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <OutputPath>bin\x86\Test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x64'">
+    <OutputPath>bin\x64\Test\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AutoIncrementAttribute.cs" />
+    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Comparators\CompareAxisOrdinateControls.cs" />
+    <Compile Include="Comparators\CompareOpenAxisOrdinateControls.cs" />
+    <Compile Include="Constants\ConstantsForDesigner.cs" />
+    <Compile Include="Conversions\PercentageConvertor.cs" />
+    <Compile Include="Entities\CellKey.cs" />
+    <Compile Include="Entities\CellProperties.cs" />
+    <Compile Include="Entities\ComboHierarchy.cs" />
+    <Compile Include="Entities\ComboTag.cs" />
+    <Compile Include="Entities\DimXbrlCode.cs" />
+    <Compile Include="Entities\Instance.cs" />
+    <Compile Include="Entities\NPageData.cs" />
+    <Compile Include="Entities\OpenComboItem.cs" />
+    <Compile Include="Entities\OpenTableDataRow2.cs" />
+    <Compile Include="Entities\OpenColInfo2.cs" />
+    <Compile Include="Entities\PocoColInfo.cs" />
+    <Compile Include="Entities\RcBusinessCodeMapping.cs" />
+    <Compile Include="Entities\SingleString.cs" />
+    <Compile Include="Entities\Tables\aApplication.cs" />
+    <Compile Include="Entities\Tables\dAvailableTable.cs" />
+    <Compile Include="Entities\Tables\dFact.cs" />
+    <Compile Include="Entities\Tables\dFilingIndicator.cs" />
+    <Compile Include="Entities\Tables\dInstance.cs" />
+    <Compile Include="Entities\Tables\dProcessingContext.cs" />
+    <Compile Include="Entities\Tables\dProcessingFact.cs" />
+    <Compile Include="Entities\Tables\MAPPING.cs" />
+    <Compile Include="Entities\Tables\mAxis.cs" />
+    <Compile Include="Entities\Tables\mAxisOrdinate.cs" />
+    <Compile Include="Entities\Tables\mBusinessTemplateOrTable.cs" />
+    <Compile Include="Entities\Tables\mConcept.cs" />
+    <Compile Include="Entities\Tables\mConceptTranslation.cs" />
+    <Compile Include="Entities\Tables\mConceptualModule.cs" />
+    <Compile Include="Entities\Tables\mDimension.cs" />
+    <Compile Include="Entities\Tables\mDomain.cs" />
+    <Compile Include="Entities\Tables\mHierarchy.cs" />
+    <Compile Include="Entities\Tables\mHierarchyNode.cs" />
+    <Compile Include="Entities\Tables\mLanguage.cs" />
+    <Compile Include="Entities\Tables\mMember.cs" />
+    <Compile Include="Entities\Tables\mMetric.cs" />
+    <Compile Include="Entities\Tables\mModule.cs" />
+    <Compile Include="Entities\Tables\mModuleBusinessTemplate.cs" />
+    <Compile Include="Entities\Tables\mOpenAxisValueRestriction.cs" />
+    <Compile Include="Entities\Tables\mOrdinateCategorisation.cs" />
+    <Compile Include="Entities\Tables\mOwner.cs" />
+    <Compile Include="Entities\Tables\mReference.cs" />
+    <Compile Include="Entities\Tables\mReferenceCategorisation.cs" />
+    <Compile Include="Entities\Tables\mReportingFramework.cs" />
+    <Compile Include="Entities\Tables\mTable.cs" />
+    <Compile Include="Entities\Tables\mTableCell.cs" />
+    <Compile Include="Entities\Tables\mTableDimensionSet.cs" />
+    <Compile Include="Entities\Tables\mTaxonomy.cs" />
+    <Compile Include="Entities\Tables\mTaxonomyTable.cs" />
+    <Compile Include="Entities\Tables\mTemplateOrTable.cs" />
+    <Compile Include="Entities\Tables\vExpression.cs" />
+    <Compile Include="Entities\Tables\vIntraTableSQL.cs" />
+    <Compile Include="Entities\Tables\vValidationRule.cs" />
+    <Compile Include="Entities\Tables\vValidationRuleSet.cs" />
+    <Compile Include="Entities\Tables\vValidationRuleSQL.cs" />
+    <Compile Include="Entities\Tables\vValidationScope.cs" />
+    <Compile Include="Entities\Tables\vVariableOfExpression.cs" />
+    <Compile Include="Entities\FormEntities\FormDataPage.cs" />
+    <Compile Include="Configuration\StaticSettings.cs" />
+    <Compile Include="Conversions\SolvencyIITableNameConversion.cs" />
+    <Compile Include="Entities\AxisOrdinateControls.cs" />
+    <Compile Include="Entities\ComboItem.cs" />
+    <Compile Include="Entities\ComboSelection.cs" />
+    <Compile Include="Entities\FactInformation.cs" />
+    <Compile Include="Entities\LanguageLabel.cs" />
+    <Compile Include="Entities\TreeBranch.cs" />
+    <Compile Include="Entities\TreeItem.cs" />
+    <Compile Include="Entities\TreeViewData.cs" />
+    <Compile Include="Entities\TwoInts.cs" />
+    <Compile Include="ENumerators\DBType.cs" />
+    <Compile Include="ENumerators\eDataTier.cs" />
+    <Compile Include="ENumerators\eImportExportOperationType.cs" />
+    <Compile Include="ENumerators\eLanguageID.cs" />
+    <Compile Include="ENumerators\eSeverity.cs" />
+    <Compile Include="ENumerators\SolvencyDataType.cs" />
+    <Compile Include="Extensions\AxisOrdinateControlsExt.cs" />
+    <Compile Include="Extensions\ComboItemExt.cs" />
+    <Compile Include="Extensions\mAxisOrdinateExt.cs" />
+    <Compile Include="Extensions\DateTimeExt.cs" />
+    <Compile Include="Extensions\FormDataPageExt.cs" />
+    <Compile Include="Extensions\ObjectExt.cs" />
+    <Compile Include="Extensions\OpenColInfo2Ext.cs" />
+    <Compile Include="Extensions\StringExt.cs" />
+    <Compile Include="Delegates\GenericDelegates.cs" />
+    <Compile Include="Interfaces\IClosedRowControl.cs" />
+    <Compile Include="Interfaces\IClosedRowFactory.cs" />
+    <Compile Include="Interfaces\IClosedRowRepository.cs" />
+    <Compile Include="Interfaces\IComboBoxZAxis.cs" />
+    <Compile Include="Interfaces\IControlContainsRepository.cs" />
+    <Compile Include="Interfaces\IParentUserControl.cs" />
+    <Compile Include="Interfaces\ISolvencyCollectionMember.cs" />
+    <Compile Include="Interfaces\ISolvencyDataComboBox.cs" />
+    <Compile Include="Interfaces\ISolvencyOpenUserControl.cs" />
+    <Compile Include="Interfaces\ISolvencyUserControl.cs" />
+    <Compile Include="Interfaces\ISolvencyComboBox.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\ISolvencyControl.cs" />
+    <Compile Include="Interfaces\ISolvencyData.cs" />
+    <Compile Include="Interfaces\ISolvencyDataControl.cs" />
+    <Compile Include="Interfaces\ISolvencyDisplayControl.cs" />
+    <Compile Include="Interfaces\ISolvencyPageControl.cs" />
+    <Compile Include="Interfaces\IUserControlBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\TreeItemExt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Interfaces\readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

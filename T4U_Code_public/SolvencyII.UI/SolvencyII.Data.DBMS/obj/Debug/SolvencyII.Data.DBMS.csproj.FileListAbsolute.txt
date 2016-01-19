@@ -1,0 +1,37 @@
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.XML
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll.CodeAnalysisLog.xml
+E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll.lastcodeanalysissucceeded
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.XML
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.xml
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\SVNRepo\6. Windows T4U\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.XML
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.pdb
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.xml
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.csprojResolveAssemblyReference.cache
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.dll
+E:\BRAG\Projects\EIOPA\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.XML
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Data.DBMS.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.pdb
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\bin\Debug\SolvencyII.Domain.xml
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.dll
+C:\Users\test\Desktop\T4U_Code_public_orginal\T4U_Code_public\SolvencyII.UI\SolvencyII.Data.DBMS\obj\Debug\SolvencyII.Data.DBMS.pdb

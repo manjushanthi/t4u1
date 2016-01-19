@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d486a5740ef94e88ae7f432d67a467c5" Name="Diagram1">
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.aApplication" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.aInterfaceComponent" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dAvailableTable" Width="1.5" PointX="10.5" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dFact" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dFilingIndicator" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dInstance" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dMessage" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dProcessingContext" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dProcessingFact" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mAxi" Width="1.5" PointX="11.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mAxisOrdinate" Width="1.5" PointX="12.75" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mConcept" Width="1.5" PointX="15" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mConceptTranslation" Width="1.5" PointX="19.5" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mConceptualModule" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mDimension" Width="1.5" PointX="20.5" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mDomain" Width="1.5" PointX="17.25" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mHierarchy" Width="1.5" PointX="20.5" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mHierarchyNode" Width="1.5" PointX="25.75" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mLanguage" Width="1.5" PointX="17.25" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mMember" Width="1.5" PointX="23.5" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mMetric" Width="1.5" PointX="28.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mModule" Width="1.5" PointX="5.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mModuleBusinessTemplate" Width="1.5" PointX="7.5" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mOpenAxisValueRestriction" Width="1.5" PointX="28.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mOrdinateCategorisation" Width="1.5" PointX="15" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mOwner" Width="1.5" PointX="17.25" PointY="53" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mReference" Width="1.5" PointX="12.75" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mReferenceCategorisation" Width="1.5" PointX="18" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mReportingFramework" Width="1.5" PointX="17.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTable" Width="1.5" PointX="8.25" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTableAxi" Width="1.5" PointX="13.5" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTableCell" Width="1.5" PointX="10.5" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTableDimensionSet" Width="1.5" PointX="10.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTaxonomy" Width="1.5" PointX="19.5" PointY="51" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTaxonomyTable" Width="1.5" PointX="22.75" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.mTemplateOrTable" Width="1.5" PointX="21.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.SQLITEADMIN_QUERIES" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vExpression" Width="1.5" PointX="0.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vValidationRule" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vVariableOfExpression" Width="1.5" PointX="3" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.dMessageReference" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetAllHierarchy" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetControlInformation" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetInstanceDropDownData" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetLanguageInfo" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetOrdinateDimension" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetOrdinateHierarchyID_HD" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetOrdinateHierarchyID_MD" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetOrdinateType" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTableAxisOrdinateColumn" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTableControlDetail" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTableControlDetailsZDim" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTableName" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTreeData" Width="1.5" PointX="13.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetTreeDataZDimChildren" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetzAxisMember" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwGetZDimTreeTable" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwHierarchyLookupAxi" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AT2DPM.DAL.Model.vwHierarchyLookupMetric" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_dAvailableTable_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mAxisOrdinate_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOpenAxisValueRestriction_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTableAxis_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mAxisOrdinate_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mAxisOrdinate_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOrdinateCategorisation_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mConcept_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mConceptTranslation_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mDimension_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mDomain_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mHierarchy_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mHierarchyNode_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mLanguage_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMember_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOwner_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mReportingFramework_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTable_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTaxonomy_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTemplateOrTable_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_vValidationRule_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mConceptTranslation_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mConceptTranslation_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mModule_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mDimension_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOrdinateCategorisation_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mReferenceCategorisation_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mHierarchy_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMember_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMetric_3_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mHierarchyNode_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMetric_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOpenAxisValueRestriction_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mHierarchyNode_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMetric_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mMetric_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOpenAxisValueRestriction_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOrdinateCategorisation_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mReferenceCategorisation_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mModule_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mModuleBusinessTemplate_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTableDimensionSet_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mOwner_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mReferenceCategorisation_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTaxonomy_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTableAxis_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTableCell_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTableDimensionSet_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTaxonomyTable_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTaxonomyTable_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTemplateOrTable_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTaxonomyTable_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_mTemplateOrTable_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_vValidationRule_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.FK_vVariableOfExpression_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.aInterfaceComponentApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.mCellPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.mCellReference" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.mConceptReference" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.vPreCondition" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.vValidationRuleSet" ManuallyRouted="false" />
+        <AssociationConnector Association="AT2DPM.DAL.Model.vValidationScope" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
