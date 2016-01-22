@@ -1,4 +1,0 @@
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII_T4U_FULL_2015_PRE\obj\x86\Debug\SolvencyII_T4U_FULL_2015_PRE.csprojResolveAssemblyReference.cache
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII_T4U_FULL_2015_PRE\obj\x86\Debug\SolvencyII_T4U_FULL_2015_PRE.TrustInfo.xml
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII_T4U_FULL_2015_PRE\obj\x86\Debug\SolvencyII_T4U_FULL_2015_PRE.exe
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\SolvencyII_T4U_FULL_2015_PRE\obj\x86\Debug\SolvencyII_T4U_FULL_2015_PRE.pdb

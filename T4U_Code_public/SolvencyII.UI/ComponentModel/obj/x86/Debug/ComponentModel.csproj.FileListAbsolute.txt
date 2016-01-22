@@ -1,7 +1,0 @@
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\bin\Debug\System.ComponentModel.Composition.dll
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\bin\Debug\System.ComponentModel.Composition.pdb
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\obj\x86\Debug\Microsoft.Internal.Strings.resources
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\obj\x86\Debug\ComponentModel.csproj.GenerateResource.Cache
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\obj\x86\Debug\System.ComponentModel.Composition.dll
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\obj\x86\Debug\System.ComponentModel.Composition.pdb
-C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\ComponentModel\obj\x86\Debug\ComponentModel.csprojResolveAssemblyReference.cache

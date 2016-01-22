@@ -1,4 +1,0 @@
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\T4UExcelImportExportTest\obj\Debug\T4UExcelImportExportTest.csprojResolveAssemblyReference.cache
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\T4UExcelImportExportTest\obj\Debug\T4UExcelImport.Form1.resources
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\T4UExcelImportExportTest\obj\Debug\T4UExcelImportExportTest.Properties.Resources.resources
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\6. Windows T4U\ExcelImportExport\T4UExcelImportExportTest\obj\Debug\T4UExcelImportExportTest.csproj.GenerateResource.Cache

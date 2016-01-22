@@ -1,6 +1,0 @@
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\PreparatoryDebugX86\System.Data.SQLite.dll
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\PreparatoryDebugX86\ClassicRelationalETL.dll.config
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\PreparatoryDebugX86\ClassicRelationalETL.dll
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\bin\PreparatoryDebugX86\ClassicRelationalETL.pdb
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\x86\PreparatoryDebugX86\ClassicRelationalETL.dll
-E:\BRAG\Projects\Europe\EIOPA\T4U\SVNRepo\X.  Classic relational model generation\ClessicRelationalModelGenerator\ClassicRelationalETL\obj\x86\PreparatoryDebugX86\ClassicRelationalETL.pdb

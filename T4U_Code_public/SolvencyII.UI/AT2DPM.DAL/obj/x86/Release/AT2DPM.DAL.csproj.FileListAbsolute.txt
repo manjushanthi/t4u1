@@ -1,7 +1,0 @@
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\x64\SQLite.Interop.dll
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\x86\SQLite.Interop.dll
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\AT2DPM.DAL.dll.config
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\AT2DPM.DAL.dll
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\EntityFramework.dll
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\bin\x86\Release\EntityFramework.xml
-E:\BRAG\Projects\EU\EIOPA\T4U\SVNRepo\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\obj\x86\Release\AT2DPM.DAL.dll
