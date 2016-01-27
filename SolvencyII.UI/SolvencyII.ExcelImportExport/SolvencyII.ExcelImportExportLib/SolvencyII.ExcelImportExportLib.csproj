@@ -98,24 +98,24 @@
     <OutputPath>bin\x86\Test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\5. AT2DPMdb\Source code\DPMdb2AT ver 2\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="ExcelApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=0b8d9ba5199d6dcb, processorArchitecture=MSIL">
+    <Reference Include="ExcelApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=9084b9221296229e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\packages\NetOffice.Excel.1.6.0.0\lib\net40\ExcelApi.dll</HintPath>
+      <HintPath>..\..\packages\NetOffice.Excel.1.6.0.0\lib\net40\ExcelApi.dll</HintPath>
     </Reference>
-    <Reference Include="NetOffice, Version=1.6.0.0, Culture=neutral, PublicKeyToken=0939138a4a188afd, processorArchitecture=MSIL">
+    <Reference Include="NetOffice, Version=1.6.0.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\packages\NetOffice.Core.1.6.0.0\lib\net40\NetOffice.dll</HintPath>
+      <HintPath>..\..\packages\NetOffice.Core.1.6.0.0\lib\net40\NetOffice.dll</HintPath>
     </Reference>
-    <Reference Include="OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=1208423a019d3443, processorArchitecture=MSIL">
+    <Reference Include="OfficeApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\packages\NetOffice.Core.1.6.0.0\lib\net40\OfficeApi.dll</HintPath>
+      <HintPath>..\..\packages\NetOffice.Core.1.6.0.0\lib\net40\OfficeApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -126,10 +126,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1, processorArchitecture=MSIL">
+    <Reference Include="VBIDEApi, Version=1.6.0.0, Culture=neutral, PublicKeyToken=931cec8882205047, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\packages\NetOffice.Core.1.6.0.0\lib\net40\VBIDEApi.dll</HintPath>
+      <HintPath>..\..\packages\NetOffice.Core.1.6.0.0\lib\net40\VBIDEApi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
