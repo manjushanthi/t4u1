@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>N.2.11</number>
+	<name></name>
+	<description></description>
+	<variation id="tc1">
+		<description>XBRL instance with contexts period instant.</description>
+		<data>
+			<instance readMeFirst="true">n_2_11_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL instance with contexts period duration.</description>
+		<data>
+			<instance readMeFirst="true">n_2_11_tc2.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL instance with contexts period forever.</description>
+		<data>
+			<instance readMeFirst="true">n_2_11_tc3.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+</testcase>

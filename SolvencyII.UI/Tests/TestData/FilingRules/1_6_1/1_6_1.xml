@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>1.6.1</number>
+	<name>1.6.1 - Multiple filing indicators for the same reporting unit</name>
+	<description>An instance document MUST contain only one filing indicator element for a given reporting unit ("template").</description>
+	<variation id="tc1">
+		<description>XBRL instance with no duplicated filing indicators.</description>
+		<data>
+			<instance readMeFirst="true">1_6_1_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL instance with duplicated value for a filing indicator in one tuple.</description>
+		<data>
+			<instance readMeFirst="true">1_6_1_tc2.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL instance with duplicated value for a filing indicator in two tuples.</description>
+		<data>
+			<instance readMeFirst="true">1_6_1_tc3.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc4">
+		<description>XBRL instance with the same filing indicator declared as reported and not reported.</description>
+		<data>
+			<instance readMeFirst="true">1_6_1_tc4.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+</testcase>

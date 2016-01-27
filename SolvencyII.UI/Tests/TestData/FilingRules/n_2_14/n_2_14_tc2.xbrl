@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrli:xbrl
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:s2c_AM="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM"
+  xmlns:s2c_AP="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP"
+  xmlns:s2c_CN="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN"
+  xmlns:s2c_CS="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS"
+  xmlns:s2c_CU="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU"
+  xmlns:s2c_GA="http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA"
+  xmlns:s2c_SE="http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE"
+  xmlns:s2c_dim="http://eiopa.europa.eu/xbrl/s2c/dict/dim"
+  xmlns:s2c_typ="http://eiopa.europa.eu/xbrl/s2c/dict/typ"
+  xmlns:s2md_met="http://eiopa.europa.eu/xbrl/s2md/dict/met"
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef
+      xlink:href="http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2015-02-28/mod/qrs.xsd"
+      xlink:type="simple"/>
+    <xbrli:context id="c">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://standards.iso.org/iso/17442">KGCEPHLVVKVRZYO1T647</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2015-03-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <find:fIndicators>
+        <find:filingIndicator contextRef="c">S.01.01</find:filingIndicator>
+        <find:filingIndicator contextRef="c">S.01.02</find:filingIndicator>
+    </find:fIndicators>
+    <xbrli:context id="c-01">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://standards.iso.org/iso/17442">KGCEPHLVVKVRZYO1T647</xbrli:identifier>
+			<xbrli:segment>
+				<xbrldi:typedMember dimension="s2c_dim:XB">
+					<s2c_typ:NB>1</s2c_typ:NB>
+				</xbrldi:typedMember>		
+			</xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2015-03-31</xbrli:instant>
+        </xbrli:period>
+        <xbrli:scenario>
+            <xbrldi:typedMember dimension="s2c_dim:CE">
+                <s2c_typ:ID>LEI/KGCEPHLVVKVRZYO1T647</s2c_typ:ID>
+            </xbrldi:typedMember>
+            <xbrldi:explicitMember dimension="s2c_dim:CS">s2c_CS:x26</xbrldi:explicitMember>
+        </xbrli:scenario>
+    </xbrli:context>
+    <s2md_met:di1043 contextRef="c-01">2015-03-31</s2md_met:di1043>
+    <s2md_met:di1044 contextRef="c-01">2015-04-10</s2md_met:di1044>
+    <s2md_met:ei1004 contextRef="c-01">s2c_AP:x4</s2md_met:ei1004>
+    <s2md_met:ei1025 contextRef="c-01">s2c_CU:EUR</s2md_met:ei1025>
+    <s2md_met:ei1318 contextRef="c-01">s2c_SE:x56</s2md_met:ei1318>
+    <s2md_met:ei1503 contextRef="c-01">s2c_GA:BE</s2md_met:ei1503>
+    <s2md_met:ei1657 contextRef="c-01">s2c_AM:x45</s2md_met:ei1657>
+    <s2md_met:si1376 contextRef="c-01">BNP Paribas Fortis SA/NV</s2md_met:si1376>
+    <xbrli:context id="c-02">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://standards.iso.org/iso/17442">KGCEPHLVVKVRZYO1T647</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2015-03-31</xbrli:instant>
+        </xbrli:period>
+        <xbrli:scenario>
+            <xbrldi:explicitMember dimension="s2c_dim:CS">s2c_CS:x26</xbrldi:explicitMember>
+        </xbrli:scenario>
+    </xbrli:context>
+    <s2md_met:ei1633 contextRef="c-02">s2c_CN:x1</s2md_met:ei1633>
+</xbrli:xbrl>

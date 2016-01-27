@@ -1,0 +1,4 @@
+﻿<ManualUpdateDetails>
+  <DeploymentPath>http://dev.eiopa.europa.eu/XBRT/Deployment/2015/WindowsT4U/PRO/SolvencyII_T4U_PREP_2015_PRO.application</DeploymentPath>
+  <ClickOnceVersionNumber>2015.08.28.01</ClickOnceVersionNumber>
+</ManualUpdateDetails>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>S.1.7.a</number>
+	<name>S.1.7.(a) - Filing indicator value in scope of the module</name>
+	<description>The filing indicator element value MUST indicate the reporting unit ("template") that is in scope of the referenced entry point schema file ("module").</description>
+	<variation id="tc1">
+		<description>XBRL instance with filing indicators for a given module (one declared with @find:filed="true", one without and one @find:filed="false").</description>
+		<data>
+			<instance readMeFirst="true">s_1_7_a_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL with a positive filing indicator (without @find:filed="true") for a template outside of a module.</description>
+		<data>
+			<instance readMeFirst="true">s_1_7_a_tc2.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL with a positive filing indicator (with @find:filed="true") for a template outside of a module.</description>
+		<data>
+			<instance readMeFirst="true">s_1_7_a_tc3.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+	<variation id="tc4">
+		<description>XBRL with a negative filing indicator (with @find:filed="false") for a template outside of a module.</description>
+		<data>
+			<instance readMeFirst="true">s_1_7_a_tc4.xbrl</instance>
+		</data>
+		<result expected="invalid"/>
+	</variation>
+</testcase>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type='text/xsl' href='infrastructure/documentation.xsl'?>
+<documentation 
+  name='Conformance suite tests for EIOPA Filing Rules application in T4U'
+  date='2015-05-18'
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:noNamespaceSchemaLocation='infrastructure/documentation.xsd'>
+    <testcases title='Filing rules' root='.'>
+		<testcase uri='s_1_1_a/s_1_1_a.xml'/>
+		<testcase uri='1_4/1_4.xml'/>
+		<testcase uri='s_1_5_a/s_1_5_a.xml'/>
+		<testcase uri='1_6_a/1_6_a.xml'/>
+		<testcase uri='1_6_b/1_6_b.xml'/>
+		<testcase uri='s_1_6_c/s_1_6_c.xml'/>
+		<testcase uri='s_1_6_d/s_1_6_d.xml'/>
+		<testcase uri='1_6_1/1_6_1.xml'/>
+		<testcase uri='1_6_2/1_6_2.xml'/>
+		<testcase uri='s_1_7_a/s_1_7_a.xml'/>
+		<testcase uri='1_7_b/1_7_b.xml'/>
+		<testcase uri='1_7_1/1_7_1.xml'/>
+		<testcase uri='2_1/2_1.xml'/>
+		<testcase uri='2_5/2_5.xml'/>
+		<testcase uri='s_2_6/s_2_6.xml'/>
+		<testcase uri='2_7_and_2_22/2_7_and_2_22.xml'/>
+		<testcase uri='s_2_7_b_and_2_21/s_2_7_b_and_2_21.xml'/>
+		<testcase uri='s_2_8_c/s_2_8_c.xml'/>
+		<testcase uri='2_9/2_9.xml'/>
+		<testcase uri='2_10/2_10.xml'/>
+		<testcase uri='n_2_11/n_2_11.xml'/>
+		<testcase uri='2_13/2_13.xml'/>
+		<testcase uri='n_2_14/n_2_14.xml'/>
+		<testcase uri='n_2_15/n_2_15.xml'/>
+		<testcase uri='s_2_16_a/s_2_16_a.xml'/>
+		<testcase uri='s_2_16_b/s_2_16_b.xml'/>
+		<testcase uri='2_18_a_and_2_17/2_18_a_and_2_17.xml'/>
+		<testcase uri='s_2_18_c/s_2_18_c.xml'/>
+		<testcase uri='s_2_18_d/s_2_18_d.xml'/>
+		<testcase uri='s_2_18_e/s_2_18_e.xml'/>
+		<testcase uri='s_2_18_f/s_2_18_f.xml'/>
+		<testcase uri='s_2_19/s_2_19.xml'/>
+		<testcase uri='2_20/2_20.xml'/>
+		<testcase uri='3_1/3_1.xml'/>
+		<testcase uri='3_2_a/3_2_a.xml'/>
+		<testcase uri='3_2_b/3_2_b.xml'/>
+		<testcase uri='3_4/3_4.xml'/>
+		<testcase uri='3_5/3_5.xml'/>
+		<testcase uri='s_19/s_19.xml'/>
+    </testcases>
+</documentation>

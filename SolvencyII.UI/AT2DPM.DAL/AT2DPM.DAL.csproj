@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19F81B4F-0C55-430D-9541-68631C667D2F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AT2DPM.DAL</RootNamespace>
+    <AssemblyName>AT2DPM.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\AT2DPM.DAL.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\PreparatoryRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU'">
+    <OutputPath>bin\PreparatoryDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|AnyCPU'">
+    <OutputPath>bin\PreparatoryRelease\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
+    <OutputPath>bin\DebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86'">
+    <OutputPath>bin\x86\PreparatoryDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\PreparatoryRelease\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x86'">
+    <OutputPath>bin\x86\DebugX86\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|AnyCPU'">
+    <OutputPath>bin\PreparatoryDebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x86'">
+    <OutputPath>bin\x86\PreparatoryDebugX86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x64'">
+    <OutputPath>bin\x64\Test\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|x64'">
+    <OutputPath>bin\x64\PreparatoryDebug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\PreparatoryRelease\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x64'">
+    <OutputPath>bin\x64\DebugX86\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebugX86|x64'">
+    <OutputPath>bin\x64\PreparatoryDebugX86\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite, Version=1.0.93.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLiteLibraries\x86\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.93.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLiteLibraries\x86\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DALException.cs" />
+    <Compile Include="DPMdbConnection.cs" />
+    <Compile Include="DPMdbExtension.cs" />
+    <Compile Include="ExtendedModel\mAxisExtended.cs" />
+    <Compile Include="ExtendedModel\mAxisOrdinateExtended.cs" />
+    <Compile Include="ExtendedModel\mConceptExtended.cs" />
+    <Compile Include="ExtendedModel\mDimensionExtended.cs" />
+    <Compile Include="ExtendedModel\mDomainExtended.cs" />
+    <Compile Include="ExtendedModel\mHierarchyExtended.cs" />
+    <Compile Include="ExtendedModel\mHierarchyNodeExtended.cs" />
+    <Compile Include="ExtendedModel\mLanguageExtended.cs" />
+    <Compile Include="ExtendedModel\mMemberExtended.cs" />
+    <Compile Include="ExtendedModel\mMetricsExtended.cs" />
+    <Compile Include="ExtendedModel\mModuleBusinessTemplateExtended.cs" />
+    <Compile Include="ExtendedModel\mModuleExtended.cs" />
+    <Compile Include="ExtendedModel\mOpenAxisValueRestrictionExtended.cs" />
+    <Compile Include="ExtendedModel\mOrdinateCategorisationExtended.cs" />
+    <Compile Include="ExtendedModel\mOwnerExtended.cs" />
+    <Compile Include="ExtendedModel\mReportingFrameworkExtended.cs" />
+    <Compile Include="ExtendedModel\mTableCellExtended.cs" />
+    <Compile Include="ExtendedModel\mTableDomainFilter.cs" />
+    <Compile Include="ExtendedModel\mTableExtended.cs" />
+    <Compile Include="ExtendedModel\mTaxonomyExtended.cs" />
+    <Compile Include="ExtendedModel\mTemplateOrTableExtended.cs" />
+    <Compile Include="InstanceExtension.cs" />
+    <Compile Include="Model\aApplication.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aInterfaceComponent.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dAvailableTable.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dFact.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dFilingIndicator.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dInstance.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dMessage.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dMessageReference.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DPMdb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPMdb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DPMdb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DPMdb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPMdb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dProcessingContext.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dProcessingFact.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mAxi.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mAxisOrdinate.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mConcept.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mConceptTranslation.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mConceptualModule.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mDimension.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mDomain.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mHierarchy.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mHierarchyNode.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mLanguage.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mMember.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mMetric.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mModule.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mModuleBusinessTemplate.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mOpenAxisValueRestriction.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mOrdinateCategorisation.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mOwner.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mReference.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mReferenceCategorisation.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mReportingFramework.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTable.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTableAxi.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTableCell.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTableDimensionSet.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTaxonomy.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTaxonomyTable.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\mTemplateOrTable.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SQLITEADMIN_QUERIES.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vExpression.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vValidationRule.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vVariableOfExpression.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetAllHierarchy.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetControlInformation.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetInstanceDropDownData.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetLanguageInfo.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetOrdinateDimension.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetOrdinateHierarchyID_HD.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetOrdinateHierarchyID_MD.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetOrdinateType.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTableAxisOrdinateColumn.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTableControlDetail.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTableControlDetailsZDim.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTableName.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTreeData.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetTreeDataZDimChildren.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetzAxisMember.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwGetZDimTreeTable.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwHierarchyLookupAxi.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwHierarchyLookupMetric.cs">
+      <DependentUpon>DPMdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model\DPMdb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DPMdb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DPMdb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DPMdb.edmx</DependentUpon>
+      <LastGenOutput>DPMdb.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\DPMdb.edmx.diagram">
+      <DependentUpon>DPMdb.edmx</DependentUpon>
+    </None>
+    <None Include="Model\DPMdb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DPMdb.edmx</DependentUpon>
+      <LastGenOutput>DPMdb.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

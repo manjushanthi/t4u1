@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrli:xbrl
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:s2c_AM="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM"
+  xmlns:s2c_AP="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP"
+  xmlns:s2c_CN="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN"
+  xmlns:s2c_CS="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS"
+  xmlns:s2c_CU="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU"
+  xmlns:s2c_GA="http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA"
+  xmlns:s2c_SE="http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE"
+  xmlns:s2c_dim="http://eiopa.europa.eu/xbrl/s2c/dict/dim"
+  xmlns:s2c_typ="http://eiopa.europa.eu/xbrl/s2c/dict/typ"
+  xmlns:s2md_met="http://eiopa.europa.eu/xbrl/s2md/dict/met"
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef
+      xlink:href="http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2015-02-28/mod/qrs.xsd"
+      xlink:type="simple"/>
+    <xbrli:context id="c">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://standards.iso.org/iso/17442">KGCEPHLVVKVRZYO1T647</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2015-03-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <find:fIndicators>
+        <find:filingIndicator contextRef="c" find:filed="false">S.01.01</find:filingIndicator>
+        <find:filingIndicator contextRef="c" find:filed="false">S.01.02</find:filingIndicator>
+    </find:fIndicators>
+</xbrli:xbrl>

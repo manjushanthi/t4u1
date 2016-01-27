@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>1.6.2</number>
+	<name>1.6.2 - Filing indicators in several tuples</name>
+	<description>All filing indicator elements SHOULD be reported in a single tuple before the business facts in the instance document .</description>
+	<variation id="tc1">
+		<description>XBRL instance with all filing indicators declared in one tuple before business facts.</description>
+		<data>
+			<instance readMeFirst="true">1_6_2_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc2">
+		<description>XBRL instance with all filing indicators declared in one tuple after business facts.</description>
+		<data>
+			<instance readMeFirst="true">1_6_2_tc2.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+	<variation id="tc3">
+		<description>XBRL instance with multiple tuples with filing indicators.</description>
+		<data>
+			<instance readMeFirst="true">1_6_2_tc3.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+</testcase>

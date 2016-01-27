@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../infrastructure/test.xsl"?>
+<testcase
+    xmlns="http://xbrl.org/2008/conformance"
+    xmlns:xbrlfe="http://xbrl.org/2008/formula/error" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xbrl.org/2008/conformance ../../infrastructure/test.xsd">
+    <creator>
+        <name>EIOPA</name>
+        <email>xbrl@eiopa.europa.eu</email>
+    </creator>
+	<number>1.6.b</number>
+	<name>1.6.(b) - Negative filing indicators</name>
+	<description>An instance document MAY include appropriate negative (i.e. with @find:filed="false" filing indicator elements indicating reporting units which are intended NOT to be reported in the instance document.</description>
+	<variation id="tc1">
+		<description>XBRL instance with filing indicators for a given module (one declared with @find:filed="true", one without and one @find:filed="false").</description>
+		<data>
+			<instance readMeFirst="true">1_6_b_tc1.xbrl</instance>
+		</data>
+		<result expected="valid"/>
+	</variation>
+</testcase>

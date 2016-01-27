@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>EIOPA
+European Insurance and Occupational Pensions Authority
+Westhafenplatz 1
+60327 Frankfurt am Main
+Germany
+
+
+XBRL TOOL FOR UNDERTAKINGS
+Terms and Conditions
+
+
+1. License
+
+EIOPA is the owner of the intellectual property rights on the software program “Tool for Undertakings” (hereinafter referred to as “the Software”). EIOPA values the importance of the open source community and has made the Software below available in compliance with the European Union Public License (hereinafter referred to as “EUPL”).
+
+If You accept, EIOPA grants You a license to use the Software subject to the terms and conditions of the latest version of the EUPL, as published on the website https://joinup.ec.europa.eu/community/eupl/og_page/eupl. The Software licensed under the EUPL may be copied, distributed, and/or modified by You in accordance with the terms and conditions of the EUPL.
+
+Under no circumstances may any additional terms and conditions be imposed on the use of the Software that alter or further restrict the terms and conditions of the EUPL.
+
+In no event, unless mandatory under applicable law, will EIOPA be liable to You for damages, including any general, special, incidental or consequential damages arising out of the use or inability to use the program, even if EIOPA has been advised of the possibility of such damages.
+
+The Software may contain third party software programs or an aggregate thereof. Insofar the third party software programs are integrated in the Software they will be subject to the EUPL. Insofar these third party software programs constitute a mere aggregate with the Software, their use remains subject to their designated license terms and conditions. 
+
+The license on the Software is granted free of charge.
+
+
+2. Release Package
+
+The Software is distributed by means of a release package, which contains the following items:
+
+- Different versions of the Software through links available on the following website: https://eiopa.europa.eu;
+- Documented source code;
+- Release notes, including a list of resolved and open bugs and issues;
+- End user documentation;
+- Technical documentation.
+
+The entire Release Package shall be made available if you accept these terms and conditions including the EUPL by ticking the “I have read and I accept the above terms and conditions” box hereunder. The entire Release Package is accessible here: https://eiopa.europa.eu/regulation-supervision/insurance/tool-for-undertakings.
+
+
+3. Maintenance and support
+
+The Software is distributed WITHOUT ANY WARRANTY as indicated in the EUPL hereunder. The entire risk as to the quality and performance of the program is with You, the end-user. In the event that the Software proves to be defective, You assume the cost of all necessary servicing, repair or correction.
+
+EIOPA does not provide any support on the Software. However, in light of the continuous improvement of the Software, EIOPA can make available new releases, upgrades or new versions of the Software on the following website: https://eiopa.europa.eu. 
+
+The scope of the maintenance and support offered by EIOPA may be changed unilaterally by EIOPA at any time and by giving prior notice.
+
+
+4. EUPL 
+
+The latest version of the EUPL is available on the following website: https://joinup.ec.europa.eu/community/eupl/og_page/eupl.
+
+</value>
+  </data>
+</root>
