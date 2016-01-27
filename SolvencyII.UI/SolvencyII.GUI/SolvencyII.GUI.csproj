@@ -160,8 +160,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SolvencyII.UI.Shared\Arelle\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
-      <HintPath>.\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Design">
+      <HintPath>..\packages\Microsoft.VisualBasic.PowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.Design.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
