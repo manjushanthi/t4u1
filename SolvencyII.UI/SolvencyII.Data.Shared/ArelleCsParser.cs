@@ -217,12 +217,11 @@ namespace SolvencyII.Data.Shared
         static Regex sigDimPattern = new Regex(@"([^(]+)[(]([^\[)]*)(\[([0-9;]+)\])?[)]");
         static Regex isoCurrencyPattern = new Regex(@"^[A-Z]{3}$");
         static Regex logMessagePattern = new Regex(@"^\[([^\]]+)\]\s(.*)$");
-        static Regex schemaRefDatePattern = new Regex(@".*/([0-9]{4}-[01][0-9]-[0-3][0-9])/mod.*");
 
 
 
         public string[] xmlBoolTrueValues = { "true", "1" };
-        public string[] leiEntitySchemes = { "http://standard.iso.org/iso/17442", "LEI", };
+        public string[] leiEntitySchemes = { "http://standards.iso.org/iso/17442", "http://standard.iso.org/iso/17442", "LEI", };
 
         bool isStreamingMode = false;
         string _sqlConnectionPath;
@@ -233,13 +232,16 @@ namespace SolvencyII.Data.Shared
         long moduleId = UNINITIALIZED,
             instanceId = UNINITIALIZED;
 
-        public bool isEIOPAfullVersion = false; // 2.0 filer manual "full" version
+        ModelXmlProcessingInstruction piInstanceGenerator = null;
 
+        string xmlDeclarationEncoding = "(none)";
         string entityScheme, entityIdentifier = null;
         DateTime periodInstantDate = DateTime.MinValue;
-        string entityCurrency = null;
+        HashSet<string> currenciesUsed = new HashSet<string>();
+        string reportingCurrency = null;
 
         Dictionary<string, bool> dFilingIndicators = new Dictionary<string, bool>();
+        Dictionary<string, bool> filingIndicatorReportsFacts = new Dictionary<string, bool>();
         HashSet<long> tableIDs = new HashSet<long>();
         Dictionary<string,HashSet<long>> metricAndDimensionsTableId = new Dictionary<string,HashSet<long>>();
         HashSet<string>templateOrTableCodes = new HashSet<string>();
@@ -443,9 +445,9 @@ namespace SolvencyII.Data.Shared
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ConformanceLevel = ConformanceLevel.Fragment;
             settings.IgnoreWhitespace = true;
-            settings.IgnoreComments = true;
+            settings.IgnoreComments = false;
             List<ModelXmlElement> elementStack = new List<ModelXmlElement>();
-            int contextBuffer = Int32.MaxValue, unitBuffer = Int32.MaxValue;
+            int contextBuffer = int.MaxValue, unitBuffer = int.MaxValue;
             ModelXmlElement elt = null, parentElt = null;
             List<ModelContext> contexts = new List<ModelContext>();
             Dictionary<string, ModelContext> contextById = new Dictionary<string, ModelContext>();
@@ -460,16 +462,26 @@ namespace SolvencyII.Data.Shared
 
             this.isEBA = false;
             this.isEIOPA = true;
+            this.isEIOPAfullVersion = false;
+            this.isEIOPA_2_0_1 = false;
+            this.piInstanceGenerator = null;
+            this.xmlDeclarationEncoding = "(none)";
+            this.reportingCurrency = null;
 
             this.initializeLog();
 
             this.xbrlFilePath = xbrlFilePath; // for error reporting in class methods
             xbrlFileName = Path.GetFileName(xbrlFilePath);
             if (!xbrlFileName.EndsWith(".xbrl"))
-                logError("EBA.1.1|EIOPA.S.1.1.a", 
+            {
+                logWarning("EBA.1.1",
                          string.Format("XBRL instance documents SHOULD use the extension \".xbrl\" but it is {0}",
                                        xbrlFileName));
-             XmlReader reader = null;
+                logError("EIOPA.S.1.1.a",
+                         string.Format("XBRL instance documents MUST use the extension \".xbrl\" but it is {0}",
+                                       xbrlFileName));
+            }
+            XmlReader reader = null;
             try
             {
                 if (asyncWorker != null)
@@ -515,11 +527,11 @@ namespace SolvencyII.Data.Shared
                                 {
                                     if (unusedXmlnsPrefixes.Contains(elt.tag.prefix))
                                         unusedXmlnsPrefixes.Remove(elt.tag.prefix);
-                                    foreach (ModelXmlAttribute _attr in elt.attributes.Values)
-                                    {
-                                        if (unusedXmlnsPrefixes.Contains(_attr.tag.prefix))
-                                            unusedXmlnsPrefixes.Remove(_attr.tag.prefix);
-                                    }
+                                }
+                                foreach (ModelXmlAttribute _attr in elt.attributes.Values) // check of root and child element attributes prefixes
+                                {
+                                    if (unusedXmlnsPrefixes.Contains(_attr.tag.prefix))
+                                        unusedXmlnsPrefixes.Remove(_attr.tag.prefix);
                                 }
                                 elementStack.Add(elt); // push current element
 
@@ -587,6 +599,7 @@ namespace SolvencyII.Data.Shared
                                 }
                             }
                             else if (elt.tag.namespaceURI == nsXbrli)
+                            {
                                 switch (elt.tag.localName)
                                 {
                                     case "identifier":
@@ -618,7 +631,7 @@ namespace SolvencyII.Data.Shared
                                                      string.Format("Context end date lexical error: context {0} end date {1}",
                                                                    cntx.id, elt.value));
                                         else
-                                        { 
+                                        {
                                             cntx.endDate = xbrlDateUnionValue(elt.value, true);
                                             if (!datePattern.IsMatch(elt.value))
                                                 logError("EBA.2.10|EIOPA.2.10",
@@ -633,7 +646,7 @@ namespace SolvencyII.Data.Shared
                                                      string.Format("Context start date lexical error: context {0} start date {1}",
                                                                    cntx.id, elt.value));
                                         else
-                                        { 
+                                        {
                                             cntx.startDate = xbrlDateUnionValue(elt.value);
                                             if (!datePattern.IsMatch(elt.value))
                                                 logError("EBA.2.10|EIOPA.2.10",
@@ -691,8 +704,9 @@ namespace SolvencyII.Data.Shared
                                                  string.Format("The segment element not allowed in context Id: {0}",
                                                                 cntx.id));
                                         break;
-                                                                
+
                                 }
+                            }
                             else if (elt.tag.namespaceURI == nsLink && elt.tag.localName == "schemaRef")
                             {
                                 schemaRef = elt.basedValue(elt.attributes[qnXlinkHref].value);
@@ -707,6 +721,12 @@ namespace SolvencyII.Data.Shared
                             {
                                 // only tests if there is a footnote loc (for a fact) but doesn't accumulate fact id's or loc id's due to possible memory consumption
                                 hasFootnotes = true;
+                            }
+                            else if (elt.tag.namespaceURI == nsXsd && elt.tag.localName == "documentation")
+                            {
+                                if (isEIOPA_2_0_1)
+                                    logError("EIOPA.2.5",
+                                             "xs:documentation element found, all relevant business data MUST only be contained in contexts, units, schemaRef and facts.");
                             }
                             else if (elt is ModelFact)
                             {   // note that fact may be nil (no EndElement event)
@@ -734,7 +754,7 @@ namespace SolvencyII.Data.Shared
                                     }
                                     else
                                     {
-                                        if (instanceId != UNINITIALIZED && 
+                                        if (instanceId != UNINITIALIZED &&
                                             (string.IsNullOrEmpty(fact.contextRef) || contextById.ContainsKey(fact.contextRef)) &&
                                             (string.IsNullOrEmpty(fact.unitRef) || unitById.ContainsKey(fact.unitRef)))
                                         {   // fact context and unit are resolved, process fact
@@ -753,8 +773,7 @@ namespace SolvencyII.Data.Shared
                             }
                             else if (elt is ModelXmlElement)
                             {
-                                ModelXmlElement parent = elementStack[elementStack.Count - 1];
-                                if (parent.tag.namespaceURI == "" && parent.tag.localName == "segment"
+                                if (parentElt != null && parentElt.tag.namespaceURI == nsXbrli && parentElt.tag.localName == "scenario"
                                     && elt.tag.localName != "explicitMember" && elt.tag.localName != "typedMember")
                                 {
                                     cntx = elementStack[1] as ModelContext;
@@ -777,9 +796,21 @@ namespace SolvencyII.Data.Shared
                                 try
                                 {
                                     if (pi.attributes.Keys.Contains("contextBuffer"))
-                                        contextBuffer = Convert.ToInt32(pi.attributes["contextBuffer"]);
+                                    {
+                                        string cb = pi.attributes["contextBuffer"];
+                                        if (cb == "INF")
+                                            contextBuffer = int.MaxValue;
+                                        else
+                                            contextBuffer = Convert.ToInt32(cb);
+                                    }
                                     if (pi.attributes.Keys.Contains("unitBuffer"))
-                                        unitBuffer = Convert.ToInt32(pi.attributes["unitBuffer"]);
+                                    {
+                                        string ub = pi.attributes["unitBuffer"];
+                                        if (ub == "INF")
+                                            unitBuffer = int.MaxValue;
+                                        else
+                                            unitBuffer = Convert.ToInt32(ub);
+                                    }
                                     isStreamingMode = true;
                                 }
                                 catch (FormatException ex)
@@ -817,18 +848,21 @@ namespace SolvencyII.Data.Shared
                                     }
                                 }
                             }
+                            else if (reader.Name == "instance-generator")
+                            {
+                                piInstanceGenerator = new ModelXmlProcessingInstruction(reader); // must process later after knowing taxonomy version
+                            }
                             break;
                         case XmlNodeType.Comment:
+                            if (isEIOPA_2_0_1)
+                                logError("EIOPA.2.5",
+                                         string.Format("XML comment found, all relevant business data MUST only be contained in contexts, units, schemaRef and facts: {0}.",
+                                                        reader.Value));
                             break;
                         case XmlNodeType.XmlDeclaration:
                             ModelXmlDeclaration decl = new ModelXmlDeclaration(reader);
-                            string encoding = "(none)";
                             if (decl.attributes.ContainsKey("encoding"))
-                                encoding = decl.attributes["encoding"];
-                            if (encoding.ToLower() != "utf-8")
-                                logError("EBA.1.4|EIOPA.1.4",
-                                         string.Format("XBRL instance documents MUST use \"UTF-8\" encoding but is \"{0}\"",
-                                                       encoding));
+                                xmlDeclarationEncoding = decl.attributes["encoding"];
                             break;
                         case XmlNodeType.Document:
                             break;
@@ -946,6 +980,14 @@ namespace SolvencyII.Data.Shared
                 {
                     String _date = _schemaFileDateMatch.Groups[1].Value;
                     this.isEIOPAfullVersion = _date.CompareTo("2015-02-28") > 0;
+                    this.isEIOPA_2_0_1 = _date.CompareTo("2015-10-21") >= 0;
+                }
+                else
+                {
+                    logError("EIOPA.S.1.5.a/EIOPA.S.1.5.b",
+                             string.Format("The link:schemaRef element in submitted instances MUST resolve to the full published entry point URL, this schemaRef is missing date portion: {0}.",
+                                            schemaFile));
+                    return;
                 }
             }
             if (!schemaFile.StartsWith("http://"))
@@ -1089,27 +1131,30 @@ namespace SolvencyII.Data.Shared
                 if (c == 'm' || c == 'p' || c == 'r' || c == 'i')
                 {
                     int decimals = int.MinValue;
-                    if (string.IsNullOrEmpty(f.decimals) || !decimalsPattern.IsMatch(f.decimals))
+                    if (!string.IsNullOrEmpty(f.decimals))
                     {
-                        logError("xbrl.4.6.3:missingDecimals",
-                                    string.Format("Fact decimals value error: {0} decimals {1} context {2} value {3}",
-                                                f.tag.prefixedName, f.decimals, f.contextRef, f.value),
-                                    dataPointSignature);
-                    }
-                    else
-                    {
-                        if (f.decimals.Trim() == "INF")
+                        if (!decimalsPattern.IsMatch(f.decimals))
                         {
-                            if (!this.isEIOPAfullVersion)
-                                logError("EIOPA.S.2.18.f",
-                                         string.Format("Facts MUST NOT be reported with decimals INF: {0} context {1} value {2}",
-                                                       f.tag.prefixedName, f.contextRef, f.value),
-                                         dataPointSignature);
-                            decimals = int.MaxValue;
+                            logError("xbrl.4.6.3:decimalsValueError",
+                                        string.Format("Fact decimals value error: {0} decimals {1} context {2} value {3}",
+                                                    f.tag.prefixedName, f.decimals, f.contextRef, f.value),
+                                        dataPointSignature);
                         }
                         else
                         {
-                            int.TryParse(f.decimals, out decimals);
+                            if (f.decimals.Trim() == "INF")
+                            {
+                                if (!this.isEIOPAfullVersion)
+                                    logError("EIOPA.S.2.18.f",
+                                             string.Format("Facts MUST NOT be reported with decimals INF: {0} context {1} value {2}",
+                                                           f.tag.prefixedName, f.contextRef, f.value),
+                                             dataPointSignature);
+                                decimals = int.MaxValue;
+                            }
+                            else
+                            {
+                                int.TryParse(f.decimals, out decimals);
+                            }
                         }
                     }
                     isNumeric = true;
@@ -1151,8 +1196,29 @@ namespace SolvencyII.Data.Shared
                                                                  f.tag.prefixedName, f.contextRef, f.value),
                                                    dataPointSignature);
                                     */
-
-                                    if (decimals < -3 && decimals != int.MinValue)
+                                    if (isEIOPA_2_0_1)
+                                    {
+                                        if (decimals < int.MaxValue && decimals != int.MinValue) 
+                                        {
+                                            Decimal absXvalue = Math.Abs((Decimal)xValue);
+                                            if (s_2_18_c_a_Metrics.Contains(f.tag.prefixedName))
+                                                dMin = 2;
+                                            else if (absXvalue >= 100000000)
+                                                dMin = -4;
+                                            else if (100000000 > absXvalue && absXvalue >= 1000000)
+                                                dMin = -3;
+                                            else if (1000000 > absXvalue && absXvalue >= 1000)
+                                                dMin = -2;
+                                            else
+                                                dMin = -1 ;
+                                            if (dMin > decimals)
+                                                logError("EIOPA.S.2.18.c",
+                                                         string.Format("Monetary fact {0} of context {1} has a decimals attribute less than minimum {3}: '{2}'",
+                                                                       f.tag.prefixedName, f.context.id, decimals, dMin),
+                                                         dataPointSignature);
+                                        }
+                                    }
+                                    else if (decimals < -3 && decimals != int.MinValue)
                                         logError("EBA.2.18|EIOPA.S.2.18.c",
                                                  string.Format("Monetary fact {0} of context {1} has a decimals attribute < -3: '{2}'",
                                                                f.tag.prefixedName, f.context.id, decimals),
@@ -1187,8 +1253,13 @@ namespace SolvencyII.Data.Shared
                                                  string.Format("Percent fact {0} of context {1} has a decimal attribute < 4 : '{2}'",
                                                                f.tag.prefixedName, f.context.id, decimals),
                                                  dataPointSignature);
+                                    if (isEIOPA_2_0_1 && (Decimal)xValue > 1)
+                                        logWarning("EIOPA.3.2.b",
+                                                   string.Format("Percent fact {0} of context {1} appears to be over 100% = 1.0: value {2}",
+                                                                 f.tag.prefixedName, f.contextRef, f.value),
+                                                   dataPointSignature);
                                 }
-                                else // apply dynamic decimals check
+                                else if (!isEIOPA_2_0_1) // apply dynamic decimals check
                                 {
                                     if  ((-.001m < d) && (d < .001m)) dMin = 4;
                                     else if ((-.01m < d) && (d < .01m)) dMin = 5;
@@ -1250,6 +1321,39 @@ namespace SolvencyII.Data.Shared
                                          string.Format("Monetary (numeric) facts MUST use the ISO4217 unit: {0} context {1} value {2}",
                                                    f.tag.prefixedName, f.contextRef, f.value),
                                          dataPointSignature);
+                            else
+                            {
+                                string unitCurrency = f.unit.multMeasures[0].localName;
+                                if (isEIOPA_2_0_1 && cntx != null)
+                                {
+                                    bool isCAx1 = false;
+                                    string ocCurrency = null;
+                                    foreach (ModelDimension dim in cntx.dimensions)
+                                    {
+                                        if (!dim.isTyped)
+                                            if (canonicalQname(dim.dimensionName) == "s2c_dim:OC")
+                                                ocCurrency = dim.memberName.localName;
+                                            else if (canonicalQname(dim.dimensionName) == "s2c_dim:AF" && canonicalQname(dim.memberName) == "s2c_CA:x1")
+                                                isCAx1 = true;
+                                    }
+                                    if (isCAx1 && !string.IsNullOrEmpty(ocCurrency))
+                                    {
+                                        if (ocCurrency != unitCurrency)
+                                            logError("EIOPA.3.1",
+                                                     string.Format("There MUST be only one currency but metric {0} reported OC dimension currency {1} differs from unit currency: {2}.",
+                                                               f.tag.prefixedName, ocCurrency, unitCurrency),
+                                                     dataPointSignature);
+                                    }
+                                    else
+                                    {
+                                        currenciesUsed.Add(unitCurrency);
+                                    }
+                                }
+                                else
+                                {
+                                    currenciesUsed.Add(unitCurrency);
+                                }
+                            }
                         }
                         else
                         {
@@ -1285,7 +1389,7 @@ namespace SolvencyII.Data.Shared
                             isValid = false;
                         }
                     }
-                    else if (c == 'b')
+                    else if (c == 'b' || c == 't')
                     {
                         isBool = true;
                         // convert to int 1 for true or int 0 for false
@@ -1321,16 +1425,16 @@ namespace SolvencyII.Data.Shared
                                      string.Format("Fact value enumeration has undeclared prefix: {0} context {1} value {2}",
                                                    f.tag.prefixedName, f.contextRef, f.value),
                                      dataPointSignature);
+                        if (isEIOPA_2_0_1 && f.tag.prefixedName == "s2md_met:ei1930")
+                            reportingCurrency = enumQnValue.localName;
                     }
                     else if (c == 's')
                     {
-                        /* temporarily deactivate until lang provided per e-mail 2014-11-30
-                        if (string.IsNullOrEmpty(f.xmlLang))
-                            logError("EBA.2.20",
-                                     string.Format("String facts need to report xml:lang: {0}",
-                                                   f.tag.prefixedName),
-                                     dataPointSignature);
-                         */
+                        if (!string.IsNullOrEmpty(f.xmlLang))
+                            logWarning("EIOPA.2.20",
+                                       string.Format("String fact reports xml:lang (not saved by T4U, not round-tripped): {0}",
+                                                     f.tag.prefixedName),
+                                       dataPointSignature);
                     }
                     if (f.unit != null)
                     {
@@ -1375,13 +1479,22 @@ namespace SolvencyII.Data.Shared
                     if (unusedContextIDs.Contains(filingIndicator.contextRef))
                         unusedContextIDs.Remove(filingIndicator.contextRef);
                     string v = filingIndicator.value.Trim();
+                    bool filed = bool.Parse(filingIndicator.attributes.ContainsKey(qnFindFiled) ? filingIndicator.attributes[qnFindFiled].value : "true");
                     if (dFilingIndicators.ContainsKey(v))
-                        logError("EBA.1.6.1|EIOPA.1.6.1", 
+                    {
+                        logError("EBA.1.6.1|EIOPA.1.6.1",
                                  string.Format("Multiple filing indicators facts for indicator {0}",
                                                v),
                                  dataPointSignature);
-
-                    dFilingIndicators[v] = bool.Parse(filingIndicator.attributes.ContainsKey(qnFindFiled) ? filingIndicator.attributes[qnFindFiled].value : "true");
+                        if (filed && !dFilingIndicators[v])
+                            dFilingIndicators[v] = filed;  // set to filed if any of the multiple indicators are filed=true
+                    }
+                    else // not a duplicate filing indicator
+                    {
+                        dFilingIndicators[v] = filed;
+                    }
+                    if (filed)
+                        filingIndicatorReportsFacts[v] = false;
 
                     if (filingIndicator.context == null)
                         logError("xbrl.4.6.1:itemContextRef",
@@ -1411,10 +1524,14 @@ namespace SolvencyII.Data.Shared
             }
             else if (f.tag == qnFindFilingIndicator && this.isEIOPAfullVersion)
             {
-                bool _isPos = bool.Parse(f.attributes.ContainsKey(qnFindFiled) ? f.attributes[qnFindFiled].value : "true");
-                logError(_isPos ? "EIOPA.1.6.a" : "EIOPA.1.6.b",
-                         string.Format("The filing indicator is not in a tuple: {0}",
-                                       f.value.Trim()));
+                if (bool.Parse(f.attributes.ContainsKey(qnFindFiled) ? f.attributes[qnFindFiled].value : "true"))
+                    logError("EIOPA.1.6.a",
+                             string.Format("The filing indicator is not in a tuple: {0}",
+                                           f.value.Trim()));
+                else // negative
+                    logWarning("EIOPA.1.6.b",
+                               string.Format("The filing indicator is not in a tuple: {0}",
+                                             f.value.Trim()));
             }
             else if (cntx == null)
             {
@@ -1457,7 +1574,7 @@ namespace SolvencyII.Data.Shared
                     instanceId, dataPointSignature);
                 if (result.Count() > 0)
                 {
-                    logError("EBA.2.16|EIOPA.S.2.16.a",
+                    logError(isEIOPAfullVersion ? "EBA.2.16|EIOPA.S.2.16" : "EBA.2.16|EIOPA.S.2.16.a",
                               string.Format("Fact is a duplicate: {0} context {1} value {2}",
                                             f.tag.prefixedName, f.contextRef, f.value),
                               dataPointSignature);
@@ -1549,6 +1666,9 @@ namespace SolvencyII.Data.Shared
                     else if (leiValidity == LEI_INVALID_CHECKSUM)
                         logError("EIOPA.S.2.8.c",
                                  string.Format("Context has LEI checksum error in LEI: {0}.", cntx.entityIdentifier));
+                    if (cntx.entityScheme == "http://standard.iso.org/iso/17442")
+                        logWarning("EIOPA.S.2.8.c",
+                                 string.Format("Context has entity scheme {0}, should be plural: http://standards.iso.org/iso/17442.", cntx.entityScheme));
                     invalidLEIs.Add(cntx.entityIdentifier);
                 }
             }
@@ -1608,6 +1728,11 @@ namespace SolvencyII.Data.Shared
             else
                 cntxHashIDs[cntx.md5sum] = cntx.id;
 
+            if (isEIOPA_2_0_1 && cntx.id.Length > 128)
+                logWarning("EIOPA.S.2.6",
+                         string.Format("Contexts IDs SHOULD be short: context {0}",
+                                       cntx.id));
+
             if (instanceId == UNINITIALIZED && entityIdentifier != null)  // start the instance without waiting for unit of EntityCurrency
                 startInstance();
         }
@@ -1615,28 +1740,6 @@ namespace SolvencyII.Data.Shared
         void processUnit(ModelUnit unit)
         {
             unusedUnitIDs.Add(unit.id);
-            if (unit.divMeasures.Count == 0 && unit.multMeasures.Count == 1 && unit.multMeasures[0].namespaceURI == nsIso4217)
-            {
-                if (entityCurrency == null) // capture first monetary unit for instance
-                {
-                    entityCurrency = unit.multMeasures[0].localName;
-                    if (instanceId == UNINITIALIZED)
-                    {
-                        if (entityIdentifier != null && entityCurrency != null)
-                            startInstance();
-                    }
-                    else  // now got an entityCurrency which had been null, update the instance's entity currency
-                    {
-                        _conn.Execute("UPDATE dInstance SET EntityCurrency=? WHERE InstanceID=?",
-                                      new object[] {entityCurrency,
-                                                instanceId});
-                    }
-                }
-                else if (entityCurrency != unit.multMeasures[0].localName)
-                    logError("EBA.3.1|EIOPA.3.1",
-                             string.Format("There MUST be only one currency but currencies found:  {0} and {1}",
-                                           entityCurrency, unit.multMeasures[0].localName));
-            }
             List<object> _multMeasureHashes = new List<object>(), _divMeasureHashes = new List<object>();
             foreach (QName multMeasure in unit.multMeasures)
             {
@@ -1692,7 +1795,8 @@ namespace SolvencyII.Data.Shared
         }
         HashSet<int[]> largeDimMemIds = null;
         Dictionary<String, HashSet<string>> domainHiearchyMembers = null;
-        Dictionary<String, HashSet<string>> enumElementValues = null; 
+        Dictionary<String, HashSet<string>> enumElementValues = null;
+        HashSet<String> s_2_18_c_a_Metrics;
 
         private void loadDimensionsAndEnumerations()
         {
@@ -1764,9 +1868,25 @@ namespace SolvencyII.Data.Shared
                     enumElementValues[r3.qn] = new HashSet<string>();
                 enumElementValues[r3.qn].Add(r3.val);
             }
+
+            IEnumerable<StrResult> result4 = _conn.Query<StrResult>(
+                "select distinct mem.MemberXBRLCode as str from mOrdinateCategorisation oc " +
+                "inner join mAxisOrdinate ao on ao.OrdinateID = oc.OrdinateID " +
+                "inner join mTableAxis ta on ta.AxisID = ao.AxisID " +
+                "inner join mTable t on t.TableID = ta.TableID " +
+                "inner join mMember mem on mem.MemberID = oc.MemberID " +
+                "inner join mMetric met on met.CorrespondingMemberID = mem.MemberID and met.DataType = 'Monetary' " +
+                "where (t.TableCode like 'S.06.02%' or t.TableCode like 'SE.06.02%' or t.TableCode like 'S.08.01%' or t.TableCode like 'S.08.02%' or t.TableCode like 'S.11.01%' or t.TableCode like 'E.01.01%') and mem.MemberXBRLCode not like 's2hd_met%' " +
+                "order by t.TableCode;");
+            // get S.2.18.c (a) metrics with dec >= 2 accuracy
+            s_2_18_c_a_Metrics = new HashSet<string>();
+            foreach (StrResult r4 in result4)
+            {
+                s_2_18_c_a_Metrics.Add(r4.str);
+            }
         }
 
-        HashSet<string> metricsForFilingIndicators = new HashSet<string>();
+        Dictionary<string, HashSet<string>> metricsForFilingIndicators = new Dictionary<string, HashSet<string>>();
         Dictionary<string, List<Dictionary<string,string[]>>> signaturesForFilingIndicators = new Dictionary<string, List<Dictionary<string,string[]>>>();
         //TODO: review with Herm
         private void loadAllowedMetricsAndDims()
@@ -1779,9 +1899,9 @@ namespace SolvencyII.Data.Shared
                     sb.Append("'").Append(_filingIndicator.Key.Replace("'", "''")).Append("'");
                 }
             string _filedFilingIndicators = sb.ToString();
-            IEnumerable<StrResult> result = _conn.Query<StrResult>(
+            IEnumerable<QnValResult> result = _conn.Query<QnValResult>(
                 string.Format(
-                    "select distinct mem.MemberXBRLCode as str " +
+                    "select distinct mem.MemberXBRLCode as qn,  tott.TemplateOrTableCode as val " +
                     "from mTemplateOrTable tott " + 
                     "inner join mTemplateOrTable tottv on tottv.ParentTemplateOrTableID = tott.TemplateOrTableID " +
                     "   and tott.TemplateOrTableCode in ({0}) " +
@@ -1796,13 +1916,21 @@ namespace SolvencyII.Data.Shared
                     "inner join mModuleBusinessTemplate mbt on mbt.BusinessTemplateID = tottv.TemplateOrTableID " +
                     "   and mbt.ModuleID = {1} ",
                     _filedFilingIndicators, this.moduleId));
-            this.metricsForFilingIndicators = new HashSet<String>();
-            foreach (StrResult r in result)
+            this.metricsForFilingIndicators = new Dictionary<string, HashSet<string>>();
+            foreach (QnValResult r in result)
             {
-                this.metricsForFilingIndicators.Add(r.str);
+                HashSet<string> _filingIndicators;
+                if (this.metricsForFilingIndicators.ContainsKey(r.qn))
+                    _filingIndicators = this.metricsForFilingIndicators[r.qn];
+                else
+                {
+                    _filingIndicators = new HashSet<string>();
+                    this.metricsForFilingIndicators[r.qn] = _filingIndicators;
+                }
+                _filingIndicators.Add(r.val);
             }
 
-            result = _conn.Query<StrResult>(
+            IEnumerable<StrResult> result2 = _conn.Query<StrResult>(
                 string.Format(
                     "select distinct tc.DatapointSignature as str " +
                     "from mTemplateOrTable tott " +
@@ -1816,7 +1944,7 @@ namespace SolvencyII.Data.Shared
                     "  and mbt.ModuleID = {1} ",
                     _filedFilingIndicators, this.moduleId));
             this.signaturesForFilingIndicators = new Dictionary<string, List<Dictionary<string,string[]>>>();
-            foreach (StrResult r in result)
+            foreach (StrResult r in result2)
             {
                 string[] metDims = r.str.Split(new char[] { '|' });
                 string met = metDims[0].Substring(4, metDims[0].Length - 5);
@@ -1893,7 +2021,7 @@ namespace SolvencyII.Data.Shared
                 string met = _metDims[0];
                 if (!string.IsNullOrEmpty(met) && met.Length >= 4)
                     met = met.Substring(4, met.Length - 5);
-                if (!metricsForFilingIndicators.Contains(met))
+                if (!metricsForFilingIndicators.ContainsKey(met))
                 {
                     logError("EBA.1.7.1|EIOPA.1.7.1",
                              string.Format("Fact Qname {0} is not allowed for filing indicators",
@@ -1937,7 +2065,8 @@ namespace SolvencyII.Data.Shared
                             {
                                 _largeDimMemIds.Clear();
                                 // check * dimensions
-                                foreach (KeyValuePair<string,string> _dimVal in _dimVals)
+                                foreach (KeyValuePair<string, string> _dimVal in _dimVals)
+                                {
                                     if (_dimSig.ContainsKey(_dimVal.Key))
                                     {
                                         string[] _sigValHier = _dimSig[_dimVal.Key];
@@ -1967,13 +2096,14 @@ namespace SolvencyII.Data.Shared
                                                 }
                                             }
                                         }
-                                        if (largeDimensionIds.ContainsKey(_dimVal.Key) && 
-                                            largeDimensionMemberIds.ContainsKey(_dimVal.Key) &&
-                                            largeDimensionMemberIds[_dimVal.Key].ContainsKey(_dimVal.Value))
-                                        {
-                                            _largeDimMemIds.Add(new int[] { largeDimensionIds[_dimVal.Key], largeDimensionMemberIds[_dimVal.Key][_dimVal.Value] });
-                                        }
                                     }
+                                    if (largeDimensionIds.ContainsKey(_dimVal.Key) &&
+                                        largeDimensionMemberIds.ContainsKey(_dimVal.Key) &&
+                                        largeDimensionMemberIds[_dimVal.Key].ContainsKey(_dimVal.Value))
+                                    {
+                                        _largeDimMemIds.Add(new int[] { largeDimensionIds[_dimVal.Key], largeDimensionMemberIds[_dimVal.Key][_dimVal.Value] });
+                                    }
+                                }
                                 if (_difference == 0)
                                 {
                                     _sigMatched = true;
@@ -2030,6 +2160,11 @@ namespace SolvencyII.Data.Shared
                                                     met, _extras, _missings, _diffs),
                                      dpmSignature);
                         }
+                    }
+                    foreach (string _filingIndicator in metricsForFilingIndicators[met])
+                    { // note which filing indicators now have reported facts for 1.7.b
+                        if (filingIndicatorReportsFacts.ContainsKey(_filingIndicator))
+                            filingIndicatorReportsFacts[_filingIndicator] = true;
                     }
                 }
             }
@@ -2088,7 +2223,7 @@ namespace SolvencyII.Data.Shared
                                         entityScheme, entityIdentifier,
                                         dateUnionToString(periodInstantDate, true), 
                                         null, 
-                                        entityCurrency});  // entityCurrency may be NULL at first and UPDATEd later
+                                        null});  // entityCurrency is NULL at first and UPDATEd later
                 instanceId = _conn.ExecuteScalar<long>("SELECT InstanceID FROM dInstance WHERE FileName = ?", xbrlFileName);
             }
             if (instanceId == 0)
@@ -2153,6 +2288,38 @@ namespace SolvencyII.Data.Shared
         {
             if (asyncWorker != null)
                 asyncWorker.ReportProgress(0, "Finishing XBRL instance " + xbrlFileName);
+
+            if (!(xmlDeclarationEncoding == "UTF-8" || (!isEIOPA_2_0_1 && xmlDeclarationEncoding == "utf-8")))
+                logError("EBA.1.4|EIOPA.1.4",
+                         string.Format("XBRL instance documents MUST use \"UTF-8\" encoding but is \"{0}\"",
+                                       xmlDeclarationEncoding));
+
+            if (isEIOPA_2_0_1)
+            {
+                if (piInstanceGenerator == null)
+                    logWarning("EIOPA.S.2.23",
+                                "The instance SHOULD include a processing instruction \"instance-generator\".");
+                else if (isEIOPA_2_0_1 && (
+                    !piInstanceGenerator.attributes.Keys.Contains("id") || string.IsNullOrEmpty(piInstanceGenerator.attributes["id"]) ||
+                    !piInstanceGenerator.attributes.Keys.Contains("version") || string.IsNullOrEmpty(piInstanceGenerator.attributes["version"]) ||
+                    !piInstanceGenerator.attributes.Keys.Contains("creationdate") || string.IsNullOrEmpty(piInstanceGenerator.attributes["creationdate"])))
+                    logWarning("EIOPA.S.2.23",
+                                "The processing instruction instance-generator SHOULD contain attributes \"id\", \"version\" and \"creationdate\".");
+            }
+            if (currenciesUsed.Count > 1)
+                logError("EBA.3.1|EIOPA.3.1",
+                            string.Format("There MUST be only one currency but {0} currencies were found: {1}",
+                                        currenciesUsed.Count, stringJoinQuoted(currenciesUsed, ",", true)));
+            else if (currenciesUsed.Count > 0)
+            {
+                string currencyUsed = currenciesUsed.ElementAt(0);
+                if (!string.IsNullOrEmpty(reportingCurrency) && reportingCurrency != currencyUsed)
+                    logError("EIOPA.3.1",
+                             string.Format("There MUST be only one currency but reporting currency {0} differs from unit currencies: {1}",
+                                           reportingCurrency, currencyUsed));
+                _conn.Execute("UPDATE dInstance SET EntityCurrency=? WHERE InstanceID=?",
+                              new object[] {currencyUsed, instanceId});
+            }
 
             if (hasFootnotes)
                 logWarning("EIOPA.S.19",
@@ -2247,6 +2414,19 @@ namespace SolvencyII.Data.Shared
                                      string.Format("The filing indicator IDs were not in scope for module : {0}",
                                                    stringJoinQuoted(extraneousIndicators, ",")));
                     }
+
+                    // check for filing indicators without any reported facts
+                    HashSet<string> unreportedFilingIndicators = new HashSet<string>();
+                    foreach (KeyValuePair<string, bool> kv in filingIndicatorReportsFacts)
+                        if (!kv.Value)
+                            unreportedFilingIndicators.Add(kv.Key);
+                    if (unreportedFilingIndicators.Count > 0)
+                    {
+                        logError("EIOPA.1.7.b",
+                                 string.Format("The filing indicator must not indicate filed when not reported in instance: {0}",
+                                               stringJoinQuoted(unreportedFilingIndicators, ",")));
+                    }
+
                     // filing indicators
                     foreach (long templateOrTableID in templateOrTableIDs)
                     {

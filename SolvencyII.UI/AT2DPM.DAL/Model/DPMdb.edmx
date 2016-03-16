@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AT2DPM.DAL.Model.Store" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="AT2DPM.DAL.Model.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;E:\xbrt\3. DPM Database\DPM_DB\Master\T4Udb_master\T4Udb_master.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aApplication">
           <Key>
             <PropertyRef Name="ApplicationID" />
@@ -52,17 +52,6 @@
           <Property Name="InterfaceComponentID" Type="integer" Nullable="false" />
           <Property Name="ApplicationID" Type="integer" Nullable="false" />
         </EntityType>
-        <EntityType Name="dAvailableTable">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="TableID" />
-            <PropertyRef Name="ZDimVal" />
-          </Key>
-          <Property Name="InstanceID" Type="integer" Nullable="false" />
-          <Property Name="TableID" Type="integer" Nullable="false" />
-          <Property Name="ZDimVal" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="NumberOfRows" Type="integer" />
-        </EntityType>
         <EntityType Name="dFact">
           <Key>
             <PropertyRef Name="FactID" />
@@ -101,6 +90,16 @@
           <Property Name="PeriodEndDateOrInstant" Type="datetime" />
           <Property Name="EntityCurrency" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
+        <EntityType Name="dInstanceLargeDimensionMember">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+            <PropertyRef Name="DimensionID" />
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="InstanceID" Type="integer" Nullable="false" />
+          <Property Name="DimensionID" Type="integer" Nullable="false" />
+          <Property Name="MemberID" Type="integer" Nullable="false" />
+        </EntityType>
         <EntityType Name="dMessage">
           <Key>
             <PropertyRef Name="MessageID" />
@@ -121,30 +120,6 @@ warning 6002: The table/view 'main.dMessageReference' does not have a primary ke
           </Key>
           <Property Name="MessageID" Type="integer" Nullable="false" />
           <Property Name="DataPointSignature" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-        </EntityType>
-        <EntityType Name="dProcessingContext">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="ContextID" />
-          </Key>
-          <Property Name="InstanceID" Type="integer" Nullable="false" />
-          <Property Name="ContextID" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="SortedDimensions" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="NotValid" Type="integer" />
-        </EntityType>
-        <EntityType Name="dProcessingFact">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="Metric" />
-            <PropertyRef Name="ContextID" />
-          </Key>
-          <Property Name="InstanceID" Type="integer" Nullable="false" />
-          <Property Name="Metric" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="ContextID" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="ValueTxt" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ValueDecimal" Type="real" />
-          <Property Name="ValueDate" Type="real" />
-          <Property Name="Error" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="mAxis">
           <Key>
@@ -279,6 +254,7 @@ warning 6002: The table/view 'main.dMessageReference' does not have a primary ke
           <Property Name="ParentMemberID" Type="integer" />
           <Property Name="HierarchyNodeLabel" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ConceptID" Type="integer" />
+          <Property Name="Path" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="mLanguage">
           <Key>
@@ -337,6 +313,14 @@ warning 6002: The table/view 'main.dMessageReference' does not have a primary ke
           <Property Name="ModuleID" Type="integer" Nullable="false" />
           <Property Name="Order" Type="integer" Nullable="false" />
           <Property Name="BusinessTemplateID" Type="integer" />
+        </EntityType>
+        <EntityType Name="mModuleLargeDimension">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="DimensionID" />
+          </Key>
+          <Property Name="ModuleID" Type="integer" Nullable="false" />
+          <Property Name="DimensionID" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="mOpenAxisValueRestriction">
           <Key>
@@ -436,16 +420,6 @@ warning 6002: The table/view 'main.dMessageReference' does not have a primary ke
           <Property Name="IsShaded" Type="bit" />
           <Property Name="BusinessCode" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="DatapointSignature" Type="nvarchar" MaxLength="2147483647" />
-        </EntityType>
-        <EntityType Name="mTableDimensionSet">
-          <Key>
-            <PropertyRef Name="MetricAndDimensions" />
-            <PropertyRef Name="ModuleID" />
-            <PropertyRef Name="TableID" />
-          </Key>
-          <Property Name="MetricAndDimensions" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="ModuleID" Type="integer" Nullable="false" />
-          <Property Name="TableID" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="mTaxonomy">
           <Key>
@@ -557,7 +531,7 @@ warning 6002: The table/view 'main.dMessageReference' does not have a primary ke
           <Property Name="ifMissing" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetAllHierarchies' in the table 'Inner' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Inner' in the table 'main.vwGetAllHierarchies' was excluded.
 warning 6002: The table/view 'main.vwGetAllHierarchies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetAllHierarchies">
           <Key>
@@ -569,7 +543,7 @@ warning 6002: The table/view 'main.vwGetAllHierarchies' does not have a primary 
           <Property Name="IsAbstract" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetControlInformation' in the table 'SpecialCase' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'SpecialCase' in the table 'main.vwGetControlInformation' was excluded.
 warning 6002: The table/view 'main.vwGetControlInformation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetControlInformation">
           <Key>
@@ -599,8 +573,8 @@ warning 6013: The table/view 'main.vwGetDimensionLabel' does not have a primary 
           <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetInstanceDropDownData' in the table 'Text' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetInstanceDropDownData' in the table 'Value' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Text' in the table 'main.vwGetInstanceDropDownData' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Value' in the table 'main.vwGetInstanceDropDownData' was excluded.
 warning 6002: The table/view 'main.vwGetInstanceDropDownData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetInstanceDropDownData">
           <Key>
@@ -643,9 +617,9 @@ warning 6002: The table/view 'main.vwGetLanguageInfo' does not have a primary ke
           <Property Name="InSwedish" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Owner' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Prefix' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetNamespacesPrefixes' in the table 'Namespace' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Owner' in the table 'main.vwGetNamespacesPrefixes' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Prefix' in the table 'main.vwGetNamespacesPrefixes' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Namespace' in the table 'main.vwGetNamespacesPrefixes' was excluded.
 warning 6013: The table/view 'main.vwGetNamespacesPrefixes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="vwGetNamespacesPrefixes" />-->
         <!--Errors Found During Generation:
@@ -694,13 +668,14 @@ warning 6002: The table/view 'main.vwGetOrdinateType' does not have a primary ke
           <Property Name="OrdinateID" Type="integer" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableAxisOrdinateColumns' in the table 'OrdinateLabel' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'OrdinateLabel' in the table 'main.vwGetTableAxisOrdinateColumns' was excluded.
 warning 6002: The table/view 'main.vwGetTableAxisOrdinateColumns' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTableAxisOrdinateColumns">
           <Key>
             <PropertyRef Name="OrdinateID" />
             <PropertyRef Name="TableID" />
             <PropertyRef Name="TableAxisOrder" />
+            <PropertyRef Name="LanguageID" />
           </Key>
           <Property Name="AxisID" Type="integer" />
           <Property Name="OrdinateID" Type="integer" Nullable="false" />
@@ -710,14 +685,15 @@ warning 6002: The table/view 'main.vwGetTableAxisOrdinateColumns' does not have 
           <Property Name="OrdinateCode" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="TableAxisOrder" Type="integer" Nullable="false" />
           <Property Name="OrdinateOrder" Type="integer" />
+          <Property Name="LanguageID" Type="integer" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'Unit' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'NumericValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'DateTimeValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'BoolValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'TextValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetails' in the table 'InstanceID' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Unit' in the table 'main.vwGetTableControlDetails' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'NumericValue' in the table 'main.vwGetTableControlDetails' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'DateTimeValue' in the table 'main.vwGetTableControlDetails' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'BoolValue' in the table 'main.vwGetTableControlDetails' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'TextValue' in the table 'main.vwGetTableControlDetails' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'InstanceID' in the table 'main.vwGetTableControlDetails' was excluded.
 warning 6002: The table/view 'main.vwGetTableControlDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTableControlDetails">
           <Key>
@@ -733,12 +709,12 @@ warning 6002: The table/view 'main.vwGetTableControlDetails' does not have a pri
           <Property Name="TableID" Type="integer" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'Unit' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'NumericValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'DateTimeValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'BoolValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'TextValue' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableControlDetailsZDim' in the table 'InstanceID' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Unit' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'NumericValue' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'DateTimeValue' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'BoolValue' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'TextValue' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'InstanceID' in the table 'main.vwGetTableControlDetailsZDim' was excluded.
 warning 6002: The table/view 'main.vwGetTableControlDetailsZDim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTableControlDetailsZDim">
           <Key>
@@ -756,7 +732,7 @@ warning 6002: The table/view 'main.vwGetTableControlDetailsZDim' does not have a
           <Property Name="ZordinateID" Type="integer" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTableName' in the table 'TableName' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'TableName' in the table 'main.vwGetTableName' was excluded.
 warning 6002: The table/view 'main.vwGetTableName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTableName">
           <Key>
@@ -765,10 +741,10 @@ warning 6002: The table/view 'main.vwGetTableName' does not have a primary key d
           <Property Name="TableID" Type="integer" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'CalcTemplateOrTableID' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'WhatToShow' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'CalcTableLabel' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeData' in the table 'IsTyped' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'CalcTemplateOrTableID' in the table 'main.vwGetTreeData' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'WhatToShow' in the table 'main.vwGetTreeData' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'CalcTableLabel' in the table 'main.vwGetTreeData' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'IsTyped' in the table 'main.vwGetTreeData' was excluded.
 warning 6002: The table/view 'main.vwGetTreeData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTreeData">
           <Key>
@@ -803,10 +779,10 @@ warning 6002: The table/view 'main.vwGetTreeData' does not have a primary key de
           <Property Name="Version" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'CalcTemplateOrTableID' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'WhatToShow' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'CalcTableLabel' was excluded.
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetTreeDataZDimChildren' in the table 'IsTyped' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'CalcTemplateOrTableID' in the table 'main.vwGetTreeDataZDimChildren' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'WhatToShow' in the table 'main.vwGetTreeDataZDimChildren' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'CalcTableLabel' in the table 'main.vwGetTreeDataZDimChildren' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'IsTyped' in the table 'main.vwGetTreeDataZDimChildren' was excluded.
 warning 6002: The table/view 'main.vwGetTreeDataZDimChildren' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetTreeDataZDimChildren">
           <Key>
@@ -850,7 +826,7 @@ warning 6013: The table/view 'main.vwGetzAxisMemberOwnerPrefix' does not have a 
           <Property Name="OwnerPrefix" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwGetzAxisMembers' in the table 'MemberLabel' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'MemberLabel' in the table 'main.vwGetzAxisMembers' was excluded.
 warning 6002: The table/view 'main.vwGetzAxisMembers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwGetzAxisMembers">
           <Key>
@@ -873,7 +849,7 @@ warning 6002: The table/view 'main.vwGetZDimTreeTables' does not have a primary 
           <Property Name="AxisID" Type="integer" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwHierarchyLookupAxis' in the table 'Inner' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Inner' in the table 'main.vwHierarchyLookupAxis' was excluded.
 warning 6002: The table/view 'main.vwHierarchyLookupAxis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwHierarchyLookupAxis">
           <Key>
@@ -887,7 +863,7 @@ warning 6002: The table/view 'main.vwHierarchyLookupAxis' does not have a primar
           <Property Name="MemberCode" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'main.vwHierarchyLookupMetrics' in the table 'Inner' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'Inner' in the table 'main.vwHierarchyLookupMetrics' was excluded.
 warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwHierarchyLookupMetrics">
           <Key>
@@ -924,15 +900,39 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dAvailableTable_0_0">
-          <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
-          <End Role="dAvailableTable" Type="Self.dAvailableTable" Multiplicity="*" />
+        <Association Name="FK_dInstanceLargeDimensionMember_0_0">
+          <End Role="mMember" Type="Self.mMember" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="mTable">
-              <PropertyRef Name="TableID" />
+            <Principal Role="mMember">
+              <PropertyRef Name="MemberID" />
             </Principal>
-            <Dependent Role="dAvailableTable">
-              <PropertyRef Name="TableID" />
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dInstanceLargeDimensionMember_1_0">
+          <End Role="mDimension" Type="Self.mDimension" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mDimension">
+              <PropertyRef Name="DimensionID" />
+            </Principal>
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="DimensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dInstanceLargeDimensionMember_2_0">
+          <End Role="dInstance" Type="Self.dInstance" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dInstance">
+              <PropertyRef Name="InstanceID" />
+            </Principal>
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="InstanceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1308,6 +1308,30 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_mModuleLargeDimension_0_0">
+          <End Role="mDimension" Type="Self.mDimension" Multiplicity="1" />
+          <End Role="mModuleLargeDimension" Type="Self.mModuleLargeDimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mDimension">
+              <PropertyRef Name="DimensionID" />
+            </Principal>
+            <Dependent Role="mModuleLargeDimension">
+              <PropertyRef Name="DimensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mModuleLargeDimension_1_0">
+          <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
+          <End Role="mModuleLargeDimension" Type="Self.mModuleLargeDimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mModule">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="mModuleLargeDimension">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_mOpenAxisValueRestriction_0_0">
           <End Role="mMember" Type="Self.mMember" Multiplicity="0..1" />
           <End Role="mOpenAxisValueRestriction" Type="Self.mOpenAxisValueRestriction" Multiplicity="*" />
@@ -1497,30 +1521,6 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
             </Principal>
             <Dependent Role="mTableCell">
               <PropertyRef Name="TableID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mTableDimensionSet_0_0">
-          <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
-          <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mTable">
-              <PropertyRef Name="TableID" />
-            </Principal>
-            <Dependent Role="mTableDimensionSet">
-              <PropertyRef Name="TableID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mTableDimensionSet_1_0">
-          <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
-          <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mModule">
-              <PropertyRef Name="ModuleID" />
-            </Principal>
-            <Dependent Role="mTableDimensionSet">
-              <PropertyRef Name="ModuleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1732,13 +1732,11 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
           <EntitySet Name="aApplication" EntityType="Self.aApplication" store:Type="Tables" />
           <EntitySet Name="aInterfaceComponent" EntityType="Self.aInterfaceComponent" store:Type="Tables" />
           <EntitySet Name="aInterfaceComponentApplication" EntityType="Self.aInterfaceComponentApplication" store:Type="Tables" />
-          <EntitySet Name="dAvailableTable" EntityType="Self.dAvailableTable" store:Type="Tables" />
           <EntitySet Name="dFact" EntityType="Self.dFact" store:Type="Tables" />
           <EntitySet Name="dFilingIndicator" EntityType="Self.dFilingIndicator" store:Type="Tables" />
           <EntitySet Name="dInstance" EntityType="Self.dInstance" store:Type="Tables" />
+          <EntitySet Name="dInstanceLargeDimensionMember" EntityType="Self.dInstanceLargeDimensionMember" store:Type="Tables" />
           <EntitySet Name="dMessage" EntityType="Self.dMessage" store:Type="Tables" />
-          <EntitySet Name="dProcessingContext" EntityType="Self.dProcessingContext" store:Type="Tables" />
-          <EntitySet Name="dProcessingFact" EntityType="Self.dProcessingFact" store:Type="Tables" />
           <EntitySet Name="mAxis" EntityType="Self.mAxis" store:Type="Tables" />
           <EntitySet Name="mAxisOrdinate" EntityType="Self.mAxisOrdinate" store:Type="Tables" />
           <EntitySet Name="mCellPosition" EntityType="Self.mCellPosition" store:Type="Tables" />
@@ -1756,6 +1754,7 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
           <EntitySet Name="mMetric" EntityType="Self.mMetric" store:Type="Tables" />
           <EntitySet Name="mModule" EntityType="Self.mModule" store:Type="Tables" />
           <EntitySet Name="mModuleBusinessTemplate" EntityType="Self.mModuleBusinessTemplate" store:Type="Tables" />
+          <EntitySet Name="mModuleLargeDimension" EntityType="Self.mModuleLargeDimension" store:Type="Tables" />
           <EntitySet Name="mOpenAxisValueRestriction" EntityType="Self.mOpenAxisValueRestriction" store:Type="Tables" />
           <EntitySet Name="mOrdinateCategorisation" EntityType="Self.mOrdinateCategorisation" store:Type="Tables" />
           <EntitySet Name="mOwner" EntityType="Self.mOwner" store:Type="Tables" />
@@ -1765,7 +1764,6 @@ warning 6002: The table/view 'main.vwHierarchyLookupMetrics' does not have a pri
           <EntitySet Name="mTable" EntityType="Self.mTable" store:Type="Tables" />
           <EntitySet Name="mTableAxis" EntityType="Self.mTableAxis" store:Type="Tables" />
           <EntitySet Name="mTableCell" EntityType="Self.mTableCell" store:Type="Tables" />
-          <EntitySet Name="mTableDimensionSet" EntityType="Self.mTableDimensionSet" store:Type="Tables" />
           <EntitySet Name="mTaxonomy" EntityType="Self.mTaxonomy" store:Type="Tables" />
           <EntitySet Name="mTaxonomyTable" EntityType="Self.mTaxonomyTable" store:Type="Tables" />
           <EntitySet Name="mTemplateOrTable" EntityType="Self.mTemplateOrTable" store:Type="Tables" />
@@ -1882,7 +1880,8 @@ FROM [vwGetOrdinateType] AS [vwGetOrdinateType]</DefiningQuery>
 [vwGetTableAxisOrdinateColumns].[TableID] AS [TableID], 
 [vwGetTableAxisOrdinateColumns].[OrdinateCode] AS [OrdinateCode], 
 [vwGetTableAxisOrdinateColumns].[TableAxisOrder] AS [TableAxisOrder], 
-[vwGetTableAxisOrdinateColumns].[OrdinateOrder] AS [OrdinateOrder]
+[vwGetTableAxisOrdinateColumns].[OrdinateOrder] AS [OrdinateOrder], 
+[vwGetTableAxisOrdinateColumns].[LanguageID] AS [LanguageID]
 FROM [vwGetTableAxisOrdinateColumns] AS [vwGetTableAxisOrdinateColumns]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwGetTableControlDetails" EntityType="Self.vwGetTableControlDetails" store:Type="Views">
@@ -2005,9 +2004,17 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             <End Role="aApplication" EntitySet="aApplication" />
             <End Role="aInterfaceComponentApplication" EntitySet="aInterfaceComponentApplication" />
           </AssociationSet>
-          <AssociationSet Name="FK_dAvailableTable_0_0" Association="Self.FK_dAvailableTable_0_0">
-            <End Role="mTable" EntitySet="mTable" />
-            <End Role="dAvailableTable" EntitySet="dAvailableTable" />
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_0_0" Association="Self.FK_dInstanceLargeDimensionMember_0_0">
+            <End Role="mMember" EntitySet="mMember" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_1_0" Association="Self.FK_dInstanceLargeDimensionMember_1_0">
+            <End Role="mDimension" EntitySet="mDimension" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_2_0" Association="Self.FK_dInstanceLargeDimensionMember_2_0">
+            <End Role="dInstance" EntitySet="dInstance" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMember" />
           </AssociationSet>
           <AssociationSet Name="FK_mAxisOrdinate_0_0" Association="Self.FK_mAxisOrdinate_0_0">
             <End Role="mConcept" EntitySet="mConcept" />
@@ -2133,6 +2140,14 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             <End Role="mModule" EntitySet="mModule" />
             <End Role="mModuleBusinessTemplate" EntitySet="mModuleBusinessTemplate" />
           </AssociationSet>
+          <AssociationSet Name="FK_mModuleLargeDimension_0_0" Association="Self.FK_mModuleLargeDimension_0_0">
+            <End Role="mDimension" EntitySet="mDimension" />
+            <End Role="mModuleLargeDimension" EntitySet="mModuleLargeDimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mModuleLargeDimension_1_0" Association="Self.FK_mModuleLargeDimension_1_0">
+            <End Role="mModule" EntitySet="mModule" />
+            <End Role="mModuleLargeDimension" EntitySet="mModuleLargeDimension" />
+          </AssociationSet>
           <AssociationSet Name="FK_mOpenAxisValueRestriction_0_0" Association="Self.FK_mOpenAxisValueRestriction_0_0">
             <End Role="mMember" EntitySet="mMember" />
             <End Role="mOpenAxisValueRestriction" EntitySet="mOpenAxisValueRestriction" />
@@ -2196,14 +2211,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <AssociationSet Name="FK_mTableCell_0_0" Association="Self.FK_mTableCell_0_0">
             <End Role="mTable" EntitySet="mTable" />
             <End Role="mTableCell" EntitySet="mTableCell" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mTableDimensionSet_0_0" Association="Self.FK_mTableDimensionSet_0_0">
-            <End Role="mTable" EntitySet="mTable" />
-            <End Role="mTableDimensionSet" EntitySet="mTableDimensionSet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mTableDimensionSet_1_0" Association="Self.FK_mTableDimensionSet_1_0">
-            <End Role="mModule" EntitySet="mModule" />
-            <End Role="mTableDimensionSet" EntitySet="mTableDimensionSet" />
           </AssociationSet>
           <AssociationSet Name="FK_mTaxonomy_0_0" Association="Self.FK_mTaxonomy_0_0">
             <End Role="mReportingFramework" EntitySet="mReportingFramework" />
@@ -2278,7 +2285,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AT2DPM.DAL.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="AT2DPM.DAL.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="aApplication">
           <Key>
             <PropertyRef Name="ApplicationID" />
@@ -2320,18 +2327,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="InSwedish" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="aApplications" Relationship="Self.aInterfaceComponentApplication" FromRole="aInterfaceComponent" ToRole="aApplication" />
         </EntityType>
-        <EntityType Name="dAvailableTable">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="TableID" />
-            <PropertyRef Name="ZDimVal" />
-          </Key>
-          <Property Name="InstanceID" Type="Int64" Nullable="false" />
-          <Property Name="TableID" Type="Int64" Nullable="false" />
-          <Property Name="ZDimVal" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NumberOfRows" Type="Int64" />
-          <NavigationProperty Name="mTable" Relationship="Self.FK_dAvailableTable_0_0" FromRole="dAvailableTable" ToRole="mTable" />
-        </EntityType>
         <EntityType Name="dFact">
           <Key>
             <PropertyRef Name="FactID" />
@@ -2369,6 +2364,20 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="EntityName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="PeriodEndDateOrInstant" Type="DateTime" />
           <Property Name="EntityCurrency" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dInstanceLargeDimensionMembers" Relationship="Self.FK_dInstanceLargeDimensionMember_2_0" FromRole="dInstance" ToRole="dInstanceLargeDimensionMember" />
+        </EntityType>
+        <EntityType Name="dInstanceLargeDimensionMember">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+            <PropertyRef Name="DimensionID" />
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="InstanceID" Type="Int64" Nullable="false" />
+          <Property Name="DimensionID" Type="Int64" Nullable="false" />
+          <Property Name="MemberID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="dInstance" Relationship="Self.FK_dInstanceLargeDimensionMember_2_0" FromRole="dInstanceLargeDimensionMember" ToRole="dInstance" />
+          <NavigationProperty Name="mMember" Relationship="Self.FK_dInstanceLargeDimensionMember_0_0" FromRole="dInstanceLargeDimensionMember" ToRole="mMember" />
+          <NavigationProperty Name="mDimension" Relationship="Self.FK_dInstanceLargeDimensionMember_1_0" FromRole="dInstanceLargeDimensionMember" ToRole="mDimension" />
         </EntityType>
         <EntityType Name="dMessage">
           <Key>
@@ -2380,30 +2389,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="MessageCode" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="MessageLevel" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="dProcessingContext">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="ContextID" />
-          </Key>
-          <Property Name="InstanceID" Type="Int64" Nullable="false" />
-          <Property Name="ContextID" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SortedDimensions" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="NotValid" Type="Int64" />
-        </EntityType>
-        <EntityType Name="dProcessingFact">
-          <Key>
-            <PropertyRef Name="InstanceID" />
-            <PropertyRef Name="Metric" />
-            <PropertyRef Name="ContextID" />
-          </Key>
-          <Property Name="InstanceID" Type="Int64" Nullable="false" />
-          <Property Name="Metric" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextID" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ValueTxt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ValueDecimal" Type="Double" />
-          <Property Name="ValueDate" Type="Double" />
-          <Property Name="Error" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="mAxi">
           <Key>
@@ -2503,10 +2488,12 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="DomainID" Type="Int64" />
           <Property Name="IsTypedDimension" Type="Boolean" />
           <Property Name="ConceptID" Type="Int64" />
+          <NavigationProperty Name="dInstanceLargeDimensionMembers" Relationship="Self.FK_dInstanceLargeDimensionMember_1_0" FromRole="mDimension" ToRole="dInstanceLargeDimensionMember" />
           <NavigationProperty Name="mConcept" Relationship="Self.FK_mDimension_1_0" FromRole="mDimension" ToRole="mConcept" />
           <NavigationProperty Name="mDomain" Relationship="Self.FK_mDimension_0_0" FromRole="mDimension" ToRole="mDomain" />
           <NavigationProperty Name="mOrdinateCategorisations" Relationship="Self.FK_mOrdinateCategorisation_1_0" FromRole="mDimension" ToRole="mOrdinateCategorisation" />
           <NavigationProperty Name="mReferenceCategorisations" Relationship="Self.FK_mReferenceCategorisation_2_0" FromRole="mDimension" ToRole="mReferenceCategorisation" />
+          <NavigationProperty Name="mModules" Relationship="Self.mModuleLargeDimension" FromRole="mDimension" ToRole="mModule" />
         </EntityType>
         <EntityType Name="mDomain">
           <Key>
@@ -2557,6 +2544,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="ParentMemberID" Type="Int64" />
           <Property Name="HierarchyNodeLabel" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ConceptID" Type="Int64" />
+          <Property Name="Path" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="mConcept" Relationship="Self.FK_mHierarchyNode_2_0" FromRole="mHierarchyNode" ToRole="mConcept" />
           <NavigationProperty Name="mHierarchy" Relationship="Self.FK_mHierarchyNode_1_0" FromRole="mHierarchyNode" ToRole="mHierarchy" />
           <NavigationProperty Name="mMember" Relationship="Self.FK_mHierarchyNode_0_0" FromRole="mHierarchyNode" ToRole="mMember" />
@@ -2584,6 +2572,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="MemberXBRLCode" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="IsDefaultMember" Type="Boolean" />
           <Property Name="ConceptID" Type="Int64" />
+          <NavigationProperty Name="dInstanceLargeDimensionMembers" Relationship="Self.FK_dInstanceLargeDimensionMember_0_0" FromRole="mMember" ToRole="dInstanceLargeDimensionMember" />
           <NavigationProperty Name="mConcept" Relationship="Self.FK_mMember_1_0" FromRole="mMember" ToRole="mConcept" />
           <NavigationProperty Name="mDomain" Relationship="Self.FK_mMember_0_0" FromRole="mMember" ToRole="mDomain" />
           <NavigationProperty Name="mHierarchyNodes" Relationship="Self.FK_mHierarchyNode_0_0" FromRole="mMember" ToRole="mHierarchyNode" />
@@ -2626,7 +2615,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <NavigationProperty Name="mConceptualModule" Relationship="Self.FK_mModule_0_0" FromRole="mModule" ToRole="mConceptualModule" />
           <NavigationProperty Name="mTaxonomy" Relationship="Self.FK_mModule_1_0" FromRole="mModule" ToRole="mTaxonomy" />
           <NavigationProperty Name="mModuleBusinessTemplates" Relationship="Self.FK_mModuleBusinessTemplate_0_0" FromRole="mModule" ToRole="mModuleBusinessTemplate" />
-          <NavigationProperty Name="mTableDimensionSets" Relationship="Self.FK_mTableDimensionSet_1_0" FromRole="mModule" ToRole="mTableDimensionSet" />
+          <NavigationProperty Name="mDimensions" Relationship="Self.mModuleLargeDimension" FromRole="mModule" ToRole="mDimension" />
           <NavigationProperty Name="vValidationRules" Relationship="Self.vValidationRuleSet" FromRole="mModule" ToRole="vValidationRule" />
         </EntityType>
         <EntityType Name="mModuleBusinessTemplate">
@@ -2736,11 +2725,9 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="ConceptID" Type="Int64" />
           <Property Name="YDimVal" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ZDimVal" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="dAvailableTables" Relationship="Self.FK_dAvailableTable_0_0" FromRole="mTable" ToRole="dAvailableTable" />
           <NavigationProperty Name="mConcept" Relationship="Self.FK_mTable_0_0" FromRole="mTable" ToRole="mConcept" />
           <NavigationProperty Name="mTableAxis" Relationship="Self.FK_mTableAxis_1_0" FromRole="mTable" ToRole="mTableAxis" />
           <NavigationProperty Name="mTableCells" Relationship="Self.FK_mTableCell_0_0" FromRole="mTable" ToRole="mTableCell" />
-          <NavigationProperty Name="mTableDimensionSets" Relationship="Self.FK_mTableDimensionSet_0_0" FromRole="mTable" ToRole="mTableDimensionSet" />
           <NavigationProperty Name="mTaxonomyTables" Relationship="Self.FK_mTaxonomyTable_1_0" FromRole="mTable" ToRole="mTaxonomyTable" />
           <NavigationProperty Name="vValidationRules" Relationship="Self.vValidationScope" FromRole="mTable" ToRole="vValidationRule" />
         </EntityType>
@@ -2768,18 +2755,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <NavigationProperty Name="mTable" Relationship="Self.FK_mTableCell_0_0" FromRole="mTableCell" ToRole="mTable" />
           <NavigationProperty Name="mAxisOrdinates" Relationship="Self.mCellPosition" FromRole="mTableCell" ToRole="mAxisOrdinate" />
           <NavigationProperty Name="mReferences" Relationship="Self.mCellReference" FromRole="mTableCell" ToRole="mReference" />
-        </EntityType>
-        <EntityType Name="mTableDimensionSet">
-          <Key>
-            <PropertyRef Name="MetricAndDimensions" />
-            <PropertyRef Name="ModuleID" />
-            <PropertyRef Name="TableID" />
-          </Key>
-          <Property Name="MetricAndDimensions" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ModuleID" Type="Int64" Nullable="false" />
-          <Property Name="TableID" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="mModule" Relationship="Self.FK_mTableDimensionSet_1_0" FromRole="mTableDimensionSet" ToRole="mModule" />
-          <NavigationProperty Name="mTable" Relationship="Self.FK_mTableDimensionSet_0_0" FromRole="mTableDimensionSet" ToRole="mTable" />
         </EntityType>
         <EntityType Name="mTaxonomy">
           <Key>
@@ -3004,6 +2979,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             <PropertyRef Name="OrdinateID" />
             <PropertyRef Name="TableID" />
             <PropertyRef Name="TableAxisOrder" />
+            <PropertyRef Name="LanguageID" />
           </Key>
           <Property Name="AxisID" Type="Int64" />
           <Property Name="OrdinateID" Type="Int64" Nullable="false" />
@@ -3013,6 +2989,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="OrdinateCode" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="TableAxisOrder" Type="Int64" Nullable="false" />
           <Property Name="OrdinateOrder" Type="Int64" />
+          <Property Name="LanguageID" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="vwGetTableControlDetail">
           <Key>
@@ -3155,15 +3132,39 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <Property Name="HierarchyOrder" Type="Int64" />
           <Property Name="IsAbstract" Type="Boolean" />
         </EntityType>
-        <Association Name="FK_dAvailableTable_0_0">
-          <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
-          <End Role="dAvailableTable" Type="Self.dAvailableTable" Multiplicity="*" />
+        <Association Name="FK_dInstanceLargeDimensionMember_2_0">
+          <End Role="dInstance" Type="Self.dInstance" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="mTable">
-              <PropertyRef Name="TableID" />
+            <Principal Role="dInstance">
+              <PropertyRef Name="InstanceID" />
             </Principal>
-            <Dependent Role="dAvailableTable">
-              <PropertyRef Name="TableID" />
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="InstanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dInstanceLargeDimensionMember_0_0">
+          <End Role="mMember" Type="Self.mMember" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mMember">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dInstanceLargeDimensionMember_1_0">
+          <End Role="mDimension" Type="Self.mDimension" Multiplicity="1" />
+          <End Role="dInstanceLargeDimensionMember" Type="Self.dInstanceLargeDimensionMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mDimension">
+              <PropertyRef Name="DimensionID" />
+            </Principal>
+            <Dependent Role="dInstanceLargeDimensionMember">
+              <PropertyRef Name="DimensionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3647,18 +3648,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_mTableDimensionSet_1_0">
-          <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
-          <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mModule">
-              <PropertyRef Name="ModuleID" />
-            </Principal>
-            <Dependent Role="mTableDimensionSet">
-              <PropertyRef Name="ModuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_mOwner_0_0">
           <End Role="mOwner" Type="Self.mOwner" Multiplicity="0..1" />
           <End Role="mOwner1" Type="Self.mOwner" Multiplicity="*" />
@@ -3715,18 +3704,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
               <PropertyRef Name="TableID" />
             </Principal>
             <Dependent Role="mTableCell">
-              <PropertyRef Name="TableID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mTableDimensionSet_0_0">
-          <End Role="mTable" Type="Self.mTable" Multiplicity="1" />
-          <End Role="mTableDimensionSet" Type="Self.mTableDimensionSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mTable">
-              <PropertyRef Name="TableID" />
-            </Principal>
-            <Dependent Role="mTableDimensionSet">
               <PropertyRef Name="TableID" />
             </Dependent>
           </ReferentialConstraint>
@@ -3831,6 +3808,10 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <End Role="mReference" Type="Self.mReference" Multiplicity="*" />
           <End Role="mConcept" Type="Self.mConcept" Multiplicity="*" />
         </Association>
+        <Association Name="mModuleLargeDimension">
+          <End Role="mDimension" Type="Self.mDimension" Multiplicity="*" />
+          <End Role="mModule" Type="Self.mModule" Multiplicity="*" />
+        </Association>
         <Association Name="vPreCondition">
           <End Role="vValidationRule" Type="Self.vValidationRule" Multiplicity="*" />
           <End Role="vExpression" Type="Self.vExpression" Multiplicity="*" />
@@ -3846,13 +3827,11 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
         <EntityContainer Name="DPMdb" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="aApplications" EntityType="Self.aApplication" />
           <EntitySet Name="aInterfaceComponents" EntityType="Self.aInterfaceComponent" />
-          <EntitySet Name="dAvailableTables" EntityType="Self.dAvailableTable" />
           <EntitySet Name="dFacts" EntityType="Self.dFact" />
           <EntitySet Name="dFilingIndicators" EntityType="Self.dFilingIndicator" />
           <EntitySet Name="dInstances" EntityType="Self.dInstance" />
+          <EntitySet Name="dInstanceLargeDimensionMembers" EntityType="Self.dInstanceLargeDimensionMember" />
           <EntitySet Name="dMessages" EntityType="Self.dMessage" />
-          <EntitySet Name="dProcessingContexts" EntityType="Self.dProcessingContext" />
-          <EntitySet Name="dProcessingFacts" EntityType="Self.dProcessingFact" />
           <EntitySet Name="mAxis" EntityType="Self.mAxi" />
           <EntitySet Name="mAxisOrdinates" EntityType="Self.mAxisOrdinate" />
           <EntitySet Name="mConcepts" EntityType="Self.mConcept" />
@@ -3876,7 +3855,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <EntitySet Name="mTables" EntityType="Self.mTable" />
           <EntitySet Name="mTableAxis" EntityType="Self.mTableAxi" />
           <EntitySet Name="mTableCells" EntityType="Self.mTableCell" />
-          <EntitySet Name="mTableDimensionSets" EntityType="Self.mTableDimensionSet" />
           <EntitySet Name="mTaxonomies" EntityType="Self.mTaxonomy" />
           <EntitySet Name="mTaxonomyTables" EntityType="Self.mTaxonomyTable" />
           <EntitySet Name="mTemplateOrTables" EntityType="Self.mTemplateOrTable" />
@@ -3903,9 +3881,17 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <EntitySet Name="vwGetZDimTreeTables" EntityType="Self.vwGetZDimTreeTable" />
           <EntitySet Name="vwHierarchyLookupAxis" EntityType="Self.vwHierarchyLookupAxi" />
           <EntitySet Name="vwHierarchyLookupMetrics" EntityType="Self.vwHierarchyLookupMetric" />
-          <AssociationSet Name="FK_dAvailableTable_0_0" Association="Self.FK_dAvailableTable_0_0">
-            <End Role="mTable" EntitySet="mTables" />
-            <End Role="dAvailableTable" EntitySet="dAvailableTables" />
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_2_0" Association="Self.FK_dInstanceLargeDimensionMember_2_0">
+            <End Role="dInstance" EntitySet="dInstances" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_0_0" Association="Self.FK_dInstanceLargeDimensionMember_0_0">
+            <End Role="mMember" EntitySet="mMembers" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dInstanceLargeDimensionMember_1_0" Association="Self.FK_dInstanceLargeDimensionMember_1_0">
+            <End Role="mDimension" EntitySet="mDimensions" />
+            <End Role="dInstanceLargeDimensionMember" EntitySet="dInstanceLargeDimensionMembers" />
           </AssociationSet>
           <AssociationSet Name="FK_mAxisOrdinate_2_0" Association="Self.FK_mAxisOrdinate_2_0">
             <End Role="mAxis" EntitySet="mAxis" />
@@ -4067,10 +4053,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             <End Role="mModule" EntitySet="mModules" />
             <End Role="mModuleBusinessTemplate" EntitySet="mModuleBusinessTemplates" />
           </AssociationSet>
-          <AssociationSet Name="FK_mTableDimensionSet_1_0" Association="Self.FK_mTableDimensionSet_1_0">
-            <End Role="mModule" EntitySet="mModules" />
-            <End Role="mTableDimensionSet" EntitySet="mTableDimensionSets" />
-          </AssociationSet>
           <AssociationSet Name="FK_mOwner_0_0" Association="Self.FK_mOwner_0_0">
             <End Role="mOwner" EntitySet="mOwners" />
             <End Role="mOwner1" EntitySet="mOwners" />
@@ -4090,10 +4072,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
           <AssociationSet Name="FK_mTableCell_0_0" Association="Self.FK_mTableCell_0_0">
             <End Role="mTable" EntitySet="mTables" />
             <End Role="mTableCell" EntitySet="mTableCells" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mTableDimensionSet_0_0" Association="Self.FK_mTableDimensionSet_0_0">
-            <End Role="mTable" EntitySet="mTables" />
-            <End Role="mTableDimensionSet" EntitySet="mTableDimensionSets" />
           </AssociationSet>
           <AssociationSet Name="FK_mTaxonomyTable_1_0" Association="Self.FK_mTaxonomyTable_1_0">
             <End Role="mTable" EntitySet="mTables" />
@@ -4139,6 +4117,10 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
             <End Role="mReference" EntitySet="mReferences" />
             <End Role="mConcept" EntitySet="mConcepts" />
           </AssociationSet>
+          <AssociationSet Name="mModuleLargeDimension" Association="Self.mModuleLargeDimension">
+            <End Role="mDimension" EntitySet="mDimensions" />
+            <End Role="mModule" EntitySet="mModules" />
+          </AssociationSet>
           <AssociationSet Name="vPreCondition" Association="Self.vPreCondition">
             <End Role="vValidationRule" EntitySet="vValidationRules" />
             <End Role="vExpression" EntitySet="vExpressions" />
@@ -4156,7 +4138,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AT2DPMDALModelStoreContainer" CdmEntityContainer="DPMdb">
           <EntitySetMapping Name="aApplications">
             <EntityTypeMapping TypeName="AT2DPM.DAL.Model.aApplication">
@@ -4196,16 +4178,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
                 <ScalarProperty Name="InSlovenian" ColumnName="InSlovenian" />
                 <ScalarProperty Name="InSpanish" ColumnName="InSpanish" />
                 <ScalarProperty Name="InSwedish" ColumnName="InSwedish" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dAvailableTables">
-            <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dAvailableTable">
-              <MappingFragment StoreEntitySet="dAvailableTable">
-                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
-                <ScalarProperty Name="TableID" ColumnName="TableID" />
-                <ScalarProperty Name="ZDimVal" ColumnName="ZDimVal" />
-                <ScalarProperty Name="NumberOfRows" ColumnName="NumberOfRows" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4249,6 +4221,15 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="dInstanceLargeDimensionMembers">
+            <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dInstanceLargeDimensionMember">
+              <MappingFragment StoreEntitySet="dInstanceLargeDimensionMember">
+                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+                <ScalarProperty Name="DimensionID" ColumnName="DimensionID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="dMessages">
             <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dMessage">
               <MappingFragment StoreEntitySet="dMessage">
@@ -4258,29 +4239,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
                 <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
                 <ScalarProperty Name="MessageLevel" ColumnName="MessageLevel" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dProcessingContexts">
-            <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dProcessingContext">
-              <MappingFragment StoreEntitySet="dProcessingContext">
-                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
-                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
-                <ScalarProperty Name="SortedDimensions" ColumnName="SortedDimensions" />
-                <ScalarProperty Name="NotValid" ColumnName="NotValid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dProcessingFacts">
-            <EntityTypeMapping TypeName="AT2DPM.DAL.Model.dProcessingFact">
-              <MappingFragment StoreEntitySet="dProcessingFact">
-                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
-                <ScalarProperty Name="Metric" ColumnName="Metric" />
-                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
-                <ScalarProperty Name="ValueTxt" ColumnName="ValueTxt" />
-                <ScalarProperty Name="ValueDecimal" ColumnName="ValueDecimal" />
-                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
-                <ScalarProperty Name="Error" ColumnName="Error" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4398,6 +4356,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
                 <ScalarProperty Name="ParentMemberID" ColumnName="ParentMemberID" />
                 <ScalarProperty Name="HierarchyNodeLabel" ColumnName="HierarchyNodeLabel" />
                 <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4564,15 +4523,6 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
                 <ScalarProperty Name="IsShaded" ColumnName="IsShaded" />
                 <ScalarProperty Name="BusinessCode" ColumnName="BusinessCode" />
                 <ScalarProperty Name="DatapointSignature" ColumnName="DatapointSignature" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mTableDimensionSets">
-            <EntityTypeMapping TypeName="AT2DPM.DAL.Model.mTableDimensionSet">
-              <MappingFragment StoreEntitySet="mTableDimensionSet">
-                <ScalarProperty Name="MetricAndDimensions" ColumnName="MetricAndDimensions" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
-                <ScalarProperty Name="TableID" ColumnName="TableID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4791,6 +4741,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
                 <ScalarProperty Name="OrdinateCode" ColumnName="OrdinateCode" />
                 <ScalarProperty Name="TableAxisOrder" ColumnName="TableAxisOrder" />
                 <ScalarProperty Name="OrdinateOrder" ColumnName="OrdinateOrder" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4956,6 +4907,14 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
               <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="mModuleLargeDimension" TypeName="AT2DPM.DAL.Model.mModuleLargeDimension" StoreEntitySet="mModuleLargeDimension">
+            <EndProperty Name="mDimension">
+              <ScalarProperty Name="DimensionID" ColumnName="DimensionID" />
+            </EndProperty>
+            <EndProperty Name="mModule">
+              <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="vPreCondition" TypeName="AT2DPM.DAL.Model.vPreCondition" StoreEntitySet="vPreCondition">
             <EndProperty Name="vValidationRule">
               <ScalarProperty Name="ValidationRuleID" ColumnName="ValidationRuleId" />
@@ -4985,7 +4944,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -4996,7 +4955,7 @@ FROM [vwHierarchyLookupMetrics] AS [vwHierarchyLookupMetrics]</DefiningQuery>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

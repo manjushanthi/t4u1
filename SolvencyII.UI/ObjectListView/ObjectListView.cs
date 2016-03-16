@@ -3574,9 +3574,7 @@ namespace BrightIdeasSoftware
             // Getting the Count forces any internal cache of the ListView to be flushed. Without
             // this, iterating over the Items will not work correctly if the ListView handle
             // has not yet been created.
-#pragma warning disable 168
             int dummy = this.Items.Count;
-#pragma warning restore 168
 
             // Collect all the information that governs the creation of groups
             GroupingParameters parms = this.CollectGroupingParameters(groupByColumn, groupByOrder,
@@ -7944,9 +7942,7 @@ namespace BrightIdeasSoftware
         protected virtual void PostProcessRows() {
             // If this method is called during a BeginUpdate/EndUpdate pair, changes to the
             // Items collection are cached. Getting the Count flushes that cache.
-#pragma warning disable 168
             int count = this.Items.Count;
-#pragma warning restore 168
 
             int i = 0;
             if (this.ShowGroups) {

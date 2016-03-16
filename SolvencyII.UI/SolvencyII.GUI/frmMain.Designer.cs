@@ -42,7 +42,6 @@ namespace SolvencyII.GUI
             this.tabTopRight = new System.Windows.Forms.TabControl();
             this.tabValidationErrorPage = new System.Windows.Forms.TabPage();
             this.tabCellPropertiesPage = new System.Windows.Forms.TabPage();
-            this.tabContainerValidationPage = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createXbrtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -219,7 +218,6 @@ namespace SolvencyII.GUI
             // 
             this.tabTopRight.Controls.Add(this.tabValidationErrorPage);
             this.tabTopRight.Controls.Add(this.tabCellPropertiesPage);
-            this.tabTopRight.Controls.Add(this.tabContainerValidationPage);
             this.tabTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTopRight.Location = new System.Drawing.Point(0, 0);
             this.tabTopRight.Name = "tabTopRight";
@@ -246,15 +244,6 @@ namespace SolvencyII.GUI
             this.tabCellPropertiesPage.TabIndex = 1;
             this.tabCellPropertiesPage.Text = "Cell properties";
             this.tabCellPropertiesPage.UseVisualStyleBackColor = true;
-            // 
-            // tabContainerValidationPage
-            // 
-            this.tabContainerValidationPage.Location = new System.Drawing.Point(4, 22);
-            this.tabContainerValidationPage.Name = "tabContainerValidationPage";
-            this.tabContainerValidationPage.Size = new System.Drawing.Size(704, 124);
-            this.tabContainerValidationPage.TabIndex = 2;
-            this.tabContainerValidationPage.Text = "Container validation";
-            this.tabContainerValidationPage.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -424,21 +413,23 @@ namespace SolvencyII.GUI
             this.validateCurrentReportToolStripMenuItem,
             this.validateCurrentContainerToolStripMenuItem});
             this.validationToolStripMenuItem.Name = "validationToolStripMenuItem";
-            this.validationToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.validationToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.validationToolStripMenuItem.Text = "Validation";
             // 
             // validateCurrentReportToolStripMenuItem
             // 
             this.validateCurrentReportToolStripMenuItem.Name = "validateCurrentReportToolStripMenuItem";
-            this.validateCurrentReportToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
+            this.validateCurrentReportToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
             this.validateCurrentReportToolStripMenuItem.Text = "Validate active report (database validations)";
             this.validateCurrentReportToolStripMenuItem.Click += new System.EventHandler(this.validateCurrentReportToolStripMenuItem_Click);
             // 
             // validateCurrentContainerToolStripMenuItem
             // 
+            this.validateCurrentContainerToolStripMenuItem.Enabled = false;
             this.validateCurrentContainerToolStripMenuItem.Name = "validateCurrentContainerToolStripMenuItem";
-            this.validateCurrentContainerToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
+            this.validateCurrentContainerToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
             this.validateCurrentContainerToolStripMenuItem.Text = "Validate active container";
+            this.validateCurrentContainerToolStripMenuItem.Visible = false;
             this.validateCurrentContainerToolStripMenuItem.Click += new System.EventHandler(this.validateCurrentContainerToolStripMenuItem_Click);
             // 
             // xBRLToolStripMenuItem
@@ -466,21 +457,21 @@ namespace SolvencyII.GUI
             // integratedToolStripMenuItem
             // 
             this.integratedToolStripMenuItem.Name = "integratedToolStripMenuItem";
-            this.integratedToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.integratedToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.integratedToolStripMenuItem.Text = "Integrated";
             this.integratedToolStripMenuItem.Click += new System.EventHandler(this.importintegratedToolStripMenuItem_Click);
             // 
             // arelleWithValidationToolStripMenuItem
             // 
             this.arelleWithValidationToolStripMenuItem.Name = "arelleWithValidationToolStripMenuItem";
-            this.arelleWithValidationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.arelleWithValidationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.arelleWithValidationToolStripMenuItem.Text = "Arelle with Validation";
             this.arelleWithValidationToolStripMenuItem.Click += new System.EventHandler(this.importarelleWithValidationToolStripMenuItem_Click);
             // 
             // importArelleWithoutValidationToolStripMenuItem
             // 
             this.importArelleWithoutValidationToolStripMenuItem.Name = "importArelleWithoutValidationToolStripMenuItem";
-            this.importArelleWithoutValidationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.importArelleWithoutValidationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.importArelleWithoutValidationToolStripMenuItem.Text = "Arelle without Validation";
             this.importArelleWithoutValidationToolStripMenuItem.Click += new System.EventHandler(this.importarelleWithoutValidationToolStripMenuItem_Click);
             // 
@@ -497,21 +488,21 @@ namespace SolvencyII.GUI
             // integratedToolStripMenuItem1
             // 
             this.integratedToolStripMenuItem1.Name = "integratedToolStripMenuItem1";
-            this.integratedToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.integratedToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
             this.integratedToolStripMenuItem1.Text = "Integrated";
             this.integratedToolStripMenuItem1.Click += new System.EventHandler(this.exportintegratedToolStripMenuItem1_Click);
             // 
             // arelleWithValidationToolStripMenuItem1
             // 
             this.arelleWithValidationToolStripMenuItem1.Name = "arelleWithValidationToolStripMenuItem1";
-            this.arelleWithValidationToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.arelleWithValidationToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
             this.arelleWithValidationToolStripMenuItem1.Text = "Arelle with Validation";
             this.arelleWithValidationToolStripMenuItem1.Click += new System.EventHandler(this.exportarelleWithValidationToolStripMenuItem1_Click);
             // 
             // exportArelleWithoutValidationToolStripMenuItem
             // 
             this.exportArelleWithoutValidationToolStripMenuItem.Name = "exportArelleWithoutValidationToolStripMenuItem";
-            this.exportArelleWithoutValidationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.exportArelleWithoutValidationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.exportArelleWithoutValidationToolStripMenuItem.Text = "Arelle without Validation";
             this.exportArelleWithoutValidationToolStripMenuItem.Click += new System.EventHandler(this.exportarelleWithoutValidationToolStripMenuItem1_Click);
             // 
@@ -674,6 +665,7 @@ namespace SolvencyII.GUI
             // sQLServerToolStripMenuItem
             // 
             this.sQLServerToolStripMenuItem.CheckOnClick = true;
+            this.sQLServerToolStripMenuItem.Enabled = false;
             this.sQLServerToolStripMenuItem.Name = "sQLServerToolStripMenuItem";
             this.sQLServerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.sQLServerToolStripMenuItem.Text = "SQL Server";
@@ -714,28 +706,28 @@ namespace SolvencyII.GUI
             // dPMDictionaryToolStripMenuItem
             // 
             this.dPMDictionaryToolStripMenuItem.Name = "dPMDictionaryToolStripMenuItem";
-            this.dPMDictionaryToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.dPMDictionaryToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.dPMDictionaryToolStripMenuItem.Text = "Full S2 Dictionary";
             this.dPMDictionaryToolStripMenuItem.Click += new System.EventHandler(this.dPMDictionaryToolStripMenuItem_Click);
             // 
             // annotatedFULLTemplatesToolStripMenuItem
             // 
             this.annotatedFULLTemplatesToolStripMenuItem.Name = "annotatedFULLTemplatesToolStripMenuItem";
-            this.annotatedFULLTemplatesToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.annotatedFULLTemplatesToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.annotatedFULLTemplatesToolStripMenuItem.Text = "Full S2 Annotated Templates";
             this.annotatedFULLTemplatesToolStripMenuItem.Click += new System.EventHandler(this.annotatedTemplatesToolStripMenuItem1_Click);
             // 
             // preparatoryS2DictionaryToolStripMenuItem
             // 
             this.preparatoryS2DictionaryToolStripMenuItem.Name = "preparatoryS2DictionaryToolStripMenuItem";
-            this.preparatoryS2DictionaryToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.preparatoryS2DictionaryToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.preparatoryS2DictionaryToolStripMenuItem.Text = "Preparatory S2 Dictionary";
             this.preparatoryS2DictionaryToolStripMenuItem.Click += new System.EventHandler(this.preparatoryS2DictionaryToolStripMenuItem_Click);
             // 
             // preparatoryS2AnnotatedTemplatesToolStripMenuItem
             // 
             this.preparatoryS2AnnotatedTemplatesToolStripMenuItem.Name = "preparatoryS2AnnotatedTemplatesToolStripMenuItem";
-            this.preparatoryS2AnnotatedTemplatesToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.preparatoryS2AnnotatedTemplatesToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.preparatoryS2AnnotatedTemplatesToolStripMenuItem.Text = "Preparatory S2 Annotated Templates";
             this.preparatoryS2AnnotatedTemplatesToolStripMenuItem.Click += new System.EventHandler(this.preparatoryS2AnnotatedTemplatesToolStripMenuItem_Click);
             // 
@@ -754,35 +746,35 @@ namespace SolvencyII.GUI
             // preparatoryS2ToolStripMenuItem
             // 
             this.preparatoryS2ToolStripMenuItem.Name = "preparatoryS2ToolStripMenuItem";
-            this.preparatoryS2ToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.preparatoryS2ToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.preparatoryS2ToolStripMenuItem.Text = "Preparatory S2";
             this.preparatoryS2ToolStripMenuItem.Click += new System.EventHandler(this.preparatoryS2ToolStripMenuItem_Click);
             // 
             // PreparatoryS2TestXBRLInstancesToolStripMenuItem
             // 
             this.PreparatoryS2TestXBRLInstancesToolStripMenuItem.Name = "PreparatoryS2TestXBRLInstancesToolStripMenuItem";
-            this.PreparatoryS2TestXBRLInstancesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.PreparatoryS2TestXBRLInstancesToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.PreparatoryS2TestXBRLInstancesToolStripMenuItem.Text = "Preparatory S2 Test Instances ";
             this.PreparatoryS2TestXBRLInstancesToolStripMenuItem.Click += new System.EventHandler(this.PreparatoryS2TestXBRLInstancesToolStripMenuItem_Click);
             // 
             // solvencyIIFULLToolStripMenuItem
             // 
             this.solvencyIIFULLToolStripMenuItem.Name = "solvencyIIFULLToolStripMenuItem";
-            this.solvencyIIFULLToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.solvencyIIFULLToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.solvencyIIFULLToolStripMenuItem.Text = "Full S2";
             this.solvencyIIFULLToolStripMenuItem.Click += new System.EventHandler(this.solvencyIIToolStripMenuItem1_Click);
             // 
             // cDRIVToolStripMenuItem
             // 
             this.cDRIVToolStripMenuItem.Name = "cDRIVToolStripMenuItem";
-            this.cDRIVToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.cDRIVToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.cDRIVToolStripMenuItem.Text = "CDR IV";
             this.cDRIVToolStripMenuItem.Click += new System.EventHandler(this.cDRIVToolStripMenuItem_Click);
             // 
             // fullS2TestXBRLInstancesToolStripMenuItem
             // 
             this.fullS2TestXBRLInstancesToolStripMenuItem.Name = "fullS2TestXBRLInstancesToolStripMenuItem";
-            this.fullS2TestXBRLInstancesToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.fullS2TestXBRLInstancesToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.fullS2TestXBRLInstancesToolStripMenuItem.Text = "Full S2 Test Instances";
             this.fullS2TestXBRLInstancesToolStripMenuItem.Click += new System.EventHandler(this.fullS2TestXBRLInstancesToolStripMenuItem_Click);
             // 
@@ -911,7 +903,7 @@ namespace SolvencyII.GUI
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.statusTxtTypeOfReport.DoubleClickEnabled = true;
             this.statusTxtTypeOfReport.Name = "statusTxtTypeOfReport";
-            this.statusTxtTypeOfReport.Size = new System.Drawing.Size(85, 19);
+            this.statusTxtTypeOfReport.Size = new System.Drawing.Size(84, 19);
             this.statusTxtTypeOfReport.Text = "TypeOfReport";
             this.statusTxtTypeOfReport.DoubleClick += new System.EventHandler(this.changeActiveReportToolStripMenuItem_Click);
             // 
@@ -1085,10 +1077,9 @@ namespace SolvencyII.GUI
         private System.Windows.Forms.ToolStripMenuItem importDataToExcelBusinessTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem downloadAnEmptyBusinessExcelTemplateToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabTopRight;
-        private System.Windows.Forms.TabPage tabValidationErrorPage;
-        private System.Windows.Forms.TabPage tabCellPropertiesPage;
-        private System.Windows.Forms.TabPage tabContainerValidationPage;
         private System.Windows.Forms.ToolStripMenuItem licenseInformationToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabCellPropertiesPage;
+        private System.Windows.Forms.TabPage tabValidationErrorPage;
+        private System.Windows.Forms.TabControl tabTopRight;
     }
 }

@@ -68,12 +68,10 @@ namespace System.ComponentModel.Composition.Hosting
 
         private void EnterCompositionLock()
         {
-#pragma warning disable 618
             if (this._isThreadSafe)
             {
                 Monitor.Enter(_compositionLock);
             }
-#pragma warning restore 618
         }
 
         private void ExitCompositionLock()

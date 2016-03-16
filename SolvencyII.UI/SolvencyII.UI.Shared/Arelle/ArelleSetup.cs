@@ -91,7 +91,7 @@ namespace SolvencyII.UI.Shared.Arelle
 
             else if (StaticSettings.DbType == DbType.SolvencyII)
                 return Directory.GetFiles(Path.Combine(Application.StartupPath, ARELLE_FOLDER_TAXONOMIES),
-                                         "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.0.zip");
+                                         "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.1.zip");
 
 
             else throw new Exception("No Taxonomy file found");
@@ -218,7 +218,7 @@ namespace SolvencyII.UI.Shared.Arelle
                     {
                         var name = new FileInfo(filePath).Name;
                         name = name.ToLower();
-                        if (name != "EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip" || name != "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.0.zip")
+                        if (name != "EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip" || name != "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.1.zip")
                         {
                             File.Delete(filePath);
                         }

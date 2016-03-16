@@ -40,7 +40,7 @@ namespace SolvencyII.UI.Shared.Extensions
             foreach (TreeNode node in treeView1.Nodes)
             {
                 TreeBranch branch = (TreeBranch) node.Tag;
-                result.SubBranches.Add(branch);
+                result.SubBranches.Add(branch); 
             }
             return result;
         }

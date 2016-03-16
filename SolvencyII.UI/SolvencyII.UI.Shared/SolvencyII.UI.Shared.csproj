@@ -32,6 +32,7 @@
     <DefineConstants>FOR_NCA</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>CS0414;CS0169;CS0067</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryRelease|AnyCPU' ">
     <OutputPath>bin\PreparatoryRelease\</OutputPath>
@@ -39,6 +40,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Optimize>true</Optimize>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
     <OutputPath>bin\PreparatoryDebug\</OutputPath>
@@ -158,26 +161,45 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x64'">
     <OutputPath>bin\x64\Test\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX64|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugX64\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <DocumentationFile>bin\Debug\SolvencyII.UI.Shared.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX64|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\DebugX64\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX64|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\DebugX64\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FOR_NCA</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ionic.Zip">
       <HintPath>Arelle\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.ConnectionUI, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Microsoft.Data.ConnectionUI.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.VisualBasic.PowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Design">
-      <HintPath>..\packages\Microsoft.VisualBasic.PowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.Design.dll</HintPath>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\VisualBasicPowerPacksBinaries\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -365,7 +387,10 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="T4Udb_Sol2_prep.zip" />
+    <Content Include="..\..\DPM DB\T4Udb_Sol2_prep.zip">
+      <Link>T4Udb_Sol2_prep.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -165,7 +165,7 @@
             this.txtEntityScheme.Name = "txtEntityScheme";
             this.txtEntityScheme.Size = new System.Drawing.Size(275, 20);
             this.txtEntityScheme.TabIndex = 16;
-            this.txtEntityScheme.Text = "http://standard.iso.org/iso/17442";
+            this.txtEntityScheme.Text = "http://standards.iso.org/iso/17442";
             // 
             // label1
             // 

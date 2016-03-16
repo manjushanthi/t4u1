@@ -16,7 +16,7 @@ namespace SolvencyII_T4U_PREP_2015_PRO
         {
 
             #if (!FOR_UT)
-                #error "Incorect Compilation variable & deployment Project type";
+                //#error "Incorect Compilation variable & deployment Project type";
             #endif          
 
             //TODO: we need to add a localizartion string to "Production Environment"

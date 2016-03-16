@@ -21,6 +21,28 @@ using System.IO;
 
 namespace SolvencyII.Data.Shared
 {
+    public class UpperCaseUTF8Encoding : UTF8Encoding
+    {
+        // Code from a blog http://www.distribucon.com/blog/CategoryView,category,XML.aspx
+        public override string WebName
+        {
+            get { return base.WebName.ToUpper(); }
+        }
+
+        public static UpperCaseUTF8Encoding UpperCaseUTF8
+        {
+            get
+            {
+                if (upperCaseUtf8Encoding == null)
+                {
+                    upperCaseUtf8Encoding = new UpperCaseUTF8Encoding();
+                }
+                return upperCaseUtf8Encoding;
+            }
+        }
+
+        private static UpperCaseUTF8Encoding upperCaseUtf8Encoding = null;
+    }
     public class ArelleCsSaver : ArelleCsShared
     {
         static Regex dpSigPattern = new Regex(@"MET[(](\w+)[:](\w+)[)]([|](.*))?$", RegexOptions.Compiled);
@@ -34,9 +56,9 @@ namespace SolvencyII.Data.Shared
         string xbrlFilePath = null, xbrlFileName = null;
         //long factCount;
         long instanceID = -1;
-        string instanceAttribution = null;
+        string[] instanceAttribution = null;
 
-        public ArelleCsSaver(long instanceID, string instanceAttribution, Dictionary<string, string> scheamRefSubstitutions=null)
+        public ArelleCsSaver(long instanceID, string[] instanceAttribution, Dictionary<string, string> scheamRefSubstitutions=null)
         {
             this._sqlConnectionPath = StaticSettings.ConnectionString;
             this.instanceID = instanceID;
@@ -105,6 +127,8 @@ namespace SolvencyII.Data.Shared
                 writer.WriteStartElement("scenario", nsXbrli);
                 foreach (string dimVal in dims.Split(new char[] { '|' }))
                 {
+                    if (string.IsNullOrEmpty(dimVal))
+                        continue;   // ignore any dim||dim|dim constructs (with null or empty dim)
                     string[] dimMem = dimVal.Split(new char[] { '(', ')' }); // [0] is dim, [1] is mem
                     string dimQn = dimMem.Length >= 1 ? dimMem[0] : "";
                     string[] dimQnParts = dimQn.Split(new char[] { ':' });
@@ -172,10 +196,14 @@ namespace SolvencyII.Data.Shared
 
         public object saveXbrl(string xbrlFilePath, BackgroundWorker asyncWorker)
         {
+            this.isEBA = false;
+            this.isEIOPA = true;
+            this.isEIOPAfullVersion = false;
+            this.isEIOPA_2_0_1 = false;
+
             this.asyncWorker = asyncWorker;
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.ConformanceLevel = ConformanceLevel.Document;
-            settings.Encoding = Encoding.UTF8;
             settings.Indent = true;
             settings.NewLineOnAttributes = true;
             this.xbrlFilePath = xbrlFilePath;
@@ -185,8 +213,6 @@ namespace SolvencyII.Data.Shared
 
             try
             {
-                XmlWriter writer = XmlWriter.Create(xbrlFilePath, settings);
-
                 asyncWorker.ReportProgress(0, "Connecting to database " + this._sqlConnectionPath);
                 this._conn = new SQLiteConnection(this._sqlConnectionPath);
                 asyncWorker.ReportProgress(0, "Saving XBRL instance " + xbrlFileName);
@@ -218,6 +244,22 @@ namespace SolvencyII.Data.Shared
                         xbrlSchemaRef = xbrlSchemaRef.Replace(schemaRefSub.Key, schemaRefSub.Value);
                     }
 
+                if (this.isEIOPA)
+                {
+                    // determine if 2.0 EIOPA (date > 2015-02-28)
+                    Match _schemaFileDateMatch = schemaRefDatePattern.Match(xbrlSchemaRef);
+                    if (_schemaFileDateMatch.Success)
+                    {
+                        String _date = _schemaFileDateMatch.Groups[1].Value;
+                        this.isEIOPAfullVersion = _date.CompareTo("2015-02-28") > 0;
+                        this.isEIOPA_2_0_1 = _date.CompareTo("2015-10-21") >= 0;
+                    }
+                }
+
+                settings.Encoding = (this.isEIOPA_2_0_1) ? new UpperCaseUTF8Encoding() : Encoding.UTF8; // utf-8 in upper case for EIOPA 2.0.1
+
+                XmlWriter writer = XmlWriter.Create(xbrlFilePath, settings);
+
                 // find prefixes and namespaces in DB
                 dpmPrefixedNamespaces = _conn.Query<NamespaceDefinition>("SELECT * FROM [vwGetNamespacesPrefixes]");
 
@@ -225,8 +267,11 @@ namespace SolvencyII.Data.Shared
                     return "Error, namespace definitions, corresponding to the instance, were not found for " + xbrlFileName;
 
                 writer.WriteStartDocument();
-                if (!string.IsNullOrEmpty(this.instanceAttribution))
-                    writer.WriteComment(this.instanceAttribution);
+                if (!string.IsNullOrEmpty(this.instanceAttribution[1]))
+                    if (isEIOPA_2_0_1)
+                        writer.WriteProcessingInstruction("instance-generator", instanceAttribution[1]);
+                    else
+                        writer.WriteComment(this.instanceAttribution[0]);
 
                 // check if default prefix is defined for xbrli
                 string nsXbrliPrefix = "xbrli";
@@ -358,11 +403,11 @@ namespace SolvencyII.Data.Shared
                     _toHash.Add(new QName(xmlnsPrefixNS[conceptPrefix], conceptPrefix, conceptLocalName));
                     string dims = dpSigParts.Groups[4].Value;
                     char c = conceptLocalName[0]; // first letter of concept local name
-                    if (c == 'm' || c == 'p' || c == 'i')
+                    if (c == 'm' || c == 'p' || c == 'i' || c == 'r')
                         isNumeric = true;
                     else if (c == 'd')
                         isDateTime = true;
-                    else if (c == 'b')
+                    else if (c == 'b' || c == 't')
                         isBool = true;
                     else if (c == 'e')
                         isQName = true;
@@ -379,12 +424,12 @@ namespace SolvencyII.Data.Shared
                     else
                     {
                         cntxId = string.Format("c-{0:00}", cntxTbl.Count + 1);
-                        cntxTbl[cntxKey] = cntxId;
                         try
                         {
                             List<object> _cHash = new List<object>();
                             writeContext(writer, cntxId, _cHash, dims);
                             cntxMd5sum = md5hash(_cHash);
+                            cntxTbl[cntxKey] = cntxId;  // enter to cntxTbl and cntxMd5tbl when we are fully clear of any exceptions (that would be caught below)
                             cntxMd5tbl[cntxKey] = cntxMd5sum;
                         }
                         catch (ArgumentNullException)
@@ -410,6 +455,15 @@ namespace SolvencyII.Data.Shared
                                                    dpSig),
                                      dpSig);
                             continue;
+                        }
+                        catch (ArgumentException e)
+                        {
+                            logError("sqlDB:InvalidFactContextSignature",
+                                     string.Format("Fact context signature error '{0}', fact ignored: {1}",
+                                                    e, dpSig),
+                                    dpSig);
+                            continue;
+
                         }
                     }
                     _toHash.Add(cntxMd5sum);

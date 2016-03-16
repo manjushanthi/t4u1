@@ -74,8 +74,8 @@ namespace SolvencyII.Validation.Parser
 
         public string[] GetTableCodes()
         {
-            string tblCodePttrn = @"([A-Z|a-z]){1}(\.\d{2}){4}";
-            Regex regEx = new Regex(tblCodePttrn);
+            string tblCodePttrn = @"([A-Z]|[a-z]){1,3}(.\d{2}){4}";
+            Regex regEx = new Regex(tblCodePttrn, RegexOptions.IgnoreCase);
 
             string[] tableCode = null;
 
@@ -128,7 +128,7 @@ namespace SolvencyII.Validation.Parser
                 {
                     PageCode = "PAGE" + p.Substring(0, semi).ToUpper(),
                     DimensionXBRLCode = p.Substring(0, semi).Replace("_", "_dim:"),
-                    MemberText = p.Substring(semi + 1)
+                    MemberText = p.Substring(semi + 1).Trim()
                 };
             }
 

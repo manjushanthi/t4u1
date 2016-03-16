@@ -36,9 +36,14 @@ namespace Tests.SolvencyII.Data.Shared
             string assertionMessage = "", exceptionMessage = "";
             try
             {
+                string testCasesRoot = null;
+                foreach (XElement testcasesElt in testCasesIndexDoc.Descendants("testcases"))
+                {
+                    testCasesRoot = testcasesElt.Attribute("root").Value;
+                }
                 foreach (XElement testcaseElt in testCasesIndexDoc.Descendants("testcase"))
                 {
-                    if (!RunTestCase(testcaseElt.Attribute("uri").Value.Trim()))
+                    if (!RunTestCase(testCasesRoot, testcaseElt.Attribute("uri").Value.Trim()))
                         testsNotPassing += 1;
                 }
                 if (testsNotPassing > 0)
@@ -59,7 +64,7 @@ namespace Tests.SolvencyII.Data.Shared
                           assertionMessage + exceptionMessage);
         }
 
-        private bool RunTestCase(String uri)
+        private bool RunTestCase(String testCasesRoot, String uri)
         {
             XDocument testCaseDoc = null;
             string readMeFirstUrl = null;
@@ -74,7 +79,7 @@ namespace Tests.SolvencyII.Data.Shared
 
             try
             {
-                string testCaseDocUri = FilingRulesHelper.FileLocation(uri);
+                string testCaseDocUri = FilingRulesHelper.FileLocation(uri, testCasesRoot);
                 string testCasesDir = Path.GetDirectoryName(testCaseDocUri);
                 testCaseDoc = XDocument.Load(testCaseDocUri);
 
@@ -133,7 +138,7 @@ namespace Tests.SolvencyII.Data.Shared
                                 testCaseName,
                                 variationDescription));
                             string xmlLogResult = new ArelleCsParser(FilingRulesHelper.Sol2PrepDb).parseXbrl(
-                                Path.Combine(new string[] { testCasesDir, readMeFirstUrl} )) as string;
+                                Path.Combine(new string[] { testCasesDir, readMeFirstUrl })) as string;
                             TextReader txtrdr = new StringReader(xmlLogResult);
                             XDocument doc = XDocument.Load(txtrdr);
                             txtrdr.Close();
