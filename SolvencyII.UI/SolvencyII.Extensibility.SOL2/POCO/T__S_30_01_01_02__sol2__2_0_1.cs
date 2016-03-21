@@ -1,0 +1,31 @@
+using System;
+using SolvencyII.Domain.Attributes;
+
+namespace SolvencyII.Domain 
+{ 
+    public partial class T__S_30_01_01_02__sol2__2_0_1
+    { 
+
+        [PrimaryKey , AutoIncrement]
+        public long? PK_ID { get; set; } 
+        public long? INSTANCE { get; set; } 
+        public string C0220 { get; set; } 
+        public string C0230 { get; set; } 
+        public string C0240 { get; set; } 
+        public string C0250 { get; set; } 
+        public DateTime? C0260 { get; set; } 
+        public DateTime? C0270 { get; set; } 
+        public string C0280 { get; set; } 
+        public decimal? C0290 { get; set; } 
+        public decimal? C0300 { get; set; } 
+        public decimal? C0310 { get; set; } 
+        public decimal? C0320 { get; set; } 
+        public decimal? C0330 { get; set; } 
+        public string C0190 { get; set; } 
+        public string C0200 { get; set; } 
+        public string C0210 { get; set; } 
+        public string PAGES2C_BL { get; set; } 
+
+    } 
+} 
+

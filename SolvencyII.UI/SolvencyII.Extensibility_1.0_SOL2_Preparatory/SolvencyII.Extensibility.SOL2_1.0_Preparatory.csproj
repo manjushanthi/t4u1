@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>bin\Debug\SolvencyII.Extensibility_SOL2_Prep.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -106,8 +107,8 @@
     <OutputPath>bin\x86\Test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic.PowerPacks">
-      <HintPath>..\packages\Microsoft.VisualBasic.PowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\VisualBasicPowerPacksBinaries\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -888,18 +889,6 @@
     <Compile Include="Templates\S_12_01_01_05__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_12_01_01_05__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\S_12_01_01__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_12_01_01__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_12_01_01__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_12_01_01__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_12_01_01__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_12_01_01__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\S_12_01_02_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -971,18 +960,6 @@
     </Compile>
     <Compile Include="Templates\S_17_01_01_05__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_17_01_01_05__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_17_01_01__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_17_01_01__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_17_01_01__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_17_01_01__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_17_01_01__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_17_01_01__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
     <Compile Include="Templates\S_17_01_02_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
@@ -4272,18 +4249,6 @@
     <Compile Include="Templates\S_27_01_01_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_01_22__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\S_27_01_01__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_01__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_01__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_01__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_01__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_01__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\S_27_01_02_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -4559,18 +4524,6 @@
     </Compile>
     <Compile Include="Templates\S_27_01_02_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_02_22__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_02__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_02__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_02__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_02__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_02__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_02__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
     <Compile Include="Templates\S_27_01_03_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
@@ -4848,18 +4801,6 @@
     <Compile Include="Templates\S_27_01_03_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_03_22__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\S_27_01_03__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_03__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_03__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_03__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_03__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_03__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\S_27_01_04_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -5135,18 +5076,6 @@
     </Compile>
     <Compile Include="Templates\S_27_01_04_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_04_22__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_04__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_04__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_04__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_04__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_04__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_04__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
     <Compile Include="Templates\S_27_01_05_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
@@ -5424,18 +5353,6 @@
     <Compile Include="Templates\S_27_01_05_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_05_22__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\S_27_01_05__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_05__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_05__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_05__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_05__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_05__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\S_27_01_06_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -5712,18 +5629,6 @@
     <Compile Include="Templates\S_27_01_06_22__sol2__1_5_2_c.designer.cs">
       <DependentUpon>S_27_01_06_22__sol2__1_5_2_c.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\S_27_01_06__sol2__1_5_2_c.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_06__sol2__1_5_2_c.Ctrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\S_27_01_06__sol2__1_5_2_c.Ctrl.designer.cs">
-      <DependentUpon>S_27_01_06__sol2__1_5_2_c.Ctrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\S_27_01_06__sol2__1_5_2_c.designer.cs">
-      <DependentUpon>S_27_01_06__sol2__1_5_2_c.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\S_28_01_01_01__sol2__1_5_2_c.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -5989,7 +5894,11 @@
       <Name>SolvencyII.UI.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\S_06_02_02_02__sol2__1_5_2_c.row.resx">
+      <DependentUpon>S_06_02_02_02__sol2__1_5_2_c.row.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

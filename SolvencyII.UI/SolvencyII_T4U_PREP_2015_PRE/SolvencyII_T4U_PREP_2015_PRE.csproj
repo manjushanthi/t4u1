@@ -29,8 +29,8 @@
     <PublisherName>EIOPA</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>2015.08.06.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2016.02.01.1</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -57,7 +57,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>Internet</TargetZone>
@@ -169,6 +169,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\Licences.html">
+      <Link>HelpFiles\Licences.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\T4U Database Documentation.pdf">
       <Link>HelpFiles\T4U Database Documentation.pdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -194,8 +198,9 @@
       <Link>RSSLinkInformation.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\SolvencyII.GUI\WhatsNew.txt">
+    <Content Include="..\SolvencyII.GUI\WhatsNew_PREP\WhatsNew.txt">
       <Link>WhatsNew.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ico-t4u.ico" />
     <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\T4Udb_master.zip">
@@ -212,6 +217,7 @@
     </Content>
     <Content Include="..\..\..\4. XBRL Taxonomy\Arelle Packages\Deployment_Copy\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip">
       <Link>Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\2. DPMdict+AT\1.5.2.c\EIOPA_SolvencyII_DPM_Dictionary.xlsx">
       <Link>HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx</Link>
@@ -227,18 +233,23 @@
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx">
       <Link>ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx">
       <Link>ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx">
       <Link>ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx">
       <Link>ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\SolvencyII.GUI\Enumerations\excel_template_enumerations_152c.xlsx">
       <Link>Enumerations\excel_template_enumerations_152c.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\13. XBRL Instance Documents\For deployment\Full S2 Test XBRL Instances.zip">
       <Link>HelpFiles\Full S2 Test XBRL Instances.zip</Link>

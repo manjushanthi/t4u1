@@ -272,6 +272,12 @@ namespace SolvencyII.Data.Shared
 
                 #endregion
 
+                //BRAG - order of TemplateVariant for a Module from mTemplateOrTable 
+                foreach (var branch in result.SubBranches)
+                {
+                    branch.SubBranches = branch.SubBranches.OrderBy(x => x.TemplateOrTableID).ToList();
+                }
+
                 #region Tables with their GroupIDs & single Z dimension
 
                 // Tables and their groupIDs:
@@ -300,7 +306,8 @@ namespace SolvencyII.Data.Shared
                             {
                                 // Standard entry
                                 TreeBranch leave = new TreeBranch();
-                                leave.DisplayText = viewData.CalcTableLabel;
+                                //BRAG Display table codes in the tree view
+                                leave.DisplayText = String.Format("{0} {1}",viewData.AnnotatedTable.Split('.').Last(), viewData.CalcTableLabel);
                                 leave.IsTyped = viewData.IsTyped;
                                 leave.GroupTableIDs = viewData.TableID.ToString();
                                 leave.HasLocationRange = !string.IsNullOrEmpty(rec[0].BusinessTableLocationRange);
@@ -412,7 +419,8 @@ namespace SolvencyII.Data.Shared
             //Changed to include the version number
             sb.Append("select m.ModuleLabel || ' - ' || t.Version as 'ModuleLabel',m.ModuleID from mModule m ");
             sb.Append("inner join mTaxonomy t on t.TaxonomyID = m.TaxonomyID  ");
-            sb.Append("order by m.ModuleLabel asc, t.Version desc ");
+            //BRAG
+            sb.Append("order by m.ModuleID asc");
 
             if (instanceID != 0)
             {
@@ -853,7 +861,8 @@ Order by atv.[Order], mAxisOrdinate.[Order] ",
 
                 if (met.HierarchyStartingMemberID > 0)
                 {
-                    sb.Append(string.Format(" and (hn.Path like '%'||{0}||'%' or (hn.MemberID = {0}) ) ", met.HierarchyStartingMemberID));
+                    //BRAG Added fix for IsStartingMemberIncluded (can it be null?)
+                    sb.Append(string.Format(" and (hn.Path like '%'||{0}||'%' or (hn.MemberID = {0} and 1 = {1}) ) ", met.HierarchyStartingMemberID, (bool)met.IsStartingMemberIncluded ? 1 : 0));
                 }
 
                 sb.Append(" order by hn.[Order] ");

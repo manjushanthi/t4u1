@@ -64,25 +64,26 @@ namespace SolvencyII.GUI
     /// </summary>
     public partial class frmMain : Form
     {
-        
+
         #region Properties and Declaration
 
         //Settings - Supported version settings for the CRD IV Database &  Excel Templates
         private const string supportedDataBaseVersion_CRD = "2015.02.13";
 
         //Settings - Supported version settings for the Solvency II Database &  Excel Templates
-        private const string supportedDataBaseVersion_FULL = "2015.08.28";
-        private const string supportedExcelTemplateVersion_FULL = "2015.08.28";
+        private const string supportedDataBaseVersion_FULL = "2016.02.29";
+        private const string migrationDataBaseVersion_FULL = "2016.02.01";
+        private const string supportedExcelTemplateVersion_FULL = "2016.02.01";
 
         //Settings - Supported version settings for the Solvency II PREPARATORY Database &  Excel Templates
-        private const string supportedDataBaseVersion_PREPARATORY = "2015.08.28";
-        private const string supportedExcelTemplateVersion_PREPARATORY = "2015.04.30";
+        private const string supportedDataBaseVersion_PREPARATORY = "2016.02.01";
+        private const string supportedExcelTemplateVersion_PREPARATORY = "2015.08.28";
 
         private const string supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015 = "2015.02.10";
         private const string supportedMigrationDataBaseVersion_PREPARATORY_MarchVersion_2015 = "2015.03.16";
         PreParatoryVersions prepVersion = PreParatoryVersions.SecondVersion;
 
-        private const string supportedExcelTemplateVersion_BUSINESS = "2015.08.28";
+        private const string supportedExcelTemplateVersion_BUSINESS = "2016.02.29";
 
         private Panel dynamicPanel { get; set; }
 
@@ -104,13 +105,13 @@ namespace SolvencyII.GUI
         private string _importedFileName;
         private string _importedFullFileName;
         private string _importedInstanceName;
-        private bool _migrationRequired=false;
+        private bool _migrationRequired = false;
 
         public string importedFileMigration = null;
         public string importedFileMigration_InstanceName = null;
 
-        private bool _isForMigration=false;
-        private string _userManualFileName=string.Empty;
+        private bool _isForMigration = false;
+        private string _userManualFileName = string.Empty;
 
         private TreeItem _selectedItem;
 
@@ -137,7 +138,7 @@ namespace SolvencyII.GUI
         private UserControlBase _mainControl;
         private UserControlBase2 _mainControlSpecialCase;
         private IParentUserControl _parentUserControl;
-       
+
         // Open Controls
         private OpenUserControlBase2 _mainOpenControl;
 
@@ -153,15 +154,15 @@ namespace SolvencyII.GUI
         ContextMenuStrip ctxErrorViewMenu;
 
         List<DataTypeValidationResult> dataTypeAllValidationResultsList = null;
-        
+
 
         private void MEFComposed(string msg)
         {
-            Invoke((Action) delegate
-                                {
-                                    StopToolStripProgressBar();
-                                    if (!string.IsNullOrEmpty(msg)) MessageBox.Show(msg);
-                                });
+            Invoke((Action)delegate
+                               {
+                                   StopToolStripProgressBar();
+                                   if (!string.IsNullOrEmpty(msg)) MessageBox.Show(msg);
+                               });
         }
 
         ArelleCmdInterface ImportExportArelle { get; set; }
@@ -182,21 +183,21 @@ namespace SolvencyII.GUI
         {
             Logger.WriteLog(eSeverity.Note, "****************  Logging starts  *********************************");
             //To display Terms & Conditions dialog
-            #if (FOR_NCA)
-                var licenceForm = new frmTermsAndConditionsNCA();
-                licenceForm.ShowDialog(this);
-                _userManualFileName = "T4U User Manual Full.pdf";
-            #elif  (FOR_UT)
+#if (FOR_NCA)
+            var licenceForm = new frmTermsAndConditionsNCA();
+            licenceForm.ShowDialog(this);
+            _userManualFileName = "T4U User Manual Full.pdf";
+#elif (FOR_UT)
                 var licenceForm = new frmTermsAndConditionsUT();
                 licenceForm.ShowDialog(this);
                 _userManualFileName = "T4U User Manual Preparatory.pdf";
-            #else
-            #error "Compilation variable not set for FOR_NCA nor FOR_UT";
-            #endif
+#else
+#error "Compilation variable not set for FOR_NCA nor FOR_UT";
+#endif
 
-                //frmGeneralInformation frmInf = new frmGeneralInformation();
-                //frmInf.ShowDialog();
-            
+            //frmGeneralInformation frmInf = new frmGeneralInformation();
+            //frmInf.ShowDialog();
+
             SetupStaticVariables();
             InitializeComponent();
 
@@ -208,7 +209,7 @@ namespace SolvencyII.GUI
             ArelleSetup.Configure(arelle_setup_completed);
             ActivateXBRLMenuItems(true);
             //Application level settings
-            #if (FOR_UT)  
+#if (FOR_UT)
                 solvencyIIToolStripMenuItem.Visible = false;
                 fullS2TestXBRLInstancesToolStripMenuItem.Visible = false;
                 cRDIVToolStripMenuItem.Visible = false;
@@ -257,32 +258,32 @@ namespace SolvencyII.GUI
             SetupForm();
             PositionForm();
             //To show whats New dialog
-            bool updateFlag = false, showWhatsNew=false;            
+            bool updateFlag = false, showWhatsNew = false;
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 updateFlag = true;
                 //checking the click Once version
-                if(RegSettings.ClickOnceVersion!= ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString())
+                if (RegSettings.ClickOnceVersion != ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString())
                 {
-                    showWhatsNew=true;
+                    showWhatsNew = true;
                     RegSettings.ClickOnceVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
                 }
                 //To open the Database or container by double clicking it
                 var args = AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData;
                 string activatedDBpath = args == null || args.Length == 0 ? null : new Uri(args[0]).LocalPath;
                 if (!string.IsNullOrEmpty(activatedDBpath))
-                {                   
+                {
                     if (File.Exists(activatedDBpath))
-                    {                        
-                            if (Path.GetExtension(activatedDBpath).ToUpper().EndsWith("XBRT"))
+                    {
+                        if (Path.GetExtension(activatedDBpath).ToUpper().EndsWith("XBRT"))
                             if (ManageDatabases.CheckConnectionString(activatedDBpath))
-                            {                               
+                            {
                                 StaticSettings.ConnectionString = activatedDBpath;
                                 RegSettings.ConnectionString = activatedDBpath;
                                 RegSettings.InstanceID = 0;
                                 SetupFormForDataTier(eDataTier.SqLite);
                             }
-                    }                   
+                    }
                 }
 
             }
@@ -302,8 +303,8 @@ namespace SolvencyII.GUI
                 RegSettings.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
             //Show Whats New
-            if (showWhatsNew)   
-            WhatsNew.Show(CheckUpdates.CheckNow, updateFlag);
+            if (showWhatsNew)
+                WhatsNew.Show(CheckUpdates.CheckNow, updateFlag);
 
             PopulateTheFormLanguageMenuList();
             MigrateDB();
@@ -314,7 +315,7 @@ namespace SolvencyII.GUI
         ///The below method is used to check for the application updates, if the application is manually copied/deployed as a standalone copy.
         ///This method checks the Clickonce’s deployed link(URL) to get the current active latest version and its checked against the standalone copy’s application version(it's be stored in the XML file)
         /// </summary>
-        
+
         private void CheckForupdateForManuallyDeployed()
         {
             //return;           
@@ -340,7 +341,7 @@ namespace SolvencyII.GUI
                         var webClient = new WebClient();
                         if (!string.IsNullOrEmpty(DeployedWebLink) && !string.IsNullOrEmpty(CurrentApplicationVersion_Local))
                         {
-                            string versionXML = webClient.DownloadString(DeployedWebLink);                          
+                            string versionXML = webClient.DownloadString(DeployedWebLink);
                             if (versionXML != null)
                             {
 
@@ -362,22 +363,22 @@ namespace SolvencyII.GUI
 
                                             if (!string.IsNullOrEmpty(webverionNumber))
                                             {
-                                                Version clickverFromWeb = new Version(webverionNumber);                                                
+                                                Version clickverFromWeb = new Version(webverionNumber);
                                                 if (clickverFromWeb.CompareTo(new Version(CurrentApplicationVersion_Local)) > 0)
-                                                    {
-                                                        MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit http://t4u.eurofiling.info/ for more info. Using:" + CurrentApplicationVersion_Local + " published " + webverionNumber);
-                                                        Logger.WriteLog(eSeverity.Note, "its older version");
-                                                    }
-                                                    else
-                                                    {
-                                                        //its a latest copy 
-                                                        Logger.WriteLog(eSeverity.Note, "its latest version");
+                                                {
+                                                    MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit http://t4u.eurofiling.info/ for more info. Using:" + CurrentApplicationVersion_Local + " published " + webverionNumber);
+                                                    Logger.WriteLog(eSeverity.Note, "its older version");
+                                                }
+                                                else
+                                                {
+                                                    //its a latest copy 
+                                                    Logger.WriteLog(eSeverity.Note, "its latest version");
 
-                                                    }                                               
+                                                }
                                             }
                                         }
                                     }
-                                }  
+                                }
 
                             }
                         }
@@ -395,80 +396,80 @@ namespace SolvencyII.GUI
 
 
         /* To read from the XML file as a backup*/
-       /* private void CheckForupdateForManuallyDeployed()
-        {
-            //return;           
-            try
-            {
-                Logger.WriteLog(eSeverity.Note, "Checking for the update available in stand-alone execution");
-                if (File.Exists(Path.Combine(System.Windows.Forms.Application.StartupPath, "VersionDetails.xml")))
-                {
-                    XElement currentPublishedVersionElement = XElement.Load(Path.Combine(System.Windows.Forms.Application.StartupPath, "VersionDetails.xml"));
-                    if (currentPublishedVersionElement != null)
-                    {
-                        var CurrentApplicationVersion_LocalElement = currentPublishedVersionElement.Element("ClickOnceVersionNumber");
-                        string CurrentApplicationVersion_Local = CurrentApplicationVersion_LocalElement == null ? string.Empty : CurrentApplicationVersion_LocalElement.Value;
+        /* private void CheckForupdateForManuallyDeployed()
+         {
+             //return;           
+             try
+             {
+                 Logger.WriteLog(eSeverity.Note, "Checking for the update available in stand-alone execution");
+                 if (File.Exists(Path.Combine(System.Windows.Forms.Application.StartupPath, "VersionDetails.xml")))
+                 {
+                     XElement currentPublishedVersionElement = XElement.Load(Path.Combine(System.Windows.Forms.Application.StartupPath, "VersionDetails.xml"));
+                     if (currentPublishedVersionElement != null)
+                     {
+                         var CurrentApplicationVersion_LocalElement = currentPublishedVersionElement.Element("ClickOnceVersionNumber");
+                         string CurrentApplicationVersion_Local = CurrentApplicationVersion_LocalElement == null ? string.Empty : CurrentApplicationVersion_LocalElement.Value;
 
-                        var DeployedWebLinkElement = currentPublishedVersionElement.Element("DeploymentPath");
-                        string DeployedWebLink = DeployedWebLinkElement == null ? string.Empty : DeployedWebLinkElement.Value;
+                         var DeployedWebLinkElement = currentPublishedVersionElement.Element("DeploymentPath");
+                         string DeployedWebLink = DeployedWebLinkElement == null ? string.Empty : DeployedWebLinkElement.Value;
 
-                        Logger.WriteLog(eSeverity.Note, "DeployedWebLink from the XML file is");
-                        Logger.WriteLog(eSeverity.Note, CurrentApplicationVersion_Local);
-                        Logger.WriteLog(eSeverity.Note, "CurrentApplicationVersio from the XML file is");
-                        Logger.WriteLog(eSeverity.Note, DeployedWebLink);
+                         Logger.WriteLog(eSeverity.Note, "DeployedWebLink from the XML file is");
+                         Logger.WriteLog(eSeverity.Note, CurrentApplicationVersion_Local);
+                         Logger.WriteLog(eSeverity.Note, "CurrentApplicationVersio from the XML file is");
+                         Logger.WriteLog(eSeverity.Note, DeployedWebLink);
 
-                        var webClient = new WebClient();
-                        if (!string.IsNullOrEmpty(DeployedWebLink) && !string.IsNullOrEmpty(CurrentApplicationVersion_Local))
-                        {
-                            string versionXML = webClient.DownloadString(DeployedWebLink);
+                         var webClient = new WebClient();
+                         if (!string.IsNullOrEmpty(DeployedWebLink) && !string.IsNullOrEmpty(CurrentApplicationVersion_Local))
+                         {
+                             string versionXML = webClient.DownloadString(DeployedWebLink);
 
-                            if (versionXML != null)
-                            {
-                                string webverionNumber = string.Empty;
-                                XElement versionElement = XElement.Parse(versionXML);
-                                if (versionElement != null)
-                                {
-                                    var webverionNumberElement = versionElement.Element("CurrentActiveLatestVersion");
-                                    webverionNumber = webverionNumberElement == null ? string.Empty : webverionNumberElement.Value;
+                             if (versionXML != null)
+                             {
+                                 string webverionNumber = string.Empty;
+                                 XElement versionElement = XElement.Parse(versionXML);
+                                 if (versionElement != null)
+                                 {
+                                     var webverionNumberElement = versionElement.Element("CurrentActiveLatestVersion");
+                                     webverionNumber = webverionNumberElement == null ? string.Empty : webverionNumberElement.Value;
 
-                                    Logger.WriteLog(eSeverity.Note, "DeployedWebLink");
-                                    Logger.WriteLog(eSeverity.Note, DeployedWebLink);
-                                    Logger.WriteLog(eSeverity.Note, "webverionNumber");
-                                    Logger.WriteLog(eSeverity.Note, webverionNumber);
+                                     Logger.WriteLog(eSeverity.Note, "DeployedWebLink");
+                                     Logger.WriteLog(eSeverity.Note, DeployedWebLink);
+                                     Logger.WriteLog(eSeverity.Note, "webverionNumber");
+                                     Logger.WriteLog(eSeverity.Note, webverionNumber);
 
-                                    if (!string.IsNullOrEmpty(webverionNumber))
-                                    {
-                                        Version clickverFromWeb = new Version(webverionNumber);
-                                        if (versionElement != null)
-                                        {
-                                            if (clickverFromWeb.CompareTo(new Version(CurrentApplicationVersion_Local)) > 0)
-                                            {
-                                                MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit http://t4u.eurofiling.info/ for more info.");
-                                                Logger.WriteLog(eSeverity.Note, "its older version");
-                                            }
-                                            else
-                                            {
-                                                //its a latest copy 
-                                                Logger.WriteLog(eSeverity.Note, "its latest version");
-                                               
-                                            }
-                                        }
-                                    }
-                                }
+                                     if (!string.IsNullOrEmpty(webverionNumber))
+                                     {
+                                         Version clickverFromWeb = new Version(webverionNumber);
+                                         if (versionElement != null)
+                                         {
+                                             if (clickverFromWeb.CompareTo(new Version(CurrentApplicationVersion_Local)) > 0)
+                                             {
+                                                 MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit http://t4u.eurofiling.info/ for more info.");
+                                                 Logger.WriteLog(eSeverity.Note, "its older version");
+                                             }
+                                             else
+                                             {
+                                                 //its a latest copy 
+                                                 Logger.WriteLog(eSeverity.Note, "its latest version");
 
-                            }
-                        }
-                    }
+                                             }
+                                         }
+                                     }
+                                 }
 
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Exception occured in the Stand-alone update checking function", ex.Message);
-                Logger.WriteLog(eSeverity.Error, ex.Message);
-            }
+                             }
+                         }
+                     }
 
-        }*/
+                 }
+             }
+             catch(Exception ex)
+             {
+                 MessageBox.Show("Exception occured in the Stand-alone update checking function", ex.Message);
+                 Logger.WriteLog(eSeverity.Error, ex.Message);
+             }
+
+         }*/
 
 
 
@@ -575,7 +576,7 @@ namespace SolvencyII.GUI
 
 
 
-            if(this.tabValidationErrorPage.Controls.Count > 0)
+            if (this.tabValidationErrorPage.Controls.Count > 0)
                 this.tabValidationErrorPage.Controls.RemoveAt(0);
 
             this.tabValidationErrorPage.Controls.Add(errorView);
@@ -602,7 +603,7 @@ namespace SolvencyII.GUI
 
             cellPropertiesView.AllColumns.Add(olvSource);
             cellPropertiesView.AllColumns.Add(olvDimensionSignature);
-            cellPropertiesView.AllColumns.Add(olvDimensionCode);            
+            cellPropertiesView.AllColumns.Add(olvDimensionCode);
             cellPropertiesView.AllColumns.Add(olvDimensionLabel);
             cellPropertiesView.AllColumns.Add(olvMemberCode);
             cellPropertiesView.AllColumns.Add(olvMemberLabel);
@@ -764,7 +765,7 @@ namespace SolvencyII.GUI
             if (ve == null)
                 return;
 
-            //Parse the cell codes 
+            //Parse the cell codes
             ValidationErrorParser ep = new ValidationErrorParser(ve);
 
             string selectedTableCode = change ? overRideTableCode : ve.TableCode;
@@ -772,7 +773,8 @@ namespace SolvencyII.GUI
 
 
             //Check if the clicked error and the main control are the same.
-            if (_selectedItem == null || _selectedItem.TableCode.ToUpper() != selectedTableCode.ToUpper())
+            //BRAG
+            if (_selectedItem == null || _selectedItem.TableCode.ToUpper() != selectedTableCode.ToUpper() || _mainControl == null)
             {
                 GetSQLData sqlData = new GetSQLData(StaticSettings.ConnectionString);
                 IEnumerable<TreeItem> treeItems = sqlData.GetTreeBranches(InstanceID);
@@ -814,7 +816,25 @@ namespace SolvencyII.GUI
                     {
                         SolvencyComboBox cb = selectedPageCtrl as SolvencyComboBox;
                         if (cb != null && p.Member != null)
+                        {
                             cb.SelectedIndex = cb.FindStringExact(p.Member.MemberLabel);
+
+                            //Try a different approach
+                            if (cb.SelectedIndex < 0)
+                            {
+                                for (int i = 0; i < cb.Items.Count; i++)
+                                {
+                                    ListViewItem lvi = (ListViewItem)cb.Items[i];
+                                    string match = lvi.Text.Trim().ToUpper();
+                                    string memLabel = p.Member.MemberLabel.Trim().ToUpper();
+                                    if (match == memLabel)
+                                    {
+                                        cb.SelectedIndex = i;//lvi.Index;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
 
                         SolvencyTextComboBox tb = selectedPageCtrl as SolvencyTextComboBox;
                         if (tb != null)
@@ -830,17 +850,14 @@ namespace SolvencyII.GUI
 
                             tb.SelectedIndex = index;
                         }
-
                     }
                 }
-
             }
-
 
             if (_selectedItem.IsTyped)
             {
                 List<ISolvencyComboBox> combos = _mainOpenControl.GetPAGEnComboBoxControls();
-                OpenTemplatePanelChange(true, (int) ve.PK_ID, combos);
+                OpenTemplatePanelChange(true, (int)ve.PK_ID, combos);
 
             }
 
@@ -855,18 +872,13 @@ namespace SolvencyII.GUI
             {
                 Control uc = c as Control;
                 if (uc != null)
-                    if(uc.Enabled) uc.BackColor = SystemColors.Window;
+                    if (uc.Enabled) uc.BackColor = SystemColors.Window;
             }
-
-
 
             IEnumerable<ISolvencyDataControl> selectedCtrls = from s in solvencyCtrls
                                                               from c in cellCodes
                                                               where s.ColName.ToUpper() == c.ToUpper()
                                                               select s;
-
-            //if (selectedCtrls.Count() < 1)
-            //    continue;
 
             foreach (ISolvencyDataControl c in selectedCtrls)
             {
@@ -874,7 +886,6 @@ namespace SolvencyII.GUI
                 if (uc != null)
                     uc.BackColor = Color.LightSalmon;
             }
-            //}
 
             errorView.Select();
             errorView.SelectedItem = null;
@@ -896,11 +907,11 @@ namespace SolvencyII.GUI
             if (e.Node.Tag != null)
             {
                 TreeBranch item = (TreeBranch)e.Node.Tag;
-                #if !EnableMergeTemplates
+#if !EnableMergeTemplates
                 if (item.SubBranches.Count == 0)
-                #else
+#else
                 if (item.SubBranches.Count == 0 || (!item.SubBranches.Any(b => b.SubBranches.Count > 0) && (item.SubBranches.Count != 1)))
-                #endif
+#endif
                 {
                     _selectedItem = item;
 
@@ -911,7 +922,7 @@ namespace SolvencyII.GUI
                     }
 
                     // Action required
-                    
+
                     StartToolStripProgressBar();
                     EnableAllMenuItems(false);
                     //treeView1.Enabled = false;
@@ -927,7 +938,7 @@ namespace SolvencyII.GUI
                         List<ISolvencyDataControl> dataControls = _mainOpenControl.getd .GetDataControls();
                         _mainControlSpecialCase.SetupShowDimensionHandler(ShowDimensionsData);
                     }*/
-                    
+
                     //To clear the status of the export & import operations, once its completed
                     lblExportImportStatus.Text = string.Empty;
                     //treeView1.Enabled = true;
@@ -935,10 +946,10 @@ namespace SolvencyII.GUI
                     EnableAllMenuItems(true);
                     StopToolStripProgressBar();
 
-                    
-                    
+
+
                 }
-                
+
             }
         }
 
@@ -959,12 +970,15 @@ namespace SolvencyII.GUI
 
         void ChangeNodeIcon(TreeNode child, IEnumerable<ValidationError> valError, int found)
         {
-            /*TreeBranch treeBranch = (TreeBranch)child.Tag;
+            //TreeBranch treeBranch = (TreeBranch)child.Tag;
 
-            if (treeBranch != null)
-            {*/
-            //int found = valError.Where(v => v.TableCode == treeBranch.TableCode).Count();
+            //if (treeBranch != null)
+            //{
+            //    found = valError.Where(v => v.TableCode == treeBranch.TableCode).Count();
 
+            //    //FAILURE = 1
+            //    //SUCCESS = 2
+            //}
             if (found > 0)
             {
                 child.ImageIndex = 1;
@@ -978,20 +992,44 @@ namespace SolvencyII.GUI
                     parent.SelectedImageIndex = 1;
 
                     parent = parent.Parent;
+
                 }
             }
 
             else
             {
-                child.ImageIndex = 2;
-                child.SelectedImageIndex = 2;
+                //Before changing the child to success, check if all the childeren nodes are success in success state
+                bool allSuccess = true;
+
+                if (child.Nodes != null)
+                {
+                    foreach (TreeNode childSuccess in child.Nodes)
+                    {
+                        if (childSuccess.ImageIndex == 1)
+                            allSuccess = false;
+                    }
+                }
+
+                //if all child nodes are in success state mark the parent node to success state
+                if (allSuccess)
+                {
+                    child.ImageIndex = 2;
+                    child.SelectedImageIndex = 2;
+                }
             }
-            //}
         }
 
         void TraverseTree(TreeNode child, IEnumerable<ValidationError> valError)
         {
             TreeBranch treeBranch = (TreeBranch)child.Tag;
+
+            //BRAG
+            if(treeBranch.TableCode == null && valError.Count() > 0)//node is raport
+            {
+                //child.ImageIndex = 1;
+                //child.SelectedImageIndex = 1;
+                TraverseTree(child.Nodes, valError);
+            }
 
             int found = 0;
 
@@ -1117,7 +1155,11 @@ namespace SolvencyII.GUI
         {
             using (GetSQLData getData = new GetSQLData())
             {
-                _mainControl.PageCombosEnBold(getData, sender);
+                if(_mainControl != null)
+                    _mainControl.PageCombosEnBold(getData, sender);
+
+                if (_mainControlSpecialCase != null)
+                    _mainControlSpecialCase.PageCombosEnBold(getData, sender);
             }
             
         }
@@ -1166,18 +1208,18 @@ namespace SolvencyII.GUI
         {
             CloseApplication();
         }
-        
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            frmAbout frm = new frmAbout(isArelleSetupCompleted, supportedDataBaseVersion_FULL, supportedExcelTemplateVersion_FULL,supportedDataBaseVersion_PREPARATORY,supportedExcelTemplateVersion_PREPARATORY,supportedDataBaseVersion_CRD);
+            frmAbout frm = new frmAbout(isArelleSetupCompleted, supportedDataBaseVersion_FULL, supportedExcelTemplateVersion_FULL, supportedDataBaseVersion_PREPARATORY, supportedExcelTemplateVersion_PREPARATORY, supportedDataBaseVersion_CRD);
             frm.ShowDialog();
 
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(LanguageLabels.GetLabel(141,"To be implemented"));
+            MessageBox.Show(LanguageLabels.GetLabel(141, "To be implemented"));
         }
 
         #region Database Management
@@ -1190,7 +1232,7 @@ namespace SolvencyII.GUI
 
         private void changeDatabaseConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             string newConnection = CreateConnectionString.Create();
             if (!string.IsNullOrEmpty(newConnection))
             {
@@ -1228,7 +1270,7 @@ namespace SolvencyII.GUI
 
         private void cRDIVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (ManageDatabases.CreateAndSaveDatabasePath(DbType.CRDIV, GuiSpecific.ApplicationVersion()))
             {
                 ClearCurrentControl();
@@ -1244,7 +1286,7 @@ namespace SolvencyII.GUI
 
         private void solvencyIIToolStripMenuItem_Click(object sender, EventArgs e) //cRVIVToolStripMenuItem_Click
         {
-            
+
             if (ManageDatabases.CreateAndSaveDatabasePath(DbType.SolvencyII, GuiSpecific.ApplicationVersion()))
             {
                 ClearCurrentControl();
@@ -1255,14 +1297,14 @@ namespace SolvencyII.GUI
                 SetFormTitle();
                 InitializeValidationErrorView();
                 InitializeCellPropertiesView();
-               
+
             }
 
         }
 
         private void solvencyIIPreparatoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (ManageDatabases.CreateAndSaveDatabasePath(DbType.SolvencyII_Preparatory, GuiSpecific.ApplicationVersion()))
             {
                 ClearCurrentControl();
@@ -1273,7 +1315,7 @@ namespace SolvencyII.GUI
                 SetFormTitle();
                 InitializeValidationErrorView();
                 InitializeCellPropertiesView();
-               
+
             }
 
         }
@@ -1341,7 +1383,7 @@ namespace SolvencyII.GUI
             _isForMigration = false;
             Logger.WriteLog(eSeverity.Note, "Arelle export");
             Logger.WriteLog(eSeverity.Note, "Calling ExportDb2XBRLAsync1 method - argument type is eImportExportOperationType.ArelleWith");
-            ExportDb2XBRLAsync1(eImportExportOperationType.Export_using_Arelle,prepVersion);
+            ExportDb2XBRLAsync1(eImportExportOperationType.Export_using_Arelle, prepVersion);
         }
 
         private void exportarelleWithoutValidationToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1470,7 +1512,7 @@ namespace SolvencyII.GUI
             {
                 ToolStripItem item = (ToolStripItem)sender;
                 int formLanguage = int.Parse(item.Name);
-                StaticSettings.FormLanguage = (eLanguageID) formLanguage;
+                StaticSettings.FormLanguage = (eLanguageID)formLanguage;
                 RegSettings.FormLanguage = formLanguage;
                 if (StaticSettings.FormLanguage != eLanguageID.InEnglish)
                     MessageBox.Show("The application is currently only supported in English. However an automatic translation has being performed for testing purposes of the translation capabilities. Please note that labels are translated labels could be wrong or misleading as the proper translation will be done in a later stage when all labels are known.");
@@ -1531,7 +1573,7 @@ namespace SolvencyII.GUI
 
         private void txtRemoteValidation_LostFocus(object sender, EventArgs e)
         {
-            string remURL = ((TextBox) sender).Text;
+            string remURL = ((TextBox)sender).Text;
             RegSettings.RemoteValidationURL = remURL.Trim();
         }
 
@@ -1598,7 +1640,7 @@ namespace SolvencyII.GUI
                 string[] ids = item.Name.Split('|');
                 int instanceID = int.Parse(ids[0]);
                 if (instanceID != 0)
-                {   
+                {
                     InstanceID = instanceID;
                     InitializeValidationErrorView();
                     InitializeCellPropertiesView();
@@ -1621,7 +1663,7 @@ namespace SolvencyII.GUI
         private void createANewReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmInstanceNew select = new frmInstanceNew(true);
-            if(select.ShowDialog(this) == DialogResult.OK)
+            if (select.ShowDialog(this) == DialogResult.OK)
             {
                 InstanceID = select.InstanceID;
                 InitializeValidationErrorView();
@@ -1643,7 +1685,7 @@ namespace SolvencyII.GUI
 
         private void deleteActiveReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(LanguageLabels.GetLabel(29,"Are you sure you want to delete this report?\n\nOnce deleted it cannot be restored."), LanguageLabels.GetLabel(30, "Deletion Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show(LanguageLabels.GetLabel(29, "Are you sure you want to delete this report?\n\nOnce deleted it cannot be restored."), LanguageLabels.GetLabel(30, "Deletion Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 PutSQLData putData = new PutSQLData();
                 putData.DeleteInstance(InstanceID);
@@ -1679,7 +1721,7 @@ namespace SolvencyII.GUI
             ClearCurrentControl();
             try
             {
-                ToolStripItem item = (ToolStripItem) sender;
+                ToolStripItem item = (ToolStripItem)sender;
                 string connectionString = item.Name;
                 ManageDatabases.ChangeDatabase(connectionString);
                 GetDbVersion();
@@ -1733,7 +1775,8 @@ namespace SolvencyII.GUI
 
         protected void MigrateDB()
         {
-            if (StaticSettings.DbType == DbType.SolvencyII_Preparatory && _migrationRequired == true)
+            //BRAG
+            if (/*StaticSettings.DbType == DbType.SolvencyII_Preparatory && */_migrationRequired == true)
             {
                 DialogResult dialogResult = MessageBox.Show("You are trying to open a container created using previous version of the tool. Would you like to migrate the container to the new version? Note that it may take some time depending on the amount of data.", "Migration", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
@@ -1770,7 +1813,7 @@ namespace SolvencyII.GUI
                     return;
                 }
             }
-           
+
 
         }
 
@@ -1794,7 +1837,7 @@ namespace SolvencyII.GUI
         {
             //Start importing
             ImportAllinstancesWorker();
-           
+
 
         }
 
@@ -1813,7 +1856,12 @@ namespace SolvencyII.GUI
                 return false;
             }
             string DBpath = Path.Combine(folderpath, "Migration.xbrt");
-            string sourceFile = Path.Combine(Application.StartupPath, "T4Udb_Sol2_prep.zip");
+            string dbString;
+            if (Process.GetCurrentProcess().ProcessName.ToLower().Contains("prep"))
+                dbString = "T4Udb_Sol2_prep.zip";
+            else
+                dbString = "T4Udb_Sol2.zip";
+            string sourceFile = Path.Combine(Application.StartupPath, dbString);
             if (File.Exists(DBpath)) File.Delete(DBpath);
             using (ZipFile zip = ZipFile.Read(sourceFile))
                 foreach (ZipEntry entry in zip.EntriesSorted)
@@ -1826,7 +1874,7 @@ namespace SolvencyII.GUI
                 return true;
             else
                 return false;
-           
+
 
 
         }
@@ -1836,27 +1884,28 @@ namespace SolvencyII.GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-       
+
         private void backgroundWorkerimport_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             StopBusyIndicator();
             string dbName = "SolvencyII_Preparatory";
-             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = string.Format("{0} (*.xbrt)|*.xbrt", dbName);           
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = string.Format("{0} (*.xbrt)|*.xbrt", dbName);
             saveFileDialog1.Title = "Specify the db location";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string folderpath = Path.Combine(System.Windows.Forms.Application.StartupPath, "Temp");
-                folderpath = Path.Combine(folderpath, "Migration");               
+                folderpath = Path.Combine(folderpath, "Migration");
                 string DBpath = Path.Combine(folderpath, "Migration.xbrt");
 
                 string destLocation = saveFileDialog1.FileName;
+                //string destLocation = StaticSettings.ConnectionString + DateTime.Now.ToString();
                 if (File.Exists(DBpath))
                 {
-                    if (File.Exists(destLocation))                    
+                    if (File.Exists(destLocation))
                         File.Delete(destLocation);
-                    
-                    File.Copy(DBpath, destLocation); 
+
+                    File.Copy(DBpath, destLocation);
                 }
 
                 if (File.Exists(destLocation))
@@ -1872,14 +1921,14 @@ namespace SolvencyII.GUI
                         SetFormTitle();
                         CheckDBVersion();
                         MessageBox.Show("Migration successful.");
-                        
+
                     }
                 }
 
-                
+
             }
             _isForMigration = false;
-           
+
         }
 
         /// <summary>
@@ -1906,21 +1955,29 @@ namespace SolvencyII.GUI
 
         }
 
-       
+
         /// <summary>
         /// ImportMigreatedXBRLInstances importes all the exported instances into the newly created supported conatiner
         /// </summary>
         private void ImportMigreatedXBRLInstances()
         {
-            
+
             string migrationFolder = Path.Combine(System.Windows.Forms.Application.StartupPath, "Temp");
             migrationFolder = Path.Combine(migrationFolder, "Migration");
             string DBpath = Path.Combine(migrationFolder, "Migration.xbrt");
             //Seeting the latest application Version
             using (GetSQLData getData = new GetSQLData(DBpath))
             {
+                //BRAG
+
                 //DbType.SolvencyII_Preparatory, GuiSpecific.ApplicationVersion()
-                getData.SetApplicationData(GuiSpecific.ApplicationVersion(), DbType.SolvencyII_Preparatory.ToString());
+                string appname = Process.GetCurrentProcess().ProcessName;
+                string dbString;
+                if (appname.ToLower().Contains("prep"))
+                    dbString = DbType.SolvencyII_Preparatory.ToString();
+                else
+                    dbString = DbType.SolvencyII.ToString();
+                getData.SetApplicationData(GuiSpecific.ApplicationVersion(), dbString);
             }
 
 
@@ -1928,35 +1985,35 @@ namespace SolvencyII.GUI
 
             foreach (string s in files)
             {
-               
-                if (ImportExportArelle == null)      
-                     ImportExportArelle = new ArelleCmdInterface("Loading instance - ");
+
+                if (ImportExportArelle == null)
+                    ImportExportArelle = new ArelleCmdInterface("Loading instance - ");
                 ProgressHandler.Progress += ProgressHandler_Progress;
                 string sourceXBRL = s;
                 //importedFileMigration = sourceXBRL;
                 //importedFileMigration = Path.GetFileName(sourceXBRL);
                 importedFileMigration = Path.GetFileName(sourceXBRL);
                 importedFileMigration_InstanceName = Path.GetFileNameWithoutExtension(sourceXBRL);
-                
-               ImportExportArelle.ParseInstanceIntoDatabase(eImportExportOperationType.Native_Import, sourceXBRL, ArelleProgress, ImportXBRL2DbArelleComplete_migration, DBpath);
-               while (ImportExportArelle != null)
-               {
-                   //to make the thread to wait................................
-               }                
+
+                ImportExportArelle.ParseInstanceIntoDatabase(eImportExportOperationType.Native_Import, sourceXBRL, ArelleProgress, ImportXBRL2DbArelleComplete_migration, DBpath);
+                while (ImportExportArelle != null)
+                {
+                    //to make the thread to wait................................
+                }
             }
             ProgressHandler.Progress -= ProgressHandler_Progress;
 
 
         }
 
-      
-      
+
+
         private void ImportXBRL2DbArelleComplete_migration(object s, RunWorkerCompletedEventArgs args)
         {
 
             string report = string.Empty;
             eImportExportOperationType operation_type = eImportExportOperationType.No_Operation_selected;
-            if (args.Result is Object[]) 
+            if (args.Result is Object[])
             {
                 object[] resultParams = args.Result as Object[];
                 if (resultParams[0] != null)
@@ -1981,7 +2038,7 @@ namespace SolvencyII.GUI
             }
 
             //loading the insatnce
-            long newInstanceID;            
+            long newInstanceID;
             string entityName = "un-named";
             if (!string.IsNullOrEmpty(importedFileMigration_InstanceName))
             {
@@ -2026,7 +2083,7 @@ namespace SolvencyII.GUI
                 factsETL.etlLoadingXBRLinstance(DBpath, Convert.ToInt32(instance.InstanceID));
             }
 
-           
+
             ImportExportArelle = null;
 
 
@@ -2034,7 +2091,7 @@ namespace SolvencyII.GUI
 
 
         }
-       
+
 
 
         /// <summary>
@@ -2057,12 +2114,12 @@ namespace SolvencyII.GUI
             ImportExportArelle = new ArelleCmdInterface("Saving instance - ");
             factsETL = new EtlOperations();
             //To test versions
-           
-            
+
+
             //looping all the instances
             foreach (Instance entry in lst)
             {
-                if (ImportExportArelle == null)                
+                if (ImportExportArelle == null)
                     ImportExportArelle = new ArelleCmdInterface("Saving instance - ");
                 ProgressHandler.Progress += ProgressHandler_Progress;
                 factsETL.etlSavingXBRLinstance(StaticSettings.ConnectionString, Convert.ToInt32(entry.InstanceID));
@@ -2071,7 +2128,7 @@ namespace SolvencyII.GUI
                 //Wait the Thread to complete the operation
                 while (ImportExportArelle != null)
                 {
-                   
+
                 }
             }
             ProgressHandler.Progress -= ProgressHandler_Progress;
@@ -2098,7 +2155,7 @@ namespace SolvencyII.GUI
             if (InstanceID != 0)
             {
                 //Show message box
-                MessageBox.Show("Please note that the following validation results do not replace full XBRL validation. They are based on the T4U’s database and have been included to provide fast, user-friendly feedback. Use Arelle or other XBRL validator to check full XBRL Taxonomy compliance. More information is available in the T4U’s documentation package.", 
+                MessageBox.Show("Please note that the following validation results do not replace full XBRL validation. They are based on the T4U’s database and have been included to provide fast, user-friendly feedback. Use Arelle or other XBRL validator to check full XBRL Taxonomy compliance. More information is available in the T4U’s documentation package.",
                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 validator.ValidateAsync(InstanceID);
@@ -2143,36 +2200,39 @@ namespace SolvencyII.GUI
                 dataTypeValidationManager.UpdateResult += ValidateActiveContainerResult;
                 //Invoking the validate active container method
                 dataTypeValidationManager.ValidateDB(dataTypeValidationInput);
-               
+
             }
             else
             {
                 MessageBox.Show("Please select the report");
             }
-            
-           
+
+
 
         }
         public void ValidateActiveContainerResult(DataTypeValidationInput validatedResulSet, bool isFaulted)
         {
-            if (validatedResulSet != null && isFaulted == false)
-            {
-                //this.splitContainer1.Panel2.Controls.RemoveAt(0);
-                //this.splitContainer1.Panel2.Controls.Add(errorContainerValidationView);
-                this.tabContainerValidationPage.Controls.Add(errorContainerValidationView);
-                errorContainerValidationView.SetObjects(validatedResulSet.resultSet);
-            }
+            //BRAG
+            //removed container validation window
+            //if (validatedResulSet != null && isFaulted == false)
+            //{
+            //    //this.splitContainer1.Panel2.Controls.RemoveAt(0);
+            //    //this.splitContainer1.Panel2.Controls.Add(errorContainerValidationView);
+            //    this.tabContainerValidationPage.Controls.Add(errorContainerValidationView);
+            //    errorContainerValidationView.SetObjects(validatedResulSet.resultSet);
+            //    this.tabContainerValidationPage
+            //}
         }
 
-       public void  UserControled(object sender, EventArgs e)
+        public void UserControled(object sender, EventArgs e)
         {
 
         }
 
-       private void exportDataToBusinessTemplateToolStripMenuItem_Click(object sender, EventArgs e)
-       {
-           CultureInfo.CurrentCulture.ClearCachedData();
-           string connectionString = StaticSettings.ConnectionString;
+        private void exportDataToBusinessTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CultureInfo.CurrentCulture.ClearCachedData();
+            string connectionString = StaticSettings.ConnectionString;
 
 #if (FOR_UT)  
            //supportedExcelTemplateVersion = supportedExcelTemplateVersion_PREPARATORY;
@@ -2191,8 +2251,8 @@ namespace SolvencyII.GUI
             InvokeExcel.ExportToExcel(connectionString, InstanceID, GetExcelTemplatePath(ExcelTemplateType.BusinessTemplate), ExcelTemplateType.BusinessTemplate);
 #endif
 
-       }
-  
+        }
+
 
         #endregion
 
@@ -2232,7 +2292,7 @@ namespace SolvencyII.GUI
                 Logger.WriteLog(eSeverity.Error, ex.Message);
                 MessageBox.Show(string.Format(LanguageLabels.GetLabel(142, "Unfortunately there was an error.\nPlease try again.\n\n{0} "), ex.Message), "Error");
             }
-        }  
+        }
 
         /// <summary>
         /// Passed as a delegate to the ParentUserControl the save button raises this event.
@@ -2317,7 +2377,7 @@ namespace SolvencyII.GUI
                 Logger.WriteLog(eSeverity.Error, ex.Message);
                 MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error");
             }
-            
+
             // Refresh the form now that the data has been removed
             if (!_selectedItem.IsTyped)
             {
@@ -2333,14 +2393,14 @@ namespace SolvencyII.GUI
 
             }
         }
-                
+
         public void DeleteSelectedItemData_AllVariants()
         {
             using (PutSQLData putData = new PutSQLData())
             {
                 putData.DeleteTableData_AllVariants(_selectedItem.TableID, InstanceID);
             }
-            if(_selectedItem.IsTyped)
+            if (_selectedItem.IsTyped)
                 _mainOpenControl.RefreshGrid();
         }
 
@@ -2349,7 +2409,7 @@ namespace SolvencyII.GUI
             try
             {
                 ClosedTableManager tableManager;
-                if(_mainControl != null)
+                if (_mainControl != null)
                     tableManager = new ClosedTableManager(_mainControl, LanguageID, InstanceID);
                 else
                     tableManager = new ClosedTableManager(_mainControlSpecialCase, LanguageID, InstanceID);
@@ -2357,7 +2417,7 @@ namespace SolvencyII.GUI
                 tableManager.ShowMessageBox += response => MessageBox.Show(response);
                 tableManager.Filed_Toggle(_selectedItem);
                 // If toggling to Not Reported delete all data;
-                if(!newValue)
+                if (!newValue)
                     DeleteSelectedItemData_AllVariants();
 
             }
@@ -2582,9 +2642,9 @@ namespace SolvencyII.GUI
 
         private void SetFormTitle()
         {
-           
-                Text = string.Format(" {0} {1} {2} {3}", "Tools for Undertakings -", StaticSettings.DbType.ToString().Replace("_", " "), "[" + "Application version:" +
-                    Assembly.GetExecutingAssembly().GetName().Version + "] " + Program.ApplicationEnvironment, StaticSettings.DbType == DbType.No_container_selected ? "": StaticSettings.ConnectionString);
+
+            Text = string.Format(" {0} {1} {2} {3}", "Tools for Undertakings -", StaticSettings.DbType.ToString().Replace("_", " "), "[" + "Application version:" +
+                Assembly.GetExecutingAssembly().GetName().Version + "] " + Program.ApplicationEnvironment, StaticSettings.DbType == DbType.No_container_selected ? "" : StaticSettings.ConnectionString);
 
 
         }
@@ -2596,14 +2656,14 @@ namespace SolvencyII.GUI
             treeView1.Focus();
             for (int i = splitContainer2.Panel2.Controls.Count; i > 0; i--)
             {
-                splitContainer2.Panel2.Controls[i-1].Dispose();
+                splitContainer2.Panel2.Controls[i - 1].Dispose();
             }
 
         }
 
         private void StatusBarUpdate(string message)
         {
-           UpdateStatusStrip(message);
+            UpdateStatusStrip(message);
         }
 
         private void ResetCellColor()
@@ -2838,7 +2898,7 @@ namespace SolvencyII.GUI
             parentUserControl = new ParentUserControl(SaveUserControlData, DeleteUserControlData, ToggleFilingIndicator, CancelUserControlData, openTemplate, _selectedItem.IsTyped);
             _parentUserControl = parentUserControl;
 
-            if (openTemplate) 
+            if (openTemplate)
                 splitContainer2.Panel2.Controls.Add(_mainOpenControl);
             else
             {
@@ -2850,7 +2910,7 @@ namespace SolvencyII.GUI
                     _mainControl.AutoScroll = true;
                     _mainControl.Dock = DockStyle.Fill;
 
-                    _mainControl.Width = parentUserControl.Width - 2*_mainControl.Left;
+                    _mainControl.Width = parentUserControl.Width - 2 * _mainControl.Left;
                     int calcHeight = parentUserControl.Height - _mainControl.Top - _mainControl.Left;
                     int drMainHeight = _mainControl.GetDataRepeaterHeight();
                     _mainControl.Height = calcHeight > drMainHeight ? calcHeight : drMainHeight;
@@ -2944,12 +3004,12 @@ namespace SolvencyII.GUI
                         if (_mainControl != null)
                         {
                             // Setup this windows specific control
-                            _mainControl.InstanceID = InstanceID;                            
+                            _mainControl.InstanceID = InstanceID;
 
                             if (!comboUpdate) ShowMainControl(false, _mainControlSpecialCase != null);
                             // Select the data for the user control
                             SelectUserControlData(comboUpdate, _selectedItem, setupNPageFirstEntries);
-                            
+
                         }
                         else
                         {
@@ -3000,8 +3060,8 @@ namespace SolvencyII.GUI
                             // It appears that a repaint is needed to ensure the grid is shown correctly.
                             _mainOpenControl.GetVirtualObjectListView().Refresh();
                             _mainOpenControl.GetVirtualObjectListView().BuildList();
-                            
-                           
+
+
                             // this.Refresh();
 
                             // Open table sub control
@@ -3026,7 +3086,7 @@ namespace SolvencyII.GUI
                         }
                     }
                 }
-                
+
                 // Update the template with its status
                 SetFiledStatus();
             }
@@ -3039,11 +3099,11 @@ namespace SolvencyII.GUI
             }
             finally
             {
-                Cursor.Current = Cursors.Default;    
+                Cursor.Current = Cursors.Default;
             }
-            
 
-            
+
+
         }
 
         private string prevRowColCode = string.Empty;
@@ -3076,8 +3136,13 @@ namespace SolvencyII.GUI
 
                     try
                     {
-                        codes[0] = rowcolCode.Length > 0 ? rowcolCode.Substring(0, 5) : null;
-                        codes[1] = rowcolCode.Length > 4 ? rowcolCode.Substring(5, 5) : null;
+                        //BRAG
+                        string rowPattern = @"[r|R|p|P|e|E]{1,2}\d{1,4}";
+                        string columnPattern = @"[c|C|p|P|e|E]{1,2}\d{1,4}";
+                        codes[0] = System.Text.RegularExpressions.Regex.Match(rowcolCode, rowPattern).Value;
+                        codes[1] = System.Text.RegularExpressions.Regex.Match(rowcolCode, columnPattern).Value;
+                        //codes[0] = rowcolCode.Length > 0 ? rowcolCode.Substring(0, 5) : null;
+                        //codes[1] = rowcolCode.Length > 4 ? rowcolCode.Substring(5, 5) : null;
                     }
                     catch (Exception e) { }
 
@@ -3087,7 +3152,7 @@ namespace SolvencyII.GUI
                     List<CellProperties> selectedCells =
                         (from t in tableCellProperties
                          from c in codes
-                         where t.OrdinateCode != null && c != null  && t.OrdinateCode.ToUpper() == c.ToUpper()
+                         where t.OrdinateCode != null && c != null && t.OrdinateCode.ToUpper() == c.ToUpper()
                          select t).ToList();
 
                     cellPropertiesView.SetObjects(selectedCells);
@@ -3113,8 +3178,8 @@ namespace SolvencyII.GUI
         {
             ClosedTableManager tableManager = new ClosedTableManager(_mainControl, LanguageID, InstanceID);
             bool isFiled = tableManager.IsFiled(_selectedItem);
-            if(_parentUserControl != null)
-                ((ParentUserControl) _parentUserControl).Filed = isFiled;
+            if (_parentUserControl != null)
+                ((ParentUserControl)_parentUserControl).Filed = isFiled;
             if (_mainOpenControl != null)
                 _mainOpenControl.Filed = isFiled;
         }
@@ -3188,7 +3253,7 @@ namespace SolvencyII.GUI
                     // For this event the open template is Filed
                     _parentUserControl.Filed = true;
                     _parentUserControl.ChangeCancelToClose = true;
-                    
+
                 }
             }
             else
@@ -3220,7 +3285,7 @@ namespace SolvencyII.GUI
             {
                 ctl.Left = MARGIN;
                 ctl.Top = 0;
-                ctl.Width = splitContainer2.Panel2.Width - (2*MARGIN);
+                ctl.Width = splitContainer2.Panel2.Width - (2 * MARGIN);
                 ctl.Height = splitContainer2.Panel2.Height;
                 ctl.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
                 ctl.AutoScroll = true;
@@ -3268,18 +3333,18 @@ namespace SolvencyII.GUI
             ClearCurrentControl();
 
             ProgressBar bar = new ProgressBar
-                                  {
-                                      Name = "barProgress", 
-                                      Location = new Point(10, 10), 
-                                      Value = 0, 
-                                      Width = 200
-                                  };
+            {
+                Name = "barProgress",
+                Location = new Point(10, 10),
+                Value = 0,
+                Width = 200
+            };
             bar.BringToFront();
             bar.BackColor = Color.SkyBlue;
 
 
             splitContainer2.Panel2.Controls.Add(bar);
-            
+
             asyncTimer.Interval = 200;
             asyncTimer.Tick += AsyncTimerTick;
             asyncTimer.Start();
@@ -3287,15 +3352,15 @@ namespace SolvencyII.GUI
             Cursor.Current = Cursors.WaitCursor;
 
             EnableAllMenuItems(false);
-            
+
             treeView1.Enabled = false;
 
 
         }
-        
+
         private void AsyncTimerTick(object sender, EventArgs e)
         {
-            ProgressBar barTimer = (ProgressBar) splitContainer2.Panel2.Controls["barProgress"];
+            ProgressBar barTimer = (ProgressBar)splitContainer2.Panel2.Controls["barProgress"];
             if (barTimer == null)
             {
                 StopBusyIndicator();
@@ -3330,76 +3395,76 @@ namespace SolvencyII.GUI
 
         private void AsyncResponse(bool success, string message, ImportExportValuationAsync.ResponseType type)
         {
-            Invoke((Action) delegate
-                                {
-                                    // Stop graphical progress indicator
-                                    StopBusyIndicator();
+            Invoke((Action)delegate
+                               {
+                                   // Stop graphical progress indicator
+                                   StopBusyIndicator();
 
-                                    // Deal with the response.
-                                    if (success)
-                                    {
-                                        switch (type)
-                                        {
+                                   // Deal with the response.
+                                   if (success)
+                                   {
+                                       switch (type)
+                                       {
 
-                                            case ImportExportValuationAsync.ResponseType.Import:
-                                                // Note the message contins the newly inserted instance ID
-                                                InstanceID = int.Parse(message);
-                                                show_status(LanguageLabels.GetLabel(37, "Imported successfully"));
-                                                //MessageBox.Show(LanguageLabels.GetLabel(37, "Imported successfully"));
-                                                break;
-                                            case ImportExportValuationAsync.ResponseType.Export:
-                                                // Note the message contains the exported file name
-                                                show_status("Exported successfully.");
+                                           case ImportExportValuationAsync.ResponseType.Import:
+                                               // Note the message contins the newly inserted instance ID
+                                               InstanceID = int.Parse(message);
+                                               show_status(LanguageLabels.GetLabel(37, "Imported successfully"));
+                                               //MessageBox.Show(LanguageLabels.GetLabel(37, "Imported successfully"));
+                                               break;
+                                           case ImportExportValuationAsync.ResponseType.Export:
+                                               // Note the message contains the exported file name
+                                               show_status("Exported successfully.");
 
-                                                // Setup the form to show the selected tree item - if one exists.
-                                                // RefreshTemplate(); // Removed since it was considered a bug.
-                                                break;
-                                            case ImportExportValuationAsync.ResponseType.Validation:
-                                                MessageBox.Show(LanguageLabels.GetLabel(40, "File passed validation checks successfully"), LanguageLabels.GetLabel(39, "Validation Check"));
-                                                break;
-                                            default:
-                                                throw new ArgumentOutOfRangeException("type");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        switch (type)
-                                        {
-                                            case ImportExportValuationAsync.ResponseType.Import:
-                                                MessageBox.Show(message, LanguageLabels.GetLabel(41,"Import problem"));
-                                                break;
-                                            case ImportExportValuationAsync.ResponseType.Export:
-                                                MessageBox.Show(message, LanguageLabels.GetLabel(41,"Export problem"));
-                                                // Setup the form to show the selected tree item - if one exists.
-                                                RefreshTemplate();
-                                                break;
-                                            case ImportExportValuationAsync.ResponseType.Validation:
-                                                // User must be alerted with dialogue.
-                                                Form frm = new frmPopup(LanguageLabels.GetLabel(42, "Validation Failure"), message);
-                                                frm.ShowDialog(this);
-                                                break;
-                                            default:
-                                                throw new ArgumentOutOfRangeException("type");
-                                        }
-                                    }
+                                               // Setup the form to show the selected tree item - if one exists.
+                                               // RefreshTemplate(); // Removed since it was considered a bug.
+                                               break;
+                                           case ImportExportValuationAsync.ResponseType.Validation:
+                                               MessageBox.Show(LanguageLabels.GetLabel(40, "File passed validation checks successfully"), LanguageLabels.GetLabel(39, "Validation Check"));
+                                               break;
+                                           default:
+                                               throw new ArgumentOutOfRangeException("type");
+                                       }
+                                   }
+                                   else
+                                   {
+                                       switch (type)
+                                       {
+                                           case ImportExportValuationAsync.ResponseType.Import:
+                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Import problem"));
+                                               break;
+                                           case ImportExportValuationAsync.ResponseType.Export:
+                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Export problem"));
+                                               // Setup the form to show the selected tree item - if one exists.
+                                               RefreshTemplate();
+                                               break;
+                                           case ImportExportValuationAsync.ResponseType.Validation:
+                                               // User must be alerted with dialogue.
+                                               Form frm = new frmPopup(LanguageLabels.GetLabel(42, "Validation Failure"), message);
+                                               frm.ShowDialog(this);
+                                               break;
+                                           default:
+                                               throw new ArgumentOutOfRangeException("type");
+                                       }
+                                   }
 
-                                    
 
-                                });
+
+                               });
         }
 
         private void show_status(string statusMsg)
         {
             if (!this.lblExportImportStatus.IsDisposed) // ignore events after closing T4U while Arelle still running
-                Invoke((Action) delegate
-                                    {
-                                        this.lblExportImportStatus.Text = statusMsg;
-                                    });
+                Invoke((Action)delegate
+                                   {
+                                       this.lblExportImportStatus.Text = statusMsg;
+                                   });
         }
 
         #region Export Code
 
-        private void ExportDb2XBRLAsync1(eImportExportOperationType type,PreParatoryVersions prepVersion)
+        private void ExportDb2XBRLAsync1(eImportExportOperationType type, PreParatoryVersions prepVersion)
         {
 
             Logger.WriteLog(eSeverity.Note, "Method ExportDb2XBRLAsync1 starts execution");
@@ -3409,7 +3474,7 @@ namespace SolvencyII.GUI
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "XBRL File|*.xbrl";
             saveFileDialog1.Title = LanguageLabels.GetLabel(2, "Create XBRL file");
-            if(saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
             if (saveFileDialog1.FileName == "")
@@ -3424,7 +3489,7 @@ namespace SolvencyII.GUI
             ImportExportThreadKarol = new BackgroundWorker();
             ImportExportThreadKarol.WorkerSupportsCancellation = true;
 
-            
+
             factsETL = new EtlOperations();
 
             //TODO:Nicholas, check if T4U is connecting to SQLite or SQLServer and agree with Karol how to raise the right ETL function
@@ -3442,19 +3507,19 @@ namespace SolvencyII.GUI
 
                 ProgressHandler.Progress -= ProgressHandler_Progress;
                 //Check for an exception or operation cancelled
-                if(args.Cancelled == true || args.Error != null)
+                if (args.Cancelled == true || args.Error != null)
                 {
                     Logger.WriteLog(eSeverity.Error, args.Error.ToString());
                     ExceptionHandler.AsynchronousThreadException(eSeverity.Error, args.Error, "Export XBRL",
                         "An error occured while processing ETL.\nPlease check the log for more information.");
 
-                   
+
                     show_status("");
 
                     return; //do not process further
                 }
 
-                
+
                 //ExportDb2XBRLAsync2(type, targetXBRL);
 
                 //Call Arelle command line processor
@@ -3486,22 +3551,22 @@ namespace SolvencyII.GUI
             IValidationQuery validationQuery = ValidationFactory.GetValidationQuery(eDataTier.SqLite);
             ISolvencyData conn = ConnectionFactory.GetConnection(eDataTier.SqLite, StaticSettings.ConnectionString);
             //SolvencyII.Validation.GetMessage getMessage = new SolvencyII.Validation.GetMessage(StaticSettings.ConnectionString);
-            
+
             IEnumerable<ValidationMessage> messages;
 
             show_status("");
             string _success = "successfully";
 
             //Handle exception if there is an issue in Arelle processing
-            if(args.Error != null || args.Cancelled == true)
+            if (args.Error != null || args.Cancelled == true)
             {
                 ExceptionHandler.AsynchronousThreadException(eSeverity.Error, args.Error, "Export XBRL",
                         "An error occured while processing Exporting or validating XBRL.\nPlease check the log for more information.");
 
                 return; //do not process further
             }
-            
-            if(ImportExportArelle.InstanceID > 0)
+
+            if (ImportExportArelle.InstanceID > 0)
                 messages = validationQuery.GetArelleValidationErrors(conn, ImportExportArelle.InstanceID);
             else
                 messages = validationQuery.GetArelleValidationErrors(conn, InstanceID);
@@ -3530,7 +3595,7 @@ namespace SolvencyII.GUI
                 if (messages != null && messages.Count() > 0)
                 {
                     _success = "with messages";
-                    ArelleValidationStatus statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_validation_results_for_export,false);//need to change
+                    ArelleValidationStatus statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_validation_results_for_export, false);//need to change
                     statusDlg.ShowDialog();
 
                     //if the log was ignored.
@@ -3573,9 +3638,9 @@ namespace SolvencyII.GUI
                 if (messages != null && messages.Count() > 0)
                 {
                     _success = "with messages";
-                    if (!string.IsNullOrEmpty(filePath)) 
+                    if (!string.IsNullOrEmpty(filePath))
                         fileName = Path.GetFileName(filePath);
-                    
+
                     ArelleValidationStatus statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_validation_results_for_export, true, fileName);//need to change
                     statusDlg.ShowDialog();
                 }
@@ -3585,9 +3650,9 @@ namespace SolvencyII.GUI
 
             //Show a message box that import XBRL is complete
             ImportExportArelle = null;
-            if (_isForMigration == false)                    
-            MessageBox.Show(string.Format("Export XBRL is completed {0}.", _success), 
-                            "Export XBRL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (_isForMigration == false)
+                MessageBox.Show(string.Format("Export XBRL is completed {0}.", _success),
+                                "Export XBRL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
@@ -3610,7 +3675,7 @@ namespace SolvencyII.GUI
                 // If this file has already been imported Do not import it again.
                 _importedFileName = Path.GetFileName(sourceXBRL);
                 _importedFullFileName = sourceXBRL;
-                
+
                 // We can import a file more than twice.
                 //dInstance instance;
                 //using (GetSQLData getData = new GetSQLData())
@@ -3627,12 +3692,12 @@ namespace SolvencyII.GUI
                 string message = "";
                 if (PopupDialog.ShowInputDialog(ref message, "Name of instance") == DialogResult.OK)
                 {
-                if (string.IsNullOrEmpty(message)) message = "Un-named";
-                _importedInstanceName = message;
+                    if (string.IsNullOrEmpty(message)) message = "Un-named";
+                    _importedInstanceName = message;
                     StartBusyIndicator();
-                ImportExportArelle = new ArelleCmdInterface("Loading instance - ");
-                Logger.WriteLog(eSeverity.Note, "Calling ParseInstanceIntoDatabase");
-                ImportExportArelle.ParseInstanceIntoDatabase(type, sourceXBRL, ArelleProgress, ImportXBRL2DbArelleComplete);
+                    ImportExportArelle = new ArelleCmdInterface("Loading instance - ");
+                    Logger.WriteLog(eSeverity.Note, "Calling ParseInstanceIntoDatabase");
+                    ImportExportArelle.ParseInstanceIntoDatabase(type, sourceXBRL, ArelleProgress, ImportXBRL2DbArelleComplete);
                 }
             }
         }
@@ -3646,7 +3711,7 @@ namespace SolvencyII.GUI
             if (args.Result is Object[]) // cast #1
             {
                 object[] resultParams = args.Result as Object[];
-                if (resultParams[0] != null)                
+                if (resultParams[0] != null)
                     report = resultParams[0].ToString();
                 if (resultParams[1] != null)
                 {
@@ -3654,7 +3719,7 @@ namespace SolvencyII.GUI
                     string value = resultParams[1].ToString();
                     operation_type = (eImportExportOperationType)Enum.Parse(typeof(eImportExportOperationType), value, true);
                 }
-                
+
 
             }
 
@@ -3677,9 +3742,9 @@ namespace SolvencyII.GUI
             {
 
                 //Remove the instance if it is created
-                using(PutSQLData putData = new PutSQLData())
+                using (PutSQLData putData = new PutSQLData())
                 {
-                    if(instance.InstanceID > 0)
+                    if (instance.InstanceID > 0)
                         putData.DeleteInstance(instance.InstanceID);
                 }
 
@@ -3705,20 +3770,20 @@ namespace SolvencyII.GUI
                     {
                         _success = "with messages";
                         ArelleValidationStatus statusDlg = null;
-                        if(operation_type.Equals(eImportExportOperationType.Native_Import))
+                        if (operation_type.Equals(eImportExportOperationType.Native_Import))
                         {
-                            statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_results_for_native_import,false);
+                            statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_results_for_native_import, false);
                             statusDlg.ShowDialog();
                         }
                         if (operation_type.Equals(eImportExportOperationType.Import_using_Arelle))
                         {
-                            statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_validation_results,false);
+                            statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Arelle_validation_results, false);
                             statusDlg.ShowDialog();
                         }
                         //throw
                         if (operation_type.Equals(eImportExportOperationType.No_Operation_selected))
                         {
-                           //throw error
+                            //throw error
                         }
 
 
@@ -3761,24 +3826,24 @@ namespace SolvencyII.GUI
                     instance.EntityName = _importedInstanceName;
                     // Using the full path here prevents problems with duplication.
                     // The instances are located using the _importedFileName - not the FullFileName
-                    instance.FileName = _importedFullFileName; 
+                    instance.FileName = _importedFullFileName;
                     string result = putData.InsertUpdateInstance(instance, out newInstanceID);
-                    
+
 
                     if (!string.IsNullOrEmpty(result))
                     {
                         // We have errors inserting the instance.
-                        this.Invoke((MethodInvoker)delegate() { MessageBox.Show(string.Format("Unable to update the instance: {0}", putData.Errors[0])); });
+                        this.Invoke((MethodInvoker)delegate () { MessageBox.Show(string.Format("Unable to update the instance: {0}", putData.Errors[0])); });
                         return;
                     }
 
                     // Run Karol's code in background
                     ProgressHandler.Progress += ProgressHandler_Progress;
 
-                    this.Invoke((MethodInvoker) StartBusyIndicator);
+                    this.Invoke((MethodInvoker)StartBusyIndicator);
                     ImportExportThreadKarol = new BackgroundWorker();
                     ImportExportThreadKarol.WorkerSupportsCancellation = true;
-                    
+
                     factsETL = new EtlOperations();
 
                     //DoWork event
@@ -3813,15 +3878,15 @@ namespace SolvencyII.GUI
                         if (messages != null && messages.Count() > 0)
                         {
                             _success = "with messages";
-                             ArelleValidationStatus statusDlg = null;
-                            if(operation_type.Equals(eImportExportOperationType.Native_Import))
+                            ArelleValidationStatus statusDlg = null;
+                            if (operation_type.Equals(eImportExportOperationType.Native_Import))
                             {
-                                statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Import_results_for_Native_import,false);
+                                statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Import_results_for_Native_import, false);
                                 statusDlg.ShowDialog();
                             }
                             if (operation_type.Equals(eImportExportOperationType.Import_using_Arelle))
                             {
-                                statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Import_results_for_Arelle_import,false);
+                                statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Import_results_for_Arelle_import, false);
                                 statusDlg.ShowDialog();
                             }
                             if (operation_type.Equals(eImportExportOperationType.No_Operation_selected))
@@ -3834,13 +3899,13 @@ namespace SolvencyII.GUI
                                 //if the log was ignored.
                                 if (statusDlg.DialogResult == DialogResult.Abort)
                                 {
-                                    if (MessageBox.Show( "Are you sure you want to abort the import operation.", LanguageLabels.GetLabel(30, "Deletion Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                                    if (MessageBox.Show("Are you sure you want to abort the import operation.", LanguageLabels.GetLabel(30, "Deletion Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                                     {
                                         //Remove the instance if it is created
                                         using (PutSQLData delInstance = new PutSQLData())
                                         {
                                             if (instance.InstanceID > 0)
-                                            {                                                
+                                            {
                                                 delInstance.DeleteInstance(InstanceID);
                                                 delInstance.Dispose();
                                                 InstanceID = 0;
@@ -3853,11 +3918,11 @@ namespace SolvencyII.GUI
                                     }
                                 }
                             }
-                            
+
                         }
-                          
-                
-                        MessageBox.Show(string.Format("Import XBRL is completed {0}.", _success), 
+
+
+                        MessageBox.Show(string.Format("Import XBRL is completed {0}.", _success),
                                         "Import XBRL", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Select the imported instance:
@@ -3892,7 +3957,7 @@ namespace SolvencyII.GUI
                 // Error published from Arelle code
             }
         }
-        
+
         #endregion
 
         private void ProgressHandler_Progress(int current, int total, string message)
@@ -3909,7 +3974,7 @@ namespace SolvencyII.GUI
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.Filter = "SolvencyII (*.xbrl)|*.xbrl";
-                openFileDialog1.Title = LanguageLabels.GetLabel(44,"Locate xbrl file to validate");
+                openFileDialog1.Title = LanguageLabels.GetLabel(44, "Locate xbrl file to validate");
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     sourceXBRL = openFileDialog1.FileName;
@@ -3981,7 +4046,7 @@ namespace SolvencyII.GUI
             if (messages != null && messages.Count() > 0)
             {
                 _success = "with messages";
-                ArelleValidationStatus statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Validation_result,false);
+                ArelleValidationStatus statusDlg = new ArelleValidationStatus(messages, report, ArelleValidationDisplayType.Validation_result, false);
                 statusDlg.ShowDialog();
 
                 //if the log was ignored.
@@ -4001,7 +4066,7 @@ namespace SolvencyII.GUI
 
             //Show a message box that import XBRL is complete
 
-            MessageBox.Show(string.Format("XBRL validation is completed {0}.", _success), 
+            MessageBox.Show(string.Format("XBRL validation is completed {0}.", _success),
                             "XBRL validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -4051,7 +4116,7 @@ namespace SolvencyII.GUI
                     MessageBox.Show(LanguageLabels.GetLabel(20, "Please create a new XBRT container or open an existing one."), LanguageLabels.GetLabel(21, "No active XBRT container"));
                     EnableMenuItems(false);
                     EnableExcelMenu();
-                    
+
                 }
             }
             else
@@ -4060,7 +4125,7 @@ namespace SolvencyII.GUI
                 StaticSettings.ConnectionString = RegSettings.SQLServerConnection;
 
                 bool escape = false;
-               
+
                 while (!escape)
                 {
                     try
@@ -4105,7 +4170,7 @@ namespace SolvencyII.GUI
                                     successfulConnection = false;
                                     escape = false;
                                 }
-                                
+
                             }
                         }
                     }
@@ -4125,7 +4190,7 @@ namespace SolvencyII.GUI
 
         private void GetDbVersion()
         {
-            if(!string.IsNullOrEmpty(StaticSettings.ConnectionString))
+            if (!string.IsNullOrEmpty(StaticSettings.ConnectionString))
             {
                 using (GetSQLData getData = new GetSQLData())
                 {
@@ -4144,79 +4209,111 @@ namespace SolvencyII.GUI
             }
         }
 
-
         private void CheckDBVersion()
         {
-            
-                if(StaticSettings.DbType!=DbType.No_container_selected)
+            if (StaticSettings.DbType != DbType.No_container_selected)
+            {
+                using (GetSQLData getData = new GetSQLData())
                 {
-                    using (GetSQLData getData = new GetSQLData())
+                    //BRAG
+                    aApplication appInfo = getData.CheckDBVersion();
+                    string thisVersion = GuiSpecific.ApplicationVersion();
+                    Version thisVersionObject = new Version(thisVersion);
+                    Version ver = new Version(appInfo.ApplicationVersion.ToString());
+                    string appname = Process.GetCurrentProcess().ProcessName;
+                    //MessageBox.Show(appname);
+                    if (!appname.ToLower().Contains("prep"))
                     {
-                        aApplication appInfo = getData.CheckDBVersion();
-                        string thisVersion = GuiSpecific.ApplicationVersion();
-
-                        if (appInfo.ApplicationVersion == null)
+                        var migrationSupportedVersion = new Version(migrationDataBaseVersion_FULL);
+                        if (appInfo.DatabaseType.ToLower().Contains("prep"))
+                            MessageBox.Show(string.Format("{0} database are not suported in this application.", appInfo.DatabaseType));
+                        if (thisVersionObject.CompareTo(ver) == 0)
                         {
-                            //MessageBox.Show(string.Format("This container was created with previous version. " +
-                            //    "Please create new container with the newest version (migration is not currently supported). " +
-                            //    "Aplication version: {0} Database Version: {1}", thisVersion, appInfo.ApplicationVersion));
-                            //MessageBox.Show(string.Format(LanguageLabels.GetLabel(143, "This container was created with previous version. Please create new container with the newest version (migration is not currently supported). Aplication version: {0} Database Version: {1}"), thisVersion, appInfo.ApplicationVersion));
-                            MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
                             _migrationRequired = false;
+                            return;
                         }
-                        else
+                        else if (migrationSupportedVersion.CompareTo(ver) <= 0)
                         {
-                            Version ver = new Version(appInfo.ApplicationVersion.ToString());
+                            _migrationRequired = true;
+                            return;
+                        }
+                        else if (thisVersionObject.CompareTo(ver) > 0)
+                            MessageBox.Show(string.Format("Database version {0} is not supported. You need to use {1} version.", ver.ToString(), thisVersionObject.ToString()));
 
-                            if (StaticSettings.DbType == DbType.SolvencyII)
-                                supportedDataBaseVersion = supportedDataBaseVersion_FULL;
-                            if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)
-                                supportedDataBaseVersion = supportedDataBaseVersion_PREPARATORY;
-                            if (StaticSettings.DbType == DbType.CRDIV)
-                                supportedDataBaseVersion = supportedDataBaseVersion_CRD;
+                        _migrationRequired = false;
+                        return;
+                    }
+                    else if (appname.ToLower().Contains("prep"))
+                    {
+                        if (!appInfo.DatabaseType.ToLower().Contains("prep"))
+                        {
+                            MessageBox.Show(string.Format("{0} database are not suported in this application.", appInfo.DatabaseType));
+                            _migrationRequired = false;
+                            return;
+                        }
+                    }
 
-                            if (!string.IsNullOrEmpty(supportedDataBaseVersion))
+
+                    if (appInfo.ApplicationVersion == null)
+                    {
+                        //MessageBox.Show(string.Format("This container was created with previous version. " +
+                        //    "Please create new container with the newest version (migration is not currently supported). " +
+                        //    "Aplication version: {0} Database Version: {1}", thisVersion, appInfo.ApplicationVersion));
+                        //MessageBox.Show(string.Format(LanguageLabels.GetLabel(143, "This container was created with previous version. Please create new container with the newest version (migration is not currently supported). Aplication version: {0} Database Version: {1}"), thisVersion, appInfo.ApplicationVersion));
+                        MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
+                        _migrationRequired = false;
+                    }
+                    else
+                    {
+                        if (StaticSettings.DbType == DbType.SolvencyII)
+                            supportedDataBaseVersion = supportedDataBaseVersion_FULL;
+                        if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)
+                            supportedDataBaseVersion = supportedDataBaseVersion_PREPARATORY;
+                        if (StaticSettings.DbType == DbType.CRDIV)
+                            supportedDataBaseVersion = supportedDataBaseVersion_CRD;
+
+                        if (!string.IsNullOrEmpty(supportedDataBaseVersion))
+                        {
+                            //migrattion not supported version
+                            if (ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015)) < 0)
                             {
-                                //migrattion not supported version
-                                if (ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015)) < 0)                                
-                                {
-                                   
-                                    MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
-                                    _migrationRequired = false;
-                                    Logger.WriteLog(eSeverity.Note, "Migration not supported ");
 
-                                }
-                                else //migrattion Feb version to  -> 1.5.2(b)
-                                if (ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015)) >= 0 && ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_MarchVersion_2015)) < 0)
-                                {
-                                    
-                                    _migrationRequired = true;
-                                    Logger.WriteLog(eSeverity.Note, "Version for Migration - second version");
-                                    Logger.WriteLog(eSeverity.Note, ver.ToString());
-                                    Logger.WriteLog(eSeverity.Note, "Migration required to 1.5.2(b)");
+                                MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
+                                _migrationRequired = false;
+                                Logger.WriteLog(eSeverity.Note, "Migration not supported ");
 
-                                }
-                                else //migrattion Feb version to  -> 1.5.2(c)
-                                 if (ver.CompareTo(new Version(supportedDataBaseVersion)) < 0)
-                                 {
-                                       
-                                     _migrationRequired = true;
-                                     prepVersion = PreParatoryVersions.ThirdVersion;
-                                     Logger.WriteLog(eSeverity.Note, "Version for Migration - third version");
-                                     Logger.WriteLog(eSeverity.Note, ver.ToString());
-                                     Logger.WriteLog(eSeverity.Note, "Migration required to 1.5.2(c)");
-                                 }
-                                else //newer version
-                                  {
-                                     Logger.WriteLog(eSeverity.Note, "Migration not required, newer version");
-                                  }
                             }
+                            else //migrattion Feb version to  -> 1.5.2(b)
+                            if (ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015)) >= 0 && ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_MarchVersion_2015)) < 0)
+                            {
 
+                                _migrationRequired = true;
+                                Logger.WriteLog(eSeverity.Note, "Version for Migration - second version");
+                                Logger.WriteLog(eSeverity.Note, ver.ToString());
+                                Logger.WriteLog(eSeverity.Note, "Migration required to 1.5.2(b)");
+
+                            }
+                            else //migrattion Feb version to  -> 1.5.2(c)
+                             if (ver.CompareTo(new Version(supportedDataBaseVersion)) < 0)
+                            {
+
+                                _migrationRequired = true;
+                                prepVersion = PreParatoryVersions.ThirdVersion;
+                                Logger.WriteLog(eSeverity.Note, "Version for Migration - third version");
+                                Logger.WriteLog(eSeverity.Note, ver.ToString());
+                                Logger.WriteLog(eSeverity.Note, "Migration required to 1.5.2(c)");
+                            }
+                            else //newer version
+                            {
+                                Logger.WriteLog(eSeverity.Note, "Migration not required, newer version");
+                            }
                         }
 
                     }
+
+                }
             }
-            
+
         }
 
         private string GetExcelTemplatePath(ExcelTemplateType type)
@@ -4226,15 +4323,15 @@ namespace SolvencyII.GUI
                 if (StaticSettings.DbType == DbType.SolvencyII)
                     return ("ExcelTemplates\\Full\\");
 
-                
-                if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)   
+
+                if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)
                     return ("ExcelTemplates\\Preparatory\\");
             }
-            else if(type == ExcelTemplateType.BusinessTemplate)
+            else if (type == ExcelTemplateType.BusinessTemplate)
             {
                 return ("ExcelTemplates\\BusinessTemplates\\");
             }
-            else if(type == ExcelTemplateType.BusinessTemplate_Macro)
+            else if (type == ExcelTemplateType.BusinessTemplate_Macro)
             {
                 return ("Exl-Business_Encrypted\\");
             }
@@ -4253,14 +4350,14 @@ namespace SolvencyII.GUI
 
         private void importDataFromExcelFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CultureInfo.CurrentCulture.ClearCachedData();  
+            CultureInfo.CurrentCulture.ClearCachedData();
             //
-            if (StaticSettings.DbType == DbType.SolvencyII)            
-               supportedExcelTemplateVersion=supportedExcelTemplateVersion_FULL;           
+            if (StaticSettings.DbType == DbType.SolvencyII)
+                supportedExcelTemplateVersion = supportedExcelTemplateVersion_FULL;
             if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)
                 supportedExcelTemplateVersion = supportedExcelTemplateVersion_PREPARATORY;
 
-            
+
             ////
 
             string connectionString = StaticSettings.ConnectionString;
@@ -4279,7 +4376,7 @@ namespace SolvencyII.GUI
             string sourceFile = string.Empty;
 
             if (StaticSettings.DbType == DbType.SolvencyII)
-                sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Enumerations\\", "excel_template_enumerations_17.xlsx"));
+                sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Enumerations\\", "excel_template_enumerations_201.xlsx"));
 
             if (StaticSettings.DbType == DbType.SolvencyII_Preparatory)
                 sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Enumerations\\", "excel_template_enumerations_152c.xlsx"));
@@ -4313,7 +4410,7 @@ namespace SolvencyII.GUI
                     InvokeExcel.getRcBusinessCodes(connectionString);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.WriteLog(eSeverity.Error, string.Format("There was a problem generating RC  BusinessCode Mapping excel file {0}", ex.Message));
                 MessageBox.Show(string.Format("There was a problem generating RC  BusinessCode Mapping excel file. Error details logged. "));
@@ -4330,10 +4427,10 @@ namespace SolvencyII.GUI
         private void userManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //if (_userManualFileName!=string.Empty)
-            downloadHelpFiles("T4U User Manual.pdf",false);
+            downloadHelpFiles("T4U User Manual.pdf", false);
         }
 
-      
+
         private void PreparatoryS2TestXBRLInstancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             const string fileName = "Preparatory S2 Test XBRL Instances.zip";
@@ -4342,29 +4439,29 @@ namespace SolvencyII.GUI
         }
 
         private void fullS2TestXBRLInstancesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            const string fileName = "EIOPA_SolvencyII_XBRL_Instance_documents_2.0.0.zip";
+        {//BRAG
+            const string fileName = "EIOPA_SolvencyII_XBRL_Instance_documents_2.0.1.zip";
             downloadHelpFiles(fileName, false);
         }
 
 
         private void dPMDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            const string fileName = "EIOPA_SolvencyII_DPM_Dictionary.xlsx";
+        {//BRAG
+            const string fileName = "EIOPA_SolvencyII_DPM_Dictionary_2.0.1.xlsx";
             downloadHelpFiles2("HelpFiles\\Full\\", fileName);
         }
 
         private void annotatedTemplatesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            const string fileName = "EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx";
+        {//BRAG
+            const string fileName = "EIOPA_SolvencyII_DPM_Annotated_Templates_2.0.1.xlsx";
             downloadHelpFiles2("HelpFiles\\Full\\", fileName);
         }
 
-   
+
         private void databaseDocumentationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            const string fileName = "T4U Database Documentation.pdf";
-            downloadHelpFiles(fileName,false);
+        {//BRAG
+            const string fileName = "T4U DPM Database Documentation.pdf";
+            downloadHelpFiles(fileName, false);
         }
 
         private void preparatoryS2DictionaryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4388,19 +4485,19 @@ namespace SolvencyII.GUI
         {
 
             string sourceFile = string.Empty;
-            if (isTaxonomyFile==true)
-                sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Arelle\\Taxonomies\\", fileName));                
+            if (isTaxonomyFile == true)
+                sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Arelle\\Taxonomies\\", fileName));
             else
                 sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("HelpFiles\\", fileName));
-           
+
             //Check if the file exists
             if (!File.Exists(sourceFile))
             {
                 MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile));
                 return;
             }
-            System.Diagnostics.Process.Start(sourceFile);          
-            
+            System.Diagnostics.Process.Start(sourceFile);
+
         }
 
         protected void downloadHelpFiles2(string folderPath, string fileName)
@@ -4422,7 +4519,7 @@ namespace SolvencyII.GUI
 
         private void solvencyIIToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            const string fileName = "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.0.zip";
+            const string fileName = "EIOPA_SolvencyII_XBRL_Taxonomy_2.0.1.zip";
             downloadHelpFiles(fileName, true);
         }
 
@@ -4447,7 +4544,7 @@ namespace SolvencyII.GUI
 
         private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WhatsNew.Show(CheckUpdates.CheckNow, ApplicationDeployment.IsNetworkDeployed); 
+            WhatsNew.Show(CheckUpdates.CheckNow, ApplicationDeployment.IsNetworkDeployed);
         }
 
         private void logAndSystemDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4632,7 +4729,7 @@ namespace SolvencyII.GUI
             return (sb.ToString());
         }
 
-        
+
 
         #endregion
 
@@ -4643,53 +4740,53 @@ namespace SolvencyII.GUI
         /// </summary>
 
         public void applicationAndLogInfo()
-        {           
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "Zip Files|*.zip;*.rar";
-                dialog.FileName = "details";
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Zip Files|*.zip;*.rar";
+            dialog.FileName = "details";
 
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
-                    return;
-                string destFile = dialog.FileName;
-                //string archiveName = String.Format("archive-{0}.zip", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            string destFile = dialog.FileName;
+            //string archiveName = String.Format("archive-{0}.zip", DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
 
-                //getting the machine information
-                StringBuilder sb = new StringBuilder();
-                ManagementClass osClass = new ManagementClass("Win32_OperatingSystem");
-                foreach (ManagementObject queryObj in osClass.GetInstances())
+            //getting the machine information
+            StringBuilder sb = new StringBuilder();
+            ManagementClass osClass = new ManagementClass("Win32_OperatingSystem");
+            foreach (ManagementObject queryObj in osClass.GetInstances())
+            {
+                foreach (PropertyData prop in queryObj.Properties)
                 {
-                    foreach (PropertyData prop in queryObj.Properties)
-                    {
 
-                        sb.AppendLine(string.Format("{0}: {1} {2}", prop.Name, "=", prop.Value));
-                    }
+                    sb.AppendLine(string.Format("{0}: {1} {2}", prop.Name, "=", prop.Value));
                 }
+            }
 
 
-                //getting the application information               
-                StringBuilder applicationDetails = new StringBuilder();
-                applicationDetails.AppendLine(AboutWindowDetails());
-                applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedDataBaseVersion", "=", supportedDataBaseVersion));
-                applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedExcelTemplateVersion", "=", supportedExcelTemplateVersion));
+            //getting the application information               
+            StringBuilder applicationDetails = new StringBuilder();
+            applicationDetails.AppendLine(AboutWindowDetails());
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedDataBaseVersion", "=", supportedDataBaseVersion));
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedExcelTemplateVersion", "=", supportedExcelTemplateVersion));
 
-                // add a named entry to the zip file, using a string for content
-                using (ZipFile zip = new ZipFile())
-                {
-                    ZipEntry entry = zip.AddEntry("Application_Details.txt", applicationDetails.ToString());
-                    entry = zip.AddEntry("System_Details.txt", sb.ToString());
-                    string logPath = Path.GetDirectoryName(Application.ExecutablePath);
-                    logPath = Path.Combine(logPath, "Log.txt");
-                    if (File.Exists(logPath))
-                        zip.AddFile(logPath, @"\");
-                    if (StaticSettings.ConnectionString != null && File.Exists(StaticSettings.ConnectionString))
-                        if (System.IO.Path.GetExtension(StaticSettings.ConnectionString).ToUpper().EndsWith("XBRT"))
-                            zip.AddFile(StaticSettings.ConnectionString, @"\");
+            // add a named entry to the zip file, using a string for content
+            using (ZipFile zip = new ZipFile())
+            {
+                ZipEntry entry = zip.AddEntry("Application_Details.txt", applicationDetails.ToString());
+                entry = zip.AddEntry("System_Details.txt", sb.ToString());
+                string logPath = Path.GetDirectoryName(Application.ExecutablePath);
+                logPath = Path.Combine(logPath, "Log.txt");
+                if (File.Exists(logPath))
+                    zip.AddFile(logPath, @"\");
+                if (StaticSettings.ConnectionString != null && File.Exists(StaticSettings.ConnectionString))
+                    if (System.IO.Path.GetExtension(StaticSettings.ConnectionString).ToUpper().EndsWith("XBRT"))
+                        zip.AddFile(StaticSettings.ConnectionString, @"\");
 
-                    zip.Save(destFile);
-                }
-                MessageBox.Show("Download complete.", "Completed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                zip.Save(destFile);
+            }
+            MessageBox.Show("Download complete.", "Completed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            
+
         }
         #endregion
 
@@ -4707,11 +4804,11 @@ namespace SolvencyII.GUI
             if (dataTypeAllValidationResults.Count > 0)
             {
                 statusTxtGeneral.Text = message;
-                toolStripProgressBar1.Value = percentage; 
+                toolStripProgressBar1.Value = percentage;
 
                 foreach (DataTypeValidationResult dataTypeValidationResult in dataTypeAllValidationResults)
                 {
-                    dataTypeAllValidationResultsList.Add(dataTypeValidationResult);                   
+                    dataTypeAllValidationResultsList.Add(dataTypeValidationResult);
                 }
             }
         }
@@ -4734,7 +4831,7 @@ namespace SolvencyII.GUI
             this.splitContainer1.Panel2.Controls.RemoveAt(0);
             this.splitContainer1.Panel2.Controls.Add(errorContainerValidationView);
             errorContainerValidationView.SetObjects(dataTypeAllValidationResultsList);
-            
+
         }
 
         #endregion
@@ -4771,8 +4868,8 @@ namespace SolvencyII.GUI
                     if (RegSettings.RssCount != rssMessages.Count())
                     {
                         toolStripStatusRSS.ForeColor = System.Drawing.Color.Yellow;
-                        toolStripStatusRSS.BackColor = System.Drawing.Color.Red;                       
-                        
+                        toolStripStatusRSS.BackColor = System.Drawing.Color.Red;
+
                     }
                     else
                     {
@@ -4799,11 +4896,11 @@ namespace SolvencyII.GUI
             {
                 if (rssMessages.Count > 0)
                 {
-                        RSS_UI validationDialog = new RSS_UI(rssMessages);
-                        validationDialog.ShowDialog();
-                        toolStripStatusRSS.ForeColor = System.Drawing.Color.Black;
-                        toolStripStatusRSS.BackColor = SystemColors.Control;
-                        RegSettings.RssCount = rssMessages.Count();
+                    RSS_UI validationDialog = new RSS_UI(rssMessages);
+                    validationDialog.ShowDialog();
+                    toolStripStatusRSS.ForeColor = System.Drawing.Color.Black;
+                    toolStripStatusRSS.BackColor = SystemColors.Control;
+                    RegSettings.RssCount = rssMessages.Count();
                 }
             }
         }

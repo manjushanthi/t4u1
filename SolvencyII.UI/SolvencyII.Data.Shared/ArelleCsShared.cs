@@ -159,9 +159,14 @@ namespace SolvencyII.Data.Shared
         public const string nsXlink = "http://www.w3.org/1999/xlink";
         public const string nsXsi = "http://www.w3.org/2001/XMLSchema-instance";
         public const string nsFind = "http://www.eurofiling.info/xbrl/ext/filing-indicators";
+        public const string nsXsd = "http://www.w3.org/2001/XMLSchema";
+
+        public static Regex schemaRefDatePattern = new Regex(@".*/([0-9]{4}-[01][0-9]-[0-3][0-9])/.*");
 
         public bool isEBA = false;
         public bool isEIOPA = false;
+        public bool isEIOPAfullVersion = false; // 2.0 filer manual "full" version
+        public bool isEIOPA_2_0_1 = false; // 2.0.1 filer manual
 
         protected class NamespaceDefinition
         {

@@ -1,4 +1,34 @@
 ﻿*************************************************************************************
+***********	                    VER 2016.02.01                           ************
+*************************************************************************************
+
+What’s new in this release?   
+
+-------------
+New features:
+-------------
+-	...
+
+IMPORTANT: Different error margins applied by the database-based validations 
+(relative error with tolerance of 0.000001) and XBRL assertions (interval 
+arithmetic) may result in inconsistent evaluations (compared to XBRL validators). 
+
+----------
+Bug fixes:
+----------
+-	...
+	
+-----------
+Known bugs:
+-----------
+-	...
+
+---------------------------------------------------------
+Missing features that might be included in next releases:
+---------------------------------------------------------
+-	...
+
+*************************************************************************************
 ***********	                    VER 2015.08.28                           ************
 *************************************************************************************
 

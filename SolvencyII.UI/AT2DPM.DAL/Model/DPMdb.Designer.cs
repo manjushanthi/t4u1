@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Projekty\Niemcy\Eiopa\T4U\T4U_Code_public\SolvencyII.UI\AT2DPM.DAL\Model\DPMdb.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\xbrt\5. AT2DPMdb\Source code\DPMdb2AT ver 2\AT2DPM.DAL\Model\DPMdb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

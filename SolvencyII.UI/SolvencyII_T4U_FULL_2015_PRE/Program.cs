@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,13 +11,10 @@ namespace SolvencyII_T4U_FULL_2015_PRE
         [STAThread]
         static void Main()
         {
-            
-
             #if (!FOR_NCA)
-            #error "Incorect Compilation variable & deployment Project type";
-            #endif
-
-            // MessageBox.Show("This application is the PREproduction enviorment, please use production http://dev.eiopa.europa.eu/XBRT/Deployment/2015/WindowsT4U_NCA_Version/PRO/SolvencyII_T4U_FULL_2015_PRO.application");
+                    //#error "Incorect Compilation variable & deployment Project type";
+            #endif    
+           // MessageBox.Show("This application is the PREproduction enviorment, please use production http://dev.eiopa.europa.eu/XBRT/Deployment/2015/WindowsT4U_NCA_Version/PRO/SolvencyII_T4U_FULL_2015_PRO.application");
             //TODO: we need to add a localizartion string to "Test Environment"
             string environment = "Test Environment";
             // Start the main winForms application

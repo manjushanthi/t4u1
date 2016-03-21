@@ -11,24 +11,23 @@
     <AssemblyName>SolvencyII_T4U_PREP_2015_DEV</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>\\eivpr-svn01\wwwroot\XBRT\Deployment\TEST\DevPreparatoryBuild\</PublishUrl>
+    <PublishUrl>\\172.16.3.233\public\T4U ClickOnce\PREP_DEV_v2\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://dev.eiopa.europa.eu/XBRT/Deployment/TEST/DevPreparatoryBuild/</InstallUrl>
     <SupportUrl>http://t4u.eurofiling.info/</SupportUrl>
     <ProductName>EIOPA Windows T4U Preparatory 2015 DEV</ProductName>
     <PublisherName>EIOPA</PublisherName>
-    <ApplicationRevision>15</ApplicationRevision>
-    <ApplicationVersion>2015.08.28.%2a</ApplicationVersion>
+    <ApplicationRevision>70</ApplicationRevision>
+    <ApplicationVersion>2016.02.01.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -55,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>4CD52E15C8EF6C8CE6F938AB02BC7D2BCCF3CBB5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6EEC4B6BFE666FDF2E1825A86818CD31EFDC1857</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>
@@ -70,9 +69,7 @@
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>ico-t4u.ico</ApplicationIcon>
   </PropertyGroup>
@@ -80,10 +77,13 @@
     <OutputPath>bin\PreparatoryRelease\</OutputPath>
     <DefineConstants>FOR_UT</DefineConstants>
     <Optimize>true</Optimize>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
     <OutputPath>bin\PreparatoryDebug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;FOR_UT</DefineConstants>
+    <Optimize>false</Optimize>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
     <OutputPath>bin\DebugX86\</OutputPath>
@@ -108,6 +108,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryRelease|x86'">
     <OutputPath>bin\x86\PreparatoryRelease\</OutputPath>
@@ -115,12 +116,14 @@
     <Optimize>true</Optimize>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86'">
     <OutputPath>bin\x86\PreparatoryDebug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;FOR_UT</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|x86'">
     <OutputPath>bin\DebugX86\</OutputPath>
@@ -144,7 +147,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
     <OutputPath>bin\x86\Test\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SQLite.Designer, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SQLiteBinaries\40\SQLite.Designer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -154,10 +164,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\Licences.html">
       <Link>HelpFiles\Licences.html</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\5. AT2DPMdb\Source code\DPMdb2AT\packages\System.Data.SQLite.1.0.91.3\lib\net40\System.Data.SQLite.Linq.dll">
-      <Link>System.Data.SQLite.Linq.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\packages\Primary Interop Assemblies\stdole.dll">
@@ -171,8 +177,17 @@
       <Link>RSSLinkInformation.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\SolvencyII.GUI\WhatsNew.txt">
+    <Content Include="..\SolvencyII.GUI\WhatsNew_PREP\WhatsNew.txt">
       <Link>WhatsNew.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SQLiteBinaries\40\interop\x64\SQLite.Interop.dll">
+      <Link>x64\SQLite.Interop.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SQLiteBinaries\40\interop\x86\SQLite.Interop.dll">
+      <Link>x86\SQLite.Interop.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ico-t4u.ico" />
     <Content Include="VersionDetails.xml" />
@@ -192,9 +207,11 @@
     </Content>
     <Content Include="..\SolvencyII.GUI\Arelle-x64\arelle-cmd64-t4u.zip">
       <Link>Arelle-x64\arelle-cmd64-t4u.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\SolvencyII.GUI\Arelle-x86\arelle-cmd32-t4u.zip">
       <Link>Arelle-x86\arelle-cmd32-t4u.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\3. DPM Database\DPM_DB\Master\T4Udb_Sol2_prep.zip">
       <Link>T4Udb_Sol2_prep.zip</Link>
@@ -208,13 +225,6 @@
       <Link>HelpFiles\T4Udb_Sol2_Prep.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\T4U User Manual Preparatory.pdf">
-      <Link>HelpFiles\T4U User Manual Preparatory.pdf</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\4. XBRL Taxonomy\Arelle Packages\Deployment_Copy\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip">
-      <Link>Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip</Link>
-    </Content>
     <Content Include="..\..\..\2. DPMdict+AT\1.5.2.c\EIOPA_SolvencyII_DPM_Dictionary.xlsx">
       <Link>HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -225,18 +235,23 @@
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx">
       <Link>ExcelTemplates\Preparatory\arg_preparatory_reporting_groups_annual.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx">
       <Link>ExcelTemplates\Preparatory\ars_preparatory_reporting_solo_annual.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx">
       <Link>ExcelTemplates\Preparatory\qrg_preparatory_reporting_groups_quarterly.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\ExcelImportExport\SolvencyII.ExcelImportExportLib\ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx">
       <Link>ExcelTemplates\Preparatory\qrs_preparatory_reporting_solo_quarterly.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\SolvencyII.GUI\Enumerations\excel_template_enumerations_152c.xlsx">
       <Link>Enumerations\excel_template_enumerations_152c.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\13. XBRL Instance Documents\For deployment\Full S2 Test XBRL Instances.zip">
       <Link>HelpFiles\Full S2 Test XBRL Instances.zip</Link>
@@ -251,6 +266,10 @@
     </Content>
     <Content Include="..\..\..\0. General Documentation\0. Project Planning\For deployment\T4U User Manual.pdf">
       <Link>HelpFiles\T4U User Manual.pdf</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\4. XBRL Taxonomy\Arelle Packages\Deployment_Copy\January 2016 Release\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip">
+      <Link>Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
@@ -314,20 +333,54 @@
     </FileAssociation>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\SolvencyII.GUI\x64\SQLite.Interop.dll">
-      <Link>x64\SQLite.Interop.dll</Link>
-    </Content>
     <Content Include="..\SolvencyII.GUI\x64\sqlite3.dll">
       <Link>x64\sqlite3.dll</Link>
-    </Content>
-    <Content Include="..\SolvencyII.GUI\x86\SQLite.Interop.dll">
-      <Link>x86\SQLite.Interop.dll</Link>
     </Content>
     <Content Include="..\SolvencyII.GUI\x86\sqlite3.dll">
       <Link>x86\sqlite3.dll</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <PublishFile Include="Microsoft.Data.ConnectionUI">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.OLE.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.Shell.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualStudio.TextManager.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
     <PublishFile Include="RSSLinkInformation.xml">
       <Visible>False</Visible>
       <Group>

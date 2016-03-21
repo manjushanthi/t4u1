@@ -52,7 +52,7 @@
     <PublishMetaAssemblyToSDK>true</PublishMetaAssemblyToSDK>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -104,6 +104,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|x86' ">
     <OutputPath>bin\x86\T4U_Debug\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX86|AnyCPU'">
     <OutputPath>bin\DebugX86\</OutputPath>
@@ -129,7 +130,7 @@
     <DefineConstants>DEBUG;;TRACE;TRACE</DefineConstants>
     <NoWarn>1570;1572;1573;1591;1699</NoWarn>
     <NoStdLib>true</NoStdLib>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisRuleSet>Migrated rules for ComponentModel.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX64|x86'">

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="T4U.CRT.Generation.CRTGenerator">
+    <Position X="2" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAEAAAAAAAEAQEBAAAAwAAAA=</HashCode>
+      <FileName>CRTGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4U.CRT.Generation.RelationalTablesProcessor">
+    <Position X="3.75" Y="1.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAEAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAEAAA=</HashCode>
+      <FileName>RelationalTablesProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4U.CRT.Generation.RelationalTableFactory" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Internal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAIAAAAKAAAQCAEAAAgABAAQgAgICABAEBAAA=</HashCode>
+      <FileName>SingleRelationalTableProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="T4U.CRT.Generation.SQLiteTableLoadingHelper" Collapsed="true">
+    <Position X="6" Y="2.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Public" Collapsed="true" />
+      <Compartment Name="Protected" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAACAAkAABgADAAAABAACAgABAACACgAAAAE=</HashCode>
+      <FileName>TableLoadingHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4U.CRT.Generation.RelationlaTableFactory.RcColumnFactory" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIYAEJAAQBAAAEQAAgQQCBAAAABAAEAgGEAAAI=</HashCode>
+      <FileName>RelationlaTableFactory\RcColumnFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4U.CRT.Generation.RelationlaTableFactory.PageColumnFactory" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAEAAAABAEAAAAAAAQAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelationlaTableFactory\PageColumnFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="T4U.CRT.MSSSQL.DDL.Generation.MssqlTableLoadingHelper" Collapsed="true">
+    <Position X="6" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAAAAAABAAAABAAABAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>MssqlTableLoadingHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="T4U.CRT.Generation.RelationlaTableFactory.IPageColumnNameFactory" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelationlaTableFactory\Interfaces\IPageColumnNamer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="T4U.CRT.Generation.RelationlaTableFactory.IRcColumnFactory" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RelationlaTableFactory\Interfaces\IRcColumnFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

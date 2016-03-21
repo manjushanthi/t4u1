@@ -199,9 +199,7 @@ namespace System.ComponentModel.Composition.Primitives
                     object exportedValue = this.GetExportedValueCore();
 
                     // NOTE : According to http://msdn.microsoft.com/en-us/library/4bw5ewxy.aspx, the warning is bogus when used with Interlocked API.
-#pragma warning disable 420
                     Interlocked.CompareExchange(ref this._exportedValue, exportedValue, Export._EmptyValue);
-#pragma warning restore 420
                 }
 
                 return this._exportedValue;
