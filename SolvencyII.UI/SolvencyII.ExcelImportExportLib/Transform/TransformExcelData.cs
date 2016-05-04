@@ -152,7 +152,7 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                             }
                         }
                     }
-                    else if (type.ToUpper().Trim() == "PERCENTAGE")
+                    else if (type.ToUpper().Trim() == "PERCENTAGE" /*BRAG*/ || type.ToUpper().Trim() == "PERCENT")
                     {
                         if (!string.IsNullOrEmpty(bDto.TableData[row, col]))
                         {
@@ -161,9 +161,9 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                             {
                                 decimal convertedValue;
                                 //modified for the current culture's decimal represenation
-                                if (decimal.TryParse(bDto.TableData[row, col], NumberStyles.Float, CultureInfo.CurrentCulture.NumberFormat, out convertedValue))
+                                if (decimal.TryParse(bDto.TableData[row, col], NumberStyles.Float|NumberStyles.AllowDecimalPoint|NumberStyles.AllowExponent, CultureInfo.CurrentCulture.NumberFormat, out convertedValue))
                                 {
-                                    convertedValue = Convert.ToDecimal(bDto.TableData[row, col], provider);
+                                    //convertedValue = Convert.ToDecimal(bDto.TableData[row, col], provider);
                                     bDto.TableData[row, col] = Convert.ToString(convertedValue, CultureInfo.InvariantCulture);
                                 }
                                 else
@@ -177,8 +177,15 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                         {
                             if (!string.IsNullOrEmpty(bDto.TableData[row, col]))
                             {
-                                DateTime date = DateTime.Parse(bDto.TableData[row, col], provider);
-                                bDto.TableData[row, col] = date.Date.ToString("yyyy/MM/dd");
+                                DateTime date;
+                                if (DateTime.TryParse(bDto.TableData[row, col], out date))
+                                    bDto.TableData[row, col] = date.Date.ToString("yyyy/MM/dd");
+                                else
+                                {
+                                    var d = double.Parse(bDto.TableData[row, col]);
+                                    date = DateTime.FromOADate(d);
+                                    bDto.TableData[row, col] = date.Date.ToString("yyyy/MM/dd");
+                                }
                             }
                         }
                         catch (FormatException fe)
@@ -194,7 +201,7 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                             //modified for the current culture's decimal represenation
                             if (decimal.TryParse(bDto.TableData[row, col], NumberStyles.Float, CultureInfo.CurrentCulture.NumberFormat, out convertedValue))
                             {
-                                convertedValue = Convert.ToDecimal(bDto.TableData[row, col], provider);
+                                //convertedValue = Convert.ToDecimal(bDto.TableData[row, col], provider);
                                 bDto.TableData[row, col] = Convert.ToString(convertedValue, CultureInfo.InvariantCulture);
                             }
                             else

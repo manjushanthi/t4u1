@@ -87,17 +87,24 @@ namespace SolvencyII.UI.Shared.Misc
 
             rtbWhatsNew.ReadOnly = true;
             rtbWhatsNew.Enabled=true;
-            
+
+            //BRAG
+            rtbWhatsNew.DetectUrls = true;
+            rtbWhatsNew.LinkClicked += RtbWhatsNew_LinkClicked;
+
             ctrRtb.ShowDialog();
 
         }
+
+        //BRAG
+        private static void RtbWhatsNew_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+
         public static void RTBGotFocus(object sender, System.EventArgs e)
         {
             System.Windows.Forms.SendKeys.Send("{tab}");
         }
-
-        
-
-
     }
 }

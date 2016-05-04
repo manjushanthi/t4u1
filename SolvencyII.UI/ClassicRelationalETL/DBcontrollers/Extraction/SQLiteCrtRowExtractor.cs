@@ -6,6 +6,8 @@ using System.Text;
 using System.Data;
 using System.Collections.Specialized;
 using SolvencyII.Data.CRT.ETL.ETLControllers;
+using SolvencyII.Data.CRT.ETL.Model;
+using System.Collections;
 
 namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
 {
@@ -35,35 +37,41 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
         /// <param name="tableNames">The table names.</param>
         /// <returns></returns>
         /// <exception cref="SolvencyII.Data.CRT.ETL.EtlException">Exception while reading data from table  + tableName</exception>
-        internal HashSet<CrtRow> extractInserts(HashSet<CrtMapping> mappings, string[] tableNames)
+        internal IEnumerable<CrtRow> extractInserts(HashSet<CrtMapping> mappings, string[] tableNames)
         {
             HashSet<CrtRow> inserts = new HashSet<CrtRow>();
-
             DataTable dt;
             string query;
             HashSet<CrtMapping> tableMappings;
-            HashSet<CrtRow> tableInserts;
+            List<CrtRow> crtTableRows;
             foreach (string tableName in tableNames)
             {
                 query = constructQuery(tableName);
                 dt = _dataConnector.executeQuery(query);
                 tableMappings = getTableMappings(mappings, tableName);
-                try
-                {
-                    tableInserts = getTableInserts(tableMappings, dt);
-                }
-                catch (Exception ex)
-                {
-                    throw new EtlException("Exception while reading data from table " + tableName, ex);
-                }
+                crtTableRows = getTableRows(dt, tableMappings, tableName);
 
-                foreach (CrtRow ins in tableInserts)                
+                foreach (CrtRow ins in crtTableRows)
                     inserts.Add(ins);
 
-                ProgressHandler.EtlProgress(inserts.Count(), 0," extracted total rows");
+                ProgressHandler.EtlProgress(inserts.Count(), 0, " extracted total rows");
             }
-            
+
             return inserts;
+        }                      
+
+        private List<CrtRow> getTableRows(DataTable dt, HashSet<CrtMapping> tableMappings, string tableName)
+        {
+            List<CrtRow> tableInserts;
+            try
+            {
+                tableInserts = getTableInserts(tableMappings, dt, tableName);
+            }
+            catch (Exception ex)
+            {
+                throw new EtlException("Exception while reading data from table " + tableName, ex);
+            }
+            return tableInserts;
         }
 
         /// <summary>
@@ -72,11 +80,11 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
         /// <param name="tableMappings">The table mappings.</param>
         /// <param name="dt">The dt.</param>
         /// <returns></returns>
-        private HashSet<CrtRow> getTableInserts(HashSet<CrtMapping> tableMappings, DataTable dt)
+        private List<CrtRow> getTableInserts(HashSet<CrtMapping> tableMappings, DataTable dt, string tableName)
         {
             List<CrtMapping> allContextMapping = new List<CrtMapping>(tableMappings.Where(x => x.ORIGIN.Equals("C")));            
             HashSet<CrtMapping> factMapings = new HashSet<CrtMapping>(tableMappings.Where(x => x.ORIGIN.Equals("F")));
-            HashSet<CrtRow> inserts = new HashSet<CrtRow>();
+            List<CrtRow> inserts = new List<CrtRow>();
             CrtRow insert;
 
             CrtRowIdentification rowId;
@@ -87,6 +95,7 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
                 contextMapings = getContextMappings(dr, allContextMapping);
                 rowId = getRowIdentification(dr, contextMapings);
                 insert = getInsert(dr, rowId, factMapings);
+                insert.rowIdentification.TABLE_NAME = tableName;
                 insert.contextMappings = contextMapings;
                 insert.factMapings = factMapings;
                 inserts.Add(insert);
@@ -174,7 +183,7 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
             foreach (CrtMapping cMap in contextMapings)
                 if (cMap.IS_IN_TABLE)
                     dict.Add(cMap.DYN_TAB_COLUMN_NAME, dr[cMap.DYN_TAB_COLUMN_NAME].ToString());            
-
+            
             CrtRowIdentification ri = new CrtRowIdentification(dr.Table.TableName, this._instanceId, dict);
             return ri;
         }
@@ -293,19 +302,19 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers.Extraction
         /// <param name="tableName">Name of the table.</param>
         /// <param name="rowIds">The row ids.</param>
         /// <returns></returns>
-        internal HashSet<CrtRow> extractInserts(HashSet<CrtMapping> mapings, string tableName, List<int> rowIds)
+        internal List<CrtRow> extractInserts(HashSet<CrtMapping> mapings, string tableName, List<int> rowIds)
         {
-            HashSet<CrtRow> inserts = new HashSet<CrtRow>();
+            List<CrtRow> inserts = new List<CrtRow>();
 
             DataTable dt;
             string query;
             HashSet<CrtMapping> tableMappings;
-            HashSet<CrtRow> tableInserts;
+            List<CrtRow> tableInserts;
 
             query = constructQuery(tableName, rowIds);
             dt = _dataConnector.executeQuery(query);
             tableMappings = getTableMappings(mapings, tableName);
-            tableInserts = getTableInserts(tableMappings, dt);
+            tableInserts = getTableInserts(tableMappings, dt, tableName);
 
             foreach (CrtRow ins in tableInserts)
                 inserts.Add(ins);

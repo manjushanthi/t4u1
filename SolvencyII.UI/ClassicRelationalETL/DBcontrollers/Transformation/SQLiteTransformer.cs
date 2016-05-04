@@ -93,7 +93,7 @@ namespace SolvencyII.Data.CRT.ETL
             ProgressHandler.EtlProgress(i, size, " transformed facts ");
             return allInserts;
         }
-
+        
         /// <summary>
         /// Creates the inserts.
         /// </summary>
@@ -313,5 +313,8 @@ namespace SolvencyII.Data.CRT.ETL
         {
             return _mappingProvider;
         }
+
+
+        
     }
 }

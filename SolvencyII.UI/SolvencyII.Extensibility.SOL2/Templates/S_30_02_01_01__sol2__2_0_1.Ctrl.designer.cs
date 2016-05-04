@@ -416,7 +416,7 @@ this.solvencyTextBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 // solvencyCurrencyTextBox31
 //
 this.solvencyCurrencyTextBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
-this.solvencyCurrencyTextBox31.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Monetry;
+this.solvencyCurrencyTextBox31.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Percentage;
 this.solvencyCurrencyTextBox31.Location = new System.Drawing.Point(652,3);
 this.solvencyCurrencyTextBox31.Name = "solvencyCurrencyTextBox31";
 this.solvencyCurrencyTextBox31.Size = new System.Drawing.Size(100, 13);

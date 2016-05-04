@@ -58,7 +58,7 @@ namespace SolvencyII.ExcelImportExportLib.Load
                 {
 
                     string type = bDto.HeaderData[typeRow, i];
-                    if (type.ToUpper().Trim() == "PERCENTAGE" || type.ToUpper().Trim() == "DECIMAL" || type.ToUpper().Trim() == "MONETARY" || type.ToUpper().Trim() == "INTEGER")
+                    if (type.ToUpper().Trim() == "PERCENTAGE" || type.ToUpper().Trim() == "DECIMAL" || type.ToUpper().Trim() == "MONETARY" || type.ToUpper().Trim() == "INTEGER" /*BRAG*/ || type.ToUpper().Trim() == "PERCENT")
                     {
                         Range rangePercentages = workSheet.Range(workSheet.Cells[startRow, i + startCol], workSheet.Cells[endRow, i + startCol]);
                         if (rangePercentages != null)

@@ -69,7 +69,7 @@
     </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -89,7 +89,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;FOR_NCA EnableMergeTemplates</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\SolvencyII.GUI.XML</DocumentationFile>
@@ -126,7 +126,6 @@
     <OutputPath>bin\x86\T4U_Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;FOR_UT EnableMergeTemplates</DefineConstants>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PreparatoryDebug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -260,6 +259,10 @@
     <Compile Include="UserControls\ParentUserControl.designer.cs">
       <DependentUpon>ParentUserControl.cs</DependentUpon>
     </Compile>
+    <Content Include="..\..\HelpFiles\Licences.html">
+      <Link>HelpFiles\Licences.html</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\SQLiteBinaries\40\interop\x64\SQLite.Interop.dll">
       <Link>x64\SQLite.Interop.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -269,9 +272,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="folder-open.ico" />
-    <Content Include="HelpFiles\Licences.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\EIOPA_Logo.png" />
     <Content Include="Arelle-x64\arelle-cmd64-t4u.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -285,6 +285,7 @@
     <Content Include="RSSLinkInformation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="WhatsNew.txt" />
     <Content Include="x64\sqlite3.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -317,9 +318,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ReadmeOpenTables.txt" />
-    <Content Include="WhatsNew.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="frmGeneralInformation.resx">
       <DependentUpon>frmGeneralInformation.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -372,6 +370,30 @@
       <Link>T4Udb_Sol2_prep.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx">
+      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_XBRL_Instance_documents_2.0.0.zip">
+      <Link>HelpFiles\EIOPA_SolvencyII_XBRL_Instance_documents_2.0.0.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_2.0.1.xlsx">
+      <Link>HelpFiles\Full\EIOPA_SolvencyII_DPM_Annotated_Templates_2.0.1.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Dictionary_2.0.1.xlsx">
+      <Link>HelpFiles\Full\EIOPA_SolvencyII_DPM_Dictionary_2.0.1.xlsx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\HelpFiles\T4U User Manual Full.pdf">
       <Link>HelpFiles\T4U User Manual Full.pdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -392,18 +414,6 @@
       <Link>HelpFiles\Preparatory S2 Test XBRL Instances.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx">
-      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates.xlsx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx">
-      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_Preparatory.xlsx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx">
-      <Link>HelpFiles\EIOPA_SolvencyII_DPM_Dictionary.xlsx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\HelpFiles\T4Udb_Sol2_prep.zip">
       <Link>HelpFiles\T4Udb_Sol2_prep.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -412,24 +422,16 @@
       <Link>HelpFiles\T4U_Sol2.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\HelpFiles\T4U Database Documentation.pdf">
+      <Link>HelpFiles\T4U Database Documentation.pdf</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip">
       <Link>Arelle\Taxonomies\EIOPA_SolvencyII_Preparatory_XBRL_Taxonomy_152c.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_XBRL_Taxonomy_2.0.1.zip">
       <Link>Arelle\Taxonomies\EIOPA_SolvencyII_XBRL_Taxonomy_2.0.1.zip</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Annotated_Templates_2.0.1.xlsx">
-      <Link>HelpFiles\Full\EIOPA_SolvencyII_DPM_Annotated_Templates_2.0.1.xlsx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\HelpFiles\EIOPA_SolvencyII_DPM_Dictionary_2.0.1.xlsx">
-      <Link>HelpFiles\Full\EIOPA_SolvencyII_DPM_Dictionary_2.0.1.xlsx</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\HelpFiles\T4U Database Documentation.pdf">
-      <Link>HelpFiles\T4U Database Documentation.pdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
@@ -512,6 +514,10 @@
       <Project>{d8f2e253-ae45-41a6-95ca-41479846df7c}</Project>
       <Name>SolvencyII.Data.CRT.ETL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SolvencyII.ExcelImportExportLib\SolvencyII.ExcelImportExportLib.csproj">
+      <Project>{493c5e4f-5557-4643-b45a-26387399ec0f}</Project>
+      <Name>SolvencyII.ExcelImportExportLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ComponentModel\ComponentModel.csproj">
       <Project>{1bba5101-d4f0-48b8-a5d6-7b23a099dce3}</Project>
       <Name>ComponentModel</Name>
@@ -527,10 +533,6 @@
     <ProjectReference Include="..\SolvencyII.DataTypeValidation\SolvencyII.DataTypeValidation.csproj">
       <Project>{bfdcdf68-e573-47b5-9e6f-5ca1d56e67d7}</Project>
       <Name>SolvencyII.DataTypeValidation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SolvencyII.ExcelImportExportLib\SolvencyII.ExcelImportExportLib.csproj">
-      <Project>{493c5e4f-5557-4643-b45a-26387399ec0f}</Project>
-      <Name>SolvencyII.ExcelImportExportLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\SolvencyII.Extensibility.SOL2\SolvencyII.Extensibility.SOL2.csproj">
       <Project>{7bdddd31-42b7-4cfe-96a1-9daad268553d}</Project>

@@ -16,6 +16,16 @@ namespace SolvencyII.GUI
         {
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(frmLicence_Closed);
+
+            //BRAG
+            richTextBox1.DetectUrls = true;
+            richTextBox1.LinkClicked += RichTextBox1_LinkClicked;
+        }
+
+        //BRAG
+        private void RichTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
         }
 
         private void chkBoxAgree_CheckedChanged(object sender, EventArgs e)

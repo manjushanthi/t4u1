@@ -150,6 +150,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\5. AT2DPMdb\Source code\DPMdb2AT ver 2\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\5. AT2DPMdb\Source code\DPMdb2AT ver 2\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite.Designer, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SQLiteBinaries\40\SQLite.Designer.dll</HintPath>

@@ -59,7 +59,8 @@ namespace SolvencyII.Data.CRT.ETL.EtlPerfomers
                     currentInserts = null;
                 }
 
-                _loader.loadInserts(new HashSet<CrtRow>(inserts));
+                var hs = new HashSet<CrtRow>(inserts);
+                _loader.loadInserts(hs);
                 
                 minfactId = minfactId + cacheSize + 1;
                 inserts.Clear();

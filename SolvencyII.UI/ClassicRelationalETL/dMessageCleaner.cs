@@ -27,7 +27,7 @@ namespace SolvencyII.Data.CRT.ETL
         /// <param name="instanceID">The instance identifier.</param>
         internal void CleanDmessage(int instanceID)
         {
-            this.dataConnector.executeNonQuery(string.Format("delete from dMessage where InstanceID = {0} and MessageCode = 'DP Duplication'", instanceID));
+            this.dataConnector.executeNonQuery(string.Format("delete from dMessage where InstanceID = {0} and MessageCode in ('DP Duplication', 'CrtError', 'EtlError')", instanceID));
         }
     }
 }

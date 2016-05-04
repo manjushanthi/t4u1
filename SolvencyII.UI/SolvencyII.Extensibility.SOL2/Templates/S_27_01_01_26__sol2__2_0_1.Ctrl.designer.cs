@@ -447,7 +447,7 @@ this.solvencyLabel29.TextAlign = System.Drawing.ContentAlignment.TopLeft;
 // solvencyCurrencyTextBox30
 //
 this.solvencyCurrencyTextBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
-this.solvencyCurrencyTextBox30.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Monetry;
+this.solvencyCurrencyTextBox30.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Percentage;
 this.solvencyCurrencyTextBox30.Location = new System.Drawing.Point(10,23);
 this.solvencyCurrencyTextBox30.Name = "solvencyCurrencyTextBox30";
 this.solvencyCurrencyTextBox30.Size = new System.Drawing.Size(100, 13);
@@ -569,7 +569,7 @@ this.solvencyCurrencyTextBox39.TextAlign = System.Windows.Forms.HorizontalAlignm
 // solvencyCurrencyTextBox40
 //
 this.solvencyCurrencyTextBox40.BorderStyle = System.Windows.Forms.BorderStyle.None;
-this.solvencyCurrencyTextBox40.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Monetry;
+this.solvencyCurrencyTextBox40.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Percentage;
 this.solvencyCurrencyTextBox40.Location = new System.Drawing.Point(10,56);
 this.solvencyCurrencyTextBox40.Name = "solvencyCurrencyTextBox40";
 this.solvencyCurrencyTextBox40.Size = new System.Drawing.Size(100, 13);
@@ -695,7 +695,7 @@ this.solvencyCurrencyTextBox49.TextAlign = System.Windows.Forms.HorizontalAlignm
 // solvencyCurrencyTextBox50
 //
 this.solvencyCurrencyTextBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
-this.solvencyCurrencyTextBox50.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Monetry;
+this.solvencyCurrencyTextBox50.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Percentage;
 this.solvencyCurrencyTextBox50.Location = new System.Drawing.Point(10,76);
 this.solvencyCurrencyTextBox50.Name = "solvencyCurrencyTextBox50";
 this.solvencyCurrencyTextBox50.Size = new System.Drawing.Size(100, 13);

@@ -58,12 +58,9 @@ namespace SolvencyII.GUI
             this.createANewReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectActiveReportIIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeActiveReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validateCurrentReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteActiveReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeActiveReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.validationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.validateCurrentReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.validateCurrentContainerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xBRLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importXBRLIntanceFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.integratedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,12 +72,13 @@ namespace SolvencyII.GUI
             this.exportArelleWithoutValidationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validateXBRLReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.importDataFromExcelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.importDataToExcelBusinessTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataFromExcelTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportDataToBusinessTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadEnumerationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,8 +124,10 @@ namespace SolvencyII.GUI
             this.statusTxtReportDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTxtEntityIdentifier = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTxtCurrency = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusRSS = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.arelleToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusRSS = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -138,13 +138,13 @@ namespace SolvencyII.GUI
             this.tabTopRight.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblExportImportStatus
             // 
             this.lblExportImportStatus.Name = "lblExportImportStatus";
-            this.lblExportImportStatus.Size = new System.Drawing.Size(225, 19);
-            this.lblExportImportStatus.Spring = true;
+            this.lblExportImportStatus.Size = new System.Drawing.Size(0, 19);
             this.lblExportImportStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStripProgressBar1
@@ -169,7 +169,7 @@ namespace SolvencyII.GUI
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.splitContainer2.Size = new System.Drawing.Size(1074, 582);
+            this.splitContainer2.Size = new System.Drawing.Size(1074, 558);
             this.splitContainer2.SplitterDistance = 150;
             this.splitContainer2.TabIndex = 11;
             // 
@@ -190,7 +190,7 @@ namespace SolvencyII.GUI
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.splitContainer1.Panel2.Controls.Add(this.tabTopRight);
             this.splitContainer1.Size = new System.Drawing.Size(1074, 150);
-            this.splitContainer1.SplitterDistance = 358;
+            this.splitContainer1.SplitterDistance = 362;
             this.splitContainer1.TabIndex = 1;
             // 
             // treeView1
@@ -202,7 +202,7 @@ namespace SolvencyII.GUI
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(352, 144);
+            this.treeView1.Size = new System.Drawing.Size(356, 144);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -222,7 +222,7 @@ namespace SolvencyII.GUI
             this.tabTopRight.Location = new System.Drawing.Point(0, 0);
             this.tabTopRight.Name = "tabTopRight";
             this.tabTopRight.SelectedIndex = 0;
-            this.tabTopRight.Size = new System.Drawing.Size(712, 150);
+            this.tabTopRight.Size = new System.Drawing.Size(708, 150);
             this.tabTopRight.TabIndex = 0;
             // 
             // tabValidationErrorPage
@@ -230,7 +230,7 @@ namespace SolvencyII.GUI
             this.tabValidationErrorPage.Location = new System.Drawing.Point(4, 22);
             this.tabValidationErrorPage.Name = "tabValidationErrorPage";
             this.tabValidationErrorPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabValidationErrorPage.Size = new System.Drawing.Size(704, 124);
+            this.tabValidationErrorPage.Size = new System.Drawing.Size(700, 124);
             this.tabValidationErrorPage.TabIndex = 0;
             this.tabValidationErrorPage.Text = "Validation error";
             this.tabValidationErrorPage.UseVisualStyleBackColor = true;
@@ -240,7 +240,7 @@ namespace SolvencyII.GUI
             this.tabCellPropertiesPage.Location = new System.Drawing.Point(4, 22);
             this.tabCellPropertiesPage.Name = "tabCellPropertiesPage";
             this.tabCellPropertiesPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCellPropertiesPage.Size = new System.Drawing.Size(704, 124);
+            this.tabCellPropertiesPage.Size = new System.Drawing.Size(700, 124);
             this.tabCellPropertiesPage.TabIndex = 1;
             this.tabCellPropertiesPage.Text = "Cell properties";
             this.tabCellPropertiesPage.UseVisualStyleBackColor = true;
@@ -250,7 +250,6 @@ namespace SolvencyII.GUI
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.reportToolStripMenuItem,
-            this.validationToolStripMenuItem,
             this.xBRLToolStripMenuItem,
             this.excelToolStripMenuItem,
             this.settingsToolStripMenuItem,
@@ -287,6 +286,7 @@ namespace SolvencyII.GUI
             this.createXbrtToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.createXbrtToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
             this.createXbrtToolStripMenuItem.Text = "Create a &new multi-report container";
+            this.createXbrtToolStripMenuItem.Click += new System.EventHandler(this.createXbrtToolStripMenuItem_Click);
             // 
             // cRDIVToolStripMenuItem
             // 
@@ -360,9 +360,9 @@ namespace SolvencyII.GUI
             this.createANewReportToolStripMenuItem,
             this.selectActiveReportIIToolStripMenuItem,
             this.changeActiveReportToolStripMenuItem,
+            this.validateCurrentReportToolStripMenuItem,
             this.deleteActiveReportToolStripMenuItem,
-            this.closeActiveReportToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.closeActiveReportToolStripMenuItem});
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.reportToolStripMenuItem.Text = "&Report";
@@ -371,50 +371,22 @@ namespace SolvencyII.GUI
             // createANewReportToolStripMenuItem
             // 
             this.createANewReportToolStripMenuItem.Name = "createANewReportToolStripMenuItem";
-            this.createANewReportToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.createANewReportToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
             this.createANewReportToolStripMenuItem.Text = "Create new";
             this.createANewReportToolStripMenuItem.Click += new System.EventHandler(this.createANewReportToolStripMenuItem_Click);
             // 
             // selectActiveReportIIToolStripMenuItem
             // 
             this.selectActiveReportIIToolStripMenuItem.Name = "selectActiveReportIIToolStripMenuItem";
-            this.selectActiveReportIIToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.selectActiveReportIIToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
             this.selectActiveReportIIToolStripMenuItem.Text = "Select active report";
             // 
             // changeActiveReportToolStripMenuItem
             // 
             this.changeActiveReportToolStripMenuItem.Name = "changeActiveReportToolStripMenuItem";
-            this.changeActiveReportToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.changeActiveReportToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
             this.changeActiveReportToolStripMenuItem.Text = "Edit active";
             this.changeActiveReportToolStripMenuItem.Click += new System.EventHandler(this.changeActiveReportToolStripMenuItem_Click);
-            // 
-            // deleteActiveReportToolStripMenuItem
-            // 
-            this.deleteActiveReportToolStripMenuItem.Name = "deleteActiveReportToolStripMenuItem";
-            this.deleteActiveReportToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.deleteActiveReportToolStripMenuItem.Text = "Delete active";
-            this.deleteActiveReportToolStripMenuItem.Click += new System.EventHandler(this.deleteActiveReportToolStripMenuItem_Click);
-            // 
-            // closeActiveReportToolStripMenuItem
-            // 
-            this.closeActiveReportToolStripMenuItem.Name = "closeActiveReportToolStripMenuItem";
-            this.closeActiveReportToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.closeActiveReportToolStripMenuItem.Text = "Close active";
-            this.closeActiveReportToolStripMenuItem.Click += new System.EventHandler(this.closeActiveReportToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(171, 6);
-            // 
-            // validationToolStripMenuItem
-            // 
-            this.validationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.validateCurrentReportToolStripMenuItem,
-            this.validateCurrentContainerToolStripMenuItem});
-            this.validationToolStripMenuItem.Name = "validationToolStripMenuItem";
-            this.validationToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.validationToolStripMenuItem.Text = "Validation";
             // 
             // validateCurrentReportToolStripMenuItem
             // 
@@ -423,14 +395,19 @@ namespace SolvencyII.GUI
             this.validateCurrentReportToolStripMenuItem.Text = "Validate active report (database validations)";
             this.validateCurrentReportToolStripMenuItem.Click += new System.EventHandler(this.validateCurrentReportToolStripMenuItem_Click);
             // 
-            // validateCurrentContainerToolStripMenuItem
+            // deleteActiveReportToolStripMenuItem
             // 
-            this.validateCurrentContainerToolStripMenuItem.Enabled = false;
-            this.validateCurrentContainerToolStripMenuItem.Name = "validateCurrentContainerToolStripMenuItem";
-            this.validateCurrentContainerToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
-            this.validateCurrentContainerToolStripMenuItem.Text = "Validate active container";
-            this.validateCurrentContainerToolStripMenuItem.Visible = false;
-            this.validateCurrentContainerToolStripMenuItem.Click += new System.EventHandler(this.validateCurrentContainerToolStripMenuItem_Click);
+            this.deleteActiveReportToolStripMenuItem.Name = "deleteActiveReportToolStripMenuItem";
+            this.deleteActiveReportToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
+            this.deleteActiveReportToolStripMenuItem.Text = "Delete active";
+            this.deleteActiveReportToolStripMenuItem.Click += new System.EventHandler(this.deleteActiveReportToolStripMenuItem_Click);
+            // 
+            // closeActiveReportToolStripMenuItem
+            // 
+            this.closeActiveReportToolStripMenuItem.Name = "closeActiveReportToolStripMenuItem";
+            this.closeActiveReportToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
+            this.closeActiveReportToolStripMenuItem.Text = "Close active";
+            this.closeActiveReportToolStripMenuItem.Click += new System.EventHandler(this.closeActiveReportToolStripMenuItem_Click);
             // 
             // xBRLToolStripMenuItem
             // 
@@ -510,82 +487,94 @@ namespace SolvencyII.GUI
             // 
             this.validateXBRLReportToolStripMenuItem.Name = "validateXBRLReportToolStripMenuItem";
             this.validateXBRLReportToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.validateXBRLReportToolStripMenuItem.Text = "&Validate XBRL report";
+            this.validateXBRLReportToolStripMenuItem.Text = "&Validate instance file";
             this.validateXBRLReportToolStripMenuItem.Click += new System.EventHandler(this.validateXBRLReportToolStripMenuItem_Click);
             // 
             // excelToolStripMenuItem
             // 
             this.excelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importDataFromExcelFileToolStripMenuItem,
-            this.exportToExcelToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.importDataToExcelBusinessTemplateToolStripMenuItem,
-            this.exportDataToBusinessTemplateToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.downloadTemplateToolStripMenuItem,
-            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem,
-            this.downloadEnumerationsToolStripMenuItem});
+            this.toolStripMenuItem3,
+            this.exportDataFromExcelTemplateToolStripMenuItem,
+            this.downloadToolStripMenuItem});
             this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
             this.excelToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.excelToolStripMenuItem.Text = "Excel";
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importDataFromExcelFileToolStripMenuItem,
+            this.importDataToExcelBusinessTemplateToolStripMenuItem});
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(244, 22);
+            this.toolStripMenuItem3.Text = "Import data from Excel template";
+            // 
             // importDataFromExcelFileToolStripMenuItem
             // 
             this.importDataFromExcelFileToolStripMenuItem.Name = "importDataFromExcelFileToolStripMenuItem";
-            this.importDataFromExcelFileToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.importDataFromExcelFileToolStripMenuItem.Text = "Import data from basic Excel template";
+            this.importDataFromExcelFileToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.importDataFromExcelFileToolStripMenuItem.Text = "Basic Excel template";
             this.importDataFromExcelFileToolStripMenuItem.Click += new System.EventHandler(this.importDataFromExcelFileToolStripMenuItem_Click);
-            // 
-            // exportToExcelToolStripMenuItem
-            // 
-            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
-            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.exportToExcelToolStripMenuItem.Text = "Export data to basic Excel template";
-            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportToExcelToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(388, 6);
             // 
             // importDataToExcelBusinessTemplateToolStripMenuItem
             // 
             this.importDataToExcelBusinessTemplateToolStripMenuItem.Name = "importDataToExcelBusinessTemplateToolStripMenuItem";
-            this.importDataToExcelBusinessTemplateToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.importDataToExcelBusinessTemplateToolStripMenuItem.Text = "Import data from Excel Business template";
+            this.importDataToExcelBusinessTemplateToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.importDataToExcelBusinessTemplateToolStripMenuItem.Text = "Business Excel template";
             this.importDataToExcelBusinessTemplateToolStripMenuItem.Click += new System.EventHandler(this.importDataToExcelBusinessTemplateToolStripMenuItem_Click);
+            // 
+            // exportDataFromExcelTemplateToolStripMenuItem
+            // 
+            this.exportDataFromExcelTemplateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToExcelToolStripMenuItem,
+            this.exportDataToBusinessTemplateToolStripMenuItem});
+            this.exportDataFromExcelTemplateToolStripMenuItem.Name = "exportDataFromExcelTemplateToolStripMenuItem";
+            this.exportDataFromExcelTemplateToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.exportDataFromExcelTemplateToolStripMenuItem.Text = "Export data to Excel template";
+            // 
+            // exportToExcelToolStripMenuItem
+            // 
+            this.exportToExcelToolStripMenuItem.Name = "exportToExcelToolStripMenuItem";
+            this.exportToExcelToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.exportToExcelToolStripMenuItem.Text = "Basic Excel template";
+            this.exportToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportToExcelToolStripMenuItem_Click);
             // 
             // exportDataToBusinessTemplateToolStripMenuItem
             // 
             this.exportDataToBusinessTemplateToolStripMenuItem.Name = "exportDataToBusinessTemplateToolStripMenuItem";
-            this.exportDataToBusinessTemplateToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.exportDataToBusinessTemplateToolStripMenuItem.Text = "Export data to Excel Business template";
+            this.exportDataToBusinessTemplateToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.exportDataToBusinessTemplateToolStripMenuItem.Text = "Business Excel template";
             this.exportDataToBusinessTemplateToolStripMenuItem.Click += new System.EventHandler(this.exportDataToBusinessTemplateToolStripMenuItem_Click);
             // 
-            // toolStripSeparator3
+            // downloadToolStripMenuItem
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(388, 6);
+            this.downloadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.downloadTemplateToolStripMenuItem,
+            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem,
+            this.downloadEnumerationsToolStripMenuItem});
+            this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.downloadToolStripMenuItem.Text = "Download";
             // 
             // downloadTemplateToolStripMenuItem
             // 
             this.downloadTemplateToolStripMenuItem.Name = "downloadTemplateToolStripMenuItem";
-            this.downloadTemplateToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.downloadTemplateToolStripMenuItem.Text = "Download an empty basic Excel template";
+            this.downloadTemplateToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
+            this.downloadTemplateToolStripMenuItem.Text = "Empty basic Excel template";
             this.downloadTemplateToolStripMenuItem.Click += new System.EventHandler(this.downloadTemplateToolStripMenuItem_Click);
             // 
             // downloadAnEmptyBusinessExcelTemplateToolStripMenuItem
             // 
             this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Name = "downloadAnEmptyBusinessExcelTemplateToolStripMenuItem";
-            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Text = "Download an empty business excel template";
+            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
+            this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Text = "Empty business Excel template";
             this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Click += new System.EventHandler(this.downloadAnEmptyBusinessExcelTemplateToolStripMenuItem_Click);
             // 
             // downloadEnumerationsToolStripMenuItem
             // 
             this.downloadEnumerationsToolStripMenuItem.Name = "downloadEnumerationsToolStripMenuItem";
-            this.downloadEnumerationsToolStripMenuItem.Size = new System.Drawing.Size(391, 22);
-            this.downloadEnumerationsToolStripMenuItem.Text = "Download supportive list of basic Excel template dropdowns";
+            this.downloadEnumerationsToolStripMenuItem.Size = new System.Drawing.Size(335, 22);
+            this.downloadEnumerationsToolStripMenuItem.Text = "Supportive list of basic Excel template dropdowns";
             this.downloadEnumerationsToolStripMenuItem.Click += new System.EventHandler(this.downloadEnumerationsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
@@ -642,6 +631,7 @@ namespace SolvencyII.GUI
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(167, 6);
+            this.toolStripMenuItem4.Visible = false;
             // 
             // databaseTypeToolStripMenuItem
             // 
@@ -651,6 +641,7 @@ namespace SolvencyII.GUI
             this.databaseTypeToolStripMenuItem.Name = "databaseTypeToolStripMenuItem";
             this.databaseTypeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.databaseTypeToolStripMenuItem.Text = "Database Type";
+            this.databaseTypeToolStripMenuItem.Visible = false;
             // 
             // sQLiteToolStripMenuItem
             // 
@@ -675,6 +666,7 @@ namespace SolvencyII.GUI
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator2.Visible = false;
             // 
             // helpToolStripMenuItem
             // 
@@ -869,8 +861,7 @@ namespace SolvencyII.GUI
             this.statusTxtTypeOfReport,
             this.statusTxtReportDate,
             this.statusTxtEntityIdentifier,
-            this.statusTxtCurrency,
-            this.toolStripStatusRSS});
+            this.statusTxtCurrency});
             this.statusStrip2.Location = new System.Drawing.Point(0, 606);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1074, 24);
@@ -880,7 +871,7 @@ namespace SolvencyII.GUI
             // statusTxtGeneral
             // 
             this.statusTxtGeneral.Name = "statusTxtGeneral";
-            this.statusTxtGeneral.Size = new System.Drawing.Size(225, 19);
+            this.statusTxtGeneral.Size = new System.Drawing.Size(680, 19);
             this.statusTxtGeneral.Spring = true;
             this.statusTxtGeneral.Text = "General Message";
             this.statusTxtGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -940,6 +931,25 @@ namespace SolvencyII.GUI
             this.statusTxtCurrency.Text = "Currency";
             this.statusTxtCurrency.DoubleClick += new System.EventHandler(this.changeActiveReportToolStripMenuItem_Click);
             // 
+            // arelleToolStripStatusLabel
+            // 
+            this.arelleToolStripStatusLabel.Name = "arelleToolStripStatusLabel";
+            this.arelleToolStripStatusLabel.Size = new System.Drawing.Size(799, 19);
+            this.arelleToolStripStatusLabel.Spring = true;
+            this.arelleToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arelleToolStripStatusLabel,
+            this.toolStripStatusRSS});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 582);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1074, 24);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // toolStripStatusRSS
             // 
             this.toolStripStatusRSS.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
@@ -958,6 +968,7 @@ namespace SolvencyII.GUI
             this.ClientSize = new System.Drawing.Size(1074, 630);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.statusStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -979,6 +990,8 @@ namespace SolvencyII.GUI
             this.menuStrip1.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1003,7 +1016,6 @@ namespace SolvencyII.GUI
         private System.Windows.Forms.ToolStripMenuItem createANewReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeActiveReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteActiveReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem selectActiveReportIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem localValidationToolStripMenuItem;
@@ -1029,13 +1041,6 @@ namespace SolvencyII.GUI
         private System.Windows.Forms.ToolStripMenuItem solvencyIIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solvencyIIPreparatoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importDataFromExcelFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem downloadTemplateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem validationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem validateCurrentReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem validateCurrentContainerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem annotatedTemplatesToolStripMenuItem;
@@ -1043,7 +1048,6 @@ namespace SolvencyII.GUI
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dPMDictionaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem annotatedFULLTemplatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportDataToBusinessTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem taxononmyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solvencyIIFULLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cDRIVToolStripMenuItem;
@@ -1069,17 +1073,26 @@ namespace SolvencyII.GUI
         private System.Windows.Forms.ToolStripMenuItem logAndSystemDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rCBusinessCodeMappingToolStripMenuItem;
         private System.Windows.Forms.ImageList treeViewImageList;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusRSS;
-        private System.Windows.Forms.ToolStripMenuItem downloadEnumerationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullS2TestXBRLInstancesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rSSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sQLServerBackUpFullToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importDataToExcelBusinessTemplateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem downloadAnEmptyBusinessExcelTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licenseInformationToolStripMenuItem;
         private System.Windows.Forms.TabPage tabCellPropertiesPage;
         private System.Windows.Forms.TabPage tabValidationErrorPage;
         private System.Windows.Forms.TabControl tabTopRight;
+        private System.Windows.Forms.ToolStripMenuItem validateCurrentReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem importDataToExcelBusinessTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importDataFromExcelFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportDataFromExcelTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportDataToBusinessTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadEnumerationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadAnEmptyBusinessExcelTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadTemplateToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel arelleToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusRSS;
     }
 }

@@ -101,7 +101,7 @@ namespace SolvencyII.ExcelImportExportLib.Extract
                             else break;
                         }
                     }
-
+                    
 
                     //Verify if the entire row is not empty
                     for (int i = startCol; i <= endCol; i++)

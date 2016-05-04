@@ -135,7 +135,7 @@ namespace SolvencyII.ExcelImportExportLib.Load
                 //BRAG
                 //Why there is Substring(0,7) here? It`s not working, when table code has more than one character at the begining.
                 //mTemplateOrTable templateOrTable = (sqliteConnection.Query<mTemplateOrTable>(string.Format(" select * from mTemplateOrTable where TemplateOrTableCode = '{0}' ", table.TableCode.Substring(0, 7)))).FirstOrDefault();
-                mTemplateOrTable templateOrTable = (sqliteConnection.Query<mTemplateOrTable>(string.Format(" select * from mTemplateOrTable where TemplateOrTableCode = '{0}' ", table.TableCode.Substring(0, 6 + table.TableCode.Split('.').FirstOrDefault().Count() )))).FirstOrDefault();
+                mTemplateOrTable templateOrTable = (sqliteConnection.Query<mTemplateOrTable>(string.Format("select tem.TemplateOrTableID from mTemplateOrTable tab inner join mTemplateOrTable var on var.TemplateOrTableID = tab.ParentTemplateOrTableID inner join mTemplateOrTable tem on tem.TemplateOrTableID = var.ParentTemplateOrTableID where tab.TemplateOrTableCode = '{0}' and tab.TemplateOrTableType = 'BusinessTable'", table.TableCode))).FirstOrDefault();
 
                 IList<dFilingIndicator> filling = sqliteConnection.Query<dFilingIndicator>(string.Format("select * from dFilingIndicator where instanceid = {0} and businesstemplateid = {1}", bDto.Instance.InstanceID, templateOrTable.TemplateOrTableID));
 

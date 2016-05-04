@@ -18,14 +18,16 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
     {
         private IDataConnector _dataConnector;
         SpecificMetricDecimals specificMetricDecimals = new SpecificMetricDecimals();
+        FactUnitProvider unitprovider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SQLiteCrtRowsTransformer"/> class.
         /// </summary>
-        /// <param name="_dataConnector">The _data connector.</param>
-        public SQLiteCrtRowsTransformer(IDataConnector _dataConnector)
+        /// <param name="dataConnector">The _data connector.</param>
+        public SQLiteCrtRowsTransformer(IDataConnector dataConnector)
         {            
-            this._dataConnector = _dataConnector;
+            this._dataConnector = dataConnector;
+            unitprovider = new FactUnitProvider(dataConnector);
         }
 
         /// <summary>
@@ -75,25 +77,19 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
                 throw new ArgumentNullException("No facts mappings");
 
             List<dFact> facts = new List<dFact>();
-            string metCode, dataPointCode, dataType, factUnit;
-            string instanceUnit = this.getInstanceUnit(insert);
+            string metCode, dataPointCode, dataType, factUnit;            
 
             dFact fact = null;
             foreach (KeyValuePair<string, object> kvp in insert.rcColumnsValues)
             {
                 if (kvp.Key.Contains("C999") || kvp.Value == null)
                     continue;
-                metCode = getMetricCode(insert.factMapings.Where(x => x.DYN_TAB_COLUMN_NAME.Equals(kvp.Key)));
-                if (string.IsNullOrEmpty(metCode))
-                    metCode = getMetricCode(insert.contextMappings.Where(x => x.DYN_TAB_COLUMN_NAME.Equals(kvp.Key)));
-                if (string.IsNullOrEmpty(metCode))
-                    metCode = getMetricCode(insert.contextMappings.Where(x => x.ORIGIN.Equals("C")));
-                if (string.IsNullOrEmpty(metCode))
-                    throw new NullReferenceException("Could not find metric code");
 
+                IEnumerable<CrtMapping> factMappings = insert.factMapings.Where(x => x.DYN_TAB_COLUMN_NAME.Equals(kvp.Key));
+                metCode = getMetricCode(insert, kvp, factMappings);
                 dataPointCode = constructDpCode(metCode, insert, kvp.Key);
                 dataType = getDataType(insert, kvp.Key);
-                factUnit = dataType.Equals("M") ? instanceUnit : "pure";
+                factUnit = getUnit(dataType, insert, factMappings);
                 
 
                 fact = new dFact(kvp.Key.GetHashCode(), dataPointCode, insert.rowIdentification.INSTANCE, kvp.Value, factUnit, dataType);
@@ -104,6 +100,25 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
 
             return facts;
         }
+
+        private string getMetricCode(CrtRow insert, KeyValuePair<string, object> kvp, IEnumerable<CrtMapping> factMappings)
+        {
+            string metCode = findMetricCode(factMappings);
+            if (string.IsNullOrEmpty(metCode))
+                metCode = findMetricCode(insert.contextMappings.Where(x => x.DYN_TAB_COLUMN_NAME.Equals(kvp.Key)));
+            if (string.IsNullOrEmpty(metCode))
+                metCode = findMetricCode(insert.contextMappings.Where(x => x.ORIGIN.Equals("C")));
+            if (string.IsNullOrEmpty(metCode))
+                throw new NullReferenceException("Could not find metric code");
+            return metCode;
+        }
+
+        private string getUnit(string dataType, CrtRow insert, IEnumerable<CrtMapping> factMappings)
+        {
+            string result = dataType.Equals("M") ? this.unitprovider.getUnit(insert, factMappings) : "pure";
+            return result;
+        }
+
 
         /// <summary>
         /// Gets the type of the data.
@@ -123,26 +138,8 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
             return dataType.DATA_TYPE;
         }
 
-        private Dictionary<int, string> instanceUnitDict = new Dictionary<int, string>();
-        /// <summary>
-        /// Gets the instance unit.
-        /// </summary>
-        /// <param name="insert">The insert.</param>
-        /// <returns></returns>
-        private string getInstanceUnit(CrtRow insert)
-        {
-            string unit;
-            int instnaceID = insert.rowIdentification.INSTANCE;
-            if (instanceUnitDict.TryGetValue(instnaceID, out unit))
-                return unit;
-                        
-            DataTable dt = this._dataConnector.executeQuery(string.Format(@"select i.EntityCurrency from dInstance i where i.InstanceID = {0}", instnaceID));
-
-            unit = dt.Rows[0][0].ToString();
-            instanceUnitDict.Add(instnaceID, unit);
-            return unit;
-        }
-
+        
+        
         /// <summary>
         /// Constructs the dp code.
         /// </summary>
@@ -207,7 +204,7 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
         /// </summary>
         /// <param name="mapings">The mapings.</param>
         /// <returns></returns>
-        private string getMetricCode(IEnumerable<CrtMapping> mapings)
+        private string findMetricCode(IEnumerable<CrtMapping> mapings)
         {
             string metCode = mapings
                 .Where(x => x.DIM_CODE.Contains(EtlGlobals.MetDimCode))

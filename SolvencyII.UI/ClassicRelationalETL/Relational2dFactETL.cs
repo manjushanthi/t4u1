@@ -5,6 +5,8 @@ using System.Text;
 using SolvencyII.Data.CRT.ETL;
 using SolvencyII.Data.CRT.ETL.Model;
 using SolvencyII.Data.CRT.ETL.ETLControllers;
+using SolvencyII.Data.CRT.ETL.Repositories;
+using SolvencyII.Data.CRT.ETL.Model.Validation;
 
 namespace SolvencyII.Data.CRT.ETL
 {
@@ -15,46 +17,11 @@ namespace SolvencyII.Data.CRT.ETL
     {
         IFactsNumberReader _factNumberReader;
         IExtractor _extractor;
-        /// <summary>
-        /// Gets the i extractor.
-        /// </summary>
-        /// <value>
-        /// The i extractor.
-        /// </value>
-        /// <exception cref="System.NullReferenceException">Null extractor</exception>
-        public IExtractor IExtractor
-        {
-            get
-            {
-                if (_extractor == null)
-                    throw new NullReferenceException("Null extractor");
-
-                return _extractor;
-            }
-        }
-
         ILoader _loader;
-        /// <summary>
-        /// Gets the i loader.
-        /// </summary>
-        /// <value>
-        /// The i loader.
-        /// </value>
-        /// <exception cref="System.NullReferenceException">Null loader</exception>
-        public ILoader ILoader
-        {
-            get
-            {
-                if (_loader == null)
-                    throw new NullReferenceException("Null loader");
-
-                return _loader;
-            }
-        }
-
-        ITransformer _transformer;
-
-        HashSet<CrtRow> inserts;
+        ITransformer _transformer;        
+        ICrtErrorRepository crtErrorRepository;
+        IModelValidator<CrtRow> validator;
+        HashSet<CrtRow> crtRows;
         HashSet<dFact> facts;
 
         /// <summary>
@@ -70,18 +37,9 @@ namespace SolvencyII.Data.CRT.ETL
         /// or
         /// Null transformer
         /// </exception>
-        public Relational2dFactETL(IExtractor extractor, ILoader loader, ITransformer transformer)
+        public Relational2dFactETL(IExtractor extractor, ILoader loader, ITransformer transformer, ICrtErrorRepository crtErrorRepository)
         {
-            if(extractor == null)
-                throw new ArgumentNullException("Null extractor");
-            if (loader == null)
-                throw new ArgumentNullException("Null loader");
-            if (transformer == null)
-                throw new ArgumentNullException("Null transformer");
-
-            _loader = loader;
-            _extractor = extractor;
-            _transformer = transformer;
+            Initialize(extractor, loader, transformer, crtErrorRepository);            
         }
 
         /// <summary>
@@ -98,9 +56,14 @@ namespace SolvencyII.Data.CRT.ETL
         /// or
         /// Null transformer
         /// </exception>
-        public Relational2dFactETL(IExtractor extractor, ILoader loader, ITransformer transformer, IFactsNumberReader fnumReader)
+        public Relational2dFactETL(IExtractor extractor, ILoader loader, ITransformer transformer, IFactsNumberReader fnumReader, ICrtErrorRepository crtErrorRepository)
         {
-            // TODO: Complete member initialization
+            Initialize(extractor, loader, transformer, crtErrorRepository);
+            this._factNumberReader = fnumReader;
+        }
+
+        private void Initialize(IExtractor extractor, ILoader loader, ITransformer transformer, ICrtErrorRepository crtErrorRepository)
+        {
             if (extractor == null)
                 throw new ArgumentNullException("Null extractor");
             if (loader == null)
@@ -111,36 +74,9 @@ namespace SolvencyII.Data.CRT.ETL
             _loader = loader;
             _extractor = extractor;
             _transformer = transformer;
-
-            this._factNumberReader = fnumReader;
+            this.crtErrorRepository = crtErrorRepository;
+            validator = new CrtRowValidator();
         }
-
-        /*public bool Extract()
-        {
-            if (_extractor == null)
-                return false;
-
-            this.inserts = this._extractor.extractInserts();
-            return true;
-        }
-
-        public bool Transform()
-        {
-            if (_transformer == null || this.inserts == null || this.inserts.Count == 0)
-                return false;
-
-            this.facts = _transformer.transformInserts(inserts);
-            return true;
-        }
-
-        public bool Load()
-        {
-            if (_loader == null || this.facts == null || this.facts.Count == 0)
-                return false;
-
-            _loader.loadFacts(this.facts);
-            return true;
-        }*/
 
         /// <summary>
         /// Performs the etl.
@@ -149,43 +85,61 @@ namespace SolvencyII.Data.CRT.ETL
         /// <returns></returns>
         public bool PerformEtl(int cacheSize)
         {
-            List<FactsNumber> fns = this._factNumberReader.GetTablesNumbers();            
-            List<int> ids;
-            foreach (FactsNumber fn in fns)
-            {
-                fn.rowsIds = fn.rowsIds.OrderBy(x => x).ToList();
-                int factInRow = fn.factsNumber/fn.rowsIds.Count;
-                int iterations = fn.rowsIds.Count > cacheSize ? (int)(Decimal.Ceiling(Decimal.Divide(fn.rowsIds.Count , cacheSize))) : 1;
-                for (int i = 1; i <= iterations; i++)
-                {
-                    
-                    int start = (i - 1) * cacheSize;
-                    if (start > (fn.rowsIds.Count - 1))
-                        break;
-
-                    int length = (fn.rowsIds.Count - start - 1) >= cacheSize ? cacheSize : fn.rowsIds.Count - start;
-                    ids = fn.rowsIds.GetRange(start, length);
-                    this.inserts = _extractor.extractInserts(fn.TableName, ids);
-                    ProgressHandler.EtlProgress(inserts.Count(), inserts.Count(), " extracted facts for " + fn.TableName);
-                    this.facts = _transformer.transformInserts(inserts);
-                    ProgressHandler.EtlProgress(facts.Count(), facts.Count(), " transformed facts for " + fn.TableName);
-
-                    int factsNumber = facts.Count();
-                    int factsToBeInsertedNumber = (from j in inserts
-                                                   from rcv in j.rcColumnsValues
-                                                   select new { key = rcv.Key, value = rcv.Value }).ToArray().Count();
-
-                    _loader.loadFacts(this.facts);
-                    ProgressHandler.EtlProgress(facts.Count(), facts.Count(), " loaded facts for " + fn.TableName);
-                    
-                    inserts.Clear();
-                    inserts = null;
-                    facts.Clear();
-                    facts = null;
-                }                 
-            }
+            List<TableFacts> fns = this._factNumberReader.GetTablesNumbers();                        
+            foreach (TableFacts fn in fns)            
+                movefactsForTable(cacheSize, fn);                    
             
             return true;
+        }
+
+        private void movefactsForTable(int cacheSize, TableFacts tableFacts)
+        {            
+            tableFacts.rowsIds = tableFacts.rowsIds.OrderBy(x => x).ToList();
+            int avgNumberOfFacstInRow = tableFacts.factsNumber / tableFacts.rowsIds.Count;
+            int iterations = getIterationsNumber(cacheSize, tableFacts);
+            for (int iterationNumber = 1; iterationNumber <= iterations; iterationNumber++)
+                processIteration(cacheSize, tableFacts, iterationNumber);
+        }
+
+        private void processIteration(int cacheSize, TableFacts tableFacts, int iterationNumber)
+        {
+            int iterationFirtRowId = (iterationNumber - 1) * cacheSize;
+            if (iterationFirtRowId > (tableFacts.rowsIds.Count - 1))
+                return;
+
+            int numberOfRows = (tableFacts.rowsIds.Count - iterationFirtRowId - 1) >= cacheSize ? cacheSize : tableFacts.rowsIds.Count - iterationFirtRowId;
+            List<int> iterationRowsIDs = tableFacts.rowsIds.GetRange(iterationFirtRowId, numberOfRows);
+            extractCrtRows(tableFacts, iterationRowsIDs);
+            transformRowsToFacts(tableFacts);
+            loadFacts(tableFacts);
+        }
+
+        private void loadFacts(TableFacts tableFacts)
+        {
+            int factsNumber = facts.Count();
+            _loader.loadFacts(this.facts);
+            ProgressHandler.EtlProgress(facts.Count(), facts.Count(), " loaded facts for " + tableFacts.TableName);
+        }
+
+        private void transformRowsToFacts(TableFacts tableFacts)
+        {
+            this.facts = _transformer.transformInserts(crtRows);
+            ProgressHandler.EtlProgress(facts.Count(), facts.Count(), " transformed facts for " + tableFacts.TableName);
+        }
+
+        private void extractCrtRows(TableFacts tableFacts, List<int> ids)
+        {
+            IEnumerable<CrtRow> rows = _extractor.extractInserts(tableFacts.TableName, ids);
+            IModelValidationResult<CrtRow> validationResult = validator.validate(rows);
+            crtErrorRepository.Add(validationResult.errors);
+            crtRows = new HashSet<CrtRow>(validationResult.validObjects);
+            ProgressHandler.EtlProgress(crtRows.Count(), crtRows.Count(), " extracted facts for " + tableFacts.TableName);       
+        }
+
+        private static int getIterationsNumber(int cacheSize, TableFacts tableFacts)
+        {
+            int iterations = tableFacts.rowsIds.Count > cacheSize ? (int)(Decimal.Ceiling(Decimal.Divide(tableFacts.rowsIds.Count, cacheSize))) : 1;
+            return iterations;
         }
 
         /// <summary>

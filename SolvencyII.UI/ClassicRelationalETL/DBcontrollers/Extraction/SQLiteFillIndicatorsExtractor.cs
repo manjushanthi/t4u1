@@ -1,4 +1,5 @@
-﻿using ClassicRelationalETL.DataConnectors;
+﻿using SolvencyII.Data.CRT.ETL;
+using SolvencyII.Data.CRT.ETL.DataConnectors;
 using System;
 using System.Collections.Generic;
 using System.Data;

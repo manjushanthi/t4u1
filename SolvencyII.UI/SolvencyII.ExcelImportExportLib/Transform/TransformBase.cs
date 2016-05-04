@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using NetOffice.ExcelApi;
@@ -20,13 +21,15 @@ namespace SolvencyII.ExcelImportExportLib.Transform
         protected ExcelExportValidationMessage Validate(string value, string type, out string  transformedValue)
         {
             ExcelExportValidationMessage validationMessage = null;
+            transformedValue = string.Empty;
+            IFormatProvider provider = CultureInfo.CurrentCulture;
 
             if (type.ToUpper().Trim() == "D")
             {
                 try
                 {
                     if (value != string.Empty)
-                        transformedValue = DateTime.Parse(value).ToShortDateString();
+                        transformedValue = DateTime.Parse(value, provider).ToShortDateString();
                 }
                 catch (FormatException fe)
                 {
@@ -54,9 +57,8 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                 decimal devnull;
                 if (value != string.Empty)
                 {
-                    if (!decimal.TryParse(value, out devnull))
+                    if (!decimal.TryParse(value, NumberStyles.Float | NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent, provider, out devnull))
                     {
-
                         //we are missing a decimal or monetary
                         //Export the value as in the database
                         //The data for the row/column/table with value is not having the expeted format. Please run the Validate container function in the menu validate.
@@ -64,6 +66,10 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                         validationMessage.Value = value;
                         validationMessage.FieldType = type;
 
+                    }
+                    else
+                    {
+                        transformedValue = Convert.ToString(devnull, provider);
                     }
                 }
             }
@@ -83,9 +89,7 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                 }
             }
 
-            transformedValue = string.Empty;
-
-             return validationMessage;
+            return validationMessage;
         }
 
         public string ValidateData(SolvencyDataType type, string input)
@@ -123,7 +127,7 @@ namespace SolvencyII.ExcelImportExportLib.Transform
             switch (type)
             {
                 case SolvencyDataType.Date:
-                    sb.Append(string.Format("The value at address [0] is not an date type.", errorRange.Address));
+                    sb.Append(string.Format("The value at address {0} is not an date type.", errorRange.Address));
                     break;
 
                 case SolvencyDataType.Boolean:
@@ -181,11 +185,11 @@ namespace SolvencyII.ExcelImportExportLib.Transform
                     break;
 
                 case SolvencyDataType.Monetry:
-                    sb.Append(string.Format("The value at address [0] is not a decimal type.", address));
+                    sb.Append(string.Format("The value at address {0} is not a decimal type.", address));
                     break;
 
                 case SolvencyDataType.Integer:
-                    sb.Append(string.Format("The value at address [0] is not a integer type.", address));
+                    sb.Append(string.Format("The value at address {0} is not a integer type.", address));
                     break;
 
 

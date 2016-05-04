@@ -30,6 +30,8 @@ namespace SolvencyII.Domain.Extensions
                     }
                     return "";
                 case "PERCENTAGE":
+                //BRAG
+                case "PERCENT":
                     return PercentageConvertor.PercentageStringToDBString(value);
                 case "DECIMAL":
                     decimal temp4 = decimal.Parse(value, NumberStyles.Any, CultureInfo.CurrentCulture);
@@ -85,6 +87,8 @@ namespace SolvencyII.Domain.Extensions
                     }
                     return null;
                 case "PERCENTAGE":
+                //BRAG
+                case "PERCENT":
                     return PercentageConvertor.PercentageStringToDBString(value);
                 case "DECIMAL":
                     decimal temp4 = decimal.Parse(value, NumberStyles.Any, CultureInfo.CurrentCulture);

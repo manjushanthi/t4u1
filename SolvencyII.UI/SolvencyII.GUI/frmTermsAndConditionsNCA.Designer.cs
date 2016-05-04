@@ -40,9 +40,9 @@
             this.chkBoxAgree.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxAgree.Location = new System.Drawing.Point(15, 395);
             this.chkBoxAgree.Name = "chkBoxAgree";
-            this.chkBoxAgree.Size = new System.Drawing.Size(475, 20);
+            this.chkBoxAgree.Size = new System.Drawing.Size(467, 20);
             this.chkBoxAgree.TabIndex = 14;
-            this.chkBoxAgree.Text = "I have read and I accept  the above terms and conditions";
+            this.chkBoxAgree.Text = "I have read and I accept the above terms and conditions";
             this.chkBoxAgree.UseVisualStyleBackColor = true;
             this.chkBoxAgree.CheckedChanged += new System.EventHandler(this.chkBoxAgree_CheckedChanged);
             // 

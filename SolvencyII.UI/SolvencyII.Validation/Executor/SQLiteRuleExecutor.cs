@@ -110,6 +110,7 @@ namespace SolvencyII.Validation.Executor
 
             IList<ValidationError> validationError = new List<ValidationError>();
 
+            //BRAG
             foreach (EvalResult er in result)
             {
                 //Get the total number of Formulas in the sql script
@@ -121,8 +122,28 @@ namespace SolvencyII.Validation.Executor
 
                     string formula = (string)er.GetType().GetProperty(propName).GetValue(er, null);
 
+                    string l = (string)er.GetType().GetProperty("E" + i.ToString() + "_L").GetValue(er, null);
+                    string r = (string)er.GetType().GetProperty("E" + i.ToString() + "_R").GetValue(er, null);
+                    string difference;
+                    if(l == null || r == null)
+                    {
+                        l = null;
+                        r = null;
+                    }
+                    try
+                    {
+                        difference = l != null && r != null ? Math.Abs(double.Parse(l.Replace(".", ",")) - double.Parse(r.Replace(".", ","))).ToString() : null;
+                    }
+                    catch (Exception)
+                    {
+                        l = null;
+                        r = null;
+                        difference = null;
+                    }
+
                     //Select corresponding cells and other information
 
+                    //BRAG TODO: remove +1 after database update
                     EvaluationCells ec = (from e in evalCells
                                           where e.EvalNr == i + 1
                                           select e).FirstOrDefault();
@@ -141,7 +162,10 @@ namespace SolvencyII.Validation.Executor
                             Formula = formula,
                             Context = er.CONTEXT,
                             ValidationCode = rule.ValidationCode,
-                            ExpressionId = rule.ExpressionID.Value
+                            ExpressionId = rule.ExpressionID.Value,
+                            LeftSideValue = l != null ? l : "N/A",
+                            RightSideValue = r != null ? r : "N/A",
+                            Difference = difference != null ? difference : "N/A",
                         };
 
                         validationError.Add(ve);

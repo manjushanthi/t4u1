@@ -330,7 +330,7 @@ this.SolvencyDataComboBox24.NextOrder = 0;
 // solvencyCurrencyTextBox25
 //
 this.solvencyCurrencyTextBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
-this.solvencyCurrencyTextBox25.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Monetry;
+this.solvencyCurrencyTextBox25.ColumnType = SolvencyII.Domain.ENumerators.SolvencyDataType.Percentage;
 this.solvencyCurrencyTextBox25.Location = new System.Drawing.Point(752,3);
 this.solvencyCurrencyTextBox25.Name = "solvencyCurrencyTextBox25";
 this.solvencyCurrencyTextBox25.Size = new System.Drawing.Size(100, 13);

@@ -59,9 +59,9 @@
             this.lblDate.AutoSize = true;
             this.lblDate.Location = new System.Drawing.Point(26, 71);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(83, 13);
+            this.lblDate.Size = new System.Drawing.Size(122, 13);
             this.lblDate.TabIndex = 1;
-            this.lblDate.Text = "Reference Date";
+            this.lblDate.Text = "Context Reference Date";
             // 
             // lblTypeOfReort
             // 

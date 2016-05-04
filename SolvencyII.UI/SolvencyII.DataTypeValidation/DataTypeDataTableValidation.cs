@@ -81,7 +81,7 @@ namespace SolvencyII.DataTypeValidation
                 return new DataTypeIntegerFieldValidation();
             else if (dataType == "Decimal")
                 return new DataTypeDecimalFieldValidation();
-            else if (dataType == "Percentage")
+            else if (dataType == "Percentage" /*BRAG*/ || dataType == "Percent")
                 return new DataTypePercentageFieldValidation();
             else if (dataType == "Boolean")
                 return new DataTypeBooleanFieldValidation();

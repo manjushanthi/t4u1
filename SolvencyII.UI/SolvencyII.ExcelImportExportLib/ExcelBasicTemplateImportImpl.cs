@@ -88,7 +88,7 @@ namespace SolvencyII.ExcelImportExportLib
                         {
                             //If the type of a column is an enumerator
                             string type = headerData[typeRow, i];
-                            if (type.ToUpper().Trim() == "PERCENTAGE")
+                            if (type.ToUpper().Trim() == "PERCENTAGE" /*BRAG*/ || type.ToUpper().Trim() == "PERCENT")
                             {
                                 if (dataRange.Range(workSheet.Cells[startRow - 4, i + 1], workSheet.Cells[endRow - 4, i + 1]) != null)
                                 {

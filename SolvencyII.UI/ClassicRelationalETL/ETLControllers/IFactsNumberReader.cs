@@ -14,13 +14,13 @@ namespace SolvencyII.Data.CRT.ETL.ETLControllers
         /// Gets the tables numbers.
         /// </summary>
         /// <returns></returns>
-        List<FactsNumber> GetTablesNumbers();
+        List<TableFacts> GetTablesNumbers();
     }
 
     /// <summary>
     /// Number of facts that appear in żarticular instance in single table
     /// </summary>
-    public class FactsNumber
+    public class TableFacts
     {
         internal string TableName;
         internal int factsNumber;

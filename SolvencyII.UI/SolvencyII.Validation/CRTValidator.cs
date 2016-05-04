@@ -129,7 +129,13 @@ namespace SolvencyII.Validation
                             select m.TableID).ToArray<int>();
 
                 //Validation rules
-                validationRules = dpmConn.Query<vValidationRule>("select * from vValidationRule");
+                //BRAG
+                var getVRQuery = @"select vr.*
+from vValidationRule vr
+   inner join vValidationRuleSet vrs on vrs.ValidationRuleID = vr.ValidationRuleID
+   inner join dInstance din on din.ModuleID = vrs.ModuleID
+where din.InstanceID = {0}";
+                validationRules = dpmConn.Query<vValidationRule>(string.Format(getVRQuery, instanceID));
 
                 var temp = validationQuery.CrossTableValidationScripts(dpmConn, tableIDs);
 
@@ -140,7 +146,7 @@ namespace SolvencyII.Validation
                 //Do not add deactivated rules
                 foreach(vValidationRuleSQL v in temp)
                 {
-                    if (v.Severity.ToUpper() != deactivatedRule)
+                    if (v.Severity.ToUpper() != deactivatedRule && validationRules.Any(x => x.ValidationRuleID == v.ValidationRuleID))
                         crossTableValidationRule.Add(v);
                 }
 
@@ -156,7 +162,7 @@ namespace SolvencyII.Validation
                     {
                        var deactivatedRules =  validationRules.Where(t =>t.ValidationRuleID == evc.ValidationRuleId && t.Severity.ToUpper() == deactivatedRule);
 
-                       if (!deactivatedRules.Any())
+                       if (!deactivatedRules.Any() && validationRules.Any(x => x.ValidationRuleID == evc.ValidationRuleId))
                            intraTableValidationRule.Add(v);
                     }
                 }       
@@ -280,7 +286,14 @@ namespace SolvencyII.Validation
 
                     intraTableValidationError = dataValidator.ValidateIntraTable(validationRules, intraTableSql, null, instance.InstanceID);
 
-                    IEnumerable<vValidationRule> validationScope = dpmConn.Query<vValidationRule>("select * from vValidationRule");
+                    //BRAG
+                    var getVRQuery = @"select vr.*
+from vValidationRule vr
+   inner join vValidationRuleSet vrs on vrs.ValidationRuleID = vr.ValidationRuleID
+   inner join dInstance din on din.ModuleID = vrs.ModuleID
+where din.InstanceID = {0}";
+
+                    IEnumerable<vValidationRule> validationScope = dpmConn.Query<vValidationRule>(string.Format(getVRQuery, instance.InstanceID));
                     IEnumerable<vValidationRuleSQL> selectedCrossTableSql = (from n in crossTableValidationRule
                                                                              from s in validationScope
                                                                                  where n.ValidationRuleID == s.ValidationRuleID &&
@@ -330,7 +343,14 @@ namespace SolvencyII.Validation
             //Get the expressions
 
             IEnumerable<vExpression> expressions = dpmConn.Query<vExpression>("select * from vExpression");
-            IEnumerable<vValidationRule> validationScope = dpmConn.Query<vValidationRule>("select * from vValidationRule");
+
+            //BRAG
+            var getVRQuery = @"select vr.*
+from vValidationRule vr
+   inner join vValidationRuleSet vrs on vrs.ValidationRuleID = vr.ValidationRuleID
+   inner join dInstance din on din.ModuleID = vrs.ModuleID
+where din.InstanceID = {0}";
+            IEnumerable<vValidationRule> validationScope = dpmConn.Query<vValidationRule>(string.Format(getVRQuery, instance.InstanceID));
 
             //Serialize the intratable validation errors
 

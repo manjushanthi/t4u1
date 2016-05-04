@@ -24,6 +24,7 @@ namespace SolvencyII.Data.CRT.ETL.ETLControllers
         /// <param name="inserts">The inserts.</param>
         /// <returns></returns>
         HashSet<dFact> transformInserts(HashSet<CrtRow> inserts);
+                
         /// <summary>
         /// Cancels this instance.
         /// </summary>
