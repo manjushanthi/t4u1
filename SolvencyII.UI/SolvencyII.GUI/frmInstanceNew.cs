@@ -196,7 +196,7 @@ namespace SolvencyII.GUI
             }
             lblInternalRptName.Text = LanguageLabels.GetLabel(46, "Report name");
             lblTypeOfReort.Text = LanguageLabels.GetLabel(47, "Type of report");
-            lblDate.Text = LanguageLabels.GetLabel(48, "Date");
+            //lblDate.Text = LanguageLabels.GetLabel(48, "Date");
             lblEntityID.Text = LanguageLabels.GetLabel(49, "Entity identifier");
             //lblNameOfUndertaking.Text = LanguageLabels.GetLabel(50, "Name of the undertaking");
             lblCurrency.Text = LanguageLabels.GetLabel(51, "Currency");

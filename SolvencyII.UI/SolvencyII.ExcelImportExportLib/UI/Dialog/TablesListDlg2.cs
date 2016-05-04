@@ -75,6 +75,9 @@ namespace SolvencyII.ExcelImportExportLib.UI.Dialog
         {
             if (chkSelectNonEmptyTables.Checked)
             {
+                //BRAG
+                if (chkSelectAll.Checked)
+                    chkSelectAll.Checked = false;
                 for (int i = 0; i < clbNonEmptyTable.Items.Count; i++)
                     clbNonEmptyTable.SetItemChecked(i, true);
             }
@@ -89,6 +92,9 @@ namespace SolvencyII.ExcelImportExportLib.UI.Dialog
         {
             if (chkSelectAll.Checked)
             {
+                //BRAG
+                if (chkSelectNonEmptyTables.Checked)
+                    chkSelectNonEmptyTables.Checked = false;
                 for (int i = 0; i < clbNonEmptyTable.Items.Count; i++)
                     clbNonEmptyTable.SetItemChecked(i, true);
 
@@ -102,8 +108,6 @@ namespace SolvencyII.ExcelImportExportLib.UI.Dialog
 
                 for (int i = 0; i < clbEmptyTable.Items.Count; i++)
                     clbEmptyTable.SetItemChecked(i, false);
-
-                chkSelectNonEmptyTables.Checked = false;
             }
 
         }

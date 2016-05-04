@@ -26,8 +26,8 @@
     <SupportUrl>http://t4u.eurofiling.info/</SupportUrl>
     <ProductName>EIOPA Windows T4U Preparatory 2015 DEV</ProductName>
     <PublisherName>EIOPA</PublisherName>
-    <ApplicationRevision>70</ApplicationRevision>
-    <ApplicationVersion>2016.02.01.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2016.04.18.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>

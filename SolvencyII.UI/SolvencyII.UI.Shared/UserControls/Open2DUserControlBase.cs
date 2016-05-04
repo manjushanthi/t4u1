@@ -760,6 +760,8 @@ namespace SolvencyII.UI.Shared.UserControls
                         if (decimal.TryParse(colValue, out temp)) return temp.ToString("N0");
                         return (int.Parse(colValue)).ToString("N0");
                     case "PERCENTAGE":
+                    //BRAG
+                    case "PERCENT":
                         if (string.IsNullOrEmpty(colValue)) return "";
                         string stripped = colValue.Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.PercentSymbol, "");
                         return stripped.PercentageToString(CultureInfo.CurrentCulture);

@@ -218,19 +218,20 @@ namespace SolvencyII.Data.CRT.ETL
         /// </summary>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">No SQLite inserts extractor</exception>
-        public HashSet<CrtRow> extractInserts()
+        public IEnumerable<CrtRow> extractInserts()
         {
-            if (_insertsExtractor == null)
-                throw new ArgumentNullException("No SQLite inserts extractor");
-
+            populateTableNames();
+            HashSet<CrtMapping> mapings = _mappingProvider.getMappings(_tableNames);
+            IEnumerable<CrtRow> inserts = this._insertsExtractor.extractInserts(mapings, _tableNames);
+            return inserts;
+        }        
+        
+        private void populateTableNames()
+        {
             if (_tableNames == null)
                 loadTableNamesFromFillingIndicators();
             if (_tableNames == null || _tableNames.Count() == 0)
                 loadTableNamesFromModule();
-
-            HashSet<CrtMapping> mapings = _mappingProvider.getMappings(_tableNames);
-            HashSet <CrtRow> inserts =  this._insertsExtractor.extractInserts(mapings, _tableNames);
-            return inserts;
         }
 
         /// <summary>
@@ -321,7 +322,7 @@ namespace SolvencyII.Data.CRT.ETL
         /// <param name="rowIds">The row ids.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">No SQLite inserts extractor</exception>
-        public HashSet<CrtRow> extractInserts(string tableName, List<int> rowIds)
+        public IEnumerable<CrtRow> extractInserts(string tableName, List<int> rowIds)
         {
             if (_insertsExtractor == null)
                 throw new ArgumentNullException("No SQLite inserts extractor");
@@ -329,8 +330,8 @@ namespace SolvencyII.Data.CRT.ETL
             _tableNames = new string[] { tableName };
 
             HashSet<CrtMapping> mapings = _mappingProvider.getMappings(_tableNames);
-            HashSet<CrtRow> inserts = this._insertsExtractor.extractInserts(mapings, tableName, rowIds);
+            IEnumerable<CrtRow> inserts = this._insertsExtractor.extractInserts(mapings, tableName, rowIds);
             return inserts;
-        }
+        }        
     }
 }

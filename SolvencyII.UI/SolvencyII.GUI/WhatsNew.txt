@@ -1,4 +1,171 @@
 ﻿*************************************************************************************
+***********	                    VER 2016.04.29                           ************
+*************************************************************************************
+
+What’s new in this release?   
+
+IMPORTANT: 
+-	Different error margins applied by the database-based validations (relative 
+	error with tolerance of 0.000001) and XBRL assertions (interval arithmetic) 
+	may result in inconsistent evaluations (compared to XBRL validators).
+-	Due to the limit of User Objects in Windows (https://goo.gl/rFg5H5) the tool 
+	may crash when large forms are rendered or forms are switched (and rendered) 
+	too quickly (this may happen also when a user clicks on errors in order to 
+	highlight affected cells, especially in larger tables with multiple z-axis 
+	dropdowns).
+	Technically, the garbage collector does not clean the objects memory fast 
+	enough and they reach the limit of 10000 which is the Windows default. 
+	To minimize the risk of this to happen the merged views (i.e. views of all 
+	closed tables within a template variant) have been disabled. The users are 
+	advised to save the data regularly and allow some time between switching 
+	the tables or validation error results.
+-	In XBRL 1% should be reported as 0.01 not 1. To detect cases where there is 
+	probably an issue of this kind in the report, when importing/exporting to 
+	XBRL the tool checks if such item is less than 1 and otherwise shows 
+	a warning (just for information that such value may be undesired). 
+	However some ratios/percent items may normally be > 1 (e.g. SCR ratio) 
+	and this check may be confusing.
+
+----------
+Bug fixes:
+----------
+-	Implementation of SQL validations for rules BV557, BV563, BV576, BV583, 
+	BV603, BV634, BV649, BV654 was fixed,
+- 	SQL Server backup is now available under the "Help" => "Databases";
+
+-----------
+Known bugs:
+-----------
+-	Tool does not handle dates later than 31/12/9998;
+-	Arelle import/export may be signalling IO errors for files not included in the
+	embedded taxonomy package i.e. xbrl.org (mind no www.) and w3c.org;
+- 	Arelle running in background even when application was closed (instance document 
+	is still being validated);
+-	Users are not informed when a row in an open table contains data for key columns 
+	only, which would not result in any XBRL facts on output.
+
+*************************************************************************************
+***********	                    VER 2016.04.18                           ************
+*************************************************************************************
+
+What’s new in this release?   
+
+-------------
+New features:
+-------------
+-	Support for full Solvency II Reporting DPM and XBRL Taxonomy version 2.0.1 
+	with deactivated rules as of 18 April 2016;
+-	"Table of contents" in excel basic templates export is dynamically created 
+	based on its content);
+-	Improvements to the user interface and error messaging.
+
+----------
+Bug fixes:
+----------
+- 	Tool supports multicurrency reporting in tables S.16 and S.19;
+-	Content table vs filing indicator rules run even when content table is not marked 
+	as reported;
+-	Fixed presentation of percentage items in windows forms (now shown with % sign);
+-	Tool signals an issue when typed dimension value is nil for z-axis dropdown during 
+	importing/exporting data from/to XBRL;
+-	Fix date format issue on business excel template export (it was too accurate and 
+	included time component);
+-	Corrected population of filing indicators on business excel import (it populated
+	individual tables rather than template codes);
+-	Fixed export and import issues of business excel templates;	
+-	Fixed data type of percentage columns in basic excel templates;
+-	Basic excel template import allows for percentage item values lower than 0.01%.
+
+-----------
+Known bugs:
+-----------
+-	Tool does not handle dates later than 31/12/9998;
+-	Arelle import/export may be signalling IO errors for files not included in the
+	embedded taxonomy package i.e. xbrl.org (mind no www.) and w3c.org;
+- 	Arelle running in background even when application was closed (instance document 
+	is still being validated);
+-	Users are not informed when a row in an open table contains data for key columns 
+	only, which would not result in any XBRL facts on output.
+
+
+*************************************************************************************
+***********	                    VER 2016.02.29                           ************
+*************************************************************************************
+
+What’s new in this release?   
+
+-------------
+New features:
+-------------
+-	Support for full Solvency II Reporting DPM and XBRL Taxonomy version 2.0.1 
+	(with deactivated rules as of 15 Feb 2016 and including originally missing 
+	rules between S and SE templates)
+-	Support for Filing Rules version 2.0.1;
+-	"Table of contents" in Excel Business Templates is dynamically created based on 
+	its content);
+
+----------
+Bug fixes:
+----------
+-	Business Excel Templates rendering fixed for tables with semi-open y axis i.e. 
+	S.01.02.07.03, S.12.02.01.02, S.17.02.01.02, S.22.06.01.03, S.22.06.01.04, 
+	S.27.01.01.23, S.27.01.01.24, S.27.01.04.23, S.27.01.04.24, SR.27.01.01.23, 
+	SR.27.01.01.24, S.30.03.01.01, S.33.01.04.01, S.36.03.01.01, E.03.01.16.02; 
+	(for import/export issues see "Known bugs" below);
+-	Issue when selecting Z0010 dropdown in S.22.06.01.04 (no error message);	
+-	Database validations should work properly for the following cases:
+	-	rules that contain "SUM" function present errors for values taken 
+		in aggregation,
+	-	technical rules (TV) that validate values of typed dimensions and metrics
+		are included in the database;
+	-	fixed SQL variables syntax parsing issues in case of variable 
+		"xsum({SR.26.02.01.02, (r0010, c0010)}) > 0" for rules BV576, BV583, BV603,
+		BV606, BV620-628, BV634, BV65;
+-	Metrics whose name starts with "r" and "t" are now properly exported to XBRL 
+	with values, not as xsi:nil;
+-	Fix of tool crash when xbrl-streamable-instance processing instruction had
+	contextBuffer and unitBuffer set to "INF";
+-	Corrected display of green ticks and red crosses when errors are found (or not)
+	on the "Report" and "Template" variant levels in the report content tree view;
+
+-----------
+Known bugs:
+-----------
+-	Business Excel Templates:
+		-	export and import data issues for table with single semi-open y-axis 
+			(i.e. S.01.07.02.03),
+		-	export problems for tables with z-axis dropdowns and semi-open or open 
+			Y axis, i.e. S.22.06.01.03, S.22.06.01.04, SR.25.02.01.01, SR.25.03.01.01, 
+			SR.27.01.01.23, SR.27.01.01.24, S.30.01.01.01, S.30.01.01.02, 
+			S.30.02.01.01, S.30.02.01.02),
+		- 	import issue z-axis dropdowns od S.30.01.01.02;
+-	Arelle import/export may be signalling IO errors for files not included in the
+	embedded taxonomy package i.e. xbrl.org (mind no www.) and w3c.org;
+-	Basic Excel Template import does not allow for percentage item values lower
+	than 0.01%;
+-	Tool does not signal any issue when typed dimension value is nil for z-axis 
+	dropdown during importing data from Excel or XBRL;
+- 	Tool does not support multicurrency reporting in tables S.16 and S.19;
+- 	Arelle running in background even when application was closed (instance document 
+	is still being validated);
+-	Users are not informed when a row in an open table contains data for key columns 
+	only, which would not result in any XBRL facts on output;
+-	Content table vs filing indicator rules not run even when content table 
+	is not marked as reported;
+	
+---------------------------------------------------------
+Missing features that might be included in next releases:
+---------------------------------------------------------
+-	Container validation has been deactivated and removed from GUI,
+-	SQL Server version is currently not supported;
+-	Grouping of errors and warnings for better usability;
+-	Presentation of business rule evaluations in open tables (highlighting affected 
+	cells); 
+-	Further performance improvements (e.g. XBRL validation, interaction with data, 
+	export/import);
+-	Additional information in user manual and database documentation.
+
+*************************************************************************************
 ***********	                    VER 2016.02.01                           ************
 *************************************************************************************
 
@@ -7,26 +174,55 @@ What’s new in this release?
 -------------
 New features:
 -------------
--	...
+-	Beta support for full Solvency II Reporting DPM and XBRL Taxonomy version 
+	2.0.1;
+-	Support for Filing Rules version 2.0.1;
 
-IMPORTANT: Different error margins applied by the database-based validations 
-(relative error with tolerance of 0.000001) and XBRL assertions (interval 
-arithmetic) may result in inconsistent evaluations (compared to XBRL validators). 
-
-----------
-Bug fixes:
-----------
--	...
-	
 -----------
 Known bugs:
 -----------
--	...
-
+-	Business Excel Templates don't render or import/export data properly for tables
+	with semi-open y axis (i.e. S.01.02.07.03, S.12.02.01.02, S.17.02.01.02, 
+	S.22.06.01.03, S.22.06.01.04, S.27.01.01.23, S.27.01.01.24, S.27.01.04.23, 
+	S.27.01.04.24, SR.27.01.01.23, SR.27.01.01.24, S.30.03.01.01, S.33.01.04.01,
+	S.36.03.01.01, E.03.01.16.02);
+-	Issue when selecting Z0010 dropdown in S.22.06.01.04 (click "Continue" when
+	prompted by error message);
+-	Arelle import/export may be signalling IO errors for files not included in the
+	embedded taxonomy package i.e. xbrl.org (mind no www.) and w3c.org;
+-	Basic Excel Template import does not allow for percentage item values lower
+	than 0.01%;
+-	Tool does not signal any issue when typed dimension value is nil for z-axis 
+	dropdown during importing data from Excel or XBRL;
+- 	Tool does not support multicurrency reporting in tables S.16 and S.19;
+- 	Arelle running in background even when application was closed (instance document 
+	is still being validated);
+-	Users are not informed when a row in an open table contains data for key columns 
+	only, which would not result in any XBRL facts on output;
+-	Content table vs filing indicator rules not run even when content table 
+	is not marked as reported;
+-	Database validations don't work properly for the following cases:
+	-	rules that contain "SUM" function present errors only for last value taken 
+		in aggregation, however validation itself is conducted correctly 
+		according to the rules' definition;
+	-	technical rules (TV) that validate values of typed dimensions and metrics
+		are not yet included in the database;
+	-	SQL variables syntax parsing issues in case of variable 
+		"xsum({SR.26.02.01.02, (r0010, c0010)}) > 0" for rules BV576, BV583, BV603,
+		BV606, BV620-628, BV634, BV65.
+	
 ---------------------------------------------------------
 Missing features that might be included in next releases:
 ---------------------------------------------------------
--	...
+-	SQL Server version is currently not supported;
+-	"Table of contents" in Excel Business Templates is static (i.e. not dynamically 
+	created based on its content);
+-	Grouping of errors and warnings for better usability;
+-	Presentation of business rule evaluations in open tables (highlighting affected 
+	cells); 
+-	Further performance improvements (e.g. XBRL validation, interaction with data, 
+	export/import);
+-	Additional information in user manual and database documentation.
 
 *************************************************************************************
 ***********	                    VER 2015.08.28                           ************

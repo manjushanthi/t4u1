@@ -71,9 +71,9 @@ namespace SolvencyII.GUI
         private const string supportedDataBaseVersion_CRD = "2015.02.13";
 
         //Settings - Supported version settings for the Solvency II Database &  Excel Templates
-        private const string supportedDataBaseVersion_FULL = "2016.02.29";
+        private const string supportedDataBaseVersion_FULL = "2016.04.29";
         private const string migrationDataBaseVersion_FULL = "2016.02.01";
-        private const string supportedExcelTemplateVersion_FULL = "2016.02.01";
+        private const string supportedExcelTemplateVersion_FULL = "2016.04.18";
 
         //Settings - Supported version settings for the Solvency II PREPARATORY Database &  Excel Templates
         private const string supportedDataBaseVersion_PREPARATORY = "2016.02.01";
@@ -83,7 +83,7 @@ namespace SolvencyII.GUI
         private const string supportedMigrationDataBaseVersion_PREPARATORY_MarchVersion_2015 = "2015.03.16";
         PreParatoryVersions prepVersion = PreParatoryVersions.SecondVersion;
 
-        private const string supportedExcelTemplateVersion_BUSINESS = "2016.02.29";
+        private const string supportedExcelTemplateVersion_BUSINESS = "2016.04.18";
 
         private Panel dynamicPanel { get; set; }
 
@@ -161,7 +161,7 @@ namespace SolvencyII.GUI
             Invoke((Action)delegate
                                {
                                    StopToolStripProgressBar();
-                                   if (!string.IsNullOrEmpty(msg)) MessageBox.Show(msg);
+                                   if (!string.IsNullOrEmpty(msg)) MessageBox.Show(msg, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                });
         }
 
@@ -174,6 +174,8 @@ namespace SolvencyII.GUI
         private string supportedExcelTemplateVersion = string.Empty;
 
         private List<CellProperties> tableCellProperties;
+
+        private bool shouldDisplayValidationCompletedMessage = false;
 
         #endregion
 
@@ -209,8 +211,10 @@ namespace SolvencyII.GUI
             ArelleSetup.Configure(arelle_setup_completed);
             ActivateXBRLMenuItems(true);
             //Application level settings
+            solvencyIIToolStripMenuItem.Visible = false;
+            solvencyIIPreparatoryToolStripMenuItem.Visible = false;
 #if (FOR_UT)
-                solvencyIIToolStripMenuItem.Visible = false;
+                //solvencyIIToolStripMenuItem.Visible = false;
                 fullS2TestXBRLInstancesToolStripMenuItem.Visible = false;
                 cRDIVToolStripMenuItem.Visible = false;
                 dPMDictionaryToolStripMenuItem.Visible = false;
@@ -221,7 +225,7 @@ namespace SolvencyII.GUI
                 importDataToExcelBusinessTemplateToolStripMenuItem.Visible = false;
                 downloadAnEmptyBusinessExcelTemplateToolStripMenuItem.Visible = false;
 #else
-            solvencyIIPreparatoryToolStripMenuItem.Visible = false;
+            //solvencyIIPreparatoryToolStripMenuItem.Visible = false;
             preparatoryS2AnnotatedTemplatesToolStripMenuItem.Visible = false;
             preparatoryS2DictionaryToolStripMenuItem.Visible = false;
             PreparatoryS2TestXBRLInstancesToolStripMenuItem.Visible = false;
@@ -366,7 +370,7 @@ namespace SolvencyII.GUI
                                                 Version clickverFromWeb = new Version(webverionNumber);
                                                 if (clickverFromWeb.CompareTo(new Version(CurrentApplicationVersion_Local)) > 0)
                                                 {
-                                                    MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit http://t4u.eurofiling.info/ for more info. Using:" + CurrentApplicationVersion_Local + " published " + webverionNumber);
+                                                    MessageBox.Show("The version you are using is not the latest one. There is a new version available. Please visit https://eiopa.europa.eu/regulation-supervision/insurance/tool-for-undertakings for more info. Using: " + CurrentApplicationVersion_Local + " published " + webverionNumber, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                     Logger.WriteLog(eSeverity.Note, "its older version");
                                                 }
                                                 else
@@ -388,7 +392,7 @@ namespace SolvencyII.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception occured in the Stand-alone update checking function", ex.Message);
+                MessageBox.Show("Exception occured in the Stand-alone update checking function", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Logger.WriteLog(eSeverity.Error, ex.Message);
             }
 
@@ -513,6 +517,11 @@ namespace SolvencyII.GUI
             OLVColumn olvCellCodes = new OLVColumn("Cell Code", "Cells");
             OLVColumn olvExpression = new OLVColumn("Expression", "Expression");
             OLVColumn olvErrorMessage = new OLVColumn("Error Message", "ErrorMessage");
+
+            OLVColumn olvLeftSideValue = new OLVColumn("Left Side Value", "LeftSideValue");
+            OLVColumn olvRightSideValue = new OLVColumn("Right Side Value", "RightSideValue");
+            OLVColumn olvDifference = new OLVColumn("Difference", "Difference");
+
             olvErrorMessage.FillsFreeSpace = true;
 
             HotItemStyle hotItemStyle = new HotItemStyle();
@@ -534,7 +543,10 @@ namespace SolvencyII.GUI
                                                olvValidationCode,
                                                olvFormula,
                                                olvExpression,
-                                               olvErrorMessage
+                                               olvLeftSideValue,
+                                               olvRightSideValue,
+                                               olvDifference,
+                                               olvErrorMessage,
                                            });
             errorView.Cursor = Cursors.Default;
             errorView.Dock = DockStyle.Fill;
@@ -594,6 +606,7 @@ namespace SolvencyII.GUI
             OLVColumn olvMemberLabel = new OLVColumn("Member Label", "MemberLabel");
             OLVColumn olvMemberCode = new OLVColumn("Member Code", "MemberCode");
             OLVColumn olvSource = new OLVColumn("Source", "Source");
+            
 
             olvMemberLabel.FillsFreeSpace = true;
 
@@ -616,6 +629,7 @@ namespace SolvencyII.GUI
                                                olvDimensionLabel,
                                                olvMemberCode,
                                                olvMemberLabel,
+                                               
                                            });
             cellPropertiesView.Cursor = Cursors.Default;
             cellPropertiesView.Dock = DockStyle.Fill;
@@ -662,6 +676,7 @@ namespace SolvencyII.GUI
             OLVColumn olvColumnType = new OLVColumn("ColumnType", "ColumnType ");
             OLVColumn olvColumnValue = new OLVColumn("ColumnValue", "ColumnValue");
             OLVColumn olvError = new OLVColumn("Error", "Error");
+            
             olvError.FillsFreeSpace = true;
 
             HotItemStyle hotItemStyle = new HotItemStyle();
@@ -681,7 +696,7 @@ namespace SolvencyII.GUI
                                                                   olvColumnType,
                                                                   olvColumnValue,
                                                                   olvError,
-
+                                                                  
                                                               });
             errorContainerValidationView.Cursor = Cursors.Default;
             errorContainerValidationView.Dock = DockStyle.Fill;
@@ -1067,6 +1082,9 @@ namespace SolvencyII.GUI
 
         void treeView1_MouseEnter(object sender, EventArgs e)
         {
+            //BRAG
+            //Disabled size changing table list view
+            return;
             if (dynamicPanel != null)
                 return;
             dynamicPanel = new Panel();
@@ -1219,7 +1237,7 @@ namespace SolvencyII.GUI
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(LanguageLabels.GetLabel(141, "To be implemented"));
+            MessageBox.Show(LanguageLabels.GetLabel(141, "To be implemented"), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #region Database Management
@@ -1243,12 +1261,35 @@ namespace SolvencyII.GUI
             }
         }
 
+        //BRAG
+        private bool CheckIfDatabaseIsSupportedInThisVersion()
+        {
+            if (StaticSettings.DbType == DbType.No_container_selected)
+                return false;
+#if (FOR_UT)
+            //prep
+            if (StaticSettings.DbType != DbType.SolvencyII_Preparatory)
+            {
+                MessageBox.Show(string.Format("{0} database are not suported in this application.", StaticSettings.DbType.ToString()), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+#else
+            //full
+            if (StaticSettings.DbType != DbType.SolvencyII)
+            {
+                MessageBox.Show(string.Format("{0} database are not suported in this application.", StaticSettings.DbType.ToString()), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+#endif
+            else
+                return true;
+        }
+
         /// <summary>
         /// To open the Container/Database
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void openDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _migrationRequired = false;
@@ -1256,6 +1297,9 @@ namespace SolvencyII.GUI
             {
                 ClearCurrentControl();
                 GetDbVersion();
+                //BRAG
+                if (!CheckIfDatabaseIsSupportedInThisVersion())
+                    return;
                 InstanceID = 0;
                 EnableMenuItems(true);
                 EnableExcelMenu();
@@ -1282,6 +1326,17 @@ namespace SolvencyII.GUI
                 InitializeValidationErrorView();
                 InitializeCellPropertiesView();
             }
+        }
+
+        private void createXbrtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+#if (FOR_UT)
+            //prep
+            solvencyIIPreparatoryToolStripMenuItem_Click(sender, e);
+#else
+            //full
+            solvencyIIToolStripMenuItem_Click(sender, e);
+#endif
         }
 
         private void solvencyIIToolStripMenuItem_Click(object sender, EventArgs e) //cRVIVToolStripMenuItem_Click
@@ -1322,15 +1377,32 @@ namespace SolvencyII.GUI
 
         #endregion
 
+        //BRAG
+        private bool ProcessMayTakeSeveralMinutesMessageBox()
+        {
+            if (Properties.Settings.Default.ProcesMayTakeSeveralMinutesInfo)
+            {
+                var result = MessageBox.Show("Please note, that this process may take several minutes", "Important information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.Cancel)
+                    return true;
+            }
+            return false;
+        }
+
         #region DLL Import  / Export and Validate
 
         private void xBRLToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             exportXBRLInstanceFileToolStripMenuItem.Enabled = InstanceID != 0;
+            validateCurrentReportToolStripMenuItem.Enabled = InstanceID != 0;
         }
 
         private void validateXBRLReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //BRAG
+            if (ProcessMayTakeSeveralMinutesMessageBox())
+                return;
+
             _isForMigration = false;
             ValidateXBRLAsync();
         }
@@ -1372,6 +1444,10 @@ namespace SolvencyII.GUI
 
         private void exportarelleWithValidationToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //BRAG
+            if (ProcessMayTakeSeveralMinutesMessageBox())
+                return;
+
             if (!CheckCurrencyProperty())
                 return;
 
@@ -1407,6 +1483,10 @@ namespace SolvencyII.GUI
 
         private void importarelleWithValidationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //BRAG
+            if (ProcessMayTakeSeveralMinutesMessageBox())
+                return;
+
             //Arelle Import
             _isForMigration = false;
             Logger.WriteLog(eSeverity.Note, "Arelle Import");
@@ -1515,7 +1595,7 @@ namespace SolvencyII.GUI
                 StaticSettings.FormLanguage = (eLanguageID)formLanguage;
                 RegSettings.FormLanguage = formLanguage;
                 if (StaticSettings.FormLanguage != eLanguageID.InEnglish)
-                    MessageBox.Show("The application is currently only supported in English. However an automatic translation has being performed for testing purposes of the translation capabilities. Please note that labels are translated labels could be wrong or misleading as the proper translation will be done in a later stage when all labels are known.");
+                    MessageBox.Show("The application is currently only supported in English. However an automatic translation was performed for testing purposes of the translation capabilities. Please note that labels are automatically translated labels and could be wrong or misleading ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 SelectFormLanguage(formLanguage);
                 SetupLanguage();
@@ -1608,6 +1688,8 @@ namespace SolvencyII.GUI
             changeActiveReportToolStripMenuItem.Enabled = !zeroRecords && !zeroInstanceID;
             deleteActiveReportToolStripMenuItem.Enabled = !zeroRecords && !zeroInstanceID;
             closeActiveReportToolStripMenuItem.Enabled = !zeroRecords && !zeroInstanceID;
+            validateCurrentReportToolStripMenuItem.Enabled = !zeroRecords && !zeroInstanceID;
+
             selectActiveReportIIToolStripMenuItem.Enabled = !zeroRecords;
 
             if (items.Length > 0)
@@ -1778,7 +1860,7 @@ namespace SolvencyII.GUI
             //BRAG
             if (/*StaticSettings.DbType == DbType.SolvencyII_Preparatory && */_migrationRequired == true)
             {
-                DialogResult dialogResult = MessageBox.Show("You are trying to open a container created using previous version of the tool. Would you like to migrate the container to the new version? Note that it may take some time depending on the amount of data.", "Migration", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("You are trying to open a container created using previous version of the tool. Would you like to migrate the container to the new version? Note that it may take some time depending on the amount of data.", "Migration", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.No)
                     return;
 
@@ -1808,7 +1890,7 @@ namespace SolvencyII.GUI
                 }
                 else
                 {
-                    MessageBox.Show("Error in creating Migration folder");
+                    MessageBox.Show("Error in creating Migration folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     StopBusyIndicator();
                     return;
                 }
@@ -1852,7 +1934,7 @@ namespace SolvencyII.GUI
             if (!Directory.Exists(folderpath))
             {
                 //throw errorContainerValidationView
-                MessageBox.Show("Migration DB folder not created");
+                MessageBox.Show("Migration DB folder not created", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             string DBpath = Path.Combine(folderpath, "Migration.xbrt");
@@ -1888,10 +1970,10 @@ namespace SolvencyII.GUI
         private void backgroundWorkerimport_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             StopBusyIndicator();
-            string dbName = "SolvencyII_Preparatory";
+            string dbName = "SolvencyII";
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = string.Format("{0} (*.xbrt)|*.xbrt", dbName);
-            saveFileDialog1.Title = "Specify the db location";
+            saveFileDialog1.Title = "Select location of the migrated container";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string folderpath = Path.Combine(System.Windows.Forms.Application.StartupPath, "Temp");
@@ -1920,7 +2002,7 @@ namespace SolvencyII.GUI
                         EnableExcelMenu();
                         SetFormTitle();
                         CheckDBVersion();
-                        MessageBox.Show("Migration successful.");
+                        MessageBox.Show("Migration successful.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
@@ -1928,7 +2010,7 @@ namespace SolvencyII.GUI
 
             }
             _isForMigration = false;
-
+            show_status2("");
         }
 
         /// <summary>
@@ -2105,7 +2187,7 @@ namespace SolvencyII.GUI
             if (!Directory.Exists(folderpath))
             {
                 //throw error
-                MessageBox.Show("Migration DB folder not created");
+                MessageBox.Show("Migration DB folder not created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -2142,7 +2224,7 @@ namespace SolvencyII.GUI
 
         private void validateActiveTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Validation for table is invoked while cliking tree and save button. This option will be removed from the menu.");
+            MessageBox.Show("Validation for table is invoked while cliking tree and save button. This option will be removed from the menu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -2157,12 +2239,12 @@ namespace SolvencyII.GUI
                 //Show message box
                 MessageBox.Show("Please note that the following validation results do not replace full XBRL validation. They are based on the T4U’s database and have been included to provide fast, user-friendly feedback. Use Arelle or other XBRL validator to check full XBRL Taxonomy compliance. More information is available in the T4U’s documentation package.",
                     "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                shouldDisplayValidationCompletedMessage = true;
                 validator.ValidateAsync(InstanceID);
             }
             else
             {
-                MessageBox.Show("Please select the report");
+                MessageBox.Show("Please select the report", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -2204,7 +2286,7 @@ namespace SolvencyII.GUI
             }
             else
             {
-                MessageBox.Show("Please select the report");
+                MessageBox.Show("Please select the report", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
@@ -2242,7 +2324,7 @@ namespace SolvencyII.GUI
            sourceFile = Path.Combine(System.Windows.Forms.Application.StartupPath, string.Concat("Exl-Business_Encrypted\\", fileName));
            if (!File.Exists(sourceFile))
            {
-               MessageBox.Show(string.Format("{0}\n{1}", "Unfortunately a Excel-Business-Template file is missing: ", sourceFile));
+               MessageBox.Show(string.Format("{0}\n{1}", "Unfortunately a Excel-Business-Template file is missing: ", sourceFile), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                return;
            }
 
@@ -2290,7 +2372,7 @@ namespace SolvencyII.GUI
             catch (Exception ex)
             {
                 Logger.WriteLog(eSeverity.Error, ex.Message);
-                MessageBox.Show(string.Format(LanguageLabels.GetLabel(142, "Unfortunately there was an error.\nPlease try again.\n\n{0} "), ex.Message), "Error");
+                MessageBox.Show(string.Format(LanguageLabels.GetLabel(142, "Unfortunately there was an error.\nPlease try again.\n\n{0} "), ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -2308,7 +2390,7 @@ namespace SolvencyII.GUI
                 if (!string.IsNullOrEmpty(rowKeysCheck))
                 {
                     // Report to the user.
-                    MessageBox.Show(rowKeysCheck);
+                    MessageBox.Show(rowKeysCheck, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return; // leave the method.
                 }
             }
@@ -2318,7 +2400,7 @@ namespace SolvencyII.GUI
                 //tableManager = new ClosedTableManager(_mainControl, LanguageID, InstanceID);
                 tableManager = new ClosedTableManager(ctrl, LanguageID, InstanceID);
                 tableManager.ShowToolBar += StatusBarUpdate;
-                tableManager.ShowMessageBox += response => MessageBox.Show(response);
+                tableManager.ShowMessageBox += response => MessageBox.Show(response, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (tableManager.Save(_selectedItem))
                 {
                     ctrl.IsDirty = false;
@@ -2351,13 +2433,13 @@ namespace SolvencyII.GUI
                         {
                             sb.AppendLine(string.Format("{0} - {1}", openColInfo2.OrdinateCode, openColInfo2.Label));
                         }
-                        MessageBox.Show(string.Format("{0}\n\rPlease update and try again. ", sb.ToString()), "Error");
+                        MessageBox.Show(string.Format("{0}\n\rPlease update and try again. ", sb.ToString()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
                     Logger.WriteLog(eSeverity.Error, ex.Message);
-                    MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error");
+                    MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -2368,14 +2450,14 @@ namespace SolvencyII.GUI
             {
                 ClosedTableManager tableManager = new ClosedTableManager(_mainControl, LanguageID, InstanceID);
                 tableManager.ShowToolBar += StatusBarUpdate;
-                tableManager.ShowMessageBox += response => MessageBox.Show(response);
+                tableManager.ShowMessageBox += response => MessageBox.Show(response, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tableManager.Delete(_selectedItem, true);
                 _mainControl.IsDirty = false;
             }
             catch (Exception ex)
             {
                 Logger.WriteLog(eSeverity.Error, ex.Message);
-                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error");
+                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             // Refresh the form now that the data has been removed
@@ -2414,7 +2496,7 @@ namespace SolvencyII.GUI
                 else
                     tableManager = new ClosedTableManager(_mainControlSpecialCase, LanguageID, InstanceID);
                 tableManager.ShowToolBar += StatusBarUpdate;
-                tableManager.ShowMessageBox += response => MessageBox.Show(response);
+                tableManager.ShowMessageBox += response => MessageBox.Show(response, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tableManager.Filed_Toggle(_selectedItem);
                 // If toggling to Not Reported delete all data;
                 if (!newValue)
@@ -2424,7 +2506,7 @@ namespace SolvencyII.GUI
             catch (Exception ex)
             {
                 Logger.WriteLog(eSeverity.Error, ex.Message);
-                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error");
+                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
@@ -2475,7 +2557,7 @@ namespace SolvencyII.GUI
             StaticSettings.SolvencyIITemplateDBConnectionString = ManageDatabases.GetTemplateDBConnectionStringForSolvencyII();
 
             if (StaticSettings.FormLanguage != eLanguageID.InEnglish)
-                MessageBox.Show("The application is currently only supported in English. However an automatic translation has being performed for testing purposes of the translation capabilities. Please note that labels are translated labels could be wrong or misleading as the proper translation will be done in a later stage when all labels are known.");
+                MessageBox.Show("The application is currently only supported in English. However an automatic translation has being performed for testing purposes of the translation capabilities. Please note that labels are translated labels could be wrong or misleading as the proper translation will be done in a later stage when all labels are known.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             StaticSettings.TestingMode = RegSettings.TestingMode;
 
         }
@@ -2499,7 +2581,7 @@ namespace SolvencyII.GUI
             if (!SetupFormForDataTier(RegSettings.DataTier))
             {
                 // Close down the application
-                MessageBox.Show("Unable to make a database connection so the application is closing.\nPlease make sure the database management system is running properly (that SQL Server is operational and accessable).\nTo access the program immediately try changing the database connection for SQL Server or revert back to SQLite access.", "Connection Error");
+                MessageBox.Show("Unable to make a database connection so the application is closing.\nPlease make sure the database management system is running properly (that SQL Server is operational and accessable).\nTo access the program immediately try changing the database connection for SQL Server or revert back to SQLite access.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 Application.Exit();
                 return;
@@ -2548,7 +2630,7 @@ namespace SolvencyII.GUI
                 // xBRLToolStripMenuItem.Text = LanguageLabels.GetLabel();
                 importXBRLIntanceFileToolStripMenuItem.Text = LanguageLabels.GetLabel(12, "Import XBRL instance file");
                 exportXBRLInstanceFileToolStripMenuItem.Text = LanguageLabels.GetLabel(13, "Export XBRL instance file");
-                validateXBRLReportToolStripMenuItem.Text = LanguageLabels.GetLabel(14, "Validate XBRL report");
+                //validateXBRLReportToolStripMenuItem.Text = LanguageLabels.GetLabel(14, "Validate instance file");
 
                 settingsToolStripMenuItem.Text = LanguageLabels.GetLabel(15, "Settings");
                 formlanguageToolStripMenuItem.Text = LanguageLabels.GetLabel(16, "Language");
@@ -2579,10 +2661,10 @@ namespace SolvencyII.GUI
 
                 //Excel 
                 excelToolStripMenuItem.Text = LanguageLabels.GetLabel(133, "Excel");
-                importDataFromExcelFileToolStripMenuItem.Text = LanguageLabels.GetLabel(134, "Import data from basic Excel template");
-                exportToExcelToolStripMenuItem.Text = LanguageLabels.GetLabel(135, "Export data to basic Excel template");
-                downloadTemplateToolStripMenuItem.Text = LanguageLabels.GetLabel(136, "Download an empty basic Excel template");
-                exportDataToBusinessTemplateToolStripMenuItem.Text = LanguageLabels.GetLabel(137, "Export data to Excel Business template");
+                //importDataFromExcelFileToolStripMenuItem.Text = LanguageLabels.GetLabel(134, "Basic Excel template");
+                //exportToExcelToolStripMenuItem.Text = LanguageLabels.GetLabel(135, "Basic Excel template");
+                //downloadTemplateToolStripMenuItem.Text = LanguageLabels.GetLabel(136, "Empty basic Excel template");
+                //exportDataToBusinessTemplateToolStripMenuItem.Text = LanguageLabels.GetLabel(137, "Business Excel Business");
 
                 //Help
                 helpToolStripMenuItem.Text = LanguageLabels.GetLabel(117, "Help");
@@ -2603,10 +2685,8 @@ namespace SolvencyII.GUI
                 whatsNewToolStripMenuItem.Text = LanguageLabels.GetLabel(132, "What's new");
 
                 //Validate
-                validationToolStripMenuItem.Text = LanguageLabels.GetLabel(113, "Validation");
                 //validateActiveTableToolStripMenuItem.Text = LanguageLabels.GetLabel(114, "Validate active table");
                 validateCurrentReportToolStripMenuItem.Text = LanguageLabels.GetLabel(115, "Validate active report");
-                validateCurrentContainerToolStripMenuItem.Text = LanguageLabels.GetLabel(116, "Validate active container");
 
 
             }
@@ -2696,7 +2776,7 @@ namespace SolvencyII.GUI
             catch (IOException e)
             {
                 Logger.WriteLog(eSeverity.Error, string.Format("There was a problem creating temp folder {0}", e.Message));
-                MessageBox.Show(string.Format("There was a problem creating temp folder {0}", e.Message));
+                MessageBox.Show(string.Format("There was a problem creating temp folder {0}", e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -2761,7 +2841,7 @@ namespace SolvencyII.GUI
                         else
                         {
                             RegSettings.InstanceID = 0;
-                            MessageBox.Show(string.Format(LanguageLabels.GetLabel(22, "There was a problem accessing the selected report with the XBRT container.\nPlease select another report."), RegSettings.ConnectionString), LanguageLabels.GetLabel(23, "SolvencyII Report"));
+                            MessageBox.Show(string.Format(LanguageLabels.GetLabel(22, "There was a problem accessing the selected report with the XBRT container.\nPlease select another report."), RegSettings.ConnectionString), LanguageLabels.GetLabel(23, "SolvencyII Report"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearForm();
                             UpdateStatusStrip(LanguageLabels.GetLabel(24, "Please create or select an active report."));
                             EnableExcelMenu();
@@ -2798,6 +2878,7 @@ namespace SolvencyII.GUI
                             }
 
                             show_status("");
+                            show_status2("");
 
                             IEnumerable<ValidationError> valErrors = validator.SerializeErrors();
 
@@ -2808,6 +2889,7 @@ namespace SolvencyII.GUI
 
                             IEnumerable<string> singleTemplate = valErrors.Select(t => t.TableCode).Distinct();
 
+                            //BRAG
                             if (singleTemplate.Count() > 1)
                                 TraverseTree(treeView1.Nodes, valErrors);
                             else
@@ -2816,7 +2898,12 @@ namespace SolvencyII.GUI
                             //Reset the cell colors
                             ResetCellColor();
 
-
+                            //BRAG
+                            if(shouldDisplayValidationCompletedMessage)
+                            {
+                                shouldDisplayValidationCompletedMessage = false;
+                                MessageBox.Show("Validation complete", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     );
 
@@ -2831,7 +2918,7 @@ namespace SolvencyII.GUI
 
                     string strMsg = "An error occured while initializing validation.\nValidation feature is not supported in this version.";
 
-                    MessageBox.Show(strMsg, "Validation Initialization");
+                    MessageBox.Show(strMsg, "Validation Initialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     validator = null;
                 }
@@ -2840,7 +2927,7 @@ namespace SolvencyII.GUI
                     Logger.WriteLog(eSeverity.Error, string.Format("There was a problem accessing the database.{0}", e.Message));
                     string strMsg = LanguageLabels.GetLabel(25, @"There was a problem accessing the database.\r\n {0}\r\n {1}\r\nDo you want to select another database?");
                     string strTitle = LanguageLabels.GetLabel(26, "Locate SolvencyII database");
-                    if (MessageBox.Show(string.Format(strMsg, e.Message, StaticSettings.ConnectionString), strTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(string.Format(strMsg, e.Message, StaticSettings.ConnectionString), strTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         // Locate a new database and save its path.
                         if (ManageDatabases.LocateAndSaveDatabasePath())
@@ -2923,7 +3010,7 @@ namespace SolvencyII.GUI
                     // Run integity check of closed template
                     string result = UI.Shared.Data.FormIntegrityCheck.AllControlsLinkedToData(_mainControl.GetDataTypes(), _mainControl.GetDataTables(), _mainControl.GetDataControls(), _mainControl.GetComboControls(), _mainControl.GetDataComboBoxControls());
                     if (!string.IsNullOrEmpty(result))
-                        MessageBox.Show(result, "Template integrity failure");
+                        MessageBox.Show(result, "Template integrity failure", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
@@ -2947,7 +3034,7 @@ namespace SolvencyII.GUI
                     // Run integity check of closed template
                     string result = UI.Shared.Data.FormIntegrityCheck.AllControlsLinkedToData(_mainControlSpecialCase.GetDataTypes(), _mainControlSpecialCase.GetDataTables(), _mainControlSpecialCase.GetDataControls(), new List<ISolvencyComboBox>(), _mainControlSpecialCase.GetDataComboBoxControls());
                     if (!string.IsNullOrEmpty(result))
-                        MessageBox.Show(result, "Template integrity failure");
+                        MessageBox.Show(result, "Template integrity failure", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
@@ -2984,7 +3071,7 @@ namespace SolvencyII.GUI
                                                          catch (Exception e)
                                                          {
                                                              Logger.WriteLog(eSeverity.Error, "frmMain.LocateClosedUserControl", e.ToString());
-                                                             MessageBox.Show(string.Format("The was an error attmpting to locate the template \r\n{0}", e.Message));
+                                                             MessageBox.Show(string.Format("There was an error attempting to locate the template \r\n{0}", e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                          }
                                                          finally
                                                          {
@@ -2998,7 +3085,6 @@ namespace SolvencyII.GUI
                                 Application.DoEvents();
                             }
                             //LocateClosedUserControl(out _mainControl, out _mainControlSpecialCase);
-
                         }
 
                         if (_mainControl != null)
@@ -3095,7 +3181,7 @@ namespace SolvencyII.GUI
                 allowTreeSelection = true;
                 EnableAllMenuItems(true);
                 Logger.WriteLog(eSeverity.Error, ex.Message);
-                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error");
+                MessageBox.Show(string.Format("Unfortunately there was an error.\nPlease try again.\n\n{0} ", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
@@ -3191,7 +3277,7 @@ namespace SolvencyII.GUI
             {
                 if (_mainControl.IsDirty)
                 {
-                    if (MessageBox.Show("You have not saved your changes!\r\n\r\nOk to exit without saving and Cancel to go back to the form", LanguageLabels.GetLabel(80, "Confirm cancel"), MessageBoxButtons.OKCancel) != DialogResult.OK)
+                    if (MessageBox.Show("You have not saved your changes!\r\n\r\nOk to exit without saving and Cancel to go back to the form", LanguageLabels.GetLabel(80, "Confirm cancel"), MessageBoxButtons.OKCancel, MessageBoxIcon.Information) != DialogResult.OK)
                         return true;
                 }
             }
@@ -3389,7 +3475,8 @@ namespace SolvencyII.GUI
             if (ImportExportArelle != null)
             {
                 string msg = args.UserState as string;
-                show_status(ImportExportArelle.StatusPrompt + msg);
+                //BRAG
+                show_status2(ImportExportArelle.StatusPrompt + msg);
             }
         }
 
@@ -3415,12 +3502,11 @@ namespace SolvencyII.GUI
                                            case ImportExportValuationAsync.ResponseType.Export:
                                                // Note the message contains the exported file name
                                                show_status("Exported successfully.");
-
                                                // Setup the form to show the selected tree item - if one exists.
                                                // RefreshTemplate(); // Removed since it was considered a bug.
                                                break;
                                            case ImportExportValuationAsync.ResponseType.Validation:
-                                               MessageBox.Show(LanguageLabels.GetLabel(40, "File passed validation checks successfully"), LanguageLabels.GetLabel(39, "Validation Check"));
+                                               MessageBox.Show(LanguageLabels.GetLabel(40, "File passed validation checks successfully"), LanguageLabels.GetLabel(39, "Validation Check"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                break;
                                            default:
                                                throw new ArgumentOutOfRangeException("type");
@@ -3431,10 +3517,10 @@ namespace SolvencyII.GUI
                                        switch (type)
                                        {
                                            case ImportExportValuationAsync.ResponseType.Import:
-                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Import problem"));
+                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Import problem"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                break;
                                            case ImportExportValuationAsync.ResponseType.Export:
-                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Export problem"));
+                                               MessageBox.Show(message, LanguageLabels.GetLabel(41, "Export problem"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                // Setup the form to show the selected tree item - if one exists.
                                                RefreshTemplate();
                                                break;
@@ -3448,6 +3534,7 @@ namespace SolvencyII.GUI
                                        }
                                    }
 
+                                   show_status2("");
 
 
                                });
@@ -3460,6 +3547,16 @@ namespace SolvencyII.GUI
                                    {
                                        this.lblExportImportStatus.Text = statusMsg;
                                    });
+        }
+
+        //BRAG
+        private void show_status2(string statusMsg)
+        {
+            if (!this.lblExportImportStatus.IsDisposed) // ignore events after closing T4U while Arelle still running
+                Invoke((Action)delegate
+                {
+                    this.arelleToolStripStatusLabel.Text = statusMsg;
+                });
         }
 
         #region Export Code
@@ -3515,6 +3612,8 @@ namespace SolvencyII.GUI
 
 
                     show_status("");
+                    show_status2("");
+
 
                     return; //do not process further
                 }
@@ -3555,6 +3654,8 @@ namespace SolvencyII.GUI
             IEnumerable<ValidationMessage> messages;
 
             show_status("");
+            show_status2("");
+
             string _success = "successfully";
 
             //Handle exception if there is an issue in Arelle processing
@@ -3735,6 +3836,7 @@ namespace SolvencyII.GUI
 
             //clear the status bar
             show_status("");
+            show_status2("");
             string _success = "successfully";
 
             //Handle exception if there is an issue in Arelle processing
@@ -3833,7 +3935,7 @@ namespace SolvencyII.GUI
                     if (!string.IsNullOrEmpty(result))
                     {
                         // We have errors inserting the instance.
-                        this.Invoke((MethodInvoker)delegate () { MessageBox.Show(string.Format("Unable to update the instance: {0}", putData.Errors[0])); });
+                        this.Invoke((MethodInvoker)delegate () { MessageBox.Show(string.Format("Unable to update the instance: {0}", putData.Errors[0], MessageBoxButtons.OK, MessageBoxIcon.Information)); });
                         return;
                     }
 
@@ -3931,7 +4033,12 @@ namespace SolvencyII.GUI
                             InstanceID = newInstanceID;
                             if (instance != null)
                             {
-                                if (string.IsNullOrEmpty(instance.EntityCurrency))
+                                if(instance.ModuleID == -1)
+                                {
+                                    MessageBox.Show("Unable to import instance! Report not supported in this version of T4U.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                }
+                                else if (string.IsNullOrEmpty(instance.EntityCurrency))
                                 {
                                     MessageBox.Show("Please edit report properties and set up reporting currency", "Missing report property", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
@@ -3963,9 +4070,9 @@ namespace SolvencyII.GUI
         private void ProgressHandler_Progress(int current, int total, string message)
         {
             if (total != 0)
-                show_status(string.Format("{0} {1}/{2}", message, current, total));
+                show_status2(string.Format("{0} {1}/{2}", message, current, total));
             else
-                show_status(string.Format("{0} {1}", message, current));
+                show_status2(string.Format("{0} {1}", message, current));
         }
 
         private void ValidateXBRLAsync(string sourceXBRL = "")
@@ -3978,6 +4085,8 @@ namespace SolvencyII.GUI
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     sourceXBRL = openFileDialog1.FileName;
+                    //BRAG
+                    validateXBRLReportToolStripMenuItem.Enabled = false;
                 }
             }
             if (!string.IsNullOrEmpty(sourceXBRL))
@@ -4014,6 +4123,7 @@ namespace SolvencyII.GUI
             IEnumerable<ValidationMessage> messages;
 
             show_status("");
+            show_status2("");
 
             //Handle exception if there is an issue in Arelle processing
             if (args.Error != null || args.Cancelled == true)
@@ -4041,6 +4151,10 @@ namespace SolvencyII.GUI
 
             }
 
+            //BRAG
+            if(!validateXBRLReportToolStripMenuItem.Enabled)
+                validateXBRLReportToolStripMenuItem.Enabled = true;
+
             //Show only if there are any errors
             string _success = "successfully";
             if (messages != null && messages.Count() > 0)
@@ -4065,6 +4179,8 @@ namespace SolvencyII.GUI
             }
 
             //Show a message box that import XBRL is complete
+
+            show_status2("");
 
             MessageBox.Show(string.Format("XBRL validation is completed {0}.", _success),
                             "XBRL validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -4098,10 +4214,24 @@ namespace SolvencyII.GUI
                 string connectionString = RegSettings.ConnectionString;
                 if (connectionString != null && File.Exists(connectionString))
                 {
+                    
                     if (System.IO.Path.GetExtension(connectionString).ToUpper().EndsWith("XBRT"))
                     {
                         // This approach has been used to facilitate multiplatform development for the Data.Shared component.
                         StaticSettings.ConnectionString = connectionString;
+
+                        //BRAG
+
+                        GetDbVersion();
+
+                        if (!CheckIfDatabaseIsSupportedInThisVersion())
+                        {
+                            ClearForm();
+                            EnableMenuItems(false);
+                            EnableExcelMenu();
+                            return successfulConnection;
+                        }
+
                         SetFormTitle();
                         RecentFilesRegistryManagement.OpenFile(connectionString);
                         EnableMenuItems(true);
@@ -4113,10 +4243,9 @@ namespace SolvencyII.GUI
                 {
                     // Ensure everything is cleaned down.
                     ClearForm();
-                    MessageBox.Show(LanguageLabels.GetLabel(20, "Please create a new XBRT container or open an existing one."), LanguageLabels.GetLabel(21, "No active XBRT container"));
+                    MessageBox.Show(LanguageLabels.GetLabel(20, "Please create a new XBRT container or open an existing one."), LanguageLabels.GetLabel(21, "No active XBRT container"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     EnableMenuItems(false);
                     EnableExcelMenu();
-
                 }
             }
             else
@@ -4138,13 +4267,13 @@ namespace SolvencyII.GUI
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(string.Format("There was an error attempting to open the SQL Server:\n{0}", ex.Message), "Connection Error");
+                        MessageBox.Show(string.Format("There was an error attempting to open the SQL Server:\n{0}", ex.Message), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     finally
                     {
                         if (!escape)
                         {
-                            if (MessageBox.Show("Would you like to change the connection string?", "Connection Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            if (MessageBox.Show("Would you like to change the connection string?", "Connection Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             {
                                 string newConnection = CreateConnectionString.Create();
                                 if (!string.IsNullOrEmpty(newConnection))
@@ -4159,7 +4288,7 @@ namespace SolvencyII.GUI
                             }
                             else
                             {
-                                if (MessageBox.Show("Would you like to switch back to SQLite data mode?", "Connection Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                if (MessageBox.Show("Would you like to switch back to SQLite data mode?", "Connection Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                                 {
                                     SetupFormDataTypeChanged(eDataTier.SqLite);
                                     StaticSettings.ConnectionString = RegSettings.ConnectionString;
@@ -4183,7 +4312,6 @@ namespace SolvencyII.GUI
                 CheckDBVersion();
                 SetFormTitle();
                 EnableExcelMenu();
-
             }
             return successfulConnection;
         }
@@ -4226,7 +4354,10 @@ namespace SolvencyII.GUI
                     {
                         var migrationSupportedVersion = new Version(migrationDataBaseVersion_FULL);
                         if (appInfo.DatabaseType.ToLower().Contains("prep"))
-                            MessageBox.Show(string.Format("{0} database are not suported in this application.", appInfo.DatabaseType));
+                        {
+                            MessageBox.Show(string.Format("{0} database are not suported in this application.", StaticSettings.DbType.ToString()), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
                         if (thisVersionObject.CompareTo(ver) == 0)
                         {
                             _migrationRequired = false;
@@ -4238,7 +4369,7 @@ namespace SolvencyII.GUI
                             return;
                         }
                         else if (thisVersionObject.CompareTo(ver) > 0)
-                            MessageBox.Show(string.Format("Database version {0} is not supported. You need to use {1} version.", ver.ToString(), thisVersionObject.ToString()));
+                            MessageBox.Show(string.Format("Database version {0} is not supported. You need to use {1} version.", ver.ToString(), thisVersionObject.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information));
 
                         _migrationRequired = false;
                         return;
@@ -4247,7 +4378,7 @@ namespace SolvencyII.GUI
                     {
                         if (!appInfo.DatabaseType.ToLower().Contains("prep"))
                         {
-                            MessageBox.Show(string.Format("{0} database are not suported in this application.", appInfo.DatabaseType));
+                            MessageBox.Show(string.Format("{0} database are not suported in this application.", appInfo.DatabaseType, MessageBoxButtons.OK, MessageBoxIcon.Information));
                             _migrationRequired = false;
                             return;
                         }
@@ -4260,7 +4391,7 @@ namespace SolvencyII.GUI
                         //    "Please create new container with the newest version (migration is not currently supported). " +
                         //    "Aplication version: {0} Database Version: {1}", thisVersion, appInfo.ApplicationVersion));
                         //MessageBox.Show(string.Format(LanguageLabels.GetLabel(143, "This container was created with previous version. Please create new container with the newest version (migration is not currently supported). Aplication version: {0} Database Version: {1}"), thisVersion, appInfo.ApplicationVersion));
-                        MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
+                        MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion), "Error",MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _migrationRequired = false;
                     }
                     else
@@ -4278,7 +4409,7 @@ namespace SolvencyII.GUI
                             if (ver.CompareTo(new Version(supportedMigrationDataBaseVersion_PREPARATORY_FebruaryVersion_2015)) < 0)
                             {
 
-                                MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion));
+                                MessageBox.Show(string.Format("You are trying to open a container created using previous version of the tool ({0}) for which migration is not supported. Please create a new container.", appInfo.ApplicationVersion), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 _migrationRequired = false;
                                 Logger.WriteLog(eSeverity.Note, "Migration not supported ");
 
@@ -4384,7 +4515,7 @@ namespace SolvencyII.GUI
             //Check if the file exists
             if (!File.Exists(sourceFile))
             {
-                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile));
+                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             System.Diagnostics.Process.Start(sourceFile);
@@ -4413,7 +4544,7 @@ namespace SolvencyII.GUI
             catch (Exception ex)
             {
                 Logger.WriteLog(eSeverity.Error, string.Format("There was a problem generating RC  BusinessCode Mapping excel file {0}", ex.Message));
-                MessageBox.Show(string.Format("There was a problem generating RC  BusinessCode Mapping excel file. Error details logged. "));
+                MessageBox.Show(string.Format("There was a problem generating RC  BusinessCode Mapping excel file. Error details logged. "), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 
@@ -4493,7 +4624,7 @@ namespace SolvencyII.GUI
             //Check if the file exists
             if (!File.Exists(sourceFile))
             {
-                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile));
+                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             System.Diagnostics.Process.Start(sourceFile);
@@ -4510,7 +4641,7 @@ namespace SolvencyII.GUI
             //Check if the file exists
             if (!File.Exists(sourceFile))
             {
-                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile));
+                MessageBox.Show(string.Format("{0}\n{1}", LanguageLabels.GetLabel(91, "Unfortunately a file is missing:"), sourceFile), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             System.Diagnostics.Process.Start(sourceFile);
@@ -4568,7 +4699,6 @@ namespace SolvencyII.GUI
             settingsToolStripMenuItem.Enabled = enable;
             reportToolStripMenuItem.Enabled = enable;
             xBRLToolStripMenuItem.Enabled = enable;
-            validationToolStripMenuItem.Enabled = enable;
             rCBusinessCodeMappingToolStripMenuItem.Enabled = enable;
 
         }
@@ -4674,7 +4804,7 @@ namespace SolvencyII.GUI
             }
             if (count > 1)
             {
-                MessageBox.Show("There is already other T4U application in execution. Currently we are not supporting multiple instances");
+                MessageBox.Show("There is already other T4U application in execution. Currently we are not supporting multiple instances", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -4766,8 +4896,38 @@ namespace SolvencyII.GUI
             //getting the application information               
             StringBuilder applicationDetails = new StringBuilder();
             applicationDetails.AppendLine(AboutWindowDetails());
-            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedDataBaseVersion", "=", supportedDataBaseVersion));
-            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedExcelTemplateVersion", "=", supportedExcelTemplateVersion));
+#if (FOR_UT)
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedDataBaseVersion", "=", supportedDataBaseVersion_PREPARATORY));
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedExcelTemplateVersion", "=", supportedExcelTemplateVersion_PREPARATORY));
+            try
+            {
+                using (GetSQLData getData = new GetSQLData())
+                {
+                    var aApp = getData.CheckDBVersion();
+                    applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "containerVersion", "=", aApp.ApplicationVersion));
+                }
+            }
+            catch (Exception)
+            {
+                applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "containerVersion", "=", "unable to get db version"));
+            }
+#else
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedDataBaseVersion", "=", supportedDataBaseVersion_FULL));
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedBusinessExcelTemplateVersion", "=", supportedExcelTemplateVersion_BUSINESS));
+            applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "supportedBasicExcelTemplateVersion", "=", supportedExcelTemplateVersion_FULL));
+            try
+            {
+                using (GetSQLData getData = new GetSQLData())
+                {
+                    var aApp = getData.CheckDBVersion();
+                    applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "containerVersion", "=", aApp.ApplicationVersion));
+                }
+            }
+            catch (Exception)
+            {
+                applicationDetails.AppendLine(string.Format("{0}: {1} {2}", "containerVersion", "=", "unable to get db version"));
+            }
+#endif
 
             // add a named entry to the zip file, using a string for content
             using (ZipFile zip = new ZipFile())
@@ -4788,9 +4948,9 @@ namespace SolvencyII.GUI
 
 
         }
-        #endregion
+#endregion
 
-        #region DataType Validation
+#region DataType Validation
 
         /// <summary>
         /// To update the DB validation results 
@@ -4834,9 +4994,9 @@ namespace SolvencyII.GUI
 
         }
 
-        #endregion
+#endregion
 
-        #region RSS
+#region RSS
 
         /// <summary>
         /// To display the RSS feed information
@@ -4913,7 +5073,7 @@ namespace SolvencyII.GUI
             DisplayRSS();
         }
 
-        #endregion
+#endregion
 
         private void sQLServerBackUpFullToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4931,7 +5091,7 @@ namespace SolvencyII.GUI
         {
             CultureInfo.CurrentCulture.ClearCachedData();
 
-#if (FOR_UT) 
+#if (FOR_UT)
             MessageBox.Show("Import excel business template is not supported in Preparatory version.", "Excel import", MessageBoxButtons.OK, MessageBoxIcon.Information);
 #else
             string connectionString = StaticSettings.ConnectionString;

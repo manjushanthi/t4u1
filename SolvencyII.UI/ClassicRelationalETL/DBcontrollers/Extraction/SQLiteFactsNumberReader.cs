@@ -26,14 +26,14 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
             this.instanceId = instanceId;
         }
 
-        public List<FactsNumber> GetTablesNumbers()
+        public List<TableFacts> GetTablesNumbers()
         {
             string[] tableNames = fiExtractor.getTablesNamesFromFillingIndicators(instanceId);
             if (tableNames == null || tableNames.Count() == 0)
                 tableNames = fiExtractor.getTablesNamesFromModule(instanceId);
             
-            List<FactsNumber> result = new List<FactsNumber>();
-            FactsNumber fn;
+            List<TableFacts> result = new List<TableFacts>();
+            TableFacts fn;
             foreach (string tabName in tableNames)
             {
                 fn = getFactNumber(tabName);
@@ -44,9 +44,9 @@ namespace SolvencyII.Data.CRT.ETL.DBcontrollers
             return result;
         }
 
-        private FactsNumber getFactNumber(string tabName)
+        private TableFacts getFactNumber(string tabName)
         {
-            FactsNumber fn = new FactsNumber();
+            TableFacts fn = new TableFacts();
             fn.TableName = tabName;
             fn.rowsIds = new List<int>();
 

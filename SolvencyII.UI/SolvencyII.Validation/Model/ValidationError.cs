@@ -19,6 +19,10 @@ namespace SolvencyII.Validation.Model
         public long ExpressionId { get; set; }
         public string Expression { get; set; }
         public string ErrorMessage { get; set; }
+        public string LeftSideValue { get; set; }
+        public string RightSideValue { get; set; }
+        public string Difference { get; set; }
+
 
         public string Context { get; set; }
         public Page[] Pages { get; set; }

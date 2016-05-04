@@ -1,8 +1,10 @@
 ﻿using SolvencyII.Data.CRT.ETL.DataConnectors;
 using SolvencyII.Data.CRT.ETL.DBcontrollers;
+using SolvencyII.Data.CRT.ETL.DBcontrollers.Loading;
 using SolvencyII.Data.CRT.ETL.ETLControllers;
 using SolvencyII.Data.CRT.ETL.EtlPerfomers;
 using SolvencyII.Data.CRT.ETL.MappingControllers;
+using SolvencyII.Data.CRT.ETL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +40,9 @@ namespace SolvencyII.Data.CRT.ETL
             ILoader loader = new SQLiteLoader(dataConnector);
 
             new dMessageCleaner(dataConnector).CleanDmessage(instanceID);
-            
-            Relational2dFactETL etl = new Relational2dFactETL(extractor, loader, transformer, fnumReader);
+            CrtErrorsRepository errorRepository = new CrtErrorsRepository(dataConnector);
+
+            Relational2dFactETL etl = new Relational2dFactETL(extractor, loader, transformer, fnumReader, errorRepository);
             extractor.checkAndAddFactIdColumn();
             trigeredEngines.Add(etl);
 
@@ -83,7 +86,8 @@ namespace SolvencyII.Data.CRT.ETL
             
             IExtractor extractor = new SQLiteExtractor(dataConnector, instanceID, mapprovider);
             SQLiteTransformer transformer = new SQLiteTransformer(dataConnector, mapprovider);
-            ILoader loader = new SQLiteLoader(dataConnector);
+            CrtErrorsRepository errorRepository = new CrtErrorsRepository(dataConnector);
+            ILoader loader = new CrtRowValidatingLoader(new SQLiteLoader(dataConnector), errorRepository);
 
             new dMessageCleaner(dataConnector).CleanDmessage(instanceID);
 
@@ -122,7 +126,7 @@ namespace SolvencyII.Data.CRT.ETL
 
             IDataConnector dataConnector = new MSSQLConnector(connectionString);
 
-            //With hihg memory consumption
+            //With high memory consumption
             //DataPointMappingAnalyzer mapAnalyzer = new DataPointMappingAnalyzer();
             //with low memory consumption
             //DimByDimMapingAnalyzer mapAnalyzer = new DimByDimMapingAnalyzer();
@@ -138,8 +142,9 @@ namespace SolvencyII.Data.CRT.ETL
             ILoader loader = new SQLiteLoader(dataConnector);
 
             new dMessageCleaner(dataConnector).CleanDmessage(instanceID);
+            CrtErrorsRepository errorRepository = new CrtErrorsRepository(dataConnector);
 
-            Relational2dFactETL etl = new Relational2dFactETL(extractor, loader, transformer, fnumReader);
+            Relational2dFactETL etl = new Relational2dFactETL(extractor, loader, transformer, fnumReader, errorRepository);
             extractor.checkAndAddFactIdColumn();
             trigeredEngines.Add(etl);
 

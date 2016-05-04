@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using NetOffice.ExcelApi;
@@ -59,7 +60,6 @@ namespace SolvencyII.ExcelImportExportLib.Load
             Range endRange = workSheet.Cells[endRow, endCol];
             Range range = workSheet.Range(startRange, endRange);
 
-
             try
             {
                 range.Application.DisplayAlerts = false;
@@ -67,9 +67,46 @@ namespace SolvencyII.ExcelImportExportLib.Load
                 //Unprotect the sheet
                 workSheet.Unprotect();
 
-                //Write the value which convert all number to be ientified bz excel excpet percentages
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CurrentCulture;
+                NumberFormatInfo numFormat = CultureInfo.CurrentCulture.NumberFormat;
+                string numberFormat = "#" + numFormat.NumberGroupSeparator + "##0" + numFormat.NumberDecimalSeparator;
+                for (int i = 0; i < numFormat.NumberDecimalDigits; i++)
+                {
+                    numberFormat = numberFormat + "0";
+                }
+
+                    //Write the value which convert all number to be ientified bz excel excpet percentages
                 range.Value = bDto.TableData;
-                //range.Value = range.Value;
+                //range.NumberFormat = numberFormat;
+
+                int col = range.Columns.Count;
+                int row = range.Rows.Count;
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < col; j++)
+                    {
+                        if (bDto.TableData[i, j] == null)
+                            continue;
+
+                        Range cell = range.Cells[i + 1, j + 1];
+                        //DisplayFormat df = cell.DisplayFormat;
+                        double devnull;
+                        DateTime dt;
+                        IFormatProvider provider = CultureInfo.CurrentCulture;
+                        if(double.TryParse((string)cell.Value, NumberStyles.Float | NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent, provider, out devnull))
+                        {
+                            cell.Value2 = devnull;
+                        }
+                        else if(DateTime.TryParse((string)cell.Value, provider, DateTimeStyles.None, out dt))
+                        {
+                            cell.Value2 = dt;
+                        }
+                        
+                    }
+                }
+
+                    //range.Value = range.Value;
+                //range.AutoFormat();
 
                 //Filter data Range for Z axis
                 if (bDto.FilterData != null)
@@ -79,14 +116,13 @@ namespace SolvencyII.ExcelImportExportLib.Load
                     startCol = bDto.FilterRange.Column;
                     endCol = startCol + bDto.FilterRange.Columns.Count - 1;
 
-
                     startRange = workSheet.Cells[startRow, startCol];
                     endRange = workSheet.Cells[endRow, endCol];
                     range = workSheet.Range(startRange, endRange);
 
                     range.Value = bDto.FilterData;
+                    range.Value = range.Value;
                 }
-
 
                 //Filter data Range for X axis
                 if (bDto.XFilterData != null)
@@ -102,6 +138,7 @@ namespace SolvencyII.ExcelImportExportLib.Load
                     range = workSheet.Range(startRange, endRange);
 
                     range.Value = bDto.XFilterData;
+                    range.Value = range.Value;
                 }
 
                 //Filter data Range for Y axis
@@ -118,6 +155,7 @@ namespace SolvencyII.ExcelImportExportLib.Load
                     range = workSheet.Range(startRange, endRange);
 
                     range.Value = bDto.YFilterData;
+                    range.Value = range.Value;
                 }
 
                 //Once the data has been written protect again
@@ -129,7 +167,6 @@ namespace SolvencyII.ExcelImportExportLib.Load
 
                 range.Application.DisplayAlerts = true;
             }
-
 
             range.DisposeChildInstances();
             range.Dispose();
@@ -143,7 +180,5 @@ namespace SolvencyII.ExcelImportExportLib.Load
 
             return tHeight;
         }
-
-       
     }
 }

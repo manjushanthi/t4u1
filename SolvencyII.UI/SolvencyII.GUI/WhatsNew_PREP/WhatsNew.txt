@@ -1,4 +1,56 @@
 ﻿*************************************************************************************
+***********	                    VER 2016.04.18                           ************
+*************************************************************************************
+
+What’s new in this release?   
+
+-------------
+New features:
+-------------
+-	Improvements to the user interface and error messaging;
+
+IMPORTANT: 
+-	Different error margins applied by the database-based validations (relative 
+	error with tolerance of 0.000001) and XBRL assertions (interval arithmetic) 
+	may result in inconsistent evaluations (compared to XBRL validators).
+-	Due to the limit of User Objects in Windows (https://goo.gl/rFg5H5) the tool 
+	may crash when large forms are rendered or forms are switched (and rendered) 
+	too quickly (this may happen also when a user clicks on errors in order to 
+	highlight affected cells, especially in larger tables with multiple z-axis 
+	dropdowns). 
+	Technically, the garbage collector does not clean the objects memory fast 
+	enough and they reach the limit of 10000 which is the Windows default. 
+	To minimize the risk of this to happen somr merged views (i.e. views of all 
+	closed tables within templates S.12, S.17 and S.27) have been disabled. 
+	The users are advised to save the data regularly and allow some time between 
+	switching the tables or validation error results.
+-	In XBRL 1% should be reported as 0.01 not 1. To detect cases where there is 
+	probably an issue of this kind in the report, when importing/exporting to 
+	XBRL the tool checks if such item is less than 1 and otherwise shows 
+	a warning (just for information that such value may be undesired). 
+	However some ratios/percent items may normally be >1 (e.g. SCR ratio) 
+	and this check may be confusing.	
+
+----------
+Bug fixes:
+----------
+-	Basic excel template import allows for percentage item values lower than 0.01%;
+-	Tool signals an issue when typed dimension value is nil for z-axis dropdown during 
+	importing/exporting data from/to XBRL;
+-	Content table vs filing indicator rules run even when content table is not marked 
+	as reported.
+
+-----------
+Known bugs:
+-----------
+- 	Arelle running in background even when application was closed (instance document 
+	is still being validated);
+-	Users are not informed when a row in an open table contains data for key columns 
+	only, which would not result in any XBRL facts on output;
+-	Tool does not handle dates later than 31/12/9998.
+
+
+*************************************************************************************
 ***********	                    VER 2016.02.29                           ************
 *************************************************************************************
 

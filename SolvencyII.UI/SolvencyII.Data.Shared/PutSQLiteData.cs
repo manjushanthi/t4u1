@@ -346,14 +346,28 @@ namespace SolvencyII.Data.Shared
 
         public void DeleteFilingIndicator(long instanceID, int templateOrTableID, string tableName)
         {
-            bool delete = true;
-            if (!string.IsNullOrEmpty(tableName))
-            {
-                int count = _conn.ExecuteScalar<int>(string.Format("Select count(*) from [{0}] where Instance = {1} ", tableName, instanceID));
-                if (count > 0) delete = false;
-            }
+            //BRAG
+            if (templateOrTableID < 0 && string.IsNullOrEmpty(tableName))
+                return;
 
-            if(delete)
+            var query = @"select distinct 'T__' || map.DYN_TABLE_NAME as DYN_TABLE_NAME from dInstance i
+inner join mModuleBusinessTemplate mbt on mbt.ModuleID = i.ModuleID
+inner join mTemplateOrTable totv on totv.TemplateOrTableID = mbt.BusinessTemplateID
+inner join mTemplateOrTable tobt on tobt.ParentTemplateOrTableID = totv.TemplateOrTableID
+inner join mTemplateOrTable toat on toat.ParentTemplateOrTableID = tobt.TemplateOrTableID
+inner join mTaxonomyTable tt on tt.AnnotatedTableID = toat.TemplateOrTableID
+inner join MAPPING map on map.TABLE_VERSION_ID = tt.TableID
+where i.InstanceID = {0} and totv.ParentTemplateOrTableID = {1}
+";
+            var ret = _conn.Query<MAPPING>(string.Format(query, instanceID, templateOrTableID), null);
+            var query2 = @"select count(*) from ({0})";
+            var subqueries = new List<string>();
+            foreach (var item in ret)
+                subqueries.Add(string.Format(@"select 1 from {0} where  {0}.INSTANCE = {1} ", item.DYN_TABLE_NAME, instanceID));
+            var formatedQuery = string.Format(query2, string.Join(" union ", subqueries));
+            int count = _conn.ExecuteScalar<int>(formatedQuery);
+
+            if (count == 0)
                 _conn.Execute(string.Format("Delete from dFilingIndicator where InstanceID = {0} AND BusinessTemplateID = {1};", instanceID, templateOrTableID));
         }
 

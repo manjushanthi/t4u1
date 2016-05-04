@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DocumentationFile>bin\Debug\SolvencyII.ExcelImportExportLib.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
@@ -224,10 +224,6 @@
     <Compile Include="Utils\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AT2DPM.DAL\AT2DPM.DAL.csproj">
-      <Project>{19f81b4f-0c55-430d-9541-68631c667d2f}</Project>
-      <Name>AT2DPM.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SolvencyII.UI\ObjectListView\ObjectListView2010.csproj">
       <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
       <Name>ObjectListView2010</Name>
@@ -247,6 +243,10 @@
     <ProjectReference Include="..\..\SolvencyII.UI\SolvencyII.Domain\SolvencyII.Domain.csproj">
       <Project>{801fa2ea-c4d8-496a-bc96-e1272cf6502a}</Project>
       <Name>SolvencyII.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AT2DPM.DAL\AT2DPM.DAL.csproj">
+      <Project>{19f81b4f-0c55-430d-9541-68631c667d2f}</Project>
+      <Name>AT2DPM.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

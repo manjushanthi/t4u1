@@ -25,6 +25,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <DocumentationFile>bin\Debug\SolvencyII.DataTypeValidation.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -178,6 +179,10 @@
     <ProjectReference Include="..\ClassicRelationalETL\SolvencyII.Data.CRT.ETL.csproj">
       <Project>{d8f2e253-ae45-41a6-95ca-41479846df7c}</Project>
       <Name>SolvencyII.Data.CRT.ETL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClessicRelationalModelGenerator\ClassicRelationalProcessor.csproj">
+      <Project>{8e6f8b7a-2a6b-41df-9951-724500d2b86c}</Project>
+      <Name>ClassicRelationalProcessor</Name>
     </ProjectReference>
     <ProjectReference Include="..\ClessicRelationalModelGenerator\T4U.CRT.Generation.csproj">
       <Project>{be86f6c4-6378-4e0a-b791-bab1bea56e25}</Project>

@@ -112,8 +112,10 @@ namespace SolvencyII.Data.Shared
                 {
                     // delete prior messages for this instance ID
                     asyncWorker.ReportProgress(0, "Deleting messages from any prior activity on this instance");
+
+                    //BRAG
                     IEnumerable<IdResult> result3 = _conn.Query<IdResult>(
-                        "SELECT MessageID AS id FROM dMessage WHERE InstanceID = ? AND MessageCode NOT IN ('DP Duplication')",
+                        "SELECT MessageID AS id FROM dMessage WHERE InstanceID = ? AND MessageCode NOT IN ('DP Duplication', 'EtlError')",
                         new object[] { this.instanceId });
                     List<string> messageIDs = new List<string>();
                     foreach (IdResult r in result3)
@@ -122,7 +124,7 @@ namespace SolvencyII.Data.Shared
                         "DELETE from dMessageReference WHERE dMessageReference.MessageID in ({0})",
                         string.Join(", ", messageIDs.ToArray<string>())));
                     _conn.Execute(
-                        "DELETE FROM dMessage WHERE dMessage.InstanceID = ? AND MessageCode NOT IN ('DP Duplication')",
+                        "DELETE FROM dMessage WHERE dMessage.InstanceID = ? AND MessageCode NOT IN ('DP Duplication', 'EtlError')",
                         new object[] { this.instanceId });
 
                     asyncWorker.ReportProgress(0, "Storing messages from current action");

@@ -20,7 +20,7 @@ namespace SolvencyII.Data.CRT.ETL.ETLControllers
         /// Extracts the inserts.
         /// </summary>
         /// <returns></returns>
-        HashSet<CrtRow> extractInserts();
+        IEnumerable<CrtRow> extractInserts();
 
         /// <summary>
         /// Gets the facts number.
@@ -72,6 +72,7 @@ namespace SolvencyII.Data.CRT.ETL.ETLControllers
         /// <param name="tableName">Name of the table.</param>
         /// <param name="rowIds">The row ids.</param>
         /// <returns></returns>
-        HashSet<CrtRow> extractInserts(string tableName, List<int> rowIds);
+        IEnumerable<CrtRow> extractInserts(string tableName, List<int> rowIds);
+
     }
 }

@@ -44,38 +44,50 @@ namespace SolvencyII.Data.CRT.ETL.EtlPerfomers
             IExtractor _extractor, ITransformer _transformer, ILoader _loader)
         {
             HashSet<dFact> facts;
-            HashSet<CrtRow> inserts;
+            HashSet<CrtRow> rows;
             int extractedFactsNUmber = 0;
 
             while (minfactId <= maxFactId)
             {
-                facts = _extractor.exctractFacts(minfactId, minfactId + cacheSize);
-                extractedFactsNUmber = extractedFactsNUmber + facts.Count();
-                ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " extracted facts ");
-
-                inserts = _transformer.transformFacts(facts);
-                inserts = new HashSet<CrtRow>(inserts.Where(x => x != null));
-                ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " transformed facts ");
-
-                int factsNumber = facts.Count();
-                int factsToBeInsertedNumber = (from i in inserts
-                                               from rcv in i.rcColumnsValues
-                                               select new { key = rcv.Key, value = rcv.Value }).ToArray().Count();
-
-                _loader.loadInserts(inserts);
-                ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " loaded/updated facts ");
+                facts = extractFacts(cacheSize, totalFactsNumber, minfactId, _extractor, ref extractedFactsNUmber);
+                rows = transformFacts(totalFactsNumber, _transformer, facts, extractedFactsNUmber);
+                loadRows(totalFactsNumber, _loader, rows, extractedFactsNUmber);
 
                 minfactId = minfactId + cacheSize + 1;
                 facts.Clear();
                 facts = null;
-                inserts.Clear();
-                inserts = null;
+                rows.Clear();
+                rows = null;
                 GC.Collect();
             }
 
             if (extractedFactsNUmber != totalFactsNumber)
                 throw new ApplicationException(string.Format("Number of processed facts {0} is dfferent than expected {1}", 
                     extractedFactsNUmber, totalFactsNumber));
+        }
+
+        private static void loadRows(int totalFactsNumber, ILoader _loader, HashSet<CrtRow> inserts, int extractedFactsNUmber)
+        {
+            _loader.loadInserts(inserts);
+            ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " loaded/updated facts ");
+        }
+
+        private static HashSet<CrtRow> transformFacts(int totalFactsNumber, ITransformer _transformer, HashSet<dFact> facts, int extractedFactsNUmber)
+        {
+            HashSet<CrtRow> inserts;
+            inserts = _transformer.transformFacts(facts);
+            inserts = new HashSet<CrtRow>(inserts.Where(x => x != null));            
+            ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " transformed facts ");
+            return inserts;
+        }
+
+        private static HashSet<dFact> extractFacts(int cacheSize, int totalFactsNumber, int minfactId, IExtractor _extractor, ref int extractedFactsNUmber)
+        {
+            HashSet<dFact> facts;
+            facts = _extractor.exctractFacts(minfactId, minfactId + cacheSize);
+            extractedFactsNUmber = extractedFactsNUmber + facts.Count();
+            ProgressHandler.EtlProgress(extractedFactsNUmber, totalFactsNumber, " extracted facts ");
+            return facts;
         }
     }
 }
