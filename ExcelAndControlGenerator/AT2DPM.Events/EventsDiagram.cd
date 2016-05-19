@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AT2DPM.Events.DpmProgress" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAACQAQIAAAECIAAAAEAAAAIAAAAIAACAAAA=</HashCode>
+      <FileName>DpmProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.Error" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>IError.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.ParsingEvents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAABAAAAAAAAAAAAAAAACAAAAAAAAAAABAAQ=</HashCode>
+      <FileName>IParsingEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.IProcessorEvents" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>IProcessorEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.SaveDpmEvents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAAAQgAA=</HashCode>
+      <FileName>ISaveDpmEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.TransformEvents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAACAAAAIAAAA=</HashCode>
+      <FileName>ITransformEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.VerifyEvents" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAAIAQAAA=</HashCode>
+      <FileName>IVerifyEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.LoadProgress" Collapsed="true">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAUAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoadProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.ParsingProgress" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ParsingProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.TranformProgress" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAACAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TranformProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.VerifyProgress" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VerifyProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.WorkFlowEventsImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgECgAAABAbIAAggAAAAIJIQCACKUCwBACAAAIIRgAQ=</HashCode>
+      <FileName>WorkFlowEventsImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AT2DPM.Events.EventArguments.ErrorArgs" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAgAAAAAABAAAAAAAA=</HashCode>
+      <FileName>EventArguments\ErrorArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AT2DPM.Events.EventArguments.ProgressArgs" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAIAAAAAA=</HashCode>
+      <FileName>EventArguments\ProgressArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AT2DPM.Events.IDpmProcessorEvents" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDpmProcessorEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.IError" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>IError.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.IParsingEvents" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAACAAAAAAAAAAABAAQ=</HashCode>
+      <FileName>IParsingEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.ISaveDpmEvents" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAAAQgAA=</HashCode>
+      <FileName>ISaveDpmEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.ITransformEvents" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAACAAAAIAAAA=</HashCode>
+      <FileName>ITransformEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.IUserEvents" Collapsed="true">
+    <Position X="13" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUserEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.IVerifyEvents" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAAIAQAAA=</HashCode>
+      <FileName>IVerifyEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AT2DPM.Events.IWorkFlowEvents" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>IWorkFlowEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="AT2DPM.Events.Delegate.ProgressEventHandler" Collapsed="true">
+    <Position X="16.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Delegate\DpmDelegate.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="AT2DPM.Events.Delegate.DpmErrorHandler" Collapsed="true">
+    <Position X="14.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Delegate\DpmDelegate.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="AT2DPM.Events.Delegate.CompletedEventHandler" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Delegate\DpmDelegate.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
