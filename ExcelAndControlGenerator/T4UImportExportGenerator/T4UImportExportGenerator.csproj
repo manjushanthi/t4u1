@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{249AED06-ACF7-4FDD-9FCC-28EBC0ED4EF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>T4UImportExportGenerator</RootNamespace>
+    <AssemblyName>T4UImportExportGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugX64|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\DebugX64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=9084b9221296229e, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Excel.Net40.1.7.3.0\lib\net40\ExcelApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ExcelDna.Integration, Version=0.33.5730.40390, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDna.Integration.0.33.9\lib\ExcelDna.Integration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\NetOffice.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\OfficeApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=931cec8882205047, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\VBIDEApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessTemplateGenerateImpl.cs" />
+    <Compile Include="DialogBox\ExcelTemplateGenerationCheckbox2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBox\ExcelTemplateGenerationCheckbox2.Designer.cs">
+      <DependentUpon>ExcelTemplateGenerationCheckbox2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogBox\ImportExportProgressDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBox\ImportExportProgressDlg.Designer.cs">
+      <DependentUpon>ImportExportProgressDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\ExcelTemplateType.cs" />
+    <Compile Include="Domain\GenerateInfo.cs" />
+    <Compile Include="Domain\HierarchyAndMemberInfo.cs" />
+    <Compile Include="Domain\MAPPING.cs" />
+    <Compile Include="Domain\OrdinateHierarchy.cs" />
+    <Compile Include="DpmObjects\HierarchyInfo.cs" />
+    <Compile Include="GenerateBase.cs" />
+    <Compile Include="GenerateEnumerationSheet.cs" />
+    <Compile Include="IImportExportGenerate.cs" />
+    <Compile Include="BasicTemplateGenerateImpl.cs" />
+    <Compile Include="InputBox.cs" />
+    <Compile Include="InvokeImportExport.cs" />
+    <Compile Include="ModuleCheckedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TemplateGeneration.cs" />
+    <Compile Include="DialogBox\ExcelTemplateGenerationCheckbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBox\ExcelTemplateGenerationCheckbox.Designer.cs">
+      <DependentUpon>ExcelTemplateGenerationCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadParam.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SolvencyII.UI\ClessicRelationalModelGenerator\ClassicRelationalProcessor.csproj">
+      <Project>{8e6f8b7a-2a6b-41df-9951-724500d2b86c}</Project>
+      <Name>ClassicRelationalProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SolvencyII.UI\SolvencyII.Data.Shared\SolvencyII.Data.Shared.csproj">
+      <Project>{9ba580ce-8585-4cc5-a971-4d7b4af3323a}</Project>
+      <Name>SolvencyII.Data.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SolvencyII.UI\SolvencyII.Data\SolvencyII.Data.csproj">
+      <Project>{a2eb048a-561c-4a6b-b554-4834efed35c1}</Project>
+      <Name>SolvencyII.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SolvencyII.UI\SolvencyII.Domain\SolvencyII.Domain.csproj">
+      <Project>{801fa2ea-c4d8-496a-bc96-e1272cf6502a}</Project>
+      <Name>SolvencyII.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SolvencyII.UI\SolvencyII.Metrics\SolvencyII.Metrics.csproj">
+      <Project>{c90b2c63-15e8-48ea-aeaa-bc51f78fbf78}</Project>
+      <Name>SolvencyII.Metrics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MemoryProfilerProject\T4URelationalTablesGenerator.csproj">
+      <Project>{ef0b40e4-41b7-4c6e-9131-c4ec9860fefe}</Project>
+      <Name>T4URelationalTablesGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SolvencyII.UI\AT2DPM.DAL\AT2DPM.DAL.csproj">
+      <Project>{19f81b4f-0c55-430d-9541-68631c667d2f}</Project>
+      <Name>AT2DPM.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AT2DPM.Events\AT2DPM.Events.csproj">
+      <Project>{dba32315-9371-40f0-8a78-33ed7526a321}</Project>
+      <Name>AT2DPM.Events</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogBox\ExcelTemplateGenerationCheckbox2.resx">
+      <DependentUpon>ExcelTemplateGenerationCheckbox2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBox\ExcelTemplateGenerationCheckbox.resx">
+      <DependentUpon>ExcelTemplateGenerationCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBox\ImportExportProgressDlg.resx">
+      <DependentUpon>ImportExportProgressDlg.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
